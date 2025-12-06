@@ -18,16 +18,17 @@ from config import get_config
 from trainers.single_gpu import SingleGPUTrainer
 from trainers.data_parallel import DataParallelTrainer
 from trainers.ddp_trainer import DDPTrainer
+from trainers.model_parallel import ModelParallelTrainer
 
 
 def parse_args():
     """解析命令行参数"""
     parser = argparse.ArgumentParser(description='多GPU训练框架 - CIFAR100')
-    
+
     # 训练模式
     parser.add_argument('--mode', type=str, default='single',
-                       choices=['single', 'dp', 'ddp'],
-                       help='训练模式: single(单GPU), dp(DataParallel), ddp(DistributedDataParallel)')
+                       choices=['single', 'dp', 'ddp', 'mp'],
+                       help='训练模式: single(单GPU), dp(DataParallel), ddp(DistributedDataParallel), mp(ModelParallel)')
     
     # GPU设置
     parser.add_argument('--gpu-ids', type=str, default='0',
@@ -157,6 +158,19 @@ def main():
             print("警告: DDP模式建议使用至少2个GPU")
         # DDP使用多进程，需要特殊启动
         trainer = DDPTrainer(config)
+        trainer.launch()
+    
+    elif config.mode == 'mp':
+        if config.num_gpus < 2:
+            print("警告: ModelParallel模式建议使用至少2个GPU")
+        trainer = ModelParallelTrainer(config)
+        trainer.train()
+    
+    elif config.mode == 'pp':
+        if config.num_gpus < 2:
+            print("警告: Pipeline Parallel模式建议使用至少2个GPU")
+        # PP使用多进程，需要特殊启动
+        trainer = PipelineParallelTrainer(config)
         trainer.launch()
     
     else:

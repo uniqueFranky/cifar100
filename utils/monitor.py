@@ -14,14 +14,39 @@ class PerformanceMonitor:
     def __init__(self):
         self.metrics = defaultdict(list)
         self.start_time = None
+        self.timers = {}  # 支持多个命名计时器
     
-    def start_timer(self):
-        """开始计时"""
-        self.start_time = time.time()
+    def start_timer(self, timer_name=None):
+        """开始计时
+        
+        Args:
+            timer_name: 计时器名称，如果为None则使用默认计时器
+        """
+        if timer_name is None:
+            # 向后兼容：默认计时器
+            self.start_time = time.time()
+        else:
+            # 命名计时器
+            self.timers[timer_name] = time.time()
+        return time.time()
     
     def end_timer(self, metric_name):
-        """结束计时并记录"""
-        if self.start_time is not None:
+        """结束计时并记录
+        
+        Args:
+            metric_name: 计时器名称或指标名称
+        
+        Returns:
+            elapsed: 经过的时间（秒）
+        """
+        if metric_name in self.timers:
+            # 命名计时器
+            elapsed = time.time() - self.timers[metric_name]
+            self.metrics[metric_name].append(elapsed)
+            del self.timers[metric_name]
+            return elapsed
+        elif self.start_time is not None:
+            # 默认计时器（向后兼容）
             elapsed = time.time() - self.start_time
             self.metrics[metric_name].append(elapsed)
             self.start_time = None

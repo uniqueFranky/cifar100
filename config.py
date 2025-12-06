@@ -48,6 +48,7 @@ class Config:
     save_dir: str = './checkpoints'
     log_interval: int = 100
     save_interval: int = 10
+    final_checkpoint_path: str = None  # 最终checkpoint的自定义保存路径
     
     # 其他
     seed: int = 42
