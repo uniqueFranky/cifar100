@@ -116,5 +116,7 @@ def get_config(args):
         evaluate=args.evaluate,
         dist_backend=args.dist_backend,
         dist_url=args.dist_url,
+        final_checkpoint_path=args.final_checkpoint_path,
+        chunks=args.chunks,
     )
     return config

@@ -425,7 +425,7 @@ def get_full_config():
         'gpu_ids': [[0], [0, 1], [0, 1, 2, 3]],
         'num_workers': [0, 1, 2, 4],
         'prefetch_factor': [1],
-        'chunks': [0, 16, 32]
+        'chunks': [0, 16, 32, 64]
     }
 
 

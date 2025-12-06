@@ -301,11 +301,6 @@ class PipelineParallelTrainer:
                 loss_accumulator, device, rank, world_size, epoch
             )
             
-            test_loss, test_acc = self.evaluate_with_pipeline(
-                schedule, testloader, criterion,
-                loss_accumulator, device, rank, world_size
-            )
-            
             # 更新学习率
             scheduler.step()
             current_lr = scheduler.get_last_lr()[0]
@@ -337,6 +332,13 @@ class PipelineParallelTrainer:
                 dist.gather(local_gpu_id, dst=world_size-1)
                 dist.gather(local_mem_allocated, dst=world_size-1)
                 dist.gather(local_mem_reserved, dst=world_size-1)
+            
+            # 在训练循环中
+            test_loss, test_acc = self.evaluate_with_pipeline(
+                my_submodule, schedule, testloader, criterion,
+                loss_accumulator, device, rank, world_size
+            )
+
 
             # 只在最后一个 rank 记录和打印（与 DDP 格式完全一致）
             if rank == world_size - 1:
@@ -476,11 +478,12 @@ class PipelineParallelTrainer:
         else:
             return 0.0, 0.0
 
-    def evaluate_with_pipeline(self, schedule, testloader, criterion, 
+    def evaluate_with_pipeline(self, model, schedule, testloader, criterion, 
                             loss_accumulator, device, rank, world_size):
         """
-        使用 Pipeline 进行评估（准确但慢）
+        使用 Pipeline 进行评估
         """
+        model.eval()  # 设置模型为评估模式
         loss_accumulator.reset()
         
         running_loss = 0.0
@@ -488,8 +491,9 @@ class PipelineParallelTrainer:
         running_total = 0
         num_batches = 0
         
+        # 完全移除torch.no_grad()，让Pipeline正常工作
         for batch_idx, (inputs, targets) in enumerate(testloader):
-            # 检查 batch 大小
+            # 检查 batch 大小，确保所有rank处理相同数量的batch
             if inputs.size(0) != self.config.batch_size:
                 continue
             
@@ -511,6 +515,7 @@ class PipelineParallelTrainer:
                 
                 loss_accumulator.reset()
             else:
+                # 中间stage也需要参与Pipeline
                 schedule.step()
         
         # 计算平均值
@@ -528,6 +533,7 @@ class PipelineParallelTrainer:
             dist.broadcast(result, src=world_size-1)
             
             return result[0].item(), result[1].item()
+
 
 
     def save_checkpoint(self, rank, epoch, model, optimizer, scheduler,
