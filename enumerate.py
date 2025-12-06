@@ -56,6 +56,9 @@ class TrainingScheduler:
         if params.get('dataset') and params['dataset'] != 'cifar100':
             name_parts.append(params['dataset'])
         
+        if params.get('chunks') is not None:
+            name_parts.append(f"chunks{params['chunks']}")
+        
         return '_'.join(name_parts)
     
     def validate_params(self, params: Dict[str, Any]) -> bool:
@@ -73,13 +76,14 @@ class TrainingScheduler:
             return False
         
         # dp, ddp, mp, hybrid模式需要至少2个GPU
-        if mode in ['dp', 'ddp', 'mp', 'hybrid'] and num_gpus < 2:
+        if mode in ['dp', 'ddp', 'mp', 'pp'] and num_gpus < 2:
             return False
         
-        if mode == 'hybrid':
-            # 混合并行需要GPU数量是模型并行组大小的整数倍
-            mp_group_size = params.get('mp_group_size', 2)
-            if num_gpus <= mp_group_size or num_gpus % mp_group_size != 0:
+        if mode != 'pp' and params['chunks'] != 0:
+            return False
+
+        if mode == 'pp':
+            if params['chunks'] < num_gpus:
                 return False
         
         return True
@@ -413,14 +417,15 @@ def get_quick_config():
 def get_full_config():
     """完整实验配置 - 对比不同训练模式、模型和batch size"""
     return {
-        'mode': ['single', 'dp', 'ddp', 'mp'],
+        'mode': ['single', 'dp', 'ddp', 'mp', 'pp'],
         'model': ['resnet18', 'resnet34', 'resnet50'],
         'batch_size': [64, 128, 256],
         'epochs': [100],
         'dataset': ['cifar100'],
         'gpu_ids': [[0], [0, 1], [0, 1, 2, 3]],
         'num_workers': [0, 1, 2, 4],
-        'prefetch_factor': [1]
+        'prefetch_factor': [1],
+        'chunks': [0, 16, 32]
     }
 
 

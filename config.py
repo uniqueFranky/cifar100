@@ -62,6 +62,8 @@ class Config:
     # 自动计算的属性
     effective_batch_size: int = 128  # batch_size * num_gpus
     
+    chunks: int = 16  # 用于流水线并行的微批次数量
+
     def __post_init__(self):
         """初始化后处理"""
         # 计算有效batch size

@@ -18,6 +18,7 @@ from config import get_config
 from trainers.single_gpu import SingleGPUTrainer
 from trainers.data_parallel import DataParallelTrainer
 from trainers.ddp_trainer import DDPTrainer
+from trainers.pipeline_parallel import PipelineParallelTrainer
 from trainers.model_parallel import ModelParallelTrainer
 
 
@@ -28,8 +29,8 @@ def parse_args():
 
     # 训练模式
     parser.add_argument('--mode', type=str, default='single',
-                       choices=['single', 'dp', 'ddp', 'mp'],
-                       help='训练模式: single(单GPU), dp(DataParallel), ddp(DistributedDataParallel), mp(ModelParallel)')
+                       choices=['single', 'dp', 'ddp', 'mp', 'pp'],
+                       help='训练模式: single(单GPU), dp(DataParallel), ddp(DistributedDataParallel), mp(ModelParallel), pp(PipelineParallel)')
     
     # GPU设置
     parser.add_argument('--gpu-ids', type=str, default='0',
@@ -102,7 +103,8 @@ def parse_args():
     parser.add_argument('--dist-url', type=str, default='env://',
                        help='分布式训练URL')
 
-    
+    parser.add_argument('--chunks', type=int, default=16)
+
     args = parser.parse_args()
     
     # 解析GPU IDs
@@ -156,23 +158,25 @@ def main():
             print("警告: DataParallel模式建议使用至少2个GPU")
         trainer = DataParallelTrainer(config)
         trainer.train()
-        
+
     elif config.mode == 'ddp':
         if config.num_gpus < 2:
             print("警告: DDP模式建议使用至少2个GPU")
+        # DDP使用多进程，需要特殊启动
+        trainer = DDPTrainer(config)
+        trainer.launch()
+    
+    elif config.mode == 'pp':
+        if config.num_gpus < 2:
+            print("警告: PipelineParallel模式建议使用至少2个GPU")
+        # === 修改这里: 使用 launch() 启动多进程 ===
+        trainer = PipelineParallelTrainer(config)
+        trainer.launch()
     elif config.mode == 'mp':
         if config.num_gpus < 2:
             print("警告: ModelParallel模式建议使用至少2个GPU")
         trainer = ModelParallelTrainer(config)
         trainer.train()
-    
-    # 在 main() 函数中添加
-    elif args.mode == 'hybrid':
-        print("\n" + "="*60)
-        print("混合并行训练模式 (Hybrid Parallel)")
-        print("="*60)
-        trainer = HybridParallelTrainer(config)
-        trainer.launch()
     
     else:
         print(f"错误: 未知的训练模式 '{config.mode}'")
