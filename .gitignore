@@ -2,3 +2,5 @@ __pycache__/
 checkpoints/
 data/
 *.pth
+training_logs/
+analysis_results/

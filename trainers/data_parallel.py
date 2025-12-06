@@ -72,7 +72,8 @@ class DataParallelTrainer:
             'train_acc': [],
             'test_loss': [],
             'test_acc': [],
-            'epoch_time': []
+            'epoch_time': [],
+            'gpu_memory_per_device': []  # 统一格式：每个epoch记录所有设备的内存
         }
         
         self.start_epoch = 0
@@ -117,15 +118,32 @@ class DataParallelTrainer:
             
             # 打印日志
             if batch_idx % self.config.log_interval == 0:
+                # 显示所有GPU的内存使用
+                gpu_mem_info = []
+                for gpu_id in self.config.gpu_ids:
+                    device = torch.device(f'cuda:{gpu_id}')
+                    mem_allocated = torch.cuda.memory_allocated(device) / 1024**3
+                    gpu_mem_info.append(f'GPU{gpu_id}:{mem_allocated:.2f}GB')
+                gpu_mem_str = ', '.join(gpu_mem_info)
                 print(f'Epoch: {epoch} [{batch_idx}/{len(self.trainloader)}] '
                       f'Loss: {loss.item():.4f} | Acc: {100.*correct/total:.2f}% '
-                      f'| Time: {batch_time:.4f}s')
+                      f'| Time: {batch_time:.4f}s | GPU Mem: [{gpu_mem_str}]')
         
         epoch_time = time.time() - epoch_start
         epoch_loss = running_loss / len(self.trainloader)
         epoch_acc = 100. * correct / total
         
-        return epoch_loss, epoch_acc, epoch_time
+        # 记录所有GPU的内存使用（统一格式）
+        gpu_mem_per_device = []
+        for gpu_id in self.config.gpu_ids:
+            device = torch.device(f'cuda:{gpu_id}')
+            gpu_mem_per_device.append({
+                'device_id': gpu_id,
+                'allocated': torch.cuda.memory_allocated(device) / 1024**3,
+                'reserved': torch.cuda.memory_reserved(device) / 1024**3
+            })
+        
+        return epoch_loss, epoch_acc, epoch_time, gpu_mem_per_device
     
     def evaluate(self):
         """评估模型"""
@@ -167,7 +185,7 @@ class DataParallelTrainer:
             print(f'{"="*60}')
             
             # 训练
-            train_loss, train_acc, epoch_time = self.train_epoch(epoch)
+            train_loss, train_acc, epoch_time, gpu_mem_per_device = self.train_epoch(epoch)
             
             # 评估
             test_loss, test_acc = self.evaluate()
@@ -182,11 +200,15 @@ class DataParallelTrainer:
             self.history['test_loss'].append(test_loss)
             self.history['test_acc'].append(test_acc)
             self.history['epoch_time'].append(epoch_time)
+            self.history['gpu_memory_per_device'].append(gpu_mem_per_device)
             
             # 打印结果
             print(f'\n训练 - Loss: {train_loss:.4f}, Acc: {train_acc:.2f}%')
             print(f'测试 - Loss: {test_loss:.4f}, Acc: {test_acc:.2f}%')
             print(f'学习率: {current_lr:.6f}, 时间: {epoch_time:.2f}s')
+            print('GPU内存使用:')
+            for mem_info in gpu_mem_per_device:
+                print(f'  GPU {mem_info["device_id"]} - 已分配: {mem_info["allocated"]:.2f}GB, 已保留: {mem_info["reserved"]:.2f}GB')
             
             # 保存最佳模型
             if test_acc > self.best_acc:
@@ -212,7 +234,10 @@ class DataParallelTrainer:
         self.save_checkpoint(self.config.epochs - 1, is_final=True)
     
     def save_checkpoint(self, epoch, is_best=False, is_final=False):
-        """保存checkpoint"""
+        """保存checkpoint，包含完整config"""
+        # 转换config为字典格式以确保完整保存
+        config_dict = self.config.__dict__.copy() if hasattr(self.config, '__dict__') else self.config
+        
         state = {
             'epoch': epoch,
             'model_state_dict': self.model.module.state_dict(),  # 注意：使用module
@@ -220,7 +245,7 @@ class DataParallelTrainer:
             'scheduler_state_dict': self.scheduler.state_dict(),
             'best_acc': self.best_acc,
             'history': self.history,
-            'config': self.config,
+            'config': config_dict,  # 保存完整config内容
         }
         
         if is_best:
@@ -228,7 +253,11 @@ class DataParallelTrainer:
             torch.save(state, path)
             print(f'保存最佳模型到: {path}')
         elif is_final:
-            path = os.path.join(self.config.save_dir, 'final_model_dp.pth')
+            # 支持自定义最终checkpoint路径
+            if self.config.final_checkpoint_path:
+                path = self.config.final_checkpoint_path
+            else:
+                path = os.path.join(self.config.save_dir, 'final_model_dp.pth')
             torch.save(state, path)
             print(f'保存最终模型到: {path}')
         else:

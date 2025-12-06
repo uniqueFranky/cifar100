@@ -123,7 +123,8 @@ class DDPTrainer:
                 'train_acc': [],
                 'test_loss': [],
                 'test_acc': [],
-                'epoch_time': []
+                'epoch_time': [],
+                'gpu_memory_per_device': []  # 统一格式：每个epoch记录所有设备的内存
             }
         
         start_epoch = 0
@@ -160,7 +161,7 @@ class DDPTrainer:
             train_sampler.set_epoch(epoch)
             
             # 训练
-            train_loss, train_acc, epoch_time = self.train_epoch(
+            train_loss, train_acc, epoch_time, gpu_id, gpu_mem_allocated, gpu_mem_reserved = self.train_epoch(
                 model, trainloader, criterion, optimizer,
                 device, monitor, rank, epoch
             )
@@ -174,6 +175,31 @@ class DDPTrainer:
             # 更新学习率
             scheduler.step()
             
+            # 收集所有rank的GPU内存信息（统一格式）
+            if is_main_process(rank):
+                # 创建tensor来收集所有rank的内存信息和GPU ID
+                all_gpu_ids = [torch.zeros(1, dtype=torch.int32).to(device) for _ in range(world_size)]
+                all_mem_allocated = [torch.zeros(1).to(device) for _ in range(world_size)]
+                all_mem_reserved = [torch.zeros(1).to(device) for _ in range(world_size)]
+            else:
+                all_gpu_ids = None
+                all_mem_allocated = None
+                all_mem_reserved = None
+            
+            # 将本地信息发送到主进程
+            local_gpu_id = torch.tensor([gpu_id], dtype=torch.int32).to(device)
+            local_mem_allocated = torch.tensor([gpu_mem_allocated]).to(device)
+            local_mem_reserved = torch.tensor([gpu_mem_reserved]).to(device)
+            
+            if is_main_process(rank):
+                dist.gather(local_gpu_id, gather_list=all_gpu_ids, dst=0)
+                dist.gather(local_mem_allocated, gather_list=all_mem_allocated, dst=0)
+                dist.gather(local_mem_reserved, gather_list=all_mem_reserved, dst=0)
+            else:
+                dist.gather(local_gpu_id, dst=0)
+                dist.gather(local_mem_allocated, dst=0)
+                dist.gather(local_mem_reserved, dst=0)
+            
             # 只在主进程记录和打印
             if is_main_process(rank):
                 current_lr = optimizer.param_groups[0]['lr']
@@ -184,9 +210,23 @@ class DDPTrainer:
                 history['test_acc'].append(test_acc)
                 history['epoch_time'].append(epoch_time)
                 
+                # 记录所有GPU的内存（统一格式）
+                gpu_mem_per_device = []
+                for r in range(world_size):
+                    gpu_mem_per_device.append({
+                        'device_id': int(all_gpu_ids[r].item()),
+                        'allocated': all_mem_allocated[r].item(),
+                        'reserved': all_mem_reserved[r].item()
+                    })
+                history['gpu_memory_per_device'].append(gpu_mem_per_device)
+                
                 print(f'\n训练 - Loss: {train_loss:.4f}, Acc: {train_acc:.2f}%')
                 print(f'测试 - Loss: {test_loss:.4f}, Acc: {test_acc:.2f}%')
                 print(f'学习率: {current_lr:.6f}, 时间: {epoch_time:.2f}s')
+                # 打印所有GPU的内存使用
+                print('GPU内存使用:')
+                for mem_info in gpu_mem_per_device:
+                    print(f'  GPU {mem_info["device_id"]} - 已分配: {mem_info["allocated"]:.2f}GB, 已保留: {mem_info["reserved"]:.2f}GB')
                 
                 # 保存最佳模型
                 if test_acc > best_acc:
@@ -265,9 +305,11 @@ class DDPTrainer:
             
             # 打印日志（只在主进程）
             if is_main_process(rank) and batch_idx % self.config.log_interval == 0:
+                gpu_mem_allocated = torch.cuda.memory_allocated(device) / 1024**3
+                gpu_mem_reserved = torch.cuda.memory_reserved(device) / 1024**3
                 print(f'Rank {rank} | Epoch: {epoch} [{batch_idx}/{len(trainloader)}] '
                       f'Loss: {loss.item():.4f} | Acc: {100.*correct/total:.2f}% '
-                      f'| Time: {batch_time:.4f}s')
+                      f'| Time: {batch_time:.4f}s | GPU Mem: {gpu_mem_allocated:.2f}GB/{gpu_mem_reserved:.2f}GB')
         
         epoch_time = time.time() - epoch_start
         
@@ -275,10 +317,15 @@ class DDPTrainer:
         epoch_loss = running_loss / len(trainloader)
         epoch_acc = 100. * correct / total
         
+        # 记录GPU内存使用（统一格式：使用实际的GPU ID）
+        gpu_id = self.config.gpu_ids[rank]
+        gpu_mem_allocated = torch.cuda.memory_allocated(device) / 1024**3
+        gpu_mem_reserved = torch.cuda.memory_reserved(device) / 1024**3
+        
         # 同步所有进程的统计（可选）
         # 这里我们只返回rank 0的统计，也可以聚合所有进程的统计
         
-        return epoch_loss, epoch_acc, epoch_time
+        return epoch_loss, epoch_acc, epoch_time, gpu_id, gpu_mem_allocated, gpu_mem_reserved
     
     def evaluate(self, model, testloader, criterion, device, rank, world_size):
         """评估模型"""
@@ -319,7 +366,10 @@ class DDPTrainer:
     def save_checkpoint(self, model, optimizer, scheduler,
                        epoch, best_acc, history,
                        is_best=False, is_final=False):
-        """保存checkpoint（只在主进程）"""
+        """保存checkpoint，包含完整config（只在主进程）"""
+        # 转换config为字典格式以确保完整保存
+        config_dict = self.config.__dict__.copy() if hasattr(self.config, '__dict__') else self.config
+        
         state = {
             'epoch': epoch,
             'model_state_dict': model.module.state_dict(),  # 注意：使用module
@@ -327,7 +377,7 @@ class DDPTrainer:
             'scheduler_state_dict': scheduler.state_dict(),
             'best_acc': best_acc,
             'history': history,
-            'config': self.config,
+            'config': config_dict,  # 保存完整config内容
         }
         
         if is_best:
@@ -335,7 +385,11 @@ class DDPTrainer:
             torch.save(state, path)
             print(f'保存最佳模型到: {path}')
         elif is_final:
-            path = os.path.join(self.config.save_dir, 'final_model_ddp.pth')
+            # 支持自定义最终checkpoint路径
+            if self.config.final_checkpoint_path:
+                path = self.config.final_checkpoint_path
+            else:
+                path = os.path.join(self.config.save_dir, 'final_model_ddp.pth')
             torch.save(state, path)
             print(f'保存最终模型到: {path}')
         else:
