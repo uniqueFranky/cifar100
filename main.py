@@ -21,6 +21,7 @@ from trainers.ddp_trainer import DDPTrainer
 from trainers.model_parallel import ModelParallelTrainer
 
 
+
 def parse_args():
     """解析命令行参数"""
     parser = argparse.ArgumentParser(description='多GPU训练框架 - CIFAR100')
@@ -84,6 +85,8 @@ def parse_args():
                        help='日志打印间隔(batch)')
     parser.add_argument('--save-interval', type=int, default=10,
                        help='模型保存间隔(epoch)')
+    parser.add_argument('--final-checkpoint-path', type=str, default=None,
+                       help='最终checkpoint的自定义保存路径(文件名)')
     
     # 其他
     parser.add_argument('--seed', type=int, default=42,
@@ -98,6 +101,7 @@ def parse_args():
                        help='分布式后端: nccl, gloo')
     parser.add_argument('--dist-url', type=str, default='env://',
                        help='分布式训练URL')
+
     
     args = parser.parse_args()
     
@@ -156,26 +160,24 @@ def main():
     elif config.mode == 'ddp':
         if config.num_gpus < 2:
             print("警告: DDP模式建议使用至少2个GPU")
-        # DDP使用多进程，需要特殊启动
-        trainer = DDPTrainer(config)
-        trainer.launch()
-    
     elif config.mode == 'mp':
         if config.num_gpus < 2:
             print("警告: ModelParallel模式建议使用至少2个GPU")
         trainer = ModelParallelTrainer(config)
         trainer.train()
     
-    elif config.mode == 'pp':
-        if config.num_gpus < 2:
-            print("警告: Pipeline Parallel模式建议使用至少2个GPU")
-        # PP使用多进程，需要特殊启动
-        trainer = PipelineParallelTrainer(config)
+    # 在 main() 函数中添加
+    elif args.mode == 'hybrid':
+        print("\n" + "="*60)
+        print("混合并行训练模式 (Hybrid Parallel)")
+        print("="*60)
+        trainer = HybridParallelTrainer(config)
         trainer.launch()
     
     else:
         print(f"错误: 未知的训练模式 '{config.mode}'")
         return
+
     
     print("\n训练完成!")
 
