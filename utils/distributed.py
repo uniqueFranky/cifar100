@@ -7,7 +7,7 @@ import torch
 import torch.distributed as dist
 
 
-def setup_distributed(rank, world_size, backend='nccl'):
+def setup_distributed(rank, world_size, backend='nccl', device=None):
     """
     初始化分布式训练环境
     
@@ -20,10 +20,10 @@ def setup_distributed(rank, world_size, backend='nccl'):
     os.environ['MASTER_PORT'] = '12355'
     
     # 初始化进程组
-    dist.init_process_group(backend, rank=rank, world_size=world_size)
+    dist.init_process_group(backend, rank=rank, world_size=world_size, device_id=device)
     
     # 设置当前进程使用的GPU
-    torch.cuda.set_device(rank)
+    torch.cuda.set_device(device)
 
 
 def cleanup_distributed():

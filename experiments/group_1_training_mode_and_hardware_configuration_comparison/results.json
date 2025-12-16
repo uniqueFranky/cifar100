@@ -1,0 +1,199 @@
+{
+  "group_info": {
+    "group_id": 1,
+    "name": "Training Mode and Hardware Configuration Comparison",
+    "description": "全面比较不同训练模式(single/dp/ddp/mp)在不同硬件配置(1卡/2卡/4卡)下的性能表现",
+    "control_variables": "模型架构(ResNet50)、批处理大小(128)、数据加载参数(workers=2, prefetch=1)",
+    "comparison_focus": "训练模式(single/dp/ddp/mp/pp) × 硬件配置(1卡/2卡/4卡)的性能矩阵对比"
+  },
+  "total_experiments": 8,
+  "completed_experiments": 8,
+  "results": [
+    {
+      "experiment_name": "single_resnet50_bs128_gpu1_nw2_chunks0",
+      "params": {
+        "mode": "single",
+        "model": "resnet50",
+        "batch_size": 128,
+        "epochs": 100,
+        "dataset": "cifar100",
+        "gpu_ids": [
+          1
+        ],
+        "num_workers": 2,
+        "prefetch_factor": 1,
+        "chunks": 0,
+        "num_gpus": 1
+      },
+      "success": true,
+      "return_code": 0,
+      "elapsed_time": 2161.101229906082,
+      "elapsed_time_str": "0.60h",
+      "checkpoint_path": "./experiments/group_1_training_mode_and_hardware_configuration_comparison/checkpoints/single_resnet50_bs128_gpu1_nw2_chunks0.pth",
+      "log_file": "./experiments/group_1_training_mode_and_hardware_configuration_comparison/logs/single_resnet50_bs128_gpu1_nw2_chunks0.log",
+      "timestamp": "2025-12-15T09:41:52.244445"
+    },
+    {
+      "experiment_name": "dp_resnet50_bs128_gpu2_nw2_chunks0",
+      "params": {
+        "mode": "dp",
+        "model": "resnet50",
+        "batch_size": 128,
+        "epochs": 100,
+        "dataset": "cifar100",
+        "gpu_ids": [
+          1,
+          2
+        ],
+        "num_workers": 2,
+        "prefetch_factor": 1,
+        "chunks": 0,
+        "num_gpus": 2
+      },
+      "success": true,
+      "skipped": true,
+      "checkpoint_path": "./experiments/group_1_training_mode_and_hardware_configuration_comparison/checkpoints/dp_resnet50_bs128_gpu2_nw2_chunks0.pth",
+      "log_file": "./experiments/group_1_training_mode_and_hardware_configuration_comparison/logs/dp_resnet50_bs128_gpu2_nw2_chunks0.log"
+    },
+    {
+      "experiment_name": "dp_resnet50_bs128_gpu4_nw2_chunks0",
+      "params": {
+        "mode": "dp",
+        "model": "resnet50",
+        "batch_size": 128,
+        "epochs": 100,
+        "dataset": "cifar100",
+        "gpu_ids": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "num_workers": 2,
+        "prefetch_factor": 1,
+        "chunks": 0,
+        "num_gpus": 4
+      },
+      "success": true,
+      "skipped": true,
+      "checkpoint_path": "./experiments/group_1_training_mode_and_hardware_configuration_comparison/checkpoints/dp_resnet50_bs128_gpu4_nw2_chunks0.pth",
+      "log_file": "./experiments/group_1_training_mode_and_hardware_configuration_comparison/logs/dp_resnet50_bs128_gpu4_nw2_chunks0.log"
+    },
+    {
+      "experiment_name": "ddp_resnet50_bs128_gpu2_nw2_chunks0",
+      "params": {
+        "mode": "ddp",
+        "model": "resnet50",
+        "batch_size": 128,
+        "epochs": 100,
+        "dataset": "cifar100",
+        "gpu_ids": [
+          1,
+          2
+        ],
+        "num_workers": 2,
+        "prefetch_factor": 1,
+        "chunks": 0,
+        "num_gpus": 2
+      },
+      "success": true,
+      "skipped": true,
+      "checkpoint_path": "./experiments/group_1_training_mode_and_hardware_configuration_comparison/checkpoints/ddp_resnet50_bs128_gpu2_nw2_chunks0.pth",
+      "log_file": "./experiments/group_1_training_mode_and_hardware_configuration_comparison/logs/ddp_resnet50_bs128_gpu2_nw2_chunks0.log"
+    },
+    {
+      "experiment_name": "ddp_resnet50_bs128_gpu4_nw2_chunks0",
+      "params": {
+        "mode": "ddp",
+        "model": "resnet50",
+        "batch_size": 128,
+        "epochs": 100,
+        "dataset": "cifar100",
+        "gpu_ids": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "num_workers": 2,
+        "prefetch_factor": 1,
+        "chunks": 0,
+        "num_gpus": 4
+      },
+      "success": true,
+      "skipped": true,
+      "checkpoint_path": "./experiments/group_1_training_mode_and_hardware_configuration_comparison/checkpoints/ddp_resnet50_bs128_gpu4_nw2_chunks0.pth",
+      "log_file": "./experiments/group_1_training_mode_and_hardware_configuration_comparison/logs/ddp_resnet50_bs128_gpu4_nw2_chunks0.log"
+    },
+    {
+      "experiment_name": "mp_resnet50_bs128_gpu2_nw2_chunks0",
+      "params": {
+        "mode": "mp",
+        "model": "resnet50",
+        "batch_size": 128,
+        "epochs": 100,
+        "dataset": "cifar100",
+        "gpu_ids": [
+          1,
+          2
+        ],
+        "num_workers": 2,
+        "prefetch_factor": 1,
+        "chunks": 0,
+        "num_gpus": 2
+      },
+      "success": true,
+      "skipped": true,
+      "checkpoint_path": "./experiments/group_1_training_mode_and_hardware_configuration_comparison/checkpoints/mp_resnet50_bs128_gpu2_nw2_chunks0.pth",
+      "log_file": "./experiments/group_1_training_mode_and_hardware_configuration_comparison/logs/mp_resnet50_bs128_gpu2_nw2_chunks0.log"
+    },
+    {
+      "experiment_name": "mp_resnet50_bs128_gpu4_nw2_chunks0",
+      "params": {
+        "mode": "mp",
+        "model": "resnet50",
+        "batch_size": 128,
+        "epochs": 100,
+        "dataset": "cifar100",
+        "gpu_ids": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "num_workers": 2,
+        "prefetch_factor": 1,
+        "chunks": 0,
+        "num_gpus": 4
+      },
+      "success": true,
+      "skipped": true,
+      "checkpoint_path": "./experiments/group_1_training_mode_and_hardware_configuration_comparison/checkpoints/mp_resnet50_bs128_gpu4_nw2_chunks0.pth",
+      "log_file": "./experiments/group_1_training_mode_and_hardware_configuration_comparison/logs/mp_resnet50_bs128_gpu4_nw2_chunks0.log"
+    },
+    {
+      "experiment_name": "hp_resnet50_bs128_gpu4_nw2_chunks0",
+      "params": {
+        "mode": "hp",
+        "model": "resnet50",
+        "batch_size": 128,
+        "epochs": 100,
+        "dataset": "cifar100",
+        "gpu_ids": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "num_workers": 2,
+        "prefetch_factor": 1,
+        "chunks": 0,
+        "num_gpus": 4
+      },
+      "success": true,
+      "skipped": true,
+      "checkpoint_path": "./experiments/group_1_training_mode_and_hardware_configuration_comparison/checkpoints/hp_resnet50_bs128_gpu4_nw2_chunks0.pth",
+      "log_file": "./experiments/group_1_training_mode_and_hardware_configuration_comparison/logs/hp_resnet50_bs128_gpu4_nw2_chunks0.log"
+    }
+  ]
+}

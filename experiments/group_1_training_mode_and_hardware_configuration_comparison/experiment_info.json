@@ -1,0 +1,54 @@
+{
+  "group_id": 1,
+  "name": "Training Mode and Hardware Configuration Comparison",
+  "description": "全面比较不同训练模式(single/dp/ddp/mp)在不同硬件配置(1卡/2卡/4卡)下的性能表现",
+  "control_variables": "模型架构(ResNet50)、批处理大小(128)、数据加载参数(workers=2, prefetch=1)",
+  "comparison_focus": "训练模式(single/dp/ddp/mp/pp) × 硬件配置(1卡/2卡/4卡)的性能矩阵对比",
+  "config": {
+    "mode": [
+      "single",
+      "dp",
+      "ddp",
+      "mp",
+      "hp"
+    ],
+    "model": [
+      "resnet50"
+    ],
+    "batch_size": [
+      128
+    ],
+    "epochs": [
+      30
+    ],
+    "dataset": [
+      "cifar100"
+    ],
+    "gpu_ids": [
+      [
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        2,
+        3,
+        4
+      ]
+    ],
+    "num_workers": [
+      2
+    ],
+    "prefetch_factor": [
+      1
+    ],
+    "chunks": [
+      0,
+      32
+    ]
+  },
+  "created_at": "2025-12-15T09:05:51.142643"
+}

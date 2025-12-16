@@ -561,9 +561,9 @@ class PipelineParallelTrainer:
         # 保存格式（与 DDP 一致）
         state = {
             'epoch': epoch + 1,
-            'model_state_dict': model.state_dict(),
-            'optimizer_state_dict': optimizer.state_dict(),
-            'scheduler_state_dict': scheduler.state_dict(),
+            # 'model_state_dict': model.state_dict(),
+            # 'optimizer_state_dict': optimizer.state_dict(),
+            # 'scheduler_state_dict': scheduler.state_dict(),
             'best_acc': best_acc,
             'config': config_dict,
             # Pipeline 特有的额外信息

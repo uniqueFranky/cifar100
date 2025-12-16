@@ -1,0 +1,49 @@
+{
+  "group_id": 4,
+  "name": "Batch Size Impact Across Training Modes and Hardware",
+  "description": "分析不同批处理大小(64/128/256)在单机和分布式训练中的性能表现和内存使用效率",
+  "control_variables": "模型架构(ResNet50)、数据加载参数(workers=2, prefetch=1)、硬件配置对比(1卡vs4卡)",
+  "comparison_focus": "批处理大小(64/128/256) × 训练模式(single/ddp) × 硬件配置(1卡/4卡)",
+  "config": {
+    "mode": [
+      "single",
+      "ddp"
+    ],
+    "model": [
+      "resnet50"
+    ],
+    "batch_size": [
+      32,
+      64,
+      128,
+      256
+    ],
+    "epochs": [
+      30
+    ],
+    "dataset": [
+      "cifar100"
+    ],
+    "gpu_ids": [
+      [
+        1
+      ],
+      [
+        1,
+        2,
+        3,
+        5
+      ]
+    ],
+    "num_workers": [
+      2
+    ],
+    "prefetch_factor": [
+      1
+    ],
+    "chunks": [
+      0
+    ]
+  },
+  "created_at": "2025-12-10T08:55:38.211913"
+}

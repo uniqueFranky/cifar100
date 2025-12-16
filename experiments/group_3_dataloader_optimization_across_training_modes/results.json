@@ -1,0 +1,319 @@
+{
+  "group_info": {
+    "group_id": 3,
+    "name": "DataLoader Optimization Across Training Modes",
+    "description": "系统性测试不同数据加载worker数量(0-16)在单机和分布式训练模式下对训练性能的影响",
+    "control_variables": "模型架构(ResNet50)、批处理大小(128)、硬件配置对比(1卡vs4卡)",
+    "comparison_focus": "数据加载worker数量(0/1/2/4/8/16) × 训练模式(single/ddp) × 硬件配置(1卡/4卡)"
+  },
+  "total_experiments": 12,
+  "completed_experiments": 12,
+  "results": [
+    {
+      "experiment_name": "single_resnet50_bs128_gpu1_nw0_chunks0",
+      "params": {
+        "mode": "single",
+        "model": "resnet50",
+        "batch_size": 128,
+        "epochs": 100,
+        "dataset": "cifar100",
+        "gpu_ids": [
+          1
+        ],
+        "num_workers": 0,
+        "prefetch_factor": 1,
+        "chunks": 0,
+        "num_gpus": 1
+      },
+      "success": true,
+      "return_code": 0,
+      "elapsed_time": 4115.4694356918335,
+      "elapsed_time_str": "1.14h",
+      "checkpoint_path": "./experiments/group_3_dataloader_optimization_across_training_modes/checkpoints/single_resnet50_bs128_gpu1_nw0_chunks0.pth",
+      "log_file": "./experiments/group_3_dataloader_optimization_across_training_modes/logs/single_resnet50_bs128_gpu1_nw0_chunks0.log",
+      "timestamp": "2025-12-10T04:22:15.422359"
+    },
+    {
+      "experiment_name": "single_resnet50_bs128_gpu1_nw1_chunks0",
+      "params": {
+        "mode": "single",
+        "model": "resnet50",
+        "batch_size": 128,
+        "epochs": 100,
+        "dataset": "cifar100",
+        "gpu_ids": [
+          1
+        ],
+        "num_workers": 1,
+        "prefetch_factor": 1,
+        "chunks": 0,
+        "num_gpus": 1
+      },
+      "success": true,
+      "return_code": 0,
+      "elapsed_time": 2385.020416736603,
+      "elapsed_time_str": "0.66h",
+      "checkpoint_path": "./experiments/group_3_dataloader_optimization_across_training_modes/checkpoints/single_resnet50_bs128_gpu1_nw1_chunks0.pth",
+      "log_file": "./experiments/group_3_dataloader_optimization_across_training_modes/logs/single_resnet50_bs128_gpu1_nw1_chunks0.log",
+      "timestamp": "2025-12-10T05:02:00.444090"
+    },
+    {
+      "experiment_name": "single_resnet50_bs128_gpu1_nw2_chunks0",
+      "params": {
+        "mode": "single",
+        "model": "resnet50",
+        "batch_size": 128,
+        "epochs": 100,
+        "dataset": "cifar100",
+        "gpu_ids": [
+          1
+        ],
+        "num_workers": 2,
+        "prefetch_factor": 1,
+        "chunks": 0,
+        "num_gpus": 1
+      },
+      "success": true,
+      "return_code": 0,
+      "elapsed_time": 2158.2980558872223,
+      "elapsed_time_str": "0.60h",
+      "checkpoint_path": "./experiments/group_3_dataloader_optimization_across_training_modes/checkpoints/single_resnet50_bs128_gpu1_nw2_chunks0.pth",
+      "log_file": "./experiments/group_3_dataloader_optimization_across_training_modes/logs/single_resnet50_bs128_gpu1_nw2_chunks0.log",
+      "timestamp": "2025-12-10T05:37:58.743651"
+    },
+    {
+      "experiment_name": "single_resnet50_bs128_gpu1_nw4_chunks0",
+      "params": {
+        "mode": "single",
+        "model": "resnet50",
+        "batch_size": 128,
+        "epochs": 100,
+        "dataset": "cifar100",
+        "gpu_ids": [
+          1
+        ],
+        "num_workers": 4,
+        "prefetch_factor": 1,
+        "chunks": 0,
+        "num_gpus": 1
+      },
+      "success": true,
+      "return_code": 0,
+      "elapsed_time": 2140.8132753372192,
+      "elapsed_time_str": "0.59h",
+      "checkpoint_path": "./experiments/group_3_dataloader_optimization_across_training_modes/checkpoints/single_resnet50_bs128_gpu1_nw4_chunks0.pth",
+      "log_file": "./experiments/group_3_dataloader_optimization_across_training_modes/logs/single_resnet50_bs128_gpu1_nw4_chunks0.log",
+      "timestamp": "2025-12-10T06:13:39.558516"
+    },
+    {
+      "experiment_name": "single_resnet50_bs128_gpu1_nw8_chunks0",
+      "params": {
+        "mode": "single",
+        "model": "resnet50",
+        "batch_size": 128,
+        "epochs": 100,
+        "dataset": "cifar100",
+        "gpu_ids": [
+          1
+        ],
+        "num_workers": 8,
+        "prefetch_factor": 1,
+        "chunks": 0,
+        "num_gpus": 1
+      },
+      "success": true,
+      "return_code": 0,
+      "elapsed_time": 2151.9389057159424,
+      "elapsed_time_str": "0.60h",
+      "checkpoint_path": "./experiments/group_3_dataloader_optimization_across_training_modes/checkpoints/single_resnet50_bs128_gpu1_nw8_chunks0.pth",
+      "log_file": "./experiments/group_3_dataloader_optimization_across_training_modes/logs/single_resnet50_bs128_gpu1_nw8_chunks0.log",
+      "timestamp": "2025-12-10T06:49:31.499147"
+    },
+    {
+      "experiment_name": "single_resnet50_bs128_gpu1_nw16_chunks0",
+      "params": {
+        "mode": "single",
+        "model": "resnet50",
+        "batch_size": 128,
+        "epochs": 100,
+        "dataset": "cifar100",
+        "gpu_ids": [
+          1
+        ],
+        "num_workers": 16,
+        "prefetch_factor": 1,
+        "chunks": 0,
+        "num_gpus": 1
+      },
+      "success": true,
+      "return_code": 0,
+      "elapsed_time": 2164.6443197727203,
+      "elapsed_time_str": "0.60h",
+      "checkpoint_path": "./experiments/group_3_dataloader_optimization_across_training_modes/checkpoints/single_resnet50_bs128_gpu1_nw16_chunks0.pth",
+      "log_file": "./experiments/group_3_dataloader_optimization_across_training_modes/logs/single_resnet50_bs128_gpu1_nw16_chunks0.log",
+      "timestamp": "2025-12-10T07:25:36.145267"
+    },
+    {
+      "experiment_name": "ddp_resnet50_bs128_gpu4_nw0_chunks0",
+      "params": {
+        "mode": "ddp",
+        "model": "resnet50",
+        "batch_size": 128,
+        "epochs": 100,
+        "dataset": "cifar100",
+        "gpu_ids": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "num_workers": 0,
+        "prefetch_factor": 1,
+        "chunks": 0,
+        "num_gpus": 4
+      },
+      "success": true,
+      "return_code": 0,
+      "elapsed_time": 1454.6559562683105,
+      "elapsed_time_str": "0.40h",
+      "checkpoint_path": "./experiments/group_3_dataloader_optimization_across_training_modes/checkpoints/ddp_resnet50_bs128_gpu4_nw0_chunks0.pth",
+      "log_file": "./experiments/group_3_dataloader_optimization_across_training_modes/logs/ddp_resnet50_bs128_gpu4_nw0_chunks0.log",
+      "timestamp": "2025-12-10T07:49:50.803549"
+    },
+    {
+      "experiment_name": "ddp_resnet50_bs128_gpu4_nw1_chunks0",
+      "params": {
+        "mode": "ddp",
+        "model": "resnet50",
+        "batch_size": 128,
+        "epochs": 100,
+        "dataset": "cifar100",
+        "gpu_ids": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "num_workers": 1,
+        "prefetch_factor": 1,
+        "chunks": 0,
+        "num_gpus": 4
+      },
+      "success": true,
+      "return_code": 0,
+      "elapsed_time": 748.9437730312347,
+      "elapsed_time_str": "0.21h",
+      "checkpoint_path": "./experiments/group_3_dataloader_optimization_across_training_modes/checkpoints/ddp_resnet50_bs128_gpu4_nw1_chunks0.pth",
+      "log_file": "./experiments/group_3_dataloader_optimization_across_training_modes/logs/ddp_resnet50_bs128_gpu4_nw1_chunks0.log",
+      "timestamp": "2025-12-10T08:02:24.750835"
+    },
+    {
+      "experiment_name": "ddp_resnet50_bs128_gpu4_nw2_chunks0",
+      "params": {
+        "mode": "ddp",
+        "model": "resnet50",
+        "batch_size": 128,
+        "epochs": 100,
+        "dataset": "cifar100",
+        "gpu_ids": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "num_workers": 2,
+        "prefetch_factor": 1,
+        "chunks": 0,
+        "num_gpus": 4
+      },
+      "success": true,
+      "return_code": 0,
+      "elapsed_time": 741.5470488071442,
+      "elapsed_time_str": "0.21h",
+      "checkpoint_path": "./experiments/group_3_dataloader_optimization_across_training_modes/checkpoints/ddp_resnet50_bs128_gpu4_nw2_chunks0.pth",
+      "log_file": "./experiments/group_3_dataloader_optimization_across_training_modes/logs/ddp_resnet50_bs128_gpu4_nw2_chunks0.log",
+      "timestamp": "2025-12-10T08:14:51.305276"
+    },
+    {
+      "experiment_name": "ddp_resnet50_bs128_gpu4_nw4_chunks0",
+      "params": {
+        "mode": "ddp",
+        "model": "resnet50",
+        "batch_size": 128,
+        "epochs": 100,
+        "dataset": "cifar100",
+        "gpu_ids": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "num_workers": 4,
+        "prefetch_factor": 1,
+        "chunks": 0,
+        "num_gpus": 4
+      },
+      "success": true,
+      "return_code": 0,
+      "elapsed_time": 773.4919517040253,
+      "elapsed_time_str": "0.21h",
+      "checkpoint_path": "./experiments/group_3_dataloader_optimization_across_training_modes/checkpoints/ddp_resnet50_bs128_gpu4_nw4_chunks0.pth",
+      "log_file": "./experiments/group_3_dataloader_optimization_across_training_modes/logs/ddp_resnet50_bs128_gpu4_nw4_chunks0.log",
+      "timestamp": "2025-12-10T08:27:49.803015"
+    },
+    {
+      "experiment_name": "ddp_resnet50_bs128_gpu4_nw8_chunks0",
+      "params": {
+        "mode": "ddp",
+        "model": "resnet50",
+        "batch_size": 128,
+        "epochs": 100,
+        "dataset": "cifar100",
+        "gpu_ids": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "num_workers": 8,
+        "prefetch_factor": 1,
+        "chunks": 0,
+        "num_gpus": 4
+      },
+      "success": true,
+      "return_code": 0,
+      "elapsed_time": 802.8661930561066,
+      "elapsed_time_str": "0.22h",
+      "checkpoint_path": "./experiments/group_3_dataloader_optimization_across_training_modes/checkpoints/ddp_resnet50_bs128_gpu4_nw8_chunks0.pth",
+      "log_file": "./experiments/group_3_dataloader_optimization_across_training_modes/logs/ddp_resnet50_bs128_gpu4_nw8_chunks0.log",
+      "timestamp": "2025-12-10T08:41:17.676793"
+    },
+    {
+      "experiment_name": "ddp_resnet50_bs128_gpu4_nw16_chunks0",
+      "params": {
+        "mode": "ddp",
+        "model": "resnet50",
+        "batch_size": 128,
+        "epochs": 100,
+        "dataset": "cifar100",
+        "gpu_ids": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "num_workers": 16,
+        "prefetch_factor": 1,
+        "chunks": 0,
+        "num_gpus": 4
+      },
+      "success": true,
+      "return_code": 0,
+      "elapsed_time": 850.5189120769501,
+      "elapsed_time_str": "0.24h",
+      "checkpoint_path": "./experiments/group_3_dataloader_optimization_across_training_modes/checkpoints/ddp_resnet50_bs128_gpu4_nw16_chunks0.pth",
+      "log_file": "./experiments/group_3_dataloader_optimization_across_training_modes/logs/ddp_resnet50_bs128_gpu4_nw16_chunks0.log",
+      "timestamp": "2025-12-10T08:55:33.203449"
+    }
+  ]
+}

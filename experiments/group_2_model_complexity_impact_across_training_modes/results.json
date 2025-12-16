@@ -1,0 +1,166 @@
+{
+  "group_info": {
+    "group_id": 2,
+    "name": "Model Complexity Impact Across Training Modes",
+    "description": "测试不同复杂度模型(ResNet18/34/50)在单机训练和分布式训练模式下的性能差异和扩展性",
+    "control_variables": "批处理大小(128)、数据加载参数(workers=2, prefetch=1)、硬件配置对比(1卡vs4卡)",
+    "comparison_focus": "模型复杂度(ResNet18/34/50) × 训练模式(single/ddp) × 硬件配置(1卡/4卡)"
+  },
+  "total_experiments": 6,
+  "completed_experiments": 6,
+  "results": [
+    {
+      "experiment_name": "single_resnet18_bs128_gpu1_nw2_chunks0",
+      "params": {
+        "mode": "single",
+        "model": "resnet18",
+        "batch_size": 128,
+        "epochs": 100,
+        "dataset": "cifar100",
+        "gpu_ids": [
+          1
+        ],
+        "num_workers": 2,
+        "prefetch_factor": 1,
+        "chunks": 0,
+        "num_gpus": 1
+      },
+      "success": true,
+      "return_code": 0,
+      "elapsed_time": 1188.4679827690125,
+      "elapsed_time_str": "0.33h",
+      "checkpoint_path": "./experiments/group_2_model_complexity_impact_across_training_modes/checkpoints/single_resnet18_bs128_gpu1_nw2_chunks0.pth",
+      "log_file": "./experiments/group_2_model_complexity_impact_across_training_modes/logs/single_resnet18_bs128_gpu1_nw2_chunks0.log",
+      "timestamp": "2025-12-10T01:49:16.609165"
+    },
+    {
+      "experiment_name": "single_resnet34_bs128_gpu1_nw2_chunks0",
+      "params": {
+        "mode": "single",
+        "model": "resnet34",
+        "batch_size": 128,
+        "epochs": 100,
+        "dataset": "cifar100",
+        "gpu_ids": [
+          1
+        ],
+        "num_workers": 2,
+        "prefetch_factor": 1,
+        "chunks": 0,
+        "num_gpus": 1
+      },
+      "success": true,
+      "return_code": 0,
+      "elapsed_time": 1236.6064550876617,
+      "elapsed_time_str": "0.34h",
+      "checkpoint_path": "./experiments/group_2_model_complexity_impact_across_training_modes/checkpoints/single_resnet34_bs128_gpu1_nw2_chunks0.pth",
+      "log_file": "./experiments/group_2_model_complexity_impact_across_training_modes/logs/single_resnet34_bs128_gpu1_nw2_chunks0.log",
+      "timestamp": "2025-12-10T02:09:53.216834"
+    },
+    {
+      "experiment_name": "single_resnet50_bs128_gpu1_nw2_chunks0",
+      "params": {
+        "mode": "single",
+        "model": "resnet50",
+        "batch_size": 128,
+        "epochs": 100,
+        "dataset": "cifar100",
+        "gpu_ids": [
+          1
+        ],
+        "num_workers": 2,
+        "prefetch_factor": 1,
+        "chunks": 0,
+        "num_gpus": 1
+      },
+      "success": true,
+      "return_code": 0,
+      "elapsed_time": 2166.2786264419556,
+      "elapsed_time_str": "0.60h",
+      "checkpoint_path": "./experiments/group_2_model_complexity_impact_across_training_modes/checkpoints/single_resnet50_bs128_gpu1_nw2_chunks0.pth",
+      "log_file": "./experiments/group_2_model_complexity_impact_across_training_modes/logs/single_resnet50_bs128_gpu1_nw2_chunks0.log",
+      "timestamp": "2025-12-10T02:45:59.496279"
+    },
+    {
+      "experiment_name": "ddp_resnet18_bs128_gpu4_nw2_chunks0",
+      "params": {
+        "mode": "ddp",
+        "model": "resnet18",
+        "batch_size": 128,
+        "epochs": 100,
+        "dataset": "cifar100",
+        "gpu_ids": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "num_workers": 2,
+        "prefetch_factor": 1,
+        "chunks": 0,
+        "num_gpus": 4
+      },
+      "success": true,
+      "return_code": 0,
+      "elapsed_time": 375.81631350517273,
+      "elapsed_time_str": "0.10h",
+      "checkpoint_path": "./experiments/group_2_model_complexity_impact_across_training_modes/checkpoints/ddp_resnet18_bs128_gpu4_nw2_chunks0.pth",
+      "log_file": "./experiments/group_2_model_complexity_impact_across_training_modes/logs/ddp_resnet18_bs128_gpu4_nw2_chunks0.log",
+      "timestamp": "2025-12-10T02:52:15.314205"
+    },
+    {
+      "experiment_name": "ddp_resnet34_bs128_gpu4_nw2_chunks0",
+      "params": {
+        "mode": "ddp",
+        "model": "resnet34",
+        "batch_size": 128,
+        "epochs": 100,
+        "dataset": "cifar100",
+        "gpu_ids": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "num_workers": 2,
+        "prefetch_factor": 1,
+        "chunks": 0,
+        "num_gpus": 4
+      },
+      "success": true,
+      "return_code": 0,
+      "elapsed_time": 531.3293919563293,
+      "elapsed_time_str": "0.15h",
+      "checkpoint_path": "./experiments/group_2_model_complexity_impact_across_training_modes/checkpoints/ddp_resnet34_bs128_gpu4_nw2_chunks0.pth",
+      "log_file": "./experiments/group_2_model_complexity_impact_across_training_modes/logs/ddp_resnet34_bs128_gpu4_nw2_chunks0.log",
+      "timestamp": "2025-12-10T03:01:11.650446"
+    },
+    {
+      "experiment_name": "ddp_resnet50_bs128_gpu4_nw2_chunks0",
+      "params": {
+        "mode": "ddp",
+        "model": "resnet50",
+        "batch_size": 128,
+        "epochs": 100,
+        "dataset": "cifar100",
+        "gpu_ids": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "num_workers": 2,
+        "prefetch_factor": 1,
+        "chunks": 0,
+        "num_gpus": 4
+      },
+      "success": true,
+      "return_code": 0,
+      "elapsed_time": 738.2865471839905,
+      "elapsed_time_str": "0.21h",
+      "checkpoint_path": "./experiments/group_2_model_complexity_impact_across_training_modes/checkpoints/ddp_resnet50_bs128_gpu4_nw2_chunks0.pth",
+      "log_file": "./experiments/group_2_model_complexity_impact_across_training_modes/logs/ddp_resnet50_bs128_gpu4_nw2_chunks0.log",
+      "timestamp": "2025-12-10T03:13:34.944065"
+    }
+  ]
+}

@@ -1,0 +1,2740 @@
+====================================================================================================
+Experiment: single_resnet50_bs32_gpu1_nw2_chunks0
+Parameters: {
+  "mode": "single",
+  "model": "resnet50",
+  "batch_size": 32,
+  "epochs": 100,
+  "dataset": "cifar100",
+  "gpu_ids": [
+    1
+  ],
+  "num_workers": 2,
+  "prefetch_factor": 1,
+  "chunks": 0,
+  "num_gpus": 1
+}
+Command: python -u main.py --mode single --model resnet50 --batch-size 32 --epochs 100 --dataset cifar100 --gpu-ids 1 --num-workers 2 --prefetch-factor 1 --chunks 0 --final-checkpoint-path ./experiments/group_4_batch_size_impact_across_training_modes_and_hardware/checkpoints/single_resnet50_bs32_gpu1_nw2_chunks0.pth
+Start Time: 2025-12-10T08:55:38.212793
+====================================================================================================
+
+================================================================================
+训练配置:
+================================================================================
+  mode                     : single
+  gpu_ids                  : [1]
+  num_gpus                 : 1
+  num_workers              : 2
+  prefetch_factor          : 1
+  pin_memory               : True
+  persistent_workers       : True
+  batch_size               : 32
+  epochs                   : 100
+  lr                       : 0.1
+  momentum                 : 0.9
+  weight_decay             : 0.0005
+  lr_schedule              : step
+  lr_step_size             : 50
+  lr_gamma                 : 0.1
+  dataset                  : cifar100
+  data_root                : ./data
+  num_classes              : 100
+  model                    : resnet50
+  save_dir                 : ./checkpoints
+  log_interval             : 100
+  save_interval            : 10
+  final_checkpoint_path    : ./experiments/group_4_batch_size_impact_across_training_modes_and_hardware/checkpoints/single_resnet50_bs32_gpu1_nw2_chunks0.pth
+  seed                     : 42
+  resume                   : None
+  evaluate                 : False
+  dist_backend             : nccl
+  dist_url                 : env://
+  effective_batch_size     : 32
+  chunks                   : 0
+================================================================================
+
+可用GPU数量: 7
+  GPU 1: NVIDIA GeForce RTX 4090
+
+使用训练模式: SINGLE
+
+初始化单GPU训练器...
+使用设备: cuda:1
+
+开始训练 100 个epochs...
+Batch size: 32
+学习率: 0.1
+
+============================================================
+Epoch 1/100
+============================================================
+Epoch: 0 [0/1563] Loss: 4.7751 | Acc: 0.00% | Time: 0.6716s | GPU Mem: 0.29GB/1.19GB
+Epoch: 0 [100/1563] Loss: 4.6802 | Acc: 0.80% | Time: 0.0244s | GPU Mem: 0.29GB/1.31GB
+Epoch: 0 [200/1563] Loss: 4.6483 | Acc: 0.95% | Time: 0.0224s | GPU Mem: 0.29GB/1.31GB
+Epoch: 0 [300/1563] Loss: 4.6498 | Acc: 1.02% | Time: 0.0283s | GPU Mem: 0.29GB/1.31GB
+Epoch: 0 [400/1563] Loss: 4.6372 | Acc: 1.09% | Time: 0.0228s | GPU Mem: 0.29GB/1.31GB
+Epoch: 0 [500/1563] Loss: 4.6472 | Acc: 1.10% | Time: 0.0248s | GPU Mem: 0.29GB/1.31GB
+Epoch: 0 [600/1563] Loss: 4.5462 | Acc: 1.19% | Time: 0.0300s | GPU Mem: 0.29GB/1.31GB
+Epoch: 0 [700/1563] Loss: 4.3911 | Acc: 1.41% | Time: 0.0299s | GPU Mem: 0.29GB/1.31GB
+Epoch: 0 [800/1563] Loss: 4.3560 | Acc: 1.60% | Time: 0.0282s | GPU Mem: 0.29GB/1.31GB
+Epoch: 0 [900/1563] Loss: 4.3769 | Acc: 1.72% | Time: 0.0243s | GPU Mem: 0.29GB/1.31GB
+Epoch: 0 [1000/1563] Loss: 4.1878 | Acc: 1.78% | Time: 0.0251s | GPU Mem: 0.29GB/1.31GB
+Epoch: 0 [1100/1563] Loss: 4.3446 | Acc: 1.92% | Time: 0.0237s | GPU Mem: 0.29GB/1.31GB
+Epoch: 0 [1200/1563] Loss: 3.9567 | Acc: 2.07% | Time: 0.0280s | GPU Mem: 0.29GB/1.31GB
+Epoch: 0 [1300/1563] Loss: 4.0989 | Acc: 2.26% | Time: 0.0262s | GPU Mem: 0.29GB/1.31GB
+Epoch: 0 [1400/1563] Loss: 4.2393 | Acc: 2.36% | Time: 0.0228s | GPU Mem: 0.29GB/1.31GB
+Epoch: 0 [1500/1563] Loss: 4.0609 | Acc: 2.54% | Time: 0.0307s | GPU Mem: 0.29GB/1.31GB
+
+训练 - Loss: 4.5226, Acc: 2.63%
+测试 - Loss: 4.1542, Acc: 4.82%
+学习率: 0.100000, 时间: 44.41s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+最佳准确率更新: 0.00% -> 4.82%
+保存最佳模型到: ./checkpoints/best_model.pth
+
+============================================================
+Epoch 2/100
+============================================================
+Epoch: 1 [0/1563] Loss: 3.9899 | Acc: 6.25% | Time: 0.0327s | GPU Mem: 0.29GB/1.32GB
+Epoch: 1 [100/1563] Loss: 4.0429 | Acc: 5.07% | Time: 0.0278s | GPU Mem: 0.29GB/1.32GB
+Epoch: 1 [200/1563] Loss: 4.0196 | Acc: 5.27% | Time: 0.0292s | GPU Mem: 0.29GB/1.32GB
+Epoch: 1 [300/1563] Loss: 4.2630 | Acc: 5.70% | Time: 0.0298s | GPU Mem: 0.29GB/1.32GB
+Epoch: 1 [400/1563] Loss: 4.1415 | Acc: 5.87% | Time: 0.0273s | GPU Mem: 0.29GB/1.32GB
+Epoch: 1 [500/1563] Loss: 4.2694 | Acc: 5.92% | Time: 0.0275s | GPU Mem: 0.29GB/1.32GB
+Epoch: 1 [600/1563] Loss: 3.8881 | Acc: 6.19% | Time: 0.0267s | GPU Mem: 0.29GB/1.32GB
+Epoch: 1 [700/1563] Loss: 4.0608 | Acc: 6.17% | Time: 0.0259s | GPU Mem: 0.29GB/1.32GB
+Epoch: 1 [800/1563] Loss: 4.0565 | Acc: 6.39% | Time: 0.0232s | GPU Mem: 0.29GB/1.32GB
+Epoch: 1 [900/1563] Loss: 3.9000 | Acc: 6.57% | Time: 0.0270s | GPU Mem: 0.29GB/1.32GB
+Epoch: 1 [1000/1563] Loss: 4.0955 | Acc: 6.67% | Time: 0.0231s | GPU Mem: 0.29GB/1.32GB
+Epoch: 1 [1100/1563] Loss: 3.6778 | Acc: 6.87% | Time: 0.0230s | GPU Mem: 0.29GB/1.32GB
+Epoch: 1 [1200/1563] Loss: 4.0407 | Acc: 7.02% | Time: 0.0287s | GPU Mem: 0.29GB/1.32GB
+Epoch: 1 [1300/1563] Loss: 3.4237 | Acc: 7.13% | Time: 0.0292s | GPU Mem: 0.29GB/1.32GB
+Epoch: 1 [1400/1563] Loss: 4.2904 | Acc: 7.32% | Time: 0.0243s | GPU Mem: 0.29GB/1.32GB
+Epoch: 1 [1500/1563] Loss: 3.9368 | Acc: 7.48% | Time: 0.0256s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 3.9667, Acc: 7.59%
+测试 - Loss: 3.7425, Acc: 11.38%
+学习率: 0.100000, 时间: 43.01s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+最佳准确率更新: 4.82% -> 11.38%
+保存最佳模型到: ./checkpoints/best_model.pth
+
+============================================================
+Epoch 3/100
+============================================================
+Epoch: 2 [0/1563] Loss: 3.6063 | Acc: 9.38% | Time: 0.0314s | GPU Mem: 0.29GB/1.32GB
+Epoch: 2 [100/1563] Loss: 3.9272 | Acc: 10.37% | Time: 0.0231s | GPU Mem: 0.29GB/1.32GB
+Epoch: 2 [200/1563] Loss: 3.8099 | Acc: 10.56% | Time: 0.0234s | GPU Mem: 0.29GB/1.32GB
+Epoch: 2 [300/1563] Loss: 3.9470 | Acc: 10.75% | Time: 0.0256s | GPU Mem: 0.29GB/1.32GB
+Epoch: 2 [400/1563] Loss: 3.7060 | Acc: 10.93% | Time: 0.0279s | GPU Mem: 0.29GB/1.32GB
+Epoch: 2 [500/1563] Loss: 4.1119 | Acc: 11.19% | Time: 0.0250s | GPU Mem: 0.29GB/1.32GB
+Epoch: 2 [600/1563] Loss: 4.0027 | Acc: 11.29% | Time: 0.0264s | GPU Mem: 0.29GB/1.32GB
+Epoch: 2 [700/1563] Loss: 3.8102 | Acc: 11.35% | Time: 0.0274s | GPU Mem: 0.29GB/1.32GB
+Epoch: 2 [800/1563] Loss: 3.4647 | Acc: 11.50% | Time: 0.0286s | GPU Mem: 0.29GB/1.32GB
+Epoch: 2 [900/1563] Loss: 3.7911 | Acc: 11.65% | Time: 0.0294s | GPU Mem: 0.29GB/1.32GB
+Epoch: 2 [1000/1563] Loss: 3.5561 | Acc: 11.88% | Time: 0.0261s | GPU Mem: 0.29GB/1.32GB
+Epoch: 2 [1100/1563] Loss: 3.8529 | Acc: 11.99% | Time: 0.0292s | GPU Mem: 0.29GB/1.32GB
+Epoch: 2 [1200/1563] Loss: 3.5990 | Acc: 12.17% | Time: 0.0312s | GPU Mem: 0.29GB/1.32GB
+Epoch: 2 [1300/1563] Loss: 3.5402 | Acc: 12.33% | Time: 0.0252s | GPU Mem: 0.29GB/1.32GB
+Epoch: 2 [1400/1563] Loss: 3.2783 | Acc: 12.42% | Time: 0.0285s | GPU Mem: 0.29GB/1.32GB
+Epoch: 2 [1500/1563] Loss: 3.7326 | Acc: 12.57% | Time: 0.0274s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 3.6667, Acc: 12.68%
+测试 - Loss: 3.8949, Acc: 12.58%
+学习率: 0.100000, 时间: 43.43s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+最佳准确率更新: 11.38% -> 12.58%
+保存最佳模型到: ./checkpoints/best_model.pth
+
+============================================================
+Epoch 4/100
+============================================================
+Epoch: 3 [0/1563] Loss: 3.4008 | Acc: 12.50% | Time: 0.0332s | GPU Mem: 0.29GB/1.32GB
+Epoch: 3 [100/1563] Loss: 3.2189 | Acc: 14.91% | Time: 0.0237s | GPU Mem: 0.29GB/1.32GB
+Epoch: 3 [200/1563] Loss: 3.6324 | Acc: 14.96% | Time: 0.0349s | GPU Mem: 0.29GB/1.32GB
+Epoch: 3 [300/1563] Loss: 3.4896 | Acc: 15.05% | Time: 0.0256s | GPU Mem: 0.29GB/1.32GB
+Epoch: 3 [400/1563] Loss: 3.3939 | Acc: 15.19% | Time: 0.0258s | GPU Mem: 0.29GB/1.32GB
+Epoch: 3 [500/1563] Loss: 3.0004 | Acc: 15.53% | Time: 0.0255s | GPU Mem: 0.29GB/1.32GB
+Epoch: 3 [600/1563] Loss: 3.2889 | Acc: 15.88% | Time: 0.0341s | GPU Mem: 0.29GB/1.32GB
+Epoch: 3 [700/1563] Loss: 3.1828 | Acc: 16.07% | Time: 0.0213s | GPU Mem: 0.29GB/1.32GB
+Epoch: 3 [800/1563] Loss: 4.3058 | Acc: 16.14% | Time: 0.0256s | GPU Mem: 0.29GB/1.32GB
+Epoch: 3 [900/1563] Loss: 3.6178 | Acc: 16.35% | Time: 0.0314s | GPU Mem: 0.29GB/1.32GB
+Epoch: 3 [1000/1563] Loss: 3.4276 | Acc: 16.49% | Time: 0.0270s | GPU Mem: 0.29GB/1.32GB
+Epoch: 3 [1100/1563] Loss: 3.5176 | Acc: 16.60% | Time: 0.0252s | GPU Mem: 0.29GB/1.32GB
+Epoch: 3 [1200/1563] Loss: 3.6371 | Acc: 16.66% | Time: 0.0247s | GPU Mem: 0.29GB/1.32GB
+Epoch: 3 [1300/1563] Loss: 3.5737 | Acc: 16.81% | Time: 0.0262s | GPU Mem: 0.29GB/1.32GB
+Epoch: 3 [1400/1563] Loss: 3.2568 | Acc: 16.88% | Time: 0.0232s | GPU Mem: 0.29GB/1.32GB
+Epoch: 3 [1500/1563] Loss: 2.9031 | Acc: 17.06% | Time: 0.0288s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 3.4326, Acc: 17.17%
+测试 - Loss: 3.4024, Acc: 18.47%
+学习率: 0.100000, 时间: 43.16s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+最佳准确率更新: 12.58% -> 18.47%
+保存最佳模型到: ./checkpoints/best_model.pth
+
+============================================================
+Epoch 5/100
+============================================================
+Epoch: 4 [0/1563] Loss: 2.7393 | Acc: 28.12% | Time: 0.0372s | GPU Mem: 0.29GB/1.32GB
+Epoch: 4 [100/1563] Loss: 3.2350 | Acc: 20.05% | Time: 0.0302s | GPU Mem: 0.29GB/1.32GB
+Epoch: 4 [200/1563] Loss: 3.9217 | Acc: 19.29% | Time: 0.0276s | GPU Mem: 0.29GB/1.32GB
+Epoch: 4 [300/1563] Loss: 3.2787 | Acc: 19.44% | Time: 0.0245s | GPU Mem: 0.29GB/1.32GB
+Epoch: 4 [400/1563] Loss: 3.2324 | Acc: 19.34% | Time: 0.0253s | GPU Mem: 0.29GB/1.32GB
+Epoch: 4 [500/1563] Loss: 3.0086 | Acc: 19.46% | Time: 0.0282s | GPU Mem: 0.29GB/1.32GB
+Epoch: 4 [600/1563] Loss: 3.0769 | Acc: 19.56% | Time: 0.0263s | GPU Mem: 0.29GB/1.32GB
+Epoch: 4 [700/1563] Loss: 3.3016 | Acc: 19.54% | Time: 0.0241s | GPU Mem: 0.29GB/1.32GB
+Epoch: 4 [800/1563] Loss: 3.3413 | Acc: 19.60% | Time: 0.0279s | GPU Mem: 0.29GB/1.32GB
+Epoch: 4 [900/1563] Loss: 3.9512 | Acc: 19.62% | Time: 0.0316s | GPU Mem: 0.29GB/1.32GB
+Epoch: 4 [1000/1563] Loss: 3.4958 | Acc: 19.78% | Time: 0.0283s | GPU Mem: 0.29GB/1.32GB
+Epoch: 4 [1100/1563] Loss: 3.4249 | Acc: 19.83% | Time: 0.0260s | GPU Mem: 0.29GB/1.32GB
+Epoch: 4 [1200/1563] Loss: 2.9073 | Acc: 19.98% | Time: 0.0305s | GPU Mem: 0.29GB/1.32GB
+Epoch: 4 [1300/1563] Loss: 2.7915 | Acc: 20.08% | Time: 0.0285s | GPU Mem: 0.29GB/1.32GB
+Epoch: 4 [1400/1563] Loss: 3.6385 | Acc: 20.18% | Time: 0.0267s | GPU Mem: 0.29GB/1.32GB
+Epoch: 4 [1500/1563] Loss: 3.4924 | Acc: 20.20% | Time: 0.0233s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 3.2618, Acc: 20.22%
+测试 - Loss: 3.1521, Acc: 23.21%
+学习率: 0.100000, 时间: 43.62s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+最佳准确率更新: 18.47% -> 23.21%
+保存最佳模型到: ./checkpoints/best_model.pth
+
+============================================================
+Epoch 6/100
+============================================================
+Epoch: 5 [0/1563] Loss: 3.1631 | Acc: 18.75% | Time: 0.0343s | GPU Mem: 0.29GB/1.32GB
+Epoch: 5 [100/1563] Loss: 3.2761 | Acc: 21.97% | Time: 0.0243s | GPU Mem: 0.29GB/1.32GB
+Epoch: 5 [200/1563] Loss: 2.8129 | Acc: 22.96% | Time: 0.0268s | GPU Mem: 0.29GB/1.32GB
+Epoch: 5 [300/1563] Loss: 3.0535 | Acc: 22.45% | Time: 0.0258s | GPU Mem: 0.29GB/1.32GB
+Epoch: 5 [400/1563] Loss: 2.8001 | Acc: 22.55% | Time: 0.0294s | GPU Mem: 0.29GB/1.32GB
+Epoch: 5 [500/1563] Loss: 2.7780 | Acc: 22.49% | Time: 0.0347s | GPU Mem: 0.29GB/1.32GB
+Epoch: 5 [600/1563] Loss: 2.9122 | Acc: 22.57% | Time: 0.0227s | GPU Mem: 0.29GB/1.32GB
+Epoch: 5 [700/1563] Loss: 2.7921 | Acc: 22.56% | Time: 0.0226s | GPU Mem: 0.29GB/1.32GB
+Epoch: 5 [800/1563] Loss: 3.1082 | Acc: 22.57% | Time: 0.0255s | GPU Mem: 0.29GB/1.32GB
+Epoch: 5 [900/1563] Loss: 3.3974 | Acc: 22.58% | Time: 0.0267s | GPU Mem: 0.29GB/1.32GB
+Epoch: 5 [1000/1563] Loss: 3.4115 | Acc: 22.66% | Time: 0.0289s | GPU Mem: 0.29GB/1.32GB
+Epoch: 5 [1100/1563] Loss: 3.0270 | Acc: 22.67% | Time: 0.0281s | GPU Mem: 0.29GB/1.32GB
+Epoch: 5 [1200/1563] Loss: 2.9134 | Acc: 22.76% | Time: 0.0288s | GPU Mem: 0.29GB/1.32GB
+Epoch: 5 [1300/1563] Loss: 3.2861 | Acc: 22.83% | Time: 0.0233s | GPU Mem: 0.29GB/1.32GB
+Epoch: 5 [1400/1563] Loss: 3.1189 | Acc: 22.91% | Time: 0.0283s | GPU Mem: 0.29GB/1.32GB
+Epoch: 5 [1500/1563] Loss: 3.1613 | Acc: 23.02% | Time: 0.0280s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 3.1134, Acc: 23.06%
+测试 - Loss: 2.9456, Acc: 26.02%
+学习率: 0.100000, 时间: 43.41s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+最佳准确率更新: 23.21% -> 26.02%
+保存最佳模型到: ./checkpoints/best_model.pth
+
+============================================================
+Epoch 7/100
+============================================================
+Epoch: 6 [0/1563] Loss: 3.1486 | Acc: 21.88% | Time: 0.0273s | GPU Mem: 0.29GB/1.32GB
+Epoch: 6 [100/1563] Loss: 3.0953 | Acc: 24.47% | Time: 0.0237s | GPU Mem: 0.29GB/1.32GB
+Epoch: 6 [200/1563] Loss: 2.7043 | Acc: 24.16% | Time: 0.0323s | GPU Mem: 0.29GB/1.32GB
+Epoch: 6 [300/1563] Loss: 2.9758 | Acc: 24.48% | Time: 0.0292s | GPU Mem: 0.29GB/1.32GB
+Epoch: 6 [400/1563] Loss: 2.4554 | Acc: 24.35% | Time: 0.0286s | GPU Mem: 0.29GB/1.32GB
+Epoch: 6 [500/1563] Loss: 3.3961 | Acc: 24.44% | Time: 0.0284s | GPU Mem: 0.29GB/1.32GB
+Epoch: 6 [600/1563] Loss: 2.7979 | Acc: 24.67% | Time: 0.0290s | GPU Mem: 0.29GB/1.32GB
+Epoch: 6 [700/1563] Loss: 3.0749 | Acc: 24.76% | Time: 0.0254s | GPU Mem: 0.29GB/1.32GB
+Epoch: 6 [800/1563] Loss: 2.3556 | Acc: 24.96% | Time: 0.0246s | GPU Mem: 0.29GB/1.32GB
+Epoch: 6 [900/1563] Loss: 2.9553 | Acc: 25.06% | Time: 0.0270s | GPU Mem: 0.29GB/1.32GB
+Epoch: 6 [1000/1563] Loss: 3.3563 | Acc: 25.09% | Time: 0.0262s | GPU Mem: 0.29GB/1.32GB
+Epoch: 6 [1100/1563] Loss: 3.1172 | Acc: 25.20% | Time: 0.0293s | GPU Mem: 0.29GB/1.32GB
+Epoch: 6 [1200/1563] Loss: 3.4105 | Acc: 25.25% | Time: 0.0277s | GPU Mem: 0.29GB/1.32GB
+Epoch: 6 [1300/1563] Loss: 3.2878 | Acc: 25.23% | Time: 0.0292s | GPU Mem: 0.29GB/1.32GB
+Epoch: 6 [1400/1563] Loss: 2.7394 | Acc: 25.30% | Time: 0.0255s | GPU Mem: 0.29GB/1.32GB
+Epoch: 6 [1500/1563] Loss: 2.4209 | Acc: 25.39% | Time: 0.0269s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 2.9833, Acc: 25.36%
+测试 - Loss: 3.0397, Acc: 25.45%
+学习率: 0.100000, 时间: 43.81s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+
+============================================================
+Epoch 8/100
+============================================================
+Epoch: 7 [0/1563] Loss: 2.6948 | Acc: 31.25% | Time: 0.0297s | GPU Mem: 0.29GB/1.32GB
+Epoch: 7 [100/1563] Loss: 3.5132 | Acc: 26.02% | Time: 0.0276s | GPU Mem: 0.29GB/1.32GB
+Epoch: 7 [200/1563] Loss: 3.0280 | Acc: 26.99% | Time: 0.0320s | GPU Mem: 0.29GB/1.32GB
+Epoch: 7 [300/1563] Loss: 2.6360 | Acc: 26.74% | Time: 0.0270s | GPU Mem: 0.29GB/1.32GB
+Epoch: 7 [400/1563] Loss: 2.7681 | Acc: 26.54% | Time: 0.0228s | GPU Mem: 0.29GB/1.32GB
+Epoch: 7 [500/1563] Loss: 3.4566 | Acc: 26.60% | Time: 0.0251s | GPU Mem: 0.29GB/1.32GB
+Epoch: 7 [600/1563] Loss: 2.5273 | Acc: 26.76% | Time: 0.0224s | GPU Mem: 0.29GB/1.32GB
+Epoch: 7 [700/1563] Loss: 2.3852 | Acc: 26.73% | Time: 0.0303s | GPU Mem: 0.29GB/1.32GB
+Epoch: 7 [800/1563] Loss: 2.8891 | Acc: 26.80% | Time: 0.0234s | GPU Mem: 0.29GB/1.32GB
+Epoch: 7 [900/1563] Loss: 3.3063 | Acc: 26.83% | Time: 0.0245s | GPU Mem: 0.29GB/1.32GB
+Epoch: 7 [1000/1563] Loss: 2.6431 | Acc: 26.76% | Time: 0.0263s | GPU Mem: 0.29GB/1.32GB
+Epoch: 7 [1100/1563] Loss: 2.7721 | Acc: 26.74% | Time: 0.0260s | GPU Mem: 0.29GB/1.32GB
+Epoch: 7 [1200/1563] Loss: 3.1973 | Acc: 26.87% | Time: 0.0278s | GPU Mem: 0.29GB/1.32GB
+Epoch: 7 [1300/1563] Loss: 3.2725 | Acc: 27.01% | Time: 0.0263s | GPU Mem: 0.29GB/1.32GB
+Epoch: 7 [1400/1563] Loss: 2.5059 | Acc: 27.10% | Time: 0.0252s | GPU Mem: 0.29GB/1.32GB
+Epoch: 7 [1500/1563] Loss: 3.1657 | Acc: 27.24% | Time: 0.0288s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 2.8901, Acc: 27.22%
+测试 - Loss: 2.8759, Acc: 27.64%
+学习率: 0.100000, 时间: 42.89s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+最佳准确率更新: 26.02% -> 27.64%
+保存最佳模型到: ./checkpoints/best_model.pth
+
+============================================================
+Epoch 9/100
+============================================================
+Epoch: 8 [0/1563] Loss: 3.0643 | Acc: 28.12% | Time: 0.0351s | GPU Mem: 0.29GB/1.32GB
+Epoch: 8 [100/1563] Loss: 2.3894 | Acc: 27.13% | Time: 0.0248s | GPU Mem: 0.29GB/1.32GB
+Epoch: 8 [200/1563] Loss: 2.5774 | Acc: 28.39% | Time: 0.0252s | GPU Mem: 0.29GB/1.32GB
+Epoch: 8 [300/1563] Loss: 2.7326 | Acc: 28.00% | Time: 0.0236s | GPU Mem: 0.29GB/1.32GB
+Epoch: 8 [400/1563] Loss: 3.0231 | Acc: 28.39% | Time: 0.0284s | GPU Mem: 0.29GB/1.32GB
+Epoch: 8 [500/1563] Loss: 2.5405 | Acc: 28.45% | Time: 0.0273s | GPU Mem: 0.29GB/1.32GB
+Epoch: 8 [600/1563] Loss: 3.3917 | Acc: 28.65% | Time: 0.0252s | GPU Mem: 0.29GB/1.32GB
+Epoch: 8 [700/1563] Loss: 3.3046 | Acc: 28.55% | Time: 0.0301s | GPU Mem: 0.29GB/1.32GB
+Epoch: 8 [800/1563] Loss: 2.3852 | Acc: 28.46% | Time: 0.0286s | GPU Mem: 0.29GB/1.32GB
+Epoch: 8 [900/1563] Loss: 3.0910 | Acc: 28.44% | Time: 0.0290s | GPU Mem: 0.29GB/1.32GB
+Epoch: 8 [1000/1563] Loss: 2.3896 | Acc: 28.39% | Time: 0.0308s | GPU Mem: 0.29GB/1.32GB
+Epoch: 8 [1100/1563] Loss: 2.9242 | Acc: 28.44% | Time: 0.0244s | GPU Mem: 0.29GB/1.32GB
+Epoch: 8 [1200/1563] Loss: 2.9888 | Acc: 28.42% | Time: 0.0261s | GPU Mem: 0.29GB/1.32GB
+Epoch: 8 [1300/1563] Loss: 2.4627 | Acc: 28.42% | Time: 0.0241s | GPU Mem: 0.29GB/1.32GB
+Epoch: 8 [1400/1563] Loss: 2.6403 | Acc: 28.42% | Time: 0.0290s | GPU Mem: 0.29GB/1.32GB
+Epoch: 8 [1500/1563] Loss: 3.2144 | Acc: 28.43% | Time: 0.0309s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 2.8199, Acc: 28.50%
+测试 - Loss: 2.9004, Acc: 28.10%
+学习率: 0.100000, 时间: 43.17s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+最佳准确率更新: 27.64% -> 28.10%
+保存最佳模型到: ./checkpoints/best_model.pth
+
+============================================================
+Epoch 10/100
+============================================================
+Epoch: 9 [0/1563] Loss: 2.6490 | Acc: 37.50% | Time: 0.0362s | GPU Mem: 0.29GB/1.32GB
+Epoch: 9 [100/1563] Loss: 3.1717 | Acc: 30.20% | Time: 0.0234s | GPU Mem: 0.29GB/1.32GB
+Epoch: 9 [200/1563] Loss: 2.8925 | Acc: 29.88% | Time: 0.0256s | GPU Mem: 0.29GB/1.32GB
+Epoch: 9 [300/1563] Loss: 3.0548 | Acc: 29.66% | Time: 0.0271s | GPU Mem: 0.29GB/1.32GB
+Epoch: 9 [400/1563] Loss: 2.8105 | Acc: 29.55% | Time: 0.0288s | GPU Mem: 0.29GB/1.32GB
+Epoch: 9 [500/1563] Loss: 2.5309 | Acc: 29.68% | Time: 0.0275s | GPU Mem: 0.29GB/1.32GB
+Epoch: 9 [600/1563] Loss: 2.6546 | Acc: 29.65% | Time: 0.0312s | GPU Mem: 0.29GB/1.32GB
+Epoch: 9 [700/1563] Loss: 2.4682 | Acc: 29.69% | Time: 0.0277s | GPU Mem: 0.29GB/1.32GB
+Epoch: 9 [800/1563] Loss: 2.9732 | Acc: 29.76% | Time: 0.0261s | GPU Mem: 0.29GB/1.32GB
+Epoch: 9 [900/1563] Loss: 2.9579 | Acc: 29.69% | Time: 0.0302s | GPU Mem: 0.29GB/1.32GB
+Epoch: 9 [1000/1563] Loss: 2.6766 | Acc: 29.77% | Time: 0.0270s | GPU Mem: 0.29GB/1.32GB
+Epoch: 9 [1100/1563] Loss: 2.4863 | Acc: 29.86% | Time: 0.0267s | GPU Mem: 0.29GB/1.32GB
+Epoch: 9 [1200/1563] Loss: 2.8062 | Acc: 29.88% | Time: 0.0250s | GPU Mem: 0.29GB/1.32GB
+Epoch: 9 [1300/1563] Loss: 2.7727 | Acc: 29.78% | Time: 0.0249s | GPU Mem: 0.29GB/1.32GB
+Epoch: 9 [1400/1563] Loss: 2.2838 | Acc: 29.73% | Time: 0.0254s | GPU Mem: 0.29GB/1.32GB
+Epoch: 9 [1500/1563] Loss: 2.8697 | Acc: 29.74% | Time: 0.0218s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 2.7722, Acc: 29.80%
+测试 - Loss: 2.8495, Acc: 28.55%
+学习率: 0.100000, 时间: 42.98s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+最佳准确率更新: 28.10% -> 28.55%
+保存最佳模型到: ./checkpoints/best_model.pth
+保存checkpoint到: ./checkpoints/checkpoint_epoch_10.pth
+
+============================================================
+Epoch 11/100
+============================================================
+Epoch: 10 [0/1563] Loss: 2.4644 | Acc: 34.38% | Time: 0.0267s | GPU Mem: 0.29GB/1.32GB
+Epoch: 10 [100/1563] Loss: 2.5442 | Acc: 30.72% | Time: 0.0315s | GPU Mem: 0.29GB/1.32GB
+Epoch: 10 [200/1563] Loss: 2.8978 | Acc: 30.95% | Time: 0.0268s | GPU Mem: 0.29GB/1.32GB
+Epoch: 10 [300/1563] Loss: 2.3396 | Acc: 30.45% | Time: 0.0323s | GPU Mem: 0.29GB/1.32GB
+Epoch: 10 [400/1563] Loss: 3.1286 | Acc: 30.10% | Time: 0.0280s | GPU Mem: 0.29GB/1.32GB
+Epoch: 10 [500/1563] Loss: 2.9076 | Acc: 30.00% | Time: 0.0272s | GPU Mem: 0.29GB/1.32GB
+Epoch: 10 [600/1563] Loss: 2.3573 | Acc: 30.19% | Time: 0.0253s | GPU Mem: 0.29GB/1.32GB
+Epoch: 10 [700/1563] Loss: 2.6692 | Acc: 30.13% | Time: 0.0293s | GPU Mem: 0.29GB/1.32GB
+Epoch: 10 [800/1563] Loss: 2.4599 | Acc: 30.17% | Time: 0.0216s | GPU Mem: 0.29GB/1.32GB
+Epoch: 10 [900/1563] Loss: 2.5861 | Acc: 30.12% | Time: 0.0238s | GPU Mem: 0.29GB/1.32GB
+Epoch: 10 [1000/1563] Loss: 2.3111 | Acc: 30.10% | Time: 0.0265s | GPU Mem: 0.29GB/1.32GB
+Epoch: 10 [1100/1563] Loss: 2.4618 | Acc: 30.08% | Time: 0.0276s | GPU Mem: 0.29GB/1.32GB
+Epoch: 10 [1200/1563] Loss: 2.5478 | Acc: 30.04% | Time: 0.0287s | GPU Mem: 0.29GB/1.32GB
+Epoch: 10 [1300/1563] Loss: 3.0421 | Acc: 30.01% | Time: 0.0281s | GPU Mem: 0.29GB/1.32GB
+Epoch: 10 [1400/1563] Loss: 2.8228 | Acc: 30.05% | Time: 0.0276s | GPU Mem: 0.29GB/1.32GB
+Epoch: 10 [1500/1563] Loss: 2.6568 | Acc: 30.07% | Time: 0.0267s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 2.7410, Acc: 30.11%
+测试 - Loss: 2.7134, Acc: 30.94%
+学习率: 0.100000, 时间: 43.08s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+最佳准确率更新: 28.55% -> 30.94%
+保存最佳模型到: ./checkpoints/best_model.pth
+
+============================================================
+Epoch 12/100
+============================================================
+Epoch: 11 [0/1563] Loss: 2.7399 | Acc: 18.75% | Time: 0.0325s | GPU Mem: 0.29GB/1.32GB
+Epoch: 11 [100/1563] Loss: 2.4917 | Acc: 31.84% | Time: 0.0230s | GPU Mem: 0.29GB/1.32GB
+Epoch: 11 [200/1563] Loss: 2.6863 | Acc: 32.09% | Time: 0.0263s | GPU Mem: 0.29GB/1.32GB
+Epoch: 11 [300/1563] Loss: 2.9926 | Acc: 31.67% | Time: 0.0230s | GPU Mem: 0.29GB/1.32GB
+Epoch: 11 [400/1563] Loss: 2.8846 | Acc: 31.86% | Time: 0.0253s | GPU Mem: 0.29GB/1.32GB
+Epoch: 11 [500/1563] Loss: 2.8300 | Acc: 31.78% | Time: 0.0292s | GPU Mem: 0.29GB/1.32GB
+Epoch: 11 [600/1563] Loss: 2.6436 | Acc: 31.72% | Time: 0.0223s | GPU Mem: 0.29GB/1.32GB
+Epoch: 11 [700/1563] Loss: 2.6704 | Acc: 31.65% | Time: 0.0278s | GPU Mem: 0.29GB/1.32GB
+Epoch: 11 [800/1563] Loss: 2.4588 | Acc: 31.68% | Time: 0.0243s | GPU Mem: 0.29GB/1.32GB
+Epoch: 11 [900/1563] Loss: 3.0001 | Acc: 31.69% | Time: 0.0242s | GPU Mem: 0.29GB/1.32GB
+Epoch: 11 [1000/1563] Loss: 2.7705 | Acc: 31.77% | Time: 0.0222s | GPU Mem: 0.29GB/1.32GB
+Epoch: 11 [1100/1563] Loss: 2.7461 | Acc: 31.61% | Time: 0.0272s | GPU Mem: 0.29GB/1.32GB
+Epoch: 11 [1200/1563] Loss: 2.9439 | Acc: 31.56% | Time: 0.0255s | GPU Mem: 0.29GB/1.32GB
+Epoch: 11 [1300/1563] Loss: 2.7707 | Acc: 31.38% | Time: 0.0244s | GPU Mem: 0.29GB/1.32GB
+Epoch: 11 [1400/1563] Loss: 2.7242 | Acc: 31.30% | Time: 0.0276s | GPU Mem: 0.29GB/1.32GB
+Epoch: 11 [1500/1563] Loss: 2.8917 | Acc: 31.24% | Time: 0.0298s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 2.6988, Acc: 31.24%
+测试 - Loss: 2.9627, Acc: 27.98%
+学习率: 0.100000, 时间: 42.26s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+
+============================================================
+Epoch 13/100
+============================================================
+Epoch: 12 [0/1563] Loss: 2.9989 | Acc: 25.00% | Time: 0.0283s | GPU Mem: 0.29GB/1.32GB
+Epoch: 12 [100/1563] Loss: 2.2476 | Acc: 32.18% | Time: 0.0288s | GPU Mem: 0.29GB/1.32GB
+Epoch: 12 [200/1563] Loss: 2.6233 | Acc: 31.30% | Time: 0.0257s | GPU Mem: 0.29GB/1.32GB
+Epoch: 12 [300/1563] Loss: 2.7094 | Acc: 31.63% | Time: 0.0234s | GPU Mem: 0.29GB/1.32GB
+Epoch: 12 [400/1563] Loss: 2.2760 | Acc: 31.66% | Time: 0.0275s | GPU Mem: 0.29GB/1.32GB
+Epoch: 12 [500/1563] Loss: 2.2911 | Acc: 31.65% | Time: 0.0248s | GPU Mem: 0.29GB/1.32GB
+Epoch: 12 [600/1563] Loss: 2.6471 | Acc: 31.30% | Time: 0.0277s | GPU Mem: 0.29GB/1.32GB
+Epoch: 12 [700/1563] Loss: 2.4050 | Acc: 31.41% | Time: 0.0294s | GPU Mem: 0.29GB/1.32GB
+Epoch: 12 [800/1563] Loss: 3.1818 | Acc: 31.38% | Time: 0.0237s | GPU Mem: 0.29GB/1.32GB
+Epoch: 12 [900/1563] Loss: 2.5477 | Acc: 31.40% | Time: 0.0298s | GPU Mem: 0.29GB/1.32GB
+Epoch: 12 [1000/1563] Loss: 3.1940 | Acc: 31.37% | Time: 0.0323s | GPU Mem: 0.29GB/1.32GB
+Epoch: 12 [1100/1563] Loss: 2.5425 | Acc: 31.24% | Time: 0.0274s | GPU Mem: 0.29GB/1.32GB
+Epoch: 12 [1200/1563] Loss: 2.2537 | Acc: 31.29% | Time: 0.0309s | GPU Mem: 0.29GB/1.32GB
+Epoch: 12 [1300/1563] Loss: 2.4550 | Acc: 31.34% | Time: 0.0245s | GPU Mem: 0.29GB/1.32GB
+Epoch: 12 [1400/1563] Loss: 2.5250 | Acc: 31.33% | Time: 0.0283s | GPU Mem: 0.29GB/1.32GB
+Epoch: 12 [1500/1563] Loss: 2.7404 | Acc: 31.28% | Time: 0.0250s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 2.6745, Acc: 31.30%
+测试 - Loss: 2.9434, Acc: 29.11%
+学习率: 0.100000, 时间: 43.02s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+
+============================================================
+Epoch 14/100
+============================================================
+Epoch: 13 [0/1563] Loss: 3.0018 | Acc: 21.88% | Time: 0.0329s | GPU Mem: 0.29GB/1.32GB
+Epoch: 13 [100/1563] Loss: 2.1793 | Acc: 33.97% | Time: 0.0288s | GPU Mem: 0.29GB/1.32GB
+Epoch: 13 [200/1563] Loss: 2.4743 | Acc: 33.18% | Time: 0.0246s | GPU Mem: 0.29GB/1.32GB
+Epoch: 13 [300/1563] Loss: 2.4519 | Acc: 33.32% | Time: 0.0219s | GPU Mem: 0.29GB/1.32GB
+Epoch: 13 [400/1563] Loss: 2.4331 | Acc: 33.28% | Time: 0.0248s | GPU Mem: 0.29GB/1.32GB
+Epoch: 13 [500/1563] Loss: 2.4018 | Acc: 32.92% | Time: 0.0252s | GPU Mem: 0.29GB/1.32GB
+Epoch: 13 [600/1563] Loss: 2.4413 | Acc: 32.83% | Time: 0.0282s | GPU Mem: 0.29GB/1.32GB
+Epoch: 13 [700/1563] Loss: 3.0703 | Acc: 32.75% | Time: 0.0278s | GPU Mem: 0.29GB/1.32GB
+Epoch: 13 [800/1563] Loss: 2.5551 | Acc: 32.65% | Time: 0.0289s | GPU Mem: 0.29GB/1.32GB
+Epoch: 13 [900/1563] Loss: 2.0006 | Acc: 32.54% | Time: 0.0286s | GPU Mem: 0.29GB/1.32GB
+Epoch: 13 [1000/1563] Loss: 2.6041 | Acc: 32.50% | Time: 0.0261s | GPU Mem: 0.29GB/1.32GB
+Epoch: 13 [1100/1563] Loss: 2.7658 | Acc: 32.43% | Time: 0.0237s | GPU Mem: 0.29GB/1.32GB
+Epoch: 13 [1200/1563] Loss: 2.2454 | Acc: 32.46% | Time: 0.0244s | GPU Mem: 0.29GB/1.32GB
+Epoch: 13 [1300/1563] Loss: 2.8694 | Acc: 32.46% | Time: 0.0268s | GPU Mem: 0.29GB/1.32GB
+Epoch: 13 [1400/1563] Loss: 2.8685 | Acc: 32.47% | Time: 0.0296s | GPU Mem: 0.29GB/1.32GB
+Epoch: 13 [1500/1563] Loss: 2.2827 | Acc: 32.41% | Time: 0.0298s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 2.6307, Acc: 32.43%
+测试 - Loss: 2.6482, Acc: 32.94%
+学习率: 0.100000, 时间: 43.12s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+最佳准确率更新: 30.94% -> 32.94%
+保存最佳模型到: ./checkpoints/best_model.pth
+
+============================================================
+Epoch 15/100
+============================================================
+Epoch: 14 [0/1563] Loss: 2.9130 | Acc: 21.88% | Time: 0.0357s | GPU Mem: 0.29GB/1.32GB
+Epoch: 14 [100/1563] Loss: 2.5652 | Acc: 32.55% | Time: 0.0232s | GPU Mem: 0.29GB/1.32GB
+Epoch: 14 [200/1563] Loss: 2.7116 | Acc: 31.81% | Time: 0.0274s | GPU Mem: 0.29GB/1.32GB
+Epoch: 14 [300/1563] Loss: 2.5201 | Acc: 32.34% | Time: 0.0241s | GPU Mem: 0.29GB/1.32GB
+Epoch: 14 [400/1563] Loss: 2.8935 | Acc: 32.40% | Time: 0.0263s | GPU Mem: 0.29GB/1.32GB
+Epoch: 14 [500/1563] Loss: 2.0473 | Acc: 32.55% | Time: 0.0278s | GPU Mem: 0.29GB/1.32GB
+Epoch: 14 [600/1563] Loss: 2.8862 | Acc: 32.69% | Time: 0.0245s | GPU Mem: 0.29GB/1.32GB
+Epoch: 14 [700/1563] Loss: 2.1797 | Acc: 32.76% | Time: 0.0281s | GPU Mem: 0.29GB/1.32GB
+Epoch: 14 [800/1563] Loss: 2.9273 | Acc: 32.75% | Time: 0.0269s | GPU Mem: 0.29GB/1.32GB
+Epoch: 14 [900/1563] Loss: 2.3017 | Acc: 32.72% | Time: 0.0238s | GPU Mem: 0.29GB/1.32GB
+Epoch: 14 [1000/1563] Loss: 3.1873 | Acc: 32.84% | Time: 0.0265s | GPU Mem: 0.29GB/1.32GB
+Epoch: 14 [1100/1563] Loss: 1.7901 | Acc: 32.85% | Time: 0.0228s | GPU Mem: 0.29GB/1.32GB
+Epoch: 14 [1200/1563] Loss: 2.6113 | Acc: 32.81% | Time: 0.0262s | GPU Mem: 0.29GB/1.32GB
+Epoch: 14 [1300/1563] Loss: 2.7612 | Acc: 32.78% | Time: 0.0241s | GPU Mem: 0.29GB/1.32GB
+Epoch: 14 [1400/1563] Loss: 2.8072 | Acc: 32.86% | Time: 0.0238s | GPU Mem: 0.29GB/1.32GB
+Epoch: 14 [1500/1563] Loss: 2.8210 | Acc: 32.87% | Time: 0.0274s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 2.6040, Acc: 32.83%
+测试 - Loss: 2.8704, Acc: 30.02%
+学习率: 0.100000, 时间: 43.15s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+
+============================================================
+Epoch 16/100
+============================================================
+Epoch: 15 [0/1563] Loss: 2.5794 | Acc: 40.62% | Time: 0.0323s | GPU Mem: 0.29GB/1.32GB
+Epoch: 15 [100/1563] Loss: 2.8693 | Acc: 33.01% | Time: 0.0269s | GPU Mem: 0.29GB/1.32GB
+Epoch: 15 [200/1563] Loss: 2.2453 | Acc: 33.19% | Time: 0.0355s | GPU Mem: 0.29GB/1.32GB
+Epoch: 15 [300/1563] Loss: 2.9063 | Acc: 33.27% | Time: 0.0289s | GPU Mem: 0.29GB/1.32GB
+Epoch: 15 [400/1563] Loss: 2.5857 | Acc: 33.52% | Time: 0.0283s | GPU Mem: 0.29GB/1.32GB
+Epoch: 15 [500/1563] Loss: 2.5944 | Acc: 33.24% | Time: 0.0234s | GPU Mem: 0.29GB/1.32GB
+Epoch: 15 [600/1563] Loss: 2.5320 | Acc: 33.01% | Time: 0.0247s | GPU Mem: 0.29GB/1.32GB
+Epoch: 15 [700/1563] Loss: 2.5932 | Acc: 32.98% | Time: 0.0236s | GPU Mem: 0.29GB/1.32GB
+Epoch: 15 [800/1563] Loss: 2.3600 | Acc: 33.11% | Time: 0.0246s | GPU Mem: 0.29GB/1.32GB
+Epoch: 15 [900/1563] Loss: 2.6451 | Acc: 33.14% | Time: 0.0232s | GPU Mem: 0.29GB/1.32GB
+Epoch: 15 [1000/1563] Loss: 2.7096 | Acc: 33.28% | Time: 0.0239s | GPU Mem: 0.29GB/1.32GB
+Epoch: 15 [1100/1563] Loss: 2.5081 | Acc: 33.30% | Time: 0.0257s | GPU Mem: 0.29GB/1.32GB
+Epoch: 15 [1200/1563] Loss: 2.0863 | Acc: 33.27% | Time: 0.0278s | GPU Mem: 0.29GB/1.32GB
+Epoch: 15 [1300/1563] Loss: 2.5897 | Acc: 33.27% | Time: 0.0249s | GPU Mem: 0.29GB/1.32GB
+Epoch: 15 [1400/1563] Loss: 2.1732 | Acc: 33.32% | Time: 0.0282s | GPU Mem: 0.29GB/1.32GB
+Epoch: 15 [1500/1563] Loss: 2.8378 | Acc: 33.23% | Time: 0.0259s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 2.5926, Acc: 33.28%
+测试 - Loss: 3.1501, Acc: 28.80%
+学习率: 0.100000, 时间: 42.59s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+
+============================================================
+Epoch 17/100
+============================================================
+Epoch: 16 [0/1563] Loss: 2.2463 | Acc: 46.88% | Time: 0.0231s | GPU Mem: 0.29GB/1.32GB
+Epoch: 16 [100/1563] Loss: 2.5619 | Acc: 33.38% | Time: 0.0264s | GPU Mem: 0.29GB/1.32GB
+Epoch: 16 [200/1563] Loss: 2.1955 | Acc: 34.02% | Time: 0.0241s | GPU Mem: 0.29GB/1.32GB
+Epoch: 16 [300/1563] Loss: 2.3773 | Acc: 34.04% | Time: 0.0291s | GPU Mem: 0.29GB/1.32GB
+Epoch: 16 [400/1563] Loss: 3.2462 | Acc: 34.06% | Time: 0.0299s | GPU Mem: 0.29GB/1.32GB
+Epoch: 16 [500/1563] Loss: 2.1273 | Acc: 33.86% | Time: 0.0275s | GPU Mem: 0.29GB/1.32GB
+Epoch: 16 [600/1563] Loss: 3.1530 | Acc: 33.82% | Time: 0.0274s | GPU Mem: 0.29GB/1.32GB
+Epoch: 16 [700/1563] Loss: 2.4587 | Acc: 33.83% | Time: 0.0241s | GPU Mem: 0.29GB/1.32GB
+Epoch: 16 [800/1563] Loss: 2.6586 | Acc: 33.60% | Time: 0.0273s | GPU Mem: 0.29GB/1.32GB
+Epoch: 16 [900/1563] Loss: 2.4368 | Acc: 33.60% | Time: 0.0283s | GPU Mem: 0.29GB/1.32GB
+Epoch: 16 [1000/1563] Loss: 2.6138 | Acc: 33.50% | Time: 0.0302s | GPU Mem: 0.29GB/1.32GB
+Epoch: 16 [1100/1563] Loss: 2.7620 | Acc: 33.39% | Time: 0.0304s | GPU Mem: 0.29GB/1.32GB
+Epoch: 16 [1200/1563] Loss: 3.3864 | Acc: 33.43% | Time: 0.0258s | GPU Mem: 0.29GB/1.32GB
+Epoch: 16 [1300/1563] Loss: 2.3840 | Acc: 33.46% | Time: 0.0261s | GPU Mem: 0.29GB/1.32GB
+Epoch: 16 [1400/1563] Loss: 2.4392 | Acc: 33.41% | Time: 0.0251s | GPU Mem: 0.29GB/1.32GB
+Epoch: 16 [1500/1563] Loss: 2.6274 | Acc: 33.34% | Time: 0.0286s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 2.5753, Acc: 33.32%
+测试 - Loss: 2.6306, Acc: 32.88%
+学习率: 0.100000, 时间: 44.01s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+
+============================================================
+Epoch 18/100
+============================================================
+Epoch: 17 [0/1563] Loss: 2.5997 | Acc: 34.38% | Time: 0.0282s | GPU Mem: 0.29GB/1.32GB
+Epoch: 17 [100/1563] Loss: 2.2666 | Acc: 35.64% | Time: 0.0230s | GPU Mem: 0.29GB/1.32GB
+Epoch: 17 [200/1563] Loss: 2.4049 | Acc: 33.82% | Time: 0.0238s | GPU Mem: 0.29GB/1.32GB
+Epoch: 17 [300/1563] Loss: 2.4533 | Acc: 33.78% | Time: 0.0216s | GPU Mem: 0.29GB/1.32GB
+Epoch: 17 [400/1563] Loss: 2.6803 | Acc: 33.60% | Time: 0.0257s | GPU Mem: 0.29GB/1.32GB
+Epoch: 17 [500/1563] Loss: 2.7480 | Acc: 33.62% | Time: 0.0262s | GPU Mem: 0.29GB/1.32GB
+Epoch: 17 [600/1563] Loss: 2.5471 | Acc: 33.55% | Time: 0.0305s | GPU Mem: 0.29GB/1.32GB
+Epoch: 17 [700/1563] Loss: 2.5668 | Acc: 33.67% | Time: 0.0281s | GPU Mem: 0.29GB/1.32GB
+Epoch: 17 [800/1563] Loss: 2.6905 | Acc: 33.69% | Time: 0.0245s | GPU Mem: 0.29GB/1.32GB
+Epoch: 17 [900/1563] Loss: 2.2943 | Acc: 33.82% | Time: 0.0263s | GPU Mem: 0.29GB/1.32GB
+Epoch: 17 [1000/1563] Loss: 2.9138 | Acc: 33.75% | Time: 0.0284s | GPU Mem: 0.29GB/1.32GB
+Epoch: 17 [1100/1563] Loss: 2.6891 | Acc: 33.80% | Time: 0.0285s | GPU Mem: 0.29GB/1.32GB
+Epoch: 17 [1200/1563] Loss: 2.8905 | Acc: 33.79% | Time: 0.0285s | GPU Mem: 0.29GB/1.32GB
+Epoch: 17 [1300/1563] Loss: 2.0418 | Acc: 33.79% | Time: 0.0293s | GPU Mem: 0.29GB/1.32GB
+Epoch: 17 [1400/1563] Loss: 2.3080 | Acc: 33.86% | Time: 0.0260s | GPU Mem: 0.29GB/1.32GB
+Epoch: 17 [1500/1563] Loss: 2.6449 | Acc: 33.85% | Time: 0.0288s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 2.5528, Acc: 33.89%
+测试 - Loss: 2.6798, Acc: 31.74%
+学习率: 0.100000, 时间: 41.93s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+
+============================================================
+Epoch 19/100
+============================================================
+Epoch: 18 [0/1563] Loss: 2.0805 | Acc: 37.50% | Time: 0.0261s | GPU Mem: 0.29GB/1.32GB
+Epoch: 18 [100/1563] Loss: 2.1658 | Acc: 33.38% | Time: 0.0297s | GPU Mem: 0.29GB/1.32GB
+Epoch: 18 [200/1563] Loss: 2.8361 | Acc: 33.77% | Time: 0.0295s | GPU Mem: 0.29GB/1.32GB
+Epoch: 18 [300/1563] Loss: 2.9968 | Acc: 34.22% | Time: 0.0294s | GPU Mem: 0.29GB/1.32GB
+Epoch: 18 [400/1563] Loss: 2.6107 | Acc: 33.92% | Time: 0.0278s | GPU Mem: 0.29GB/1.32GB
+Epoch: 18 [500/1563] Loss: 2.6966 | Acc: 33.84% | Time: 0.0255s | GPU Mem: 0.29GB/1.32GB
+Epoch: 18 [600/1563] Loss: 2.9286 | Acc: 34.01% | Time: 0.0274s | GPU Mem: 0.29GB/1.32GB
+Epoch: 18 [700/1563] Loss: 2.5788 | Acc: 33.84% | Time: 0.0267s | GPU Mem: 0.29GB/1.32GB
+Epoch: 18 [800/1563] Loss: 2.2762 | Acc: 33.88% | Time: 0.0284s | GPU Mem: 0.29GB/1.32GB
+Epoch: 18 [900/1563] Loss: 2.5302 | Acc: 33.93% | Time: 0.0272s | GPU Mem: 0.29GB/1.32GB
+Epoch: 18 [1000/1563] Loss: 3.2703 | Acc: 33.96% | Time: 0.0302s | GPU Mem: 0.29GB/1.32GB
+Epoch: 18 [1100/1563] Loss: 3.1549 | Acc: 34.13% | Time: 0.0298s | GPU Mem: 0.29GB/1.32GB
+Epoch: 18 [1200/1563] Loss: 2.2510 | Acc: 34.10% | Time: 0.0288s | GPU Mem: 0.29GB/1.32GB
+Epoch: 18 [1300/1563] Loss: 2.6423 | Acc: 34.13% | Time: 0.0272s | GPU Mem: 0.29GB/1.32GB
+Epoch: 18 [1400/1563] Loss: 2.4993 | Acc: 34.05% | Time: 0.0271s | GPU Mem: 0.29GB/1.32GB
+Epoch: 18 [1500/1563] Loss: 2.4803 | Acc: 34.02% | Time: 0.0293s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 2.5506, Acc: 34.00%
+测试 - Loss: 2.6897, Acc: 32.47%
+学习率: 0.100000, 时间: 43.14s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+
+============================================================
+Epoch 20/100
+============================================================
+Epoch: 19 [0/1563] Loss: 2.3986 | Acc: 31.25% | Time: 0.0370s | GPU Mem: 0.29GB/1.32GB
+Epoch: 19 [100/1563] Loss: 2.9810 | Acc: 35.58% | Time: 0.0274s | GPU Mem: 0.29GB/1.32GB
+Epoch: 19 [200/1563] Loss: 2.2865 | Acc: 34.81% | Time: 0.0249s | GPU Mem: 0.29GB/1.32GB
+Epoch: 19 [300/1563] Loss: 2.4657 | Acc: 34.60% | Time: 0.0292s | GPU Mem: 0.29GB/1.32GB
+Epoch: 19 [400/1563] Loss: 2.6562 | Acc: 34.45% | Time: 0.0258s | GPU Mem: 0.29GB/1.32GB
+Epoch: 19 [500/1563] Loss: 2.1512 | Acc: 34.54% | Time: 0.0287s | GPU Mem: 0.29GB/1.32GB
+Epoch: 19 [600/1563] Loss: 2.8252 | Acc: 34.92% | Time: 0.0271s | GPU Mem: 0.29GB/1.32GB
+Epoch: 19 [700/1563] Loss: 2.6592 | Acc: 34.94% | Time: 0.0273s | GPU Mem: 0.29GB/1.32GB
+Epoch: 19 [800/1563] Loss: 2.2724 | Acc: 34.89% | Time: 0.0255s | GPU Mem: 0.29GB/1.32GB
+Epoch: 19 [900/1563] Loss: 2.6257 | Acc: 34.63% | Time: 0.0260s | GPU Mem: 0.29GB/1.32GB
+Epoch: 19 [1000/1563] Loss: 1.9220 | Acc: 34.54% | Time: 0.0268s | GPU Mem: 0.29GB/1.32GB
+Epoch: 19 [1100/1563] Loss: 2.2219 | Acc: 34.55% | Time: 0.0295s | GPU Mem: 0.29GB/1.32GB
+Epoch: 19 [1200/1563] Loss: 2.3977 | Acc: 34.40% | Time: 0.0247s | GPU Mem: 0.29GB/1.32GB
+Epoch: 19 [1300/1563] Loss: 3.0397 | Acc: 34.50% | Time: 0.0241s | GPU Mem: 0.29GB/1.32GB
+Epoch: 19 [1400/1563] Loss: 2.8050 | Acc: 34.52% | Time: 0.0272s | GPU Mem: 0.29GB/1.32GB
+Epoch: 19 [1500/1563] Loss: 2.7833 | Acc: 34.48% | Time: 0.0281s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 2.5365, Acc: 34.47%
+测试 - Loss: 2.5886, Acc: 34.65%
+学习率: 0.100000, 时间: 43.34s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+最佳准确率更新: 32.94% -> 34.65%
+保存最佳模型到: ./checkpoints/best_model.pth
+保存checkpoint到: ./checkpoints/checkpoint_epoch_20.pth
+
+============================================================
+Epoch 21/100
+============================================================
+Epoch: 20 [0/1563] Loss: 2.3462 | Acc: 40.62% | Time: 0.0284s | GPU Mem: 0.29GB/1.32GB
+Epoch: 20 [100/1563] Loss: 2.9191 | Acc: 35.33% | Time: 0.0269s | GPU Mem: 0.29GB/1.32GB
+Epoch: 20 [200/1563] Loss: 2.8281 | Acc: 34.58% | Time: 0.0232s | GPU Mem: 0.29GB/1.32GB
+Epoch: 20 [300/1563] Loss: 2.5956 | Acc: 34.79% | Time: 0.0254s | GPU Mem: 0.29GB/1.32GB
+Epoch: 20 [400/1563] Loss: 2.4315 | Acc: 35.09% | Time: 0.0318s | GPU Mem: 0.29GB/1.32GB
+Epoch: 20 [500/1563] Loss: 2.5627 | Acc: 34.96% | Time: 0.0247s | GPU Mem: 0.29GB/1.32GB
+Epoch: 20 [600/1563] Loss: 2.6134 | Acc: 35.04% | Time: 0.0229s | GPU Mem: 0.29GB/1.32GB
+Epoch: 20 [700/1563] Loss: 2.5453 | Acc: 34.80% | Time: 0.0274s | GPU Mem: 0.29GB/1.32GB
+Epoch: 20 [800/1563] Loss: 2.5409 | Acc: 34.74% | Time: 0.0247s | GPU Mem: 0.29GB/1.32GB
+Epoch: 20 [900/1563] Loss: 2.6459 | Acc: 34.54% | Time: 0.0250s | GPU Mem: 0.29GB/1.32GB
+Epoch: 20 [1000/1563] Loss: 2.6449 | Acc: 34.50% | Time: 0.0234s | GPU Mem: 0.29GB/1.32GB
+Epoch: 20 [1100/1563] Loss: 2.6294 | Acc: 34.58% | Time: 0.0259s | GPU Mem: 0.29GB/1.32GB
+Epoch: 20 [1200/1563] Loss: 2.2890 | Acc: 34.66% | Time: 0.0253s | GPU Mem: 0.29GB/1.32GB
+Epoch: 20 [1300/1563] Loss: 2.3033 | Acc: 34.63% | Time: 0.0281s | GPU Mem: 0.29GB/1.32GB
+Epoch: 20 [1400/1563] Loss: 2.7212 | Acc: 34.61% | Time: 0.0284s | GPU Mem: 0.29GB/1.32GB
+Epoch: 20 [1500/1563] Loss: 2.3917 | Acc: 34.59% | Time: 0.0256s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 2.5287, Acc: 34.58%
+测试 - Loss: 2.6193, Acc: 33.85%
+学习率: 0.100000, 时间: 42.33s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+
+============================================================
+Epoch 22/100
+============================================================
+Epoch: 21 [0/1563] Loss: 2.6726 | Acc: 34.38% | Time: 0.0259s | GPU Mem: 0.29GB/1.32GB
+Epoch: 21 [100/1563] Loss: 2.2037 | Acc: 35.55% | Time: 0.0294s | GPU Mem: 0.29GB/1.32GB
+Epoch: 21 [200/1563] Loss: 2.4341 | Acc: 35.82% | Time: 0.0277s | GPU Mem: 0.29GB/1.32GB
+Epoch: 21 [300/1563] Loss: 2.0360 | Acc: 35.20% | Time: 0.0249s | GPU Mem: 0.29GB/1.32GB
+Epoch: 21 [400/1563] Loss: 2.9889 | Acc: 35.47% | Time: 0.0287s | GPU Mem: 0.29GB/1.32GB
+Epoch: 21 [500/1563] Loss: 2.8083 | Acc: 35.55% | Time: 0.0262s | GPU Mem: 0.29GB/1.32GB
+Epoch: 21 [600/1563] Loss: 2.3666 | Acc: 35.30% | Time: 0.0325s | GPU Mem: 0.29GB/1.32GB
+Epoch: 21 [700/1563] Loss: 2.2403 | Acc: 35.13% | Time: 0.0276s | GPU Mem: 0.29GB/1.32GB
+Epoch: 21 [800/1563] Loss: 2.7479 | Acc: 35.03% | Time: 0.0287s | GPU Mem: 0.29GB/1.32GB
+Epoch: 21 [900/1563] Loss: 2.3396 | Acc: 34.80% | Time: 0.0274s | GPU Mem: 0.29GB/1.32GB
+Epoch: 21 [1000/1563] Loss: 2.6082 | Acc: 34.79% | Time: 0.0273s | GPU Mem: 0.29GB/1.32GB
+Epoch: 21 [1100/1563] Loss: 2.2796 | Acc: 34.76% | Time: 0.0291s | GPU Mem: 0.29GB/1.32GB
+Epoch: 21 [1200/1563] Loss: 2.1796 | Acc: 34.81% | Time: 0.0295s | GPU Mem: 0.29GB/1.32GB
+Epoch: 21 [1300/1563] Loss: 2.6342 | Acc: 34.83% | Time: 0.0270s | GPU Mem: 0.29GB/1.32GB
+Epoch: 21 [1400/1563] Loss: 2.7493 | Acc: 34.82% | Time: 0.0238s | GPU Mem: 0.29GB/1.32GB
+Epoch: 21 [1500/1563] Loss: 2.4661 | Acc: 34.87% | Time: 0.0301s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 2.5247, Acc: 34.81%
+测试 - Loss: 2.7882, Acc: 31.49%
+学习率: 0.100000, 时间: 43.65s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+
+============================================================
+Epoch 23/100
+============================================================
+Epoch: 22 [0/1563] Loss: 2.0861 | Acc: 37.50% | Time: 0.0222s | GPU Mem: 0.29GB/1.32GB
+Epoch: 22 [100/1563] Loss: 2.3717 | Acc: 35.98% | Time: 0.0224s | GPU Mem: 0.29GB/1.32GB
+Epoch: 22 [200/1563] Loss: 2.3198 | Acc: 35.48% | Time: 0.0254s | GPU Mem: 0.29GB/1.32GB
+Epoch: 22 [300/1563] Loss: 2.1013 | Acc: 35.28% | Time: 0.0269s | GPU Mem: 0.29GB/1.32GB
+Epoch: 22 [400/1563] Loss: 2.5677 | Acc: 35.32% | Time: 0.0314s | GPU Mem: 0.29GB/1.32GB
+Epoch: 22 [500/1563] Loss: 2.2309 | Acc: 35.01% | Time: 0.0276s | GPU Mem: 0.29GB/1.32GB
+Epoch: 22 [600/1563] Loss: 2.7754 | Acc: 35.08% | Time: 0.0259s | GPU Mem: 0.29GB/1.32GB
+Epoch: 22 [700/1563] Loss: 2.3292 | Acc: 35.15% | Time: 0.0267s | GPU Mem: 0.29GB/1.32GB
+Epoch: 22 [800/1563] Loss: 2.8230 | Acc: 35.20% | Time: 0.0230s | GPU Mem: 0.29GB/1.32GB
+Epoch: 22 [900/1563] Loss: 1.9530 | Acc: 35.34% | Time: 0.0260s | GPU Mem: 0.29GB/1.32GB
+Epoch: 22 [1000/1563] Loss: 2.0801 | Acc: 35.24% | Time: 0.0263s | GPU Mem: 0.29GB/1.32GB
+Epoch: 22 [1100/1563] Loss: 2.8701 | Acc: 35.23% | Time: 0.0244s | GPU Mem: 0.29GB/1.32GB
+Epoch: 22 [1200/1563] Loss: 2.1855 | Acc: 35.34% | Time: 0.0259s | GPU Mem: 0.29GB/1.32GB
+Epoch: 22 [1300/1563] Loss: 2.4780 | Acc: 35.28% | Time: 0.0283s | GPU Mem: 0.29GB/1.32GB
+Epoch: 22 [1400/1563] Loss: 2.7968 | Acc: 35.21% | Time: 0.0237s | GPU Mem: 0.29GB/1.32GB
+Epoch: 22 [1500/1563] Loss: 2.1613 | Acc: 35.22% | Time: 0.0302s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 2.5097, Acc: 35.23%
+测试 - Loss: 2.7034, Acc: 33.93%
+学习率: 0.100000, 时间: 43.44s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+
+============================================================
+Epoch 24/100
+============================================================
+Epoch: 23 [0/1563] Loss: 2.2821 | Acc: 43.75% | Time: 0.0239s | GPU Mem: 0.29GB/1.32GB
+Epoch: 23 [100/1563] Loss: 2.1117 | Acc: 35.33% | Time: 0.0239s | GPU Mem: 0.29GB/1.32GB
+Epoch: 23 [200/1563] Loss: 2.5168 | Acc: 35.31% | Time: 0.0247s | GPU Mem: 0.29GB/1.32GB
+Epoch: 23 [300/1563] Loss: 2.5798 | Acc: 35.78% | Time: 0.0301s | GPU Mem: 0.29GB/1.32GB
+Epoch: 23 [400/1563] Loss: 2.9201 | Acc: 35.45% | Time: 0.0227s | GPU Mem: 0.29GB/1.32GB
+Epoch: 23 [500/1563] Loss: 2.9963 | Acc: 35.42% | Time: 0.0241s | GPU Mem: 0.29GB/1.32GB
+Epoch: 23 [600/1563] Loss: 2.2236 | Acc: 35.59% | Time: 0.0253s | GPU Mem: 0.29GB/1.32GB
+Epoch: 23 [700/1563] Loss: 3.1992 | Acc: 35.59% | Time: 0.0260s | GPU Mem: 0.29GB/1.32GB
+Epoch: 23 [800/1563] Loss: 3.0999 | Acc: 35.60% | Time: 0.0271s | GPU Mem: 0.29GB/1.32GB
+Epoch: 23 [900/1563] Loss: 2.6444 | Acc: 35.63% | Time: 0.0275s | GPU Mem: 0.29GB/1.32GB
+Epoch: 23 [1000/1563] Loss: 2.1634 | Acc: 35.61% | Time: 0.0260s | GPU Mem: 0.29GB/1.32GB
+Epoch: 23 [1100/1563] Loss: 2.7654 | Acc: 35.48% | Time: 0.0252s | GPU Mem: 0.29GB/1.32GB
+Epoch: 23 [1200/1563] Loss: 2.5041 | Acc: 35.53% | Time: 0.0245s | GPU Mem: 0.29GB/1.32GB
+Epoch: 23 [1300/1563] Loss: 2.8283 | Acc: 35.46% | Time: 0.0300s | GPU Mem: 0.29GB/1.32GB
+Epoch: 23 [1400/1563] Loss: 2.7598 | Acc: 35.51% | Time: 0.0263s | GPU Mem: 0.29GB/1.32GB
+Epoch: 23 [1500/1563] Loss: 2.9375 | Acc: 35.50% | Time: 0.0265s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 2.4991, Acc: 35.47%
+测试 - Loss: 2.7468, Acc: 31.95%
+学习率: 0.100000, 时间: 43.17s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+
+============================================================
+Epoch 25/100
+============================================================
+Epoch: 24 [0/1563] Loss: 2.5408 | Acc: 37.50% | Time: 0.0313s | GPU Mem: 0.29GB/1.32GB
+Epoch: 24 [100/1563] Loss: 2.7216 | Acc: 37.96% | Time: 0.0272s | GPU Mem: 0.29GB/1.32GB
+Epoch: 24 [200/1563] Loss: 2.9207 | Acc: 36.77% | Time: 0.0306s | GPU Mem: 0.29GB/1.32GB
+Epoch: 24 [300/1563] Loss: 2.3340 | Acc: 36.05% | Time: 0.0291s | GPU Mem: 0.29GB/1.32GB
+Epoch: 24 [400/1563] Loss: 2.2884 | Acc: 36.11% | Time: 0.0261s | GPU Mem: 0.29GB/1.32GB
+Epoch: 24 [500/1563] Loss: 2.7376 | Acc: 35.60% | Time: 0.0260s | GPU Mem: 0.29GB/1.32GB
+Epoch: 24 [600/1563] Loss: 3.1402 | Acc: 35.39% | Time: 0.0263s | GPU Mem: 0.29GB/1.32GB
+Epoch: 24 [700/1563] Loss: 2.9436 | Acc: 35.31% | Time: 0.0247s | GPU Mem: 0.29GB/1.32GB
+Epoch: 24 [800/1563] Loss: 2.5217 | Acc: 35.35% | Time: 0.0253s | GPU Mem: 0.29GB/1.32GB
+Epoch: 24 [900/1563] Loss: 2.0537 | Acc: 35.38% | Time: 0.0275s | GPU Mem: 0.29GB/1.32GB
+Epoch: 24 [1000/1563] Loss: 2.4900 | Acc: 35.43% | Time: 0.0232s | GPU Mem: 0.29GB/1.32GB
+Epoch: 24 [1100/1563] Loss: 2.3544 | Acc: 35.34% | Time: 0.0300s | GPU Mem: 0.29GB/1.32GB
+Epoch: 24 [1200/1563] Loss: 3.1320 | Acc: 35.23% | Time: 0.0254s | GPU Mem: 0.29GB/1.32GB
+Epoch: 24 [1300/1563] Loss: 2.8694 | Acc: 35.38% | Time: 0.0234s | GPU Mem: 0.29GB/1.32GB
+Epoch: 24 [1400/1563] Loss: 2.4879 | Acc: 35.44% | Time: 0.0299s | GPU Mem: 0.29GB/1.32GB
+Epoch: 24 [1500/1563] Loss: 2.3564 | Acc: 35.37% | Time: 0.0254s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 2.4978, Acc: 35.32%
+测试 - Loss: 3.1908, Acc: 27.92%
+学习率: 0.100000, 时间: 43.28s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+
+============================================================
+Epoch 26/100
+============================================================
+Epoch: 25 [0/1563] Loss: 2.4951 | Acc: 31.25% | Time: 0.0349s | GPU Mem: 0.29GB/1.32GB
+Epoch: 25 [100/1563] Loss: 2.5669 | Acc: 35.86% | Time: 0.0258s | GPU Mem: 0.29GB/1.32GB
+Epoch: 25 [200/1563] Loss: 2.3027 | Acc: 36.77% | Time: 0.0246s | GPU Mem: 0.29GB/1.32GB
+Epoch: 25 [300/1563] Loss: 3.1549 | Acc: 36.59% | Time: 0.0271s | GPU Mem: 0.29GB/1.32GB
+Epoch: 25 [400/1563] Loss: 2.7195 | Acc: 36.41% | Time: 0.0267s | GPU Mem: 0.29GB/1.32GB
+Epoch: 25 [500/1563] Loss: 2.0563 | Acc: 35.84% | Time: 0.0347s | GPU Mem: 0.29GB/1.32GB
+Epoch: 25 [600/1563] Loss: 2.0464 | Acc: 35.83% | Time: 0.0275s | GPU Mem: 0.29GB/1.32GB
+Epoch: 25 [700/1563] Loss: 3.0693 | Acc: 35.60% | Time: 0.0288s | GPU Mem: 0.29GB/1.32GB
+Epoch: 25 [800/1563] Loss: 2.4568 | Acc: 35.51% | Time: 0.0292s | GPU Mem: 0.29GB/1.32GB
+Epoch: 25 [900/1563] Loss: 2.4070 | Acc: 35.37% | Time: 0.0288s | GPU Mem: 0.29GB/1.32GB
+Epoch: 25 [1000/1563] Loss: 2.9952 | Acc: 35.39% | Time: 0.0285s | GPU Mem: 0.29GB/1.32GB
+Epoch: 25 [1100/1563] Loss: 2.6444 | Acc: 35.48% | Time: 0.0247s | GPU Mem: 0.29GB/1.32GB
+Epoch: 25 [1200/1563] Loss: 2.5167 | Acc: 35.41% | Time: 0.0297s | GPU Mem: 0.29GB/1.32GB
+Epoch: 25 [1300/1563] Loss: 3.1788 | Acc: 35.47% | Time: 0.0266s | GPU Mem: 0.29GB/1.32GB
+Epoch: 25 [1400/1563] Loss: 2.7186 | Acc: 35.54% | Time: 0.0303s | GPU Mem: 0.29GB/1.32GB
+Epoch: 25 [1500/1563] Loss: 2.2076 | Acc: 35.42% | Time: 0.0271s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 2.4999, Acc: 35.36%
+测试 - Loss: 2.6175, Acc: 33.09%
+学习率: 0.100000, 时间: 42.66s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+
+============================================================
+Epoch 27/100
+============================================================
+Epoch: 26 [0/1563] Loss: 2.1092 | Acc: 31.25% | Time: 0.0247s | GPU Mem: 0.29GB/1.32GB
+Epoch: 26 [100/1563] Loss: 2.3623 | Acc: 36.01% | Time: 0.0241s | GPU Mem: 0.29GB/1.32GB
+Epoch: 26 [200/1563] Loss: 2.6508 | Acc: 36.07% | Time: 0.0258s | GPU Mem: 0.29GB/1.32GB
+Epoch: 26 [300/1563] Loss: 2.7905 | Acc: 36.25% | Time: 0.0256s | GPU Mem: 0.29GB/1.32GB
+Epoch: 26 [400/1563] Loss: 2.3074 | Acc: 35.97% | Time: 0.0291s | GPU Mem: 0.29GB/1.32GB
+Epoch: 26 [500/1563] Loss: 2.0641 | Acc: 35.80% | Time: 0.0256s | GPU Mem: 0.29GB/1.32GB
+Epoch: 26 [600/1563] Loss: 2.5678 | Acc: 35.59% | Time: 0.0349s | GPU Mem: 0.29GB/1.32GB
+Epoch: 26 [700/1563] Loss: 2.7944 | Acc: 35.36% | Time: 0.0258s | GPU Mem: 0.29GB/1.32GB
+Epoch: 26 [800/1563] Loss: 2.9419 | Acc: 35.43% | Time: 0.0259s | GPU Mem: 0.29GB/1.32GB
+Epoch: 26 [900/1563] Loss: 2.8324 | Acc: 35.49% | Time: 0.0278s | GPU Mem: 0.29GB/1.32GB
+Epoch: 26 [1000/1563] Loss: 2.3562 | Acc: 35.62% | Time: 0.0300s | GPU Mem: 0.29GB/1.32GB
+Epoch: 26 [1100/1563] Loss: 2.4273 | Acc: 35.68% | Time: 0.0254s | GPU Mem: 0.29GB/1.32GB
+Epoch: 26 [1200/1563] Loss: 2.8868 | Acc: 35.69% | Time: 0.0259s | GPU Mem: 0.29GB/1.32GB
+Epoch: 26 [1300/1563] Loss: 2.6032 | Acc: 35.70% | Time: 0.0235s | GPU Mem: 0.29GB/1.32GB
+Epoch: 26 [1400/1563] Loss: 2.2791 | Acc: 35.53% | Time: 0.0277s | GPU Mem: 0.29GB/1.32GB
+Epoch: 26 [1500/1563] Loss: 2.6815 | Acc: 35.49% | Time: 0.0283s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 2.4981, Acc: 35.46%
+测试 - Loss: 2.6555, Acc: 32.78%
+学习率: 0.100000, 时间: 43.57s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+
+============================================================
+Epoch 28/100
+============================================================
+Epoch: 27 [0/1563] Loss: 2.8816 | Acc: 21.88% | Time: 0.0270s | GPU Mem: 0.29GB/1.32GB
+Epoch: 27 [100/1563] Loss: 2.2695 | Acc: 37.47% | Time: 0.0279s | GPU Mem: 0.29GB/1.32GB
+Epoch: 27 [200/1563] Loss: 2.3008 | Acc: 36.66% | Time: 0.0272s | GPU Mem: 0.29GB/1.32GB
+Epoch: 27 [300/1563] Loss: 2.4607 | Acc: 36.29% | Time: 0.0265s | GPU Mem: 0.29GB/1.32GB
+Epoch: 27 [400/1563] Loss: 2.7405 | Acc: 36.37% | Time: 0.0314s | GPU Mem: 0.29GB/1.32GB
+Epoch: 27 [500/1563] Loss: 2.5952 | Acc: 36.13% | Time: 0.0300s | GPU Mem: 0.29GB/1.32GB
+Epoch: 27 [600/1563] Loss: 2.5036 | Acc: 36.13% | Time: 0.0257s | GPU Mem: 0.29GB/1.32GB
+Epoch: 27 [700/1563] Loss: 2.3385 | Acc: 36.09% | Time: 0.0263s | GPU Mem: 0.29GB/1.32GB
+Epoch: 27 [800/1563] Loss: 2.3169 | Acc: 36.01% | Time: 0.0234s | GPU Mem: 0.29GB/1.32GB
+Epoch: 27 [900/1563] Loss: 2.3727 | Acc: 36.03% | Time: 0.0335s | GPU Mem: 0.29GB/1.32GB
+Epoch: 27 [1000/1563] Loss: 1.9943 | Acc: 36.10% | Time: 0.0276s | GPU Mem: 0.29GB/1.32GB
+Epoch: 27 [1100/1563] Loss: 3.0018 | Acc: 35.98% | Time: 0.0254s | GPU Mem: 0.29GB/1.32GB
+Epoch: 27 [1200/1563] Loss: 2.9320 | Acc: 35.80% | Time: 0.0259s | GPU Mem: 0.29GB/1.32GB
+Epoch: 27 [1300/1563] Loss: 2.2111 | Acc: 35.73% | Time: 0.0315s | GPU Mem: 0.29GB/1.32GB
+Epoch: 27 [1400/1563] Loss: 2.6861 | Acc: 35.70% | Time: 0.0260s | GPU Mem: 0.29GB/1.32GB
+Epoch: 27 [1500/1563] Loss: 2.6969 | Acc: 35.71% | Time: 0.0257s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 2.4892, Acc: 35.70%
+测试 - Loss: 2.9529, Acc: 30.09%
+学习率: 0.100000, 时间: 43.71s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+
+============================================================
+Epoch 29/100
+============================================================
+Epoch: 28 [0/1563] Loss: 2.5004 | Acc: 34.38% | Time: 0.0352s | GPU Mem: 0.29GB/1.32GB
+Epoch: 28 [100/1563] Loss: 2.3571 | Acc: 37.31% | Time: 0.0243s | GPU Mem: 0.29GB/1.32GB
+Epoch: 28 [200/1563] Loss: 2.5570 | Acc: 36.60% | Time: 0.0280s | GPU Mem: 0.29GB/1.32GB
+Epoch: 28 [300/1563] Loss: 2.6135 | Acc: 36.60% | Time: 0.0291s | GPU Mem: 0.29GB/1.32GB
+Epoch: 28 [400/1563] Loss: 2.3817 | Acc: 36.81% | Time: 0.0256s | GPU Mem: 0.29GB/1.32GB
+Epoch: 28 [500/1563] Loss: 2.7834 | Acc: 36.75% | Time: 0.0229s | GPU Mem: 0.29GB/1.32GB
+Epoch: 28 [600/1563] Loss: 2.8303 | Acc: 36.35% | Time: 0.0271s | GPU Mem: 0.29GB/1.32GB
+Epoch: 28 [700/1563] Loss: 2.7110 | Acc: 35.97% | Time: 0.0221s | GPU Mem: 0.29GB/1.32GB
+Epoch: 28 [800/1563] Loss: 2.3010 | Acc: 35.84% | Time: 0.0256s | GPU Mem: 0.29GB/1.32GB
+Epoch: 28 [900/1563] Loss: 2.5759 | Acc: 35.87% | Time: 0.0297s | GPU Mem: 0.29GB/1.32GB
+Epoch: 28 [1000/1563] Loss: 2.4493 | Acc: 35.93% | Time: 0.0266s | GPU Mem: 0.29GB/1.32GB
+Epoch: 28 [1100/1563] Loss: 2.5517 | Acc: 35.77% | Time: 0.0268s | GPU Mem: 0.29GB/1.32GB
+Epoch: 28 [1200/1563] Loss: 2.6931 | Acc: 35.73% | Time: 0.0252s | GPU Mem: 0.29GB/1.32GB
+Epoch: 28 [1300/1563] Loss: 2.1306 | Acc: 35.57% | Time: 0.0284s | GPU Mem: 0.29GB/1.32GB
+Epoch: 28 [1400/1563] Loss: 2.4881 | Acc: 35.59% | Time: 0.0259s | GPU Mem: 0.29GB/1.32GB
+Epoch: 28 [1500/1563] Loss: 2.5264 | Acc: 35.53% | Time: 0.0268s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 2.4861, Acc: 35.44%
+测试 - Loss: 2.6918, Acc: 32.47%
+学习率: 0.100000, 时间: 43.18s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+
+============================================================
+Epoch 30/100
+============================================================
+Epoch: 29 [0/1563] Loss: 1.7320 | Acc: 43.75% | Time: 0.0280s | GPU Mem: 0.29GB/1.32GB
+Epoch: 29 [100/1563] Loss: 3.0175 | Acc: 36.54% | Time: 0.0273s | GPU Mem: 0.29GB/1.32GB
+Epoch: 29 [200/1563] Loss: 1.8631 | Acc: 36.55% | Time: 0.0220s | GPU Mem: 0.29GB/1.32GB
+Epoch: 29 [300/1563] Loss: 2.6468 | Acc: 36.53% | Time: 0.0288s | GPU Mem: 0.29GB/1.32GB
+Epoch: 29 [400/1563] Loss: 2.3919 | Acc: 36.55% | Time: 0.0284s | GPU Mem: 0.29GB/1.32GB
+Epoch: 29 [500/1563] Loss: 2.2506 | Acc: 36.37% | Time: 0.0259s | GPU Mem: 0.29GB/1.32GB
+Epoch: 29 [600/1563] Loss: 2.5437 | Acc: 36.26% | Time: 0.0211s | GPU Mem: 0.29GB/1.32GB
+Epoch: 29 [700/1563] Loss: 2.3836 | Acc: 36.06% | Time: 0.0275s | GPU Mem: 0.29GB/1.32GB
+Epoch: 29 [800/1563] Loss: 2.4787 | Acc: 35.86% | Time: 0.0272s | GPU Mem: 0.29GB/1.32GB
+Epoch: 29 [900/1563] Loss: 2.6359 | Acc: 35.78% | Time: 0.0259s | GPU Mem: 0.29GB/1.32GB
+Epoch: 29 [1000/1563] Loss: 2.2948 | Acc: 35.74% | Time: 0.0268s | GPU Mem: 0.29GB/1.32GB
+Epoch: 29 [1100/1563] Loss: 2.6789 | Acc: 35.79% | Time: 0.0230s | GPU Mem: 0.29GB/1.32GB
+Epoch: 29 [1200/1563] Loss: 2.2261 | Acc: 35.84% | Time: 0.0242s | GPU Mem: 0.29GB/1.32GB
+Epoch: 29 [1300/1563] Loss: 1.7930 | Acc: 35.75% | Time: 0.0303s | GPU Mem: 0.29GB/1.32GB
+Epoch: 29 [1400/1563] Loss: 1.8632 | Acc: 35.71% | Time: 0.0256s | GPU Mem: 0.29GB/1.32GB
+Epoch: 29 [1500/1563] Loss: 2.1130 | Acc: 35.70% | Time: 0.0253s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 2.4786, Acc: 35.64%
+测试 - Loss: 2.4811, Acc: 35.56%
+学习率: 0.100000, 时间: 41.83s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+最佳准确率更新: 34.65% -> 35.56%
+保存最佳模型到: ./checkpoints/best_model.pth
+保存checkpoint到: ./checkpoints/checkpoint_epoch_30.pth
+
+============================================================
+Epoch 31/100
+============================================================
+Epoch: 30 [0/1563] Loss: 2.3641 | Acc: 40.62% | Time: 0.0268s | GPU Mem: 0.29GB/1.32GB
+Epoch: 30 [100/1563] Loss: 2.6080 | Acc: 37.35% | Time: 0.0259s | GPU Mem: 0.29GB/1.32GB
+Epoch: 30 [200/1563] Loss: 2.4797 | Acc: 37.14% | Time: 0.0264s | GPU Mem: 0.29GB/1.32GB
+Epoch: 30 [300/1563] Loss: 2.7584 | Acc: 36.64% | Time: 0.0208s | GPU Mem: 0.29GB/1.32GB
+Epoch: 30 [400/1563] Loss: 2.9517 | Acc: 36.41% | Time: 0.0286s | GPU Mem: 0.29GB/1.32GB
+Epoch: 30 [500/1563] Loss: 2.9246 | Acc: 36.23% | Time: 0.0271s | GPU Mem: 0.29GB/1.32GB
+Epoch: 30 [600/1563] Loss: 2.4595 | Acc: 36.06% | Time: 0.0256s | GPU Mem: 0.29GB/1.32GB
+Epoch: 30 [700/1563] Loss: 2.7411 | Acc: 36.23% | Time: 0.0258s | GPU Mem: 0.29GB/1.32GB
+Epoch: 30 [800/1563] Loss: 2.7473 | Acc: 36.04% | Time: 0.0272s | GPU Mem: 0.29GB/1.32GB
+Epoch: 30 [900/1563] Loss: 2.1482 | Acc: 35.97% | Time: 0.0206s | GPU Mem: 0.29GB/1.32GB
+Epoch: 30 [1000/1563] Loss: 2.3153 | Acc: 36.07% | Time: 0.0269s | GPU Mem: 0.29GB/1.32GB
+Epoch: 30 [1100/1563] Loss: 3.0922 | Acc: 36.06% | Time: 0.0278s | GPU Mem: 0.29GB/1.32GB
+Epoch: 30 [1200/1563] Loss: 2.4225 | Acc: 35.98% | Time: 0.0297s | GPU Mem: 0.29GB/1.32GB
+Epoch: 30 [1300/1563] Loss: 2.4775 | Acc: 36.01% | Time: 0.0281s | GPU Mem: 0.29GB/1.32GB
+Epoch: 30 [1400/1563] Loss: 2.5988 | Acc: 36.04% | Time: 0.0292s | GPU Mem: 0.29GB/1.32GB
+Epoch: 30 [1500/1563] Loss: 2.4259 | Acc: 35.94% | Time: 0.0291s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 2.4738, Acc: 35.87%
+测试 - Loss: 2.9110, Acc: 29.07%
+学习率: 0.100000, 时间: 43.44s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+
+============================================================
+Epoch 32/100
+============================================================
+Epoch: 31 [0/1563] Loss: 2.1003 | Acc: 37.50% | Time: 0.0264s | GPU Mem: 0.29GB/1.32GB
+Epoch: 31 [100/1563] Loss: 2.8024 | Acc: 36.32% | Time: 0.0234s | GPU Mem: 0.29GB/1.32GB
+Epoch: 31 [200/1563] Loss: 2.6964 | Acc: 36.29% | Time: 0.0228s | GPU Mem: 0.29GB/1.32GB
+Epoch: 31 [300/1563] Loss: 2.2785 | Acc: 35.97% | Time: 0.0253s | GPU Mem: 0.29GB/1.32GB
+Epoch: 31 [400/1563] Loss: 2.0249 | Acc: 35.71% | Time: 0.0267s | GPU Mem: 0.29GB/1.32GB
+Epoch: 31 [500/1563] Loss: 2.3779 | Acc: 35.88% | Time: 0.0244s | GPU Mem: 0.29GB/1.32GB
+Epoch: 31 [600/1563] Loss: 2.4863 | Acc: 35.87% | Time: 0.0282s | GPU Mem: 0.29GB/1.32GB
+Epoch: 31 [700/1563] Loss: 2.0105 | Acc: 35.94% | Time: 0.0300s | GPU Mem: 0.29GB/1.32GB
+Epoch: 31 [800/1563] Loss: 2.1206 | Acc: 36.22% | Time: 0.0236s | GPU Mem: 0.29GB/1.32GB
+Epoch: 31 [900/1563] Loss: 2.9511 | Acc: 36.11% | Time: 0.0241s | GPU Mem: 0.29GB/1.32GB
+Epoch: 31 [1000/1563] Loss: 3.3923 | Acc: 36.04% | Time: 0.0224s | GPU Mem: 0.29GB/1.32GB
+Epoch: 31 [1100/1563] Loss: 2.5022 | Acc: 36.01% | Time: 0.0239s | GPU Mem: 0.29GB/1.32GB
+Epoch: 31 [1200/1563] Loss: 2.6269 | Acc: 35.93% | Time: 0.0239s | GPU Mem: 0.29GB/1.32GB
+Epoch: 31 [1300/1563] Loss: 3.0454 | Acc: 35.92% | Time: 0.0306s | GPU Mem: 0.29GB/1.32GB
+Epoch: 31 [1400/1563] Loss: 2.3301 | Acc: 35.85% | Time: 0.0250s | GPU Mem: 0.29GB/1.32GB
+Epoch: 31 [1500/1563] Loss: 2.6072 | Acc: 35.91% | Time: 0.0293s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 2.4772, Acc: 35.88%
+测试 - Loss: 2.8417, Acc: 30.81%
+学习率: 0.100000, 时间: 42.76s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+
+============================================================
+Epoch 33/100
+============================================================
+Epoch: 32 [0/1563] Loss: 2.7610 | Acc: 34.38% | Time: 0.0235s | GPU Mem: 0.29GB/1.32GB
+Epoch: 32 [100/1563] Loss: 2.6066 | Acc: 35.67% | Time: 0.0275s | GPU Mem: 0.29GB/1.32GB
+Epoch: 32 [200/1563] Loss: 2.2664 | Acc: 36.05% | Time: 0.0267s | GPU Mem: 0.29GB/1.32GB
+Epoch: 32 [300/1563] Loss: 2.5748 | Acc: 36.09% | Time: 0.0262s | GPU Mem: 0.29GB/1.32GB
+Epoch: 32 [400/1563] Loss: 2.5722 | Acc: 35.95% | Time: 0.0238s | GPU Mem: 0.29GB/1.32GB
+Epoch: 32 [500/1563] Loss: 2.3643 | Acc: 36.02% | Time: 0.0256s | GPU Mem: 0.29GB/1.32GB
+Epoch: 32 [600/1563] Loss: 2.3592 | Acc: 35.91% | Time: 0.0275s | GPU Mem: 0.29GB/1.32GB
+Epoch: 32 [700/1563] Loss: 2.3016 | Acc: 36.03% | Time: 0.0250s | GPU Mem: 0.29GB/1.32GB
+Epoch: 32 [800/1563] Loss: 1.6761 | Acc: 36.02% | Time: 0.0279s | GPU Mem: 0.29GB/1.32GB
+Epoch: 32 [900/1563] Loss: 2.1818 | Acc: 35.94% | Time: 0.0261s | GPU Mem: 0.29GB/1.32GB
+Epoch: 32 [1000/1563] Loss: 2.8273 | Acc: 35.93% | Time: 0.0279s | GPU Mem: 0.29GB/1.32GB
+Epoch: 32 [1100/1563] Loss: 2.2592 | Acc: 35.82% | Time: 0.0235s | GPU Mem: 0.29GB/1.32GB
+Epoch: 32 [1200/1563] Loss: 2.6601 | Acc: 35.76% | Time: 0.0281s | GPU Mem: 0.29GB/1.32GB
+Epoch: 32 [1300/1563] Loss: 2.3418 | Acc: 35.81% | Time: 0.0270s | GPU Mem: 0.29GB/1.32GB
+Epoch: 32 [1400/1563] Loss: 2.4581 | Acc: 35.80% | Time: 0.0275s | GPU Mem: 0.29GB/1.32GB
+Epoch: 32 [1500/1563] Loss: 2.3194 | Acc: 35.78% | Time: 0.0249s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 2.4779, Acc: 35.76%
+测试 - Loss: 2.9187, Acc: 29.54%
+学习率: 0.100000, 时间: 43.46s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.32GB
+
+============================================================
+Epoch 34/100
+============================================================
+Epoch: 33 [0/1563] Loss: 2.8435 | Acc: 21.88% | Time: 0.0234s | GPU Mem: 0.29GB/1.32GB
+Epoch: 33 [100/1563] Loss: 2.3115 | Acc: 36.85% | Time: 0.0308s | GPU Mem: 0.29GB/1.32GB
+Epoch: 33 [200/1563] Loss: 2.7175 | Acc: 35.71% | Time: 0.0268s | GPU Mem: 0.29GB/1.32GB
+Epoch: 33 [300/1563] Loss: 2.9695 | Acc: 35.84% | Time: 0.0221s | GPU Mem: 0.29GB/1.32GB
+Epoch: 33 [400/1563] Loss: 2.5143 | Acc: 35.93% | Time: 0.0276s | GPU Mem: 0.29GB/1.32GB
+Epoch: 33 [500/1563] Loss: 2.5491 | Acc: 35.99% | Time: 0.0293s | GPU Mem: 0.29GB/1.32GB
+Epoch: 33 [600/1563] Loss: 2.5517 | Acc: 36.12% | Time: 0.0272s | GPU Mem: 0.29GB/1.32GB
+Epoch: 33 [700/1563] Loss: 2.6718 | Acc: 36.15% | Time: 0.0241s | GPU Mem: 0.29GB/1.32GB
+Epoch: 33 [800/1563] Loss: 2.0754 | Acc: 36.13% | Time: 0.0426s | GPU Mem: 0.29GB/1.32GB
+Epoch: 33 [900/1563] Loss: 2.2912 | Acc: 36.10% | Time: 0.0224s | GPU Mem: 0.29GB/1.32GB
+Epoch: 33 [1000/1563] Loss: 2.4851 | Acc: 36.19% | Time: 0.0220s | GPU Mem: 0.29GB/1.32GB
+Epoch: 33 [1100/1563] Loss: 2.1278 | Acc: 36.21% | Time: 0.0286s | GPU Mem: 0.29GB/1.32GB
+Epoch: 33 [1200/1563] Loss: 2.9091 | Acc: 36.10% | Time: 0.0297s | GPU Mem: 0.29GB/1.32GB
+Epoch: 33 [1300/1563] Loss: 2.8054 | Acc: 35.96% | Time: 0.0249s | GPU Mem: 0.29GB/1.32GB
+Epoch: 33 [1400/1563] Loss: 2.4070 | Acc: 35.98% | Time: 0.0232s | GPU Mem: 0.29GB/1.32GB
+Epoch: 33 [1500/1563] Loss: 2.0375 | Acc: 36.03% | Time: 0.0262s | GPU Mem: 0.29GB/1.32GB
+
+训练 - Loss: 2.4685, Acc: 36.10%
+测试 - Loss: 2.6786, Acc: 32.81%
+学习率: 0.100000, 时间: 43.13s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 35/100
+============================================================
+Epoch: 34 [0/1563] Loss: 3.1647 | Acc: 21.88% | Time: 0.0280s | GPU Mem: 0.29GB/1.33GB
+Epoch: 34 [100/1563] Loss: 2.7249 | Acc: 36.91% | Time: 0.0234s | GPU Mem: 0.29GB/1.33GB
+Epoch: 34 [200/1563] Loss: 2.3473 | Acc: 36.43% | Time: 0.0265s | GPU Mem: 0.29GB/1.33GB
+Epoch: 34 [300/1563] Loss: 2.7697 | Acc: 36.43% | Time: 0.0272s | GPU Mem: 0.29GB/1.33GB
+Epoch: 34 [400/1563] Loss: 2.8827 | Acc: 36.39% | Time: 0.0259s | GPU Mem: 0.29GB/1.33GB
+Epoch: 34 [500/1563] Loss: 2.5537 | Acc: 36.22% | Time: 0.0332s | GPU Mem: 0.29GB/1.33GB
+Epoch: 34 [600/1563] Loss: 2.6877 | Acc: 36.04% | Time: 0.0284s | GPU Mem: 0.29GB/1.33GB
+Epoch: 34 [700/1563] Loss: 2.1564 | Acc: 35.95% | Time: 0.0291s | GPU Mem: 0.29GB/1.33GB
+Epoch: 34 [800/1563] Loss: 1.9772 | Acc: 36.04% | Time: 0.0231s | GPU Mem: 0.29GB/1.33GB
+Epoch: 34 [900/1563] Loss: 2.5965 | Acc: 35.92% | Time: 0.0236s | GPU Mem: 0.29GB/1.33GB
+Epoch: 34 [1000/1563] Loss: 2.4024 | Acc: 35.95% | Time: 0.0282s | GPU Mem: 0.29GB/1.33GB
+Epoch: 34 [1100/1563] Loss: 2.0769 | Acc: 35.87% | Time: 0.0238s | GPU Mem: 0.29GB/1.33GB
+Epoch: 34 [1200/1563] Loss: 2.8715 | Acc: 35.92% | Time: 0.0232s | GPU Mem: 0.29GB/1.33GB
+Epoch: 34 [1300/1563] Loss: 2.5564 | Acc: 36.02% | Time: 0.0269s | GPU Mem: 0.29GB/1.33GB
+Epoch: 34 [1400/1563] Loss: 2.6120 | Acc: 35.95% | Time: 0.0291s | GPU Mem: 0.29GB/1.33GB
+Epoch: 34 [1500/1563] Loss: 2.4623 | Acc: 35.87% | Time: 0.0285s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 2.4685, Acc: 35.87%
+测试 - Loss: 2.6796, Acc: 32.78%
+学习率: 0.100000, 时间: 41.64s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 36/100
+============================================================
+Epoch: 35 [0/1563] Loss: 2.6081 | Acc: 37.50% | Time: 0.0297s | GPU Mem: 0.29GB/1.33GB
+Epoch: 35 [100/1563] Loss: 2.3277 | Acc: 37.53% | Time: 0.0295s | GPU Mem: 0.29GB/1.33GB
+Epoch: 35 [200/1563] Loss: 2.1523 | Acc: 36.80% | Time: 0.0283s | GPU Mem: 0.29GB/1.33GB
+Epoch: 35 [300/1563] Loss: 1.7712 | Acc: 36.89% | Time: 0.0245s | GPU Mem: 0.29GB/1.33GB
+Epoch: 35 [400/1563] Loss: 2.5289 | Acc: 36.69% | Time: 0.0314s | GPU Mem: 0.29GB/1.33GB
+Epoch: 35 [500/1563] Loss: 2.1045 | Acc: 36.58% | Time: 0.0265s | GPU Mem: 0.29GB/1.33GB
+Epoch: 35 [600/1563] Loss: 2.5583 | Acc: 36.57% | Time: 0.0218s | GPU Mem: 0.29GB/1.33GB
+Epoch: 35 [700/1563] Loss: 2.5985 | Acc: 36.37% | Time: 0.0274s | GPU Mem: 0.29GB/1.33GB
+Epoch: 35 [800/1563] Loss: 2.4634 | Acc: 36.30% | Time: 0.0289s | GPU Mem: 0.29GB/1.33GB
+Epoch: 35 [900/1563] Loss: 1.7135 | Acc: 36.37% | Time: 0.0295s | GPU Mem: 0.29GB/1.33GB
+Epoch: 35 [1000/1563] Loss: 2.9624 | Acc: 36.42% | Time: 0.0302s | GPU Mem: 0.29GB/1.33GB
+Epoch: 35 [1100/1563] Loss: 2.5208 | Acc: 36.22% | Time: 0.0299s | GPU Mem: 0.29GB/1.33GB
+Epoch: 35 [1200/1563] Loss: 1.9525 | Acc: 36.23% | Time: 0.0255s | GPU Mem: 0.29GB/1.33GB
+Epoch: 35 [1300/1563] Loss: 2.7912 | Acc: 36.14% | Time: 0.0235s | GPU Mem: 0.29GB/1.33GB
+Epoch: 35 [1400/1563] Loss: 2.1443 | Acc: 36.17% | Time: 0.0248s | GPU Mem: 0.29GB/1.33GB
+Epoch: 35 [1500/1563] Loss: 2.2555 | Acc: 36.15% | Time: 0.0273s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 2.4722, Acc: 36.09%
+测试 - Loss: 2.4886, Acc: 36.32%
+学习率: 0.100000, 时间: 42.92s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+最佳准确率更新: 35.56% -> 36.32%
+保存最佳模型到: ./checkpoints/best_model.pth
+
+============================================================
+Epoch 37/100
+============================================================
+Epoch: 36 [0/1563] Loss: 2.0390 | Acc: 37.50% | Time: 0.0335s | GPU Mem: 0.29GB/1.33GB
+Epoch: 36 [100/1563] Loss: 2.4608 | Acc: 38.89% | Time: 0.0263s | GPU Mem: 0.29GB/1.33GB
+Epoch: 36 [200/1563] Loss: 3.5453 | Acc: 36.64% | Time: 0.0294s | GPU Mem: 0.29GB/1.33GB
+Epoch: 36 [300/1563] Loss: 2.4567 | Acc: 36.80% | Time: 0.0264s | GPU Mem: 0.29GB/1.33GB
+Epoch: 36 [400/1563] Loss: 2.0650 | Acc: 36.63% | Time: 0.0283s | GPU Mem: 0.29GB/1.33GB
+Epoch: 36 [500/1563] Loss: 3.1082 | Acc: 36.69% | Time: 0.0304s | GPU Mem: 0.29GB/1.33GB
+Epoch: 36 [600/1563] Loss: 2.5601 | Acc: 36.49% | Time: 0.0278s | GPU Mem: 0.29GB/1.33GB
+Epoch: 36 [700/1563] Loss: 1.8485 | Acc: 36.48% | Time: 0.0278s | GPU Mem: 0.29GB/1.33GB
+Epoch: 36 [800/1563] Loss: 2.8905 | Acc: 36.51% | Time: 0.0258s | GPU Mem: 0.29GB/1.33GB
+Epoch: 36 [900/1563] Loss: 1.6778 | Acc: 36.39% | Time: 0.0247s | GPU Mem: 0.29GB/1.33GB
+Epoch: 36 [1000/1563] Loss: 2.6809 | Acc: 36.23% | Time: 0.0269s | GPU Mem: 0.29GB/1.33GB
+Epoch: 36 [1100/1563] Loss: 2.3236 | Acc: 36.13% | Time: 0.0296s | GPU Mem: 0.29GB/1.33GB
+Epoch: 36 [1200/1563] Loss: 2.5475 | Acc: 36.13% | Time: 0.0252s | GPU Mem: 0.29GB/1.33GB
+Epoch: 36 [1300/1563] Loss: 2.4860 | Acc: 36.09% | Time: 0.0281s | GPU Mem: 0.29GB/1.33GB
+Epoch: 36 [1400/1563] Loss: 2.2912 | Acc: 36.01% | Time: 0.0263s | GPU Mem: 0.29GB/1.33GB
+Epoch: 36 [1500/1563] Loss: 2.1491 | Acc: 35.95% | Time: 0.0243s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 2.4596, Acc: 35.97%
+测试 - Loss: 2.5727, Acc: 34.37%
+学习率: 0.100000, 时间: 43.08s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 38/100
+============================================================
+Epoch: 37 [0/1563] Loss: 1.9933 | Acc: 56.25% | Time: 0.0293s | GPU Mem: 0.29GB/1.33GB
+Epoch: 37 [100/1563] Loss: 2.7002 | Acc: 38.21% | Time: 0.0284s | GPU Mem: 0.29GB/1.33GB
+Epoch: 37 [200/1563] Loss: 2.8287 | Acc: 36.92% | Time: 0.0275s | GPU Mem: 0.29GB/1.33GB
+Epoch: 37 [300/1563] Loss: 1.9964 | Acc: 36.37% | Time: 0.0244s | GPU Mem: 0.29GB/1.33GB
+Epoch: 37 [400/1563] Loss: 2.3206 | Acc: 36.63% | Time: 0.0239s | GPU Mem: 0.29GB/1.33GB
+Epoch: 37 [500/1563] Loss: 2.3965 | Acc: 36.41% | Time: 0.0273s | GPU Mem: 0.29GB/1.33GB
+Epoch: 37 [600/1563] Loss: 2.1604 | Acc: 36.67% | Time: 0.0285s | GPU Mem: 0.29GB/1.33GB
+Epoch: 37 [700/1563] Loss: 2.6165 | Acc: 36.59% | Time: 0.0251s | GPU Mem: 0.29GB/1.33GB
+Epoch: 37 [800/1563] Loss: 2.0345 | Acc: 36.68% | Time: 0.0221s | GPU Mem: 0.29GB/1.33GB
+Epoch: 37 [900/1563] Loss: 2.6974 | Acc: 36.48% | Time: 0.0308s | GPU Mem: 0.29GB/1.33GB
+Epoch: 37 [1000/1563] Loss: 2.5497 | Acc: 36.29% | Time: 0.0298s | GPU Mem: 0.29GB/1.33GB
+Epoch: 37 [1100/1563] Loss: 2.5817 | Acc: 36.11% | Time: 0.0261s | GPU Mem: 0.29GB/1.33GB
+Epoch: 37 [1200/1563] Loss: 2.1519 | Acc: 36.16% | Time: 0.0273s | GPU Mem: 0.29GB/1.33GB
+Epoch: 37 [1300/1563] Loss: 3.0359 | Acc: 36.17% | Time: 0.0309s | GPU Mem: 0.29GB/1.33GB
+Epoch: 37 [1400/1563] Loss: 2.1407 | Acc: 36.15% | Time: 0.0262s | GPU Mem: 0.29GB/1.33GB
+Epoch: 37 [1500/1563] Loss: 2.8305 | Acc: 36.15% | Time: 0.0249s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 2.4706, Acc: 36.11%
+测试 - Loss: 3.1643, Acc: 28.10%
+学习率: 0.100000, 时间: 43.62s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 39/100
+============================================================
+Epoch: 38 [0/1563] Loss: 2.1782 | Acc: 46.88% | Time: 0.0251s | GPU Mem: 0.29GB/1.33GB
+Epoch: 38 [100/1563] Loss: 2.4411 | Acc: 36.63% | Time: 0.0254s | GPU Mem: 0.29GB/1.33GB
+Epoch: 38 [200/1563] Loss: 2.3310 | Acc: 36.33% | Time: 0.0258s | GPU Mem: 0.29GB/1.33GB
+Epoch: 38 [300/1563] Loss: 2.2432 | Acc: 36.16% | Time: 0.0263s | GPU Mem: 0.29GB/1.33GB
+Epoch: 38 [400/1563] Loss: 2.8940 | Acc: 35.65% | Time: 0.0261s | GPU Mem: 0.29GB/1.33GB
+Epoch: 38 [500/1563] Loss: 2.5517 | Acc: 36.03% | Time: 0.0269s | GPU Mem: 0.29GB/1.33GB
+Epoch: 38 [600/1563] Loss: 2.3877 | Acc: 35.80% | Time: 0.0271s | GPU Mem: 0.29GB/1.33GB
+Epoch: 38 [700/1563] Loss: 2.2570 | Acc: 36.03% | Time: 0.0245s | GPU Mem: 0.29GB/1.33GB
+Epoch: 38 [800/1563] Loss: 2.2721 | Acc: 36.09% | Time: 0.0270s | GPU Mem: 0.29GB/1.33GB
+Epoch: 38 [900/1563] Loss: 2.3674 | Acc: 36.04% | Time: 0.0304s | GPU Mem: 0.29GB/1.33GB
+Epoch: 38 [1000/1563] Loss: 2.2994 | Acc: 35.99% | Time: 0.0274s | GPU Mem: 0.29GB/1.33GB
+Epoch: 38 [1100/1563] Loss: 2.4125 | Acc: 36.08% | Time: 0.0299s | GPU Mem: 0.29GB/1.33GB
+Epoch: 38 [1200/1563] Loss: 2.7097 | Acc: 36.17% | Time: 0.0230s | GPU Mem: 0.29GB/1.33GB
+Epoch: 38 [1300/1563] Loss: 2.7143 | Acc: 36.13% | Time: 0.0272s | GPU Mem: 0.29GB/1.33GB
+Epoch: 38 [1400/1563] Loss: 2.6343 | Acc: 36.09% | Time: 0.0287s | GPU Mem: 0.29GB/1.33GB
+Epoch: 38 [1500/1563] Loss: 2.9521 | Acc: 36.05% | Time: 0.0246s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 2.4637, Acc: 36.11%
+测试 - Loss: 2.7359, Acc: 31.90%
+学习率: 0.100000, 时间: 42.42s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 40/100
+============================================================
+Epoch: 39 [0/1563] Loss: 2.4325 | Acc: 40.62% | Time: 0.0294s | GPU Mem: 0.29GB/1.33GB
+Epoch: 39 [100/1563] Loss: 2.3990 | Acc: 36.01% | Time: 0.0244s | GPU Mem: 0.29GB/1.33GB
+Epoch: 39 [200/1563] Loss: 1.9786 | Acc: 35.40% | Time: 0.0230s | GPU Mem: 0.29GB/1.33GB
+Epoch: 39 [300/1563] Loss: 2.0992 | Acc: 35.85% | Time: 0.0286s | GPU Mem: 0.29GB/1.33GB
+Epoch: 39 [400/1563] Loss: 2.3124 | Acc: 35.98% | Time: 0.0231s | GPU Mem: 0.29GB/1.33GB
+Epoch: 39 [500/1563] Loss: 3.2964 | Acc: 35.98% | Time: 0.0296s | GPU Mem: 0.29GB/1.33GB
+Epoch: 39 [600/1563] Loss: 3.1980 | Acc: 35.89% | Time: 0.0244s | GPU Mem: 0.29GB/1.33GB
+Epoch: 39 [700/1563] Loss: 2.3187 | Acc: 36.05% | Time: 0.0238s | GPU Mem: 0.29GB/1.33GB
+Epoch: 39 [800/1563] Loss: 2.7733 | Acc: 35.90% | Time: 0.0266s | GPU Mem: 0.29GB/1.33GB
+Epoch: 39 [900/1563] Loss: 2.2002 | Acc: 35.89% | Time: 0.0257s | GPU Mem: 0.29GB/1.33GB
+Epoch: 39 [1000/1563] Loss: 2.4810 | Acc: 36.03% | Time: 0.0248s | GPU Mem: 0.29GB/1.33GB
+Epoch: 39 [1100/1563] Loss: 2.6626 | Acc: 36.15% | Time: 0.0218s | GPU Mem: 0.29GB/1.33GB
+Epoch: 39 [1200/1563] Loss: 1.9193 | Acc: 36.28% | Time: 0.0280s | GPU Mem: 0.29GB/1.33GB
+Epoch: 39 [1300/1563] Loss: 2.2417 | Acc: 36.21% | Time: 0.0248s | GPU Mem: 0.29GB/1.33GB
+Epoch: 39 [1400/1563] Loss: 1.9247 | Acc: 36.15% | Time: 0.0216s | GPU Mem: 0.29GB/1.33GB
+Epoch: 39 [1500/1563] Loss: 2.7073 | Acc: 36.10% | Time: 0.0290s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 2.4619, Acc: 36.09%
+测试 - Loss: 2.7102, Acc: 31.62%
+学习率: 0.100000, 时间: 42.49s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+保存checkpoint到: ./checkpoints/checkpoint_epoch_40.pth
+
+============================================================
+Epoch 41/100
+============================================================
+Epoch: 40 [0/1563] Loss: 2.7470 | Acc: 25.00% | Time: 0.0259s | GPU Mem: 0.29GB/1.33GB
+Epoch: 40 [100/1563] Loss: 2.4581 | Acc: 37.87% | Time: 0.0265s | GPU Mem: 0.29GB/1.33GB
+Epoch: 40 [200/1563] Loss: 2.4242 | Acc: 37.44% | Time: 0.0248s | GPU Mem: 0.29GB/1.33GB
+Epoch: 40 [300/1563] Loss: 2.5458 | Acc: 36.89% | Time: 0.0325s | GPU Mem: 0.29GB/1.33GB
+Epoch: 40 [400/1563] Loss: 3.1650 | Acc: 36.72% | Time: 0.0318s | GPU Mem: 0.29GB/1.33GB
+Epoch: 40 [500/1563] Loss: 2.7684 | Acc: 36.33% | Time: 0.0252s | GPU Mem: 0.29GB/1.33GB
+Epoch: 40 [600/1563] Loss: 2.4900 | Acc: 36.61% | Time: 0.0272s | GPU Mem: 0.29GB/1.33GB
+Epoch: 40 [700/1563] Loss: 1.7499 | Acc: 36.74% | Time: 0.0247s | GPU Mem: 0.29GB/1.33GB
+Epoch: 40 [800/1563] Loss: 2.5284 | Acc: 36.52% | Time: 0.0249s | GPU Mem: 0.29GB/1.33GB
+Epoch: 40 [900/1563] Loss: 2.1165 | Acc: 36.36% | Time: 0.0293s | GPU Mem: 0.29GB/1.33GB
+Epoch: 40 [1000/1563] Loss: 2.5337 | Acc: 36.22% | Time: 0.0235s | GPU Mem: 0.29GB/1.33GB
+Epoch: 40 [1100/1563] Loss: 2.2815 | Acc: 36.24% | Time: 0.0256s | GPU Mem: 0.29GB/1.33GB
+Epoch: 40 [1200/1563] Loss: 2.3894 | Acc: 36.24% | Time: 0.0278s | GPU Mem: 0.29GB/1.33GB
+Epoch: 40 [1300/1563] Loss: 2.5490 | Acc: 36.20% | Time: 0.0256s | GPU Mem: 0.29GB/1.33GB
+Epoch: 40 [1400/1563] Loss: 2.6799 | Acc: 36.27% | Time: 0.0323s | GPU Mem: 0.29GB/1.33GB
+Epoch: 40 [1500/1563] Loss: 2.7688 | Acc: 36.17% | Time: 0.0228s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 2.4620, Acc: 36.14%
+测试 - Loss: 2.6848, Acc: 32.91%
+学习率: 0.100000, 时间: 43.21s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 42/100
+============================================================
+Epoch: 41 [0/1563] Loss: 2.4594 | Acc: 34.38% | Time: 0.0302s | GPU Mem: 0.29GB/1.33GB
+Epoch: 41 [100/1563] Loss: 2.7384 | Acc: 37.96% | Time: 0.0312s | GPU Mem: 0.29GB/1.33GB
+Epoch: 41 [200/1563] Loss: 2.2217 | Acc: 37.25% | Time: 0.0250s | GPU Mem: 0.29GB/1.33GB
+Epoch: 41 [300/1563] Loss: 2.3743 | Acc: 36.43% | Time: 0.0243s | GPU Mem: 0.29GB/1.33GB
+Epoch: 41 [400/1563] Loss: 2.8990 | Acc: 36.35% | Time: 0.0255s | GPU Mem: 0.29GB/1.33GB
+Epoch: 41 [500/1563] Loss: 2.3643 | Acc: 36.33% | Time: 0.0237s | GPU Mem: 0.29GB/1.33GB
+Epoch: 41 [600/1563] Loss: 3.1726 | Acc: 36.33% | Time: 0.0261s | GPU Mem: 0.29GB/1.33GB
+Epoch: 41 [700/1563] Loss: 2.1358 | Acc: 36.23% | Time: 0.0292s | GPU Mem: 0.29GB/1.33GB
+Epoch: 41 [800/1563] Loss: 2.5871 | Acc: 36.00% | Time: 0.0255s | GPU Mem: 0.29GB/1.33GB
+Epoch: 41 [900/1563] Loss: 2.0830 | Acc: 35.93% | Time: 0.0218s | GPU Mem: 0.29GB/1.33GB
+Epoch: 41 [1000/1563] Loss: 2.2338 | Acc: 35.98% | Time: 0.0259s | GPU Mem: 0.29GB/1.33GB
+Epoch: 41 [1100/1563] Loss: 1.9379 | Acc: 36.01% | Time: 0.0274s | GPU Mem: 0.29GB/1.33GB
+Epoch: 41 [1200/1563] Loss: 2.0330 | Acc: 35.99% | Time: 0.0227s | GPU Mem: 0.29GB/1.33GB
+Epoch: 41 [1300/1563] Loss: 2.2293 | Acc: 36.01% | Time: 0.0263s | GPU Mem: 0.29GB/1.33GB
+Epoch: 41 [1400/1563] Loss: 2.0091 | Acc: 35.89% | Time: 0.0232s | GPU Mem: 0.29GB/1.33GB
+Epoch: 41 [1500/1563] Loss: 2.9050 | Acc: 35.90% | Time: 0.0277s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 2.4571, Acc: 35.88%
+测试 - Loss: 2.5370, Acc: 34.95%
+学习率: 0.100000, 时间: 42.00s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 43/100
+============================================================
+Epoch: 42 [0/1563] Loss: 2.5468 | Acc: 31.25% | Time: 0.0351s | GPU Mem: 0.29GB/1.33GB
+Epoch: 42 [100/1563] Loss: 2.1319 | Acc: 36.14% | Time: 0.0282s | GPU Mem: 0.29GB/1.33GB
+Epoch: 42 [200/1563] Loss: 2.0207 | Acc: 36.19% | Time: 0.0295s | GPU Mem: 0.29GB/1.33GB
+Epoch: 42 [300/1563] Loss: 2.2814 | Acc: 36.21% | Time: 0.0260s | GPU Mem: 0.29GB/1.33GB
+Epoch: 42 [400/1563] Loss: 2.7131 | Acc: 36.29% | Time: 0.0245s | GPU Mem: 0.29GB/1.33GB
+Epoch: 42 [500/1563] Loss: 2.4300 | Acc: 36.50% | Time: 0.0220s | GPU Mem: 0.29GB/1.33GB
+Epoch: 42 [600/1563] Loss: 2.7700 | Acc: 36.43% | Time: 0.0218s | GPU Mem: 0.29GB/1.33GB
+Epoch: 42 [700/1563] Loss: 2.3864 | Acc: 36.53% | Time: 0.0272s | GPU Mem: 0.29GB/1.33GB
+Epoch: 42 [800/1563] Loss: 2.3303 | Acc: 36.41% | Time: 0.0290s | GPU Mem: 0.29GB/1.33GB
+Epoch: 42 [900/1563] Loss: 2.5486 | Acc: 36.38% | Time: 0.0265s | GPU Mem: 0.29GB/1.33GB
+Epoch: 42 [1000/1563] Loss: 2.5274 | Acc: 36.34% | Time: 0.0236s | GPU Mem: 0.29GB/1.33GB
+Epoch: 42 [1100/1563] Loss: 2.3838 | Acc: 36.17% | Time: 0.0248s | GPU Mem: 0.29GB/1.33GB
+Epoch: 42 [1200/1563] Loss: 3.5221 | Acc: 36.06% | Time: 0.0320s | GPU Mem: 0.29GB/1.33GB
+Epoch: 42 [1300/1563] Loss: 2.3715 | Acc: 35.98% | Time: 0.0249s | GPU Mem: 0.29GB/1.33GB
+Epoch: 42 [1400/1563] Loss: 2.6936 | Acc: 36.02% | Time: 0.0226s | GPU Mem: 0.29GB/1.33GB
+Epoch: 42 [1500/1563] Loss: 2.0704 | Acc: 36.03% | Time: 0.0247s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 2.4568, Acc: 36.09%
+测试 - Loss: 3.0179, Acc: 28.63%
+学习率: 0.100000, 时间: 43.38s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 44/100
+============================================================
+Epoch: 43 [0/1563] Loss: 2.6616 | Acc: 34.38% | Time: 0.0337s | GPU Mem: 0.29GB/1.33GB
+Epoch: 43 [100/1563] Loss: 2.9579 | Acc: 36.82% | Time: 0.0296s | GPU Mem: 0.29GB/1.33GB
+Epoch: 43 [200/1563] Loss: 2.6403 | Acc: 36.71% | Time: 0.0315s | GPU Mem: 0.29GB/1.33GB
+Epoch: 43 [300/1563] Loss: 2.6050 | Acc: 36.43% | Time: 0.0297s | GPU Mem: 0.29GB/1.33GB
+Epoch: 43 [400/1563] Loss: 2.8486 | Acc: 36.22% | Time: 0.0237s | GPU Mem: 0.29GB/1.33GB
+Epoch: 43 [500/1563] Loss: 2.7321 | Acc: 36.27% | Time: 0.0226s | GPU Mem: 0.29GB/1.33GB
+Epoch: 43 [600/1563] Loss: 2.3413 | Acc: 36.29% | Time: 0.0217s | GPU Mem: 0.29GB/1.33GB
+Epoch: 43 [700/1563] Loss: 2.4573 | Acc: 36.10% | Time: 0.0254s | GPU Mem: 0.29GB/1.33GB
+Epoch: 43 [800/1563] Loss: 2.7572 | Acc: 36.14% | Time: 0.0267s | GPU Mem: 0.29GB/1.33GB
+Epoch: 43 [900/1563] Loss: 2.4731 | Acc: 36.16% | Time: 0.0264s | GPU Mem: 0.29GB/1.33GB
+Epoch: 43 [1000/1563] Loss: 2.3076 | Acc: 36.25% | Time: 0.0247s | GPU Mem: 0.29GB/1.33GB
+Epoch: 43 [1100/1563] Loss: 2.7607 | Acc: 36.19% | Time: 0.0266s | GPU Mem: 0.29GB/1.33GB
+Epoch: 43 [1200/1563] Loss: 2.5179 | Acc: 36.08% | Time: 0.0291s | GPU Mem: 0.29GB/1.33GB
+Epoch: 43 [1300/1563] Loss: 2.4591 | Acc: 36.10% | Time: 0.0254s | GPU Mem: 0.29GB/1.33GB
+Epoch: 43 [1400/1563] Loss: 2.6508 | Acc: 36.14% | Time: 0.0245s | GPU Mem: 0.29GB/1.33GB
+Epoch: 43 [1500/1563] Loss: 2.4438 | Acc: 36.13% | Time: 0.0262s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 2.4612, Acc: 36.10%
+测试 - Loss: 2.9342, Acc: 28.21%
+学习率: 0.100000, 时间: 43.41s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 45/100
+============================================================
+Epoch: 44 [0/1563] Loss: 2.1229 | Acc: 40.62% | Time: 0.0295s | GPU Mem: 0.29GB/1.33GB
+Epoch: 44 [100/1563] Loss: 2.8505 | Acc: 37.28% | Time: 0.0235s | GPU Mem: 0.29GB/1.33GB
+Epoch: 44 [200/1563] Loss: 2.1562 | Acc: 36.71% | Time: 0.0262s | GPU Mem: 0.29GB/1.33GB
+Epoch: 44 [300/1563] Loss: 2.3731 | Acc: 36.67% | Time: 0.0243s | GPU Mem: 0.29GB/1.33GB
+Epoch: 44 [400/1563] Loss: 2.3052 | Acc: 36.53% | Time: 0.0277s | GPU Mem: 0.29GB/1.33GB
+Epoch: 44 [500/1563] Loss: 2.3384 | Acc: 36.53% | Time: 0.0271s | GPU Mem: 0.29GB/1.33GB
+Epoch: 44 [600/1563] Loss: 2.1499 | Acc: 36.22% | Time: 0.0278s | GPU Mem: 0.29GB/1.33GB
+Epoch: 44 [700/1563] Loss: 2.5731 | Acc: 36.33% | Time: 0.0300s | GPU Mem: 0.29GB/1.33GB
+Epoch: 44 [800/1563] Loss: 2.0912 | Acc: 36.42% | Time: 0.0270s | GPU Mem: 0.29GB/1.33GB
+Epoch: 44 [900/1563] Loss: 2.2993 | Acc: 36.33% | Time: 0.0271s | GPU Mem: 0.29GB/1.33GB
+Epoch: 44 [1000/1563] Loss: 2.3877 | Acc: 36.30% | Time: 0.0279s | GPU Mem: 0.29GB/1.33GB
+Epoch: 44 [1100/1563] Loss: 2.7636 | Acc: 36.32% | Time: 0.0294s | GPU Mem: 0.29GB/1.33GB
+Epoch: 44 [1200/1563] Loss: 2.5541 | Acc: 36.38% | Time: 0.0299s | GPU Mem: 0.29GB/1.33GB
+Epoch: 44 [1300/1563] Loss: 2.4318 | Acc: 36.39% | Time: 0.0244s | GPU Mem: 0.29GB/1.33GB
+Epoch: 44 [1400/1563] Loss: 2.4919 | Acc: 36.43% | Time: 0.0253s | GPU Mem: 0.29GB/1.33GB
+Epoch: 44 [1500/1563] Loss: 2.4391 | Acc: 36.45% | Time: 0.0296s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 2.4514, Acc: 36.43%
+测试 - Loss: 2.8653, Acc: 29.81%
+学习率: 0.100000, 时间: 43.07s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 46/100
+============================================================
+Epoch: 45 [0/1563] Loss: 2.3141 | Acc: 50.00% | Time: 0.0254s | GPU Mem: 0.29GB/1.33GB
+Epoch: 45 [100/1563] Loss: 2.0772 | Acc: 37.75% | Time: 0.0272s | GPU Mem: 0.29GB/1.33GB
+Epoch: 45 [200/1563] Loss: 2.4722 | Acc: 37.38% | Time: 0.0294s | GPU Mem: 0.29GB/1.33GB
+Epoch: 45 [300/1563] Loss: 2.9154 | Acc: 37.12% | Time: 0.0260s | GPU Mem: 0.29GB/1.33GB
+Epoch: 45 [400/1563] Loss: 2.4791 | Acc: 36.95% | Time: 0.0275s | GPU Mem: 0.29GB/1.33GB
+Epoch: 45 [500/1563] Loss: 2.5327 | Acc: 36.63% | Time: 0.0273s | GPU Mem: 0.29GB/1.33GB
+Epoch: 45 [600/1563] Loss: 2.7017 | Acc: 36.56% | Time: 0.0248s | GPU Mem: 0.29GB/1.33GB
+Epoch: 45 [700/1563] Loss: 2.9261 | Acc: 36.47% | Time: 0.0257s | GPU Mem: 0.29GB/1.33GB
+Epoch: 45 [800/1563] Loss: 2.1870 | Acc: 36.45% | Time: 0.0261s | GPU Mem: 0.29GB/1.33GB
+Epoch: 45 [900/1563] Loss: 2.5154 | Acc: 36.48% | Time: 0.0215s | GPU Mem: 0.29GB/1.33GB
+Epoch: 45 [1000/1563] Loss: 2.6182 | Acc: 36.48% | Time: 0.0215s | GPU Mem: 0.29GB/1.33GB
+Epoch: 45 [1100/1563] Loss: 2.4804 | Acc: 36.52% | Time: 0.0253s | GPU Mem: 0.29GB/1.33GB
+Epoch: 45 [1200/1563] Loss: 2.9764 | Acc: 36.49% | Time: 0.0274s | GPU Mem: 0.29GB/1.33GB
+Epoch: 45 [1300/1563] Loss: 2.2045 | Acc: 36.51% | Time: 0.0254s | GPU Mem: 0.29GB/1.33GB
+Epoch: 45 [1400/1563] Loss: 2.8390 | Acc: 36.52% | Time: 0.0269s | GPU Mem: 0.29GB/1.33GB
+Epoch: 45 [1500/1563] Loss: 3.3970 | Acc: 36.45% | Time: 0.0280s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 2.4583, Acc: 36.47%
+测试 - Loss: 2.7348, Acc: 31.76%
+学习率: 0.100000, 时间: 43.60s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 47/100
+============================================================
+Epoch: 46 [0/1563] Loss: 2.0853 | Acc: 37.50% | Time: 0.0236s | GPU Mem: 0.29GB/1.33GB
+Epoch: 46 [100/1563] Loss: 2.1920 | Acc: 36.85% | Time: 0.0265s | GPU Mem: 0.29GB/1.33GB
+Epoch: 46 [200/1563] Loss: 2.2243 | Acc: 36.60% | Time: 0.0283s | GPU Mem: 0.29GB/1.33GB
+Epoch: 46 [300/1563] Loss: 2.6607 | Acc: 36.71% | Time: 0.0271s | GPU Mem: 0.29GB/1.33GB
+Epoch: 46 [400/1563] Loss: 2.6905 | Acc: 36.76% | Time: 0.0282s | GPU Mem: 0.29GB/1.33GB
+Epoch: 46 [500/1563] Loss: 2.4953 | Acc: 36.72% | Time: 0.0220s | GPU Mem: 0.29GB/1.33GB
+Epoch: 46 [600/1563] Loss: 2.2183 | Acc: 36.90% | Time: 0.0216s | GPU Mem: 0.29GB/1.33GB
+Epoch: 46 [700/1563] Loss: 2.3841 | Acc: 36.70% | Time: 0.0298s | GPU Mem: 0.29GB/1.33GB
+Epoch: 46 [800/1563] Loss: 2.7839 | Acc: 36.60% | Time: 0.0305s | GPU Mem: 0.29GB/1.33GB
+Epoch: 46 [900/1563] Loss: 2.7805 | Acc: 36.62% | Time: 0.0261s | GPU Mem: 0.29GB/1.33GB
+Epoch: 46 [1000/1563] Loss: 2.6979 | Acc: 36.55% | Time: 0.0290s | GPU Mem: 0.29GB/1.33GB
+Epoch: 46 [1100/1563] Loss: 2.9656 | Acc: 36.55% | Time: 0.0252s | GPU Mem: 0.29GB/1.33GB
+Epoch: 46 [1200/1563] Loss: 2.4129 | Acc: 36.52% | Time: 0.0267s | GPU Mem: 0.29GB/1.33GB
+Epoch: 46 [1300/1563] Loss: 2.5612 | Acc: 36.54% | Time: 0.0304s | GPU Mem: 0.29GB/1.33GB
+Epoch: 46 [1400/1563] Loss: 2.6894 | Acc: 36.48% | Time: 0.0249s | GPU Mem: 0.29GB/1.33GB
+Epoch: 46 [1500/1563] Loss: 2.4203 | Acc: 36.42% | Time: 0.0352s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 2.4578, Acc: 36.35%
+测试 - Loss: 2.6202, Acc: 33.76%
+学习率: 0.100000, 时间: 43.30s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 48/100
+============================================================
+Epoch: 47 [0/1563] Loss: 2.8154 | Acc: 31.25% | Time: 0.0283s | GPU Mem: 0.29GB/1.33GB
+Epoch: 47 [100/1563] Loss: 2.6402 | Acc: 35.89% | Time: 0.0229s | GPU Mem: 0.29GB/1.33GB
+Epoch: 47 [200/1563] Loss: 2.4196 | Acc: 36.49% | Time: 0.0261s | GPU Mem: 0.29GB/1.33GB
+Epoch: 47 [300/1563] Loss: 2.8450 | Acc: 36.81% | Time: 0.0257s | GPU Mem: 0.29GB/1.33GB
+Epoch: 47 [400/1563] Loss: 2.4183 | Acc: 36.56% | Time: 0.0290s | GPU Mem: 0.29GB/1.33GB
+Epoch: 47 [500/1563] Loss: 2.4924 | Acc: 36.53% | Time: 0.0277s | GPU Mem: 0.29GB/1.33GB
+Epoch: 47 [600/1563] Loss: 2.1725 | Acc: 36.54% | Time: 0.0258s | GPU Mem: 0.29GB/1.33GB
+Epoch: 47 [700/1563] Loss: 2.3642 | Acc: 36.52% | Time: 0.0276s | GPU Mem: 0.29GB/1.33GB
+Epoch: 47 [800/1563] Loss: 2.2527 | Acc: 36.44% | Time: 0.0283s | GPU Mem: 0.29GB/1.33GB
+Epoch: 47 [900/1563] Loss: 2.7661 | Acc: 36.35% | Time: 0.0258s | GPU Mem: 0.29GB/1.33GB
+Epoch: 47 [1000/1563] Loss: 2.7816 | Acc: 36.41% | Time: 0.0237s | GPU Mem: 0.29GB/1.33GB
+Epoch: 47 [1100/1563] Loss: 2.3000 | Acc: 36.35% | Time: 0.0295s | GPU Mem: 0.29GB/1.33GB
+Epoch: 47 [1200/1563] Loss: 2.1493 | Acc: 36.27% | Time: 0.0272s | GPU Mem: 0.29GB/1.33GB
+Epoch: 47 [1300/1563] Loss: 2.2627 | Acc: 36.29% | Time: 0.0215s | GPU Mem: 0.29GB/1.33GB
+Epoch: 47 [1400/1563] Loss: 2.7321 | Acc: 36.22% | Time: 0.0233s | GPU Mem: 0.29GB/1.33GB
+Epoch: 47 [1500/1563] Loss: 2.0711 | Acc: 36.23% | Time: 0.0270s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 2.4547, Acc: 36.20%
+测试 - Loss: 3.0009, Acc: 28.48%
+学习率: 0.100000, 时间: 43.03s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 49/100
+============================================================
+Epoch: 48 [0/1563] Loss: 2.6533 | Acc: 31.25% | Time: 0.0337s | GPU Mem: 0.29GB/1.33GB
+Epoch: 48 [100/1563] Loss: 2.0767 | Acc: 36.48% | Time: 0.0269s | GPU Mem: 0.29GB/1.33GB
+Epoch: 48 [200/1563] Loss: 2.3650 | Acc: 36.41% | Time: 0.0272s | GPU Mem: 0.29GB/1.33GB
+Epoch: 48 [300/1563] Loss: 2.4199 | Acc: 36.98% | Time: 0.0285s | GPU Mem: 0.29GB/1.33GB
+Epoch: 48 [400/1563] Loss: 2.4457 | Acc: 36.76% | Time: 0.0263s | GPU Mem: 0.29GB/1.33GB
+Epoch: 48 [500/1563] Loss: 3.1550 | Acc: 36.83% | Time: 0.0262s | GPU Mem: 0.29GB/1.33GB
+Epoch: 48 [600/1563] Loss: 2.3195 | Acc: 36.61% | Time: 0.0262s | GPU Mem: 0.29GB/1.33GB
+Epoch: 48 [700/1563] Loss: 3.1711 | Acc: 36.66% | Time: 0.0267s | GPU Mem: 0.29GB/1.33GB
+Epoch: 48 [800/1563] Loss: 2.3613 | Acc: 36.39% | Time: 0.0263s | GPU Mem: 0.29GB/1.33GB
+Epoch: 48 [900/1563] Loss: 2.3728 | Acc: 36.33% | Time: 0.0267s | GPU Mem: 0.29GB/1.33GB
+Epoch: 48 [1000/1563] Loss: 1.9640 | Acc: 36.44% | Time: 0.0251s | GPU Mem: 0.29GB/1.33GB
+Epoch: 48 [1100/1563] Loss: 2.4520 | Acc: 36.34% | Time: 0.0269s | GPU Mem: 0.29GB/1.33GB
+Epoch: 48 [1200/1563] Loss: 2.3578 | Acc: 36.48% | Time: 0.0290s | GPU Mem: 0.29GB/1.33GB
+Epoch: 48 [1300/1563] Loss: 2.4098 | Acc: 36.51% | Time: 0.0263s | GPU Mem: 0.29GB/1.33GB
+Epoch: 48 [1400/1563] Loss: 2.3744 | Acc: 36.42% | Time: 0.0277s | GPU Mem: 0.29GB/1.33GB
+Epoch: 48 [1500/1563] Loss: 2.4380 | Acc: 36.37% | Time: 0.0317s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 2.4476, Acc: 36.36%
+测试 - Loss: 2.7913, Acc: 32.20%
+学习率: 0.100000, 时间: 43.83s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 50/100
+============================================================
+Epoch: 49 [0/1563] Loss: 2.3329 | Acc: 40.62% | Time: 0.0285s | GPU Mem: 0.29GB/1.33GB
+Epoch: 49 [100/1563] Loss: 3.2974 | Acc: 37.07% | Time: 0.0315s | GPU Mem: 0.29GB/1.33GB
+Epoch: 49 [200/1563] Loss: 2.5179 | Acc: 36.94% | Time: 0.0262s | GPU Mem: 0.29GB/1.33GB
+Epoch: 49 [300/1563] Loss: 2.3634 | Acc: 36.70% | Time: 0.0272s | GPU Mem: 0.29GB/1.33GB
+Epoch: 49 [400/1563] Loss: 3.0038 | Acc: 36.56% | Time: 0.0303s | GPU Mem: 0.29GB/1.33GB
+Epoch: 49 [500/1563] Loss: 2.8455 | Acc: 36.48% | Time: 0.0245s | GPU Mem: 0.29GB/1.33GB
+Epoch: 49 [600/1563] Loss: 2.2686 | Acc: 36.68% | Time: 0.0252s | GPU Mem: 0.29GB/1.33GB
+Epoch: 49 [700/1563] Loss: 2.6249 | Acc: 36.64% | Time: 0.0295s | GPU Mem: 0.29GB/1.33GB
+Epoch: 49 [800/1563] Loss: 2.5636 | Acc: 36.63% | Time: 0.0246s | GPU Mem: 0.29GB/1.33GB
+Epoch: 49 [900/1563] Loss: 2.4688 | Acc: 36.51% | Time: 0.0266s | GPU Mem: 0.29GB/1.33GB
+Epoch: 49 [1000/1563] Loss: 2.3750 | Acc: 36.40% | Time: 0.0285s | GPU Mem: 0.29GB/1.33GB
+Epoch: 49 [1100/1563] Loss: 2.1417 | Acc: 36.40% | Time: 0.0243s | GPU Mem: 0.29GB/1.33GB
+Epoch: 49 [1200/1563] Loss: 2.3101 | Acc: 36.37% | Time: 0.0287s | GPU Mem: 0.29GB/1.33GB
+Epoch: 49 [1300/1563] Loss: 2.0413 | Acc: 36.33% | Time: 0.0266s | GPU Mem: 0.29GB/1.33GB
+Epoch: 49 [1400/1563] Loss: 2.7439 | Acc: 36.33% | Time: 0.0291s | GPU Mem: 0.29GB/1.33GB
+Epoch: 49 [1500/1563] Loss: 2.7007 | Acc: 36.30% | Time: 0.0269s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 2.4487, Acc: 36.28%
+测试 - Loss: 2.7749, Acc: 31.52%
+学习率: 0.010000, 时间: 43.40s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+保存checkpoint到: ./checkpoints/checkpoint_epoch_50.pth
+
+============================================================
+Epoch 51/100
+============================================================
+Epoch: 50 [0/1563] Loss: 2.3360 | Acc: 34.38% | Time: 0.0251s | GPU Mem: 0.29GB/1.33GB
+Epoch: 50 [100/1563] Loss: 2.7181 | Acc: 43.01% | Time: 0.0249s | GPU Mem: 0.29GB/1.33GB
+Epoch: 50 [200/1563] Loss: 2.0474 | Acc: 45.43% | Time: 0.0222s | GPU Mem: 0.29GB/1.33GB
+Epoch: 50 [300/1563] Loss: 2.0306 | Acc: 46.49% | Time: 0.0256s | GPU Mem: 0.29GB/1.33GB
+Epoch: 50 [400/1563] Loss: 1.8519 | Acc: 47.27% | Time: 0.0259s | GPU Mem: 0.29GB/1.33GB
+Epoch: 50 [500/1563] Loss: 1.7801 | Acc: 47.88% | Time: 0.0265s | GPU Mem: 0.29GB/1.33GB
+Epoch: 50 [600/1563] Loss: 2.2873 | Acc: 48.04% | Time: 0.0236s | GPU Mem: 0.29GB/1.33GB
+Epoch: 50 [700/1563] Loss: 1.7379 | Acc: 48.38% | Time: 0.0235s | GPU Mem: 0.29GB/1.33GB
+Epoch: 50 [800/1563] Loss: 1.5427 | Acc: 48.66% | Time: 0.0279s | GPU Mem: 0.29GB/1.33GB
+Epoch: 50 [900/1563] Loss: 1.2479 | Acc: 48.97% | Time: 0.0255s | GPU Mem: 0.29GB/1.33GB
+Epoch: 50 [1000/1563] Loss: 2.4275 | Acc: 49.30% | Time: 0.0298s | GPU Mem: 0.29GB/1.33GB
+Epoch: 50 [1100/1563] Loss: 1.5421 | Acc: 49.49% | Time: 0.0289s | GPU Mem: 0.29GB/1.33GB
+Epoch: 50 [1200/1563] Loss: 1.4577 | Acc: 49.89% | Time: 0.0239s | GPU Mem: 0.29GB/1.33GB
+Epoch: 50 [1300/1563] Loss: 1.6928 | Acc: 50.08% | Time: 0.0253s | GPU Mem: 0.29GB/1.33GB
+Epoch: 50 [1400/1563] Loss: 1.9954 | Acc: 50.25% | Time: 0.0286s | GPU Mem: 0.29GB/1.33GB
+Epoch: 50 [1500/1563] Loss: 1.5295 | Acc: 50.51% | Time: 0.0266s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.8221, Acc: 50.66%
+测试 - Loss: 1.6609, Acc: 54.32%
+学习率: 0.010000, 时间: 43.47s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+最佳准确率更新: 36.32% -> 54.32%
+保存最佳模型到: ./checkpoints/best_model.pth
+
+============================================================
+Epoch 52/100
+============================================================
+Epoch: 51 [0/1563] Loss: 1.9640 | Acc: 43.75% | Time: 0.0327s | GPU Mem: 0.29GB/1.33GB
+Epoch: 51 [100/1563] Loss: 1.8884 | Acc: 53.81% | Time: 0.0236s | GPU Mem: 0.29GB/1.33GB
+Epoch: 51 [200/1563] Loss: 1.4209 | Acc: 54.42% | Time: 0.0245s | GPU Mem: 0.29GB/1.33GB
+Epoch: 51 [300/1563] Loss: 1.3537 | Acc: 54.62% | Time: 0.0277s | GPU Mem: 0.29GB/1.33GB
+Epoch: 51 [400/1563] Loss: 1.8649 | Acc: 54.47% | Time: 0.0283s | GPU Mem: 0.29GB/1.33GB
+Epoch: 51 [500/1563] Loss: 1.8373 | Acc: 54.33% | Time: 0.0263s | GPU Mem: 0.29GB/1.33GB
+Epoch: 51 [600/1563] Loss: 1.2968 | Acc: 54.39% | Time: 0.0228s | GPU Mem: 0.29GB/1.33GB
+Epoch: 51 [700/1563] Loss: 1.2271 | Acc: 54.27% | Time: 0.0254s | GPU Mem: 0.29GB/1.33GB
+Epoch: 51 [800/1563] Loss: 1.7505 | Acc: 54.23% | Time: 0.0239s | GPU Mem: 0.29GB/1.33GB
+Epoch: 51 [900/1563] Loss: 1.5820 | Acc: 54.04% | Time: 0.0270s | GPU Mem: 0.29GB/1.33GB
+Epoch: 51 [1000/1563] Loss: 2.1510 | Acc: 54.13% | Time: 0.0229s | GPU Mem: 0.29GB/1.33GB
+Epoch: 51 [1100/1563] Loss: 1.8916 | Acc: 54.20% | Time: 0.0265s | GPU Mem: 0.29GB/1.33GB
+Epoch: 51 [1200/1563] Loss: 1.4278 | Acc: 54.21% | Time: 0.0258s | GPU Mem: 0.29GB/1.33GB
+Epoch: 51 [1300/1563] Loss: 1.4079 | Acc: 54.26% | Time: 0.0278s | GPU Mem: 0.29GB/1.33GB
+Epoch: 51 [1400/1563] Loss: 1.6710 | Acc: 54.17% | Time: 0.0289s | GPU Mem: 0.29GB/1.33GB
+Epoch: 51 [1500/1563] Loss: 1.8761 | Acc: 54.28% | Time: 0.0236s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.6547, Acc: 54.28%
+测试 - Loss: 1.6250, Acc: 55.43%
+学习率: 0.010000, 时间: 42.99s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+最佳准确率更新: 54.32% -> 55.43%
+保存最佳模型到: ./checkpoints/best_model.pth
+
+============================================================
+Epoch 53/100
+============================================================
+Epoch: 52 [0/1563] Loss: 1.6828 | Acc: 50.00% | Time: 0.0286s | GPU Mem: 0.29GB/1.33GB
+Epoch: 52 [100/1563] Loss: 1.7772 | Acc: 56.62% | Time: 0.0263s | GPU Mem: 0.29GB/1.33GB
+Epoch: 52 [200/1563] Loss: 1.4274 | Acc: 56.84% | Time: 0.0242s | GPU Mem: 0.29GB/1.33GB
+Epoch: 52 [300/1563] Loss: 1.4914 | Acc: 56.40% | Time: 0.0262s | GPU Mem: 0.29GB/1.33GB
+Epoch: 52 [400/1563] Loss: 1.3952 | Acc: 56.33% | Time: 0.0271s | GPU Mem: 0.29GB/1.33GB
+Epoch: 52 [500/1563] Loss: 1.5998 | Acc: 56.24% | Time: 0.0263s | GPU Mem: 0.29GB/1.33GB
+Epoch: 52 [600/1563] Loss: 1.7449 | Acc: 56.01% | Time: 0.0246s | GPU Mem: 0.29GB/1.33GB
+Epoch: 52 [700/1563] Loss: 1.3363 | Acc: 55.92% | Time: 0.0283s | GPU Mem: 0.29GB/1.33GB
+Epoch: 52 [800/1563] Loss: 1.7703 | Acc: 55.98% | Time: 0.0302s | GPU Mem: 0.29GB/1.33GB
+Epoch: 52 [900/1563] Loss: 1.4470 | Acc: 55.97% | Time: 0.0245s | GPU Mem: 0.29GB/1.33GB
+Epoch: 52 [1000/1563] Loss: 1.4946 | Acc: 55.83% | Time: 0.0226s | GPU Mem: 0.29GB/1.33GB
+Epoch: 52 [1100/1563] Loss: 1.7229 | Acc: 55.93% | Time: 0.0254s | GPU Mem: 0.29GB/1.33GB
+Epoch: 52 [1200/1563] Loss: 1.2826 | Acc: 55.88% | Time: 0.0239s | GPU Mem: 0.29GB/1.33GB
+Epoch: 52 [1300/1563] Loss: 1.3964 | Acc: 55.80% | Time: 0.0251s | GPU Mem: 0.29GB/1.33GB
+Epoch: 52 [1400/1563] Loss: 1.2986 | Acc: 55.80% | Time: 0.0286s | GPU Mem: 0.29GB/1.33GB
+Epoch: 52 [1500/1563] Loss: 1.1929 | Acc: 55.89% | Time: 0.0238s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.5906, Acc: 55.89%
+测试 - Loss: 1.5889, Acc: 55.87%
+学习率: 0.010000, 时间: 42.76s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+最佳准确率更新: 55.43% -> 55.87%
+保存最佳模型到: ./checkpoints/best_model.pth
+
+============================================================
+Epoch 54/100
+============================================================
+Epoch: 53 [0/1563] Loss: 1.5458 | Acc: 62.50% | Time: 0.0339s | GPU Mem: 0.29GB/1.33GB
+Epoch: 53 [100/1563] Loss: 2.0091 | Acc: 57.24% | Time: 0.0282s | GPU Mem: 0.29GB/1.33GB
+Epoch: 53 [200/1563] Loss: 1.9332 | Acc: 57.21% | Time: 0.0249s | GPU Mem: 0.29GB/1.33GB
+Epoch: 53 [300/1563] Loss: 1.2024 | Acc: 57.12% | Time: 0.0230s | GPU Mem: 0.29GB/1.33GB
+Epoch: 53 [400/1563] Loss: 1.3449 | Acc: 56.92% | Time: 0.0273s | GPU Mem: 0.29GB/1.33GB
+Epoch: 53 [500/1563] Loss: 2.0798 | Acc: 56.97% | Time: 0.0267s | GPU Mem: 0.29GB/1.33GB
+Epoch: 53 [600/1563] Loss: 1.3534 | Acc: 56.88% | Time: 0.0240s | GPU Mem: 0.29GB/1.33GB
+Epoch: 53 [700/1563] Loss: 1.4491 | Acc: 56.96% | Time: 0.0305s | GPU Mem: 0.29GB/1.33GB
+Epoch: 53 [800/1563] Loss: 2.2170 | Acc: 56.96% | Time: 0.0284s | GPU Mem: 0.29GB/1.33GB
+Epoch: 53 [900/1563] Loss: 1.3949 | Acc: 56.71% | Time: 0.0263s | GPU Mem: 0.29GB/1.33GB
+Epoch: 53 [1000/1563] Loss: 1.5638 | Acc: 56.86% | Time: 0.0297s | GPU Mem: 0.29GB/1.33GB
+Epoch: 53 [1100/1563] Loss: 1.3848 | Acc: 56.78% | Time: 0.0272s | GPU Mem: 0.29GB/1.33GB
+Epoch: 53 [1200/1563] Loss: 1.7965 | Acc: 56.75% | Time: 0.0262s | GPU Mem: 0.29GB/1.33GB
+Epoch: 53 [1300/1563] Loss: 1.4930 | Acc: 56.64% | Time: 0.0245s | GPU Mem: 0.29GB/1.33GB
+Epoch: 53 [1400/1563] Loss: 1.2515 | Acc: 56.58% | Time: 0.0243s | GPU Mem: 0.29GB/1.33GB
+Epoch: 53 [1500/1563] Loss: 1.6131 | Acc: 56.55% | Time: 0.0210s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.5516, Acc: 56.68%
+测试 - Loss: 1.5976, Acc: 56.14%
+学习率: 0.010000, 时间: 43.26s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+最佳准确率更新: 55.87% -> 56.14%
+保存最佳模型到: ./checkpoints/best_model.pth
+
+============================================================
+Epoch 55/100
+============================================================
+Epoch: 54 [0/1563] Loss: 1.2471 | Acc: 65.62% | Time: 0.0362s | GPU Mem: 0.29GB/1.33GB
+Epoch: 54 [100/1563] Loss: 1.7107 | Acc: 57.24% | Time: 0.0305s | GPU Mem: 0.29GB/1.33GB
+Epoch: 54 [200/1563] Loss: 1.3450 | Acc: 57.90% | Time: 0.0266s | GPU Mem: 0.29GB/1.33GB
+Epoch: 54 [300/1563] Loss: 1.1729 | Acc: 58.09% | Time: 0.0230s | GPU Mem: 0.29GB/1.33GB
+Epoch: 54 [400/1563] Loss: 1.5418 | Acc: 57.88% | Time: 0.0231s | GPU Mem: 0.29GB/1.33GB
+Epoch: 54 [500/1563] Loss: 1.9005 | Acc: 57.59% | Time: 0.0292s | GPU Mem: 0.29GB/1.33GB
+Epoch: 54 [600/1563] Loss: 1.4942 | Acc: 57.84% | Time: 0.0253s | GPU Mem: 0.29GB/1.33GB
+Epoch: 54 [700/1563] Loss: 1.5357 | Acc: 57.83% | Time: 0.0275s | GPU Mem: 0.29GB/1.33GB
+Epoch: 54 [800/1563] Loss: 1.3610 | Acc: 57.81% | Time: 0.0288s | GPU Mem: 0.29GB/1.33GB
+Epoch: 54 [900/1563] Loss: 1.3474 | Acc: 57.65% | Time: 0.0248s | GPU Mem: 0.29GB/1.33GB
+Epoch: 54 [1000/1563] Loss: 1.2886 | Acc: 57.50% | Time: 0.0250s | GPU Mem: 0.29GB/1.33GB
+Epoch: 54 [1100/1563] Loss: 1.7271 | Acc: 57.43% | Time: 0.0270s | GPU Mem: 0.29GB/1.33GB
+Epoch: 54 [1200/1563] Loss: 1.4459 | Acc: 57.19% | Time: 0.0291s | GPU Mem: 0.29GB/1.33GB
+Epoch: 54 [1300/1563] Loss: 1.4338 | Acc: 57.17% | Time: 0.0261s | GPU Mem: 0.29GB/1.33GB
+Epoch: 54 [1400/1563] Loss: 2.0248 | Acc: 57.09% | Time: 0.0248s | GPU Mem: 0.29GB/1.33GB
+Epoch: 54 [1500/1563] Loss: 1.6072 | Acc: 57.07% | Time: 0.0269s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.5318, Acc: 57.11%
+测试 - Loss: 1.6159, Acc: 55.87%
+学习率: 0.010000, 时间: 42.95s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 56/100
+============================================================
+Epoch: 55 [0/1563] Loss: 1.2939 | Acc: 59.38% | Time: 0.0263s | GPU Mem: 0.29GB/1.33GB
+Epoch: 55 [100/1563] Loss: 1.4711 | Acc: 59.53% | Time: 0.0288s | GPU Mem: 0.29GB/1.33GB
+Epoch: 55 [200/1563] Loss: 1.2913 | Acc: 59.67% | Time: 0.0259s | GPU Mem: 0.29GB/1.33GB
+Epoch: 55 [300/1563] Loss: 1.1584 | Acc: 59.46% | Time: 0.0250s | GPU Mem: 0.29GB/1.33GB
+Epoch: 55 [400/1563] Loss: 2.1819 | Acc: 59.04% | Time: 0.0283s | GPU Mem: 0.29GB/1.33GB
+Epoch: 55 [500/1563] Loss: 1.1210 | Acc: 58.88% | Time: 0.0273s | GPU Mem: 0.29GB/1.33GB
+Epoch: 55 [600/1563] Loss: 1.2581 | Acc: 58.88% | Time: 0.0201s | GPU Mem: 0.29GB/1.33GB
+Epoch: 55 [700/1563] Loss: 1.8393 | Acc: 58.64% | Time: 0.0218s | GPU Mem: 0.29GB/1.33GB
+Epoch: 55 [800/1563] Loss: 1.4230 | Acc: 58.66% | Time: 0.0263s | GPU Mem: 0.29GB/1.33GB
+Epoch: 55 [900/1563] Loss: 1.7737 | Acc: 58.70% | Time: 0.0287s | GPU Mem: 0.29GB/1.33GB
+Epoch: 55 [1000/1563] Loss: 1.4489 | Acc: 58.44% | Time: 0.0239s | GPU Mem: 0.29GB/1.33GB
+Epoch: 55 [1100/1563] Loss: 1.3433 | Acc: 58.29% | Time: 0.0261s | GPU Mem: 0.29GB/1.33GB
+Epoch: 55 [1200/1563] Loss: 1.1557 | Acc: 58.25% | Time: 0.0300s | GPU Mem: 0.29GB/1.33GB
+Epoch: 55 [1300/1563] Loss: 1.3963 | Acc: 58.13% | Time: 0.0285s | GPU Mem: 0.29GB/1.33GB
+Epoch: 55 [1400/1563] Loss: 1.5601 | Acc: 57.98% | Time: 0.0280s | GPU Mem: 0.29GB/1.33GB
+Epoch: 55 [1500/1563] Loss: 1.2858 | Acc: 57.94% | Time: 0.0268s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.5067, Acc: 57.90%
+测试 - Loss: 1.6133, Acc: 55.32%
+学习率: 0.010000, 时间: 42.80s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 57/100
+============================================================
+Epoch: 56 [0/1563] Loss: 1.4666 | Acc: 62.50% | Time: 0.0257s | GPU Mem: 0.29GB/1.33GB
+Epoch: 56 [100/1563] Loss: 1.6645 | Acc: 58.85% | Time: 0.0250s | GPU Mem: 0.29GB/1.33GB
+Epoch: 56 [200/1563] Loss: 1.0414 | Acc: 59.45% | Time: 0.0298s | GPU Mem: 0.29GB/1.33GB
+Epoch: 56 [300/1563] Loss: 1.5064 | Acc: 59.12% | Time: 0.0257s | GPU Mem: 0.29GB/1.33GB
+Epoch: 56 [400/1563] Loss: 1.5643 | Acc: 59.17% | Time: 0.0267s | GPU Mem: 0.29GB/1.33GB
+Epoch: 56 [500/1563] Loss: 1.9744 | Acc: 58.86% | Time: 0.0256s | GPU Mem: 0.29GB/1.33GB
+Epoch: 56 [600/1563] Loss: 1.5047 | Acc: 58.82% | Time: 0.0252s | GPU Mem: 0.29GB/1.33GB
+Epoch: 56 [700/1563] Loss: 1.9011 | Acc: 58.98% | Time: 0.0254s | GPU Mem: 0.29GB/1.33GB
+Epoch: 56 [800/1563] Loss: 1.6335 | Acc: 58.77% | Time: 0.0229s | GPU Mem: 0.29GB/1.33GB
+Epoch: 56 [900/1563] Loss: 1.6282 | Acc: 58.76% | Time: 0.0221s | GPU Mem: 0.29GB/1.33GB
+Epoch: 56 [1000/1563] Loss: 1.7048 | Acc: 58.77% | Time: 0.0268s | GPU Mem: 0.29GB/1.33GB
+Epoch: 56 [1100/1563] Loss: 1.4775 | Acc: 58.73% | Time: 0.0229s | GPU Mem: 0.29GB/1.33GB
+Epoch: 56 [1200/1563] Loss: 1.2903 | Acc: 58.61% | Time: 0.0264s | GPU Mem: 0.29GB/1.33GB
+Epoch: 56 [1300/1563] Loss: 1.8754 | Acc: 58.40% | Time: 0.0300s | GPU Mem: 0.29GB/1.33GB
+Epoch: 56 [1400/1563] Loss: 1.5459 | Acc: 58.27% | Time: 0.0266s | GPU Mem: 0.29GB/1.33GB
+Epoch: 56 [1500/1563] Loss: 1.0260 | Acc: 58.27% | Time: 0.0289s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.4912, Acc: 58.24%
+测试 - Loss: 1.6093, Acc: 56.07%
+学习率: 0.010000, 时间: 43.33s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 58/100
+============================================================
+Epoch: 57 [0/1563] Loss: 1.7560 | Acc: 46.88% | Time: 0.0298s | GPU Mem: 0.29GB/1.33GB
+Epoch: 57 [100/1563] Loss: 1.0864 | Acc: 62.04% | Time: 0.0300s | GPU Mem: 0.29GB/1.33GB
+Epoch: 57 [200/1563] Loss: 1.3663 | Acc: 61.41% | Time: 0.0260s | GPU Mem: 0.29GB/1.33GB
+Epoch: 57 [300/1563] Loss: 1.7627 | Acc: 60.41% | Time: 0.0252s | GPU Mem: 0.29GB/1.33GB
+Epoch: 57 [400/1563] Loss: 2.0755 | Acc: 60.15% | Time: 0.0254s | GPU Mem: 0.29GB/1.33GB
+Epoch: 57 [500/1563] Loss: 1.2384 | Acc: 59.80% | Time: 0.0252s | GPU Mem: 0.29GB/1.33GB
+Epoch: 57 [600/1563] Loss: 1.7419 | Acc: 59.64% | Time: 0.0248s | GPU Mem: 0.29GB/1.33GB
+Epoch: 57 [700/1563] Loss: 1.7030 | Acc: 59.29% | Time: 0.0256s | GPU Mem: 0.29GB/1.33GB
+Epoch: 57 [800/1563] Loss: 1.4778 | Acc: 59.26% | Time: 0.0250s | GPU Mem: 0.29GB/1.33GB
+Epoch: 57 [900/1563] Loss: 1.5135 | Acc: 59.18% | Time: 0.0225s | GPU Mem: 0.29GB/1.33GB
+Epoch: 57 [1000/1563] Loss: 1.6631 | Acc: 58.95% | Time: 0.0267s | GPU Mem: 0.29GB/1.33GB
+Epoch: 57 [1100/1563] Loss: 1.7260 | Acc: 58.86% | Time: 0.0259s | GPU Mem: 0.29GB/1.33GB
+Epoch: 57 [1200/1563] Loss: 1.0672 | Acc: 58.75% | Time: 0.0258s | GPU Mem: 0.29GB/1.33GB
+Epoch: 57 [1300/1563] Loss: 1.6871 | Acc: 58.65% | Time: 0.0269s | GPU Mem: 0.29GB/1.33GB
+Epoch: 57 [1400/1563] Loss: 1.7300 | Acc: 58.53% | Time: 0.0254s | GPU Mem: 0.29GB/1.33GB
+Epoch: 57 [1500/1563] Loss: 1.2716 | Acc: 58.46% | Time: 0.0282s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.4833, Acc: 58.43%
+测试 - Loss: 1.6893, Acc: 54.48%
+学习率: 0.010000, 时间: 43.38s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 59/100
+============================================================
+Epoch: 58 [0/1563] Loss: 1.0775 | Acc: 75.00% | Time: 0.0279s | GPU Mem: 0.29GB/1.33GB
+Epoch: 58 [100/1563] Loss: 1.3982 | Acc: 60.86% | Time: 0.0304s | GPU Mem: 0.29GB/1.33GB
+Epoch: 58 [200/1563] Loss: 1.5252 | Acc: 60.62% | Time: 0.0267s | GPU Mem: 0.29GB/1.33GB
+Epoch: 58 [300/1563] Loss: 1.5590 | Acc: 60.25% | Time: 0.0286s | GPU Mem: 0.29GB/1.33GB
+Epoch: 58 [400/1563] Loss: 1.6509 | Acc: 59.98% | Time: 0.0271s | GPU Mem: 0.29GB/1.33GB
+Epoch: 58 [500/1563] Loss: 1.4741 | Acc: 59.69% | Time: 0.0312s | GPU Mem: 0.29GB/1.33GB
+Epoch: 58 [600/1563] Loss: 1.2685 | Acc: 59.61% | Time: 0.0350s | GPU Mem: 0.29GB/1.33GB
+Epoch: 58 [700/1563] Loss: 0.7320 | Acc: 59.70% | Time: 0.0298s | GPU Mem: 0.29GB/1.33GB
+Epoch: 58 [800/1563] Loss: 1.2633 | Acc: 59.50% | Time: 0.0250s | GPU Mem: 0.29GB/1.33GB
+Epoch: 58 [900/1563] Loss: 1.4493 | Acc: 59.42% | Time: 0.0254s | GPU Mem: 0.29GB/1.33GB
+Epoch: 58 [1000/1563] Loss: 1.7291 | Acc: 59.31% | Time: 0.0273s | GPU Mem: 0.29GB/1.33GB
+Epoch: 58 [1100/1563] Loss: 1.3240 | Acc: 59.14% | Time: 0.0292s | GPU Mem: 0.29GB/1.33GB
+Epoch: 58 [1200/1563] Loss: 1.1598 | Acc: 59.10% | Time: 0.0255s | GPU Mem: 0.29GB/1.33GB
+Epoch: 58 [1300/1563] Loss: 0.9706 | Acc: 59.12% | Time: 0.0307s | GPU Mem: 0.29GB/1.33GB
+Epoch: 58 [1400/1563] Loss: 1.5526 | Acc: 58.96% | Time: 0.0253s | GPU Mem: 0.29GB/1.33GB
+Epoch: 58 [1500/1563] Loss: 1.5379 | Acc: 58.98% | Time: 0.0319s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.4681, Acc: 58.91%
+测试 - Loss: 1.6366, Acc: 55.34%
+学习率: 0.010000, 时间: 44.20s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 60/100
+============================================================
+Epoch: 59 [0/1563] Loss: 1.6018 | Acc: 59.38% | Time: 0.0284s | GPU Mem: 0.29GB/1.33GB
+Epoch: 59 [100/1563] Loss: 1.3534 | Acc: 61.57% | Time: 0.0297s | GPU Mem: 0.29GB/1.33GB
+Epoch: 59 [200/1563] Loss: 1.3058 | Acc: 60.81% | Time: 0.0242s | GPU Mem: 0.29GB/1.33GB
+Epoch: 59 [300/1563] Loss: 1.8692 | Acc: 60.33% | Time: 0.0280s | GPU Mem: 0.29GB/1.33GB
+Epoch: 59 [400/1563] Loss: 1.6680 | Acc: 60.02% | Time: 0.0245s | GPU Mem: 0.29GB/1.33GB
+Epoch: 59 [500/1563] Loss: 1.1967 | Acc: 59.72% | Time: 0.0271s | GPU Mem: 0.29GB/1.33GB
+Epoch: 59 [600/1563] Loss: 0.9771 | Acc: 59.65% | Time: 0.0276s | GPU Mem: 0.29GB/1.33GB
+Epoch: 59 [700/1563] Loss: 1.9594 | Acc: 59.68% | Time: 0.0296s | GPU Mem: 0.29GB/1.33GB
+Epoch: 59 [800/1563] Loss: 1.9189 | Acc: 59.53% | Time: 0.0267s | GPU Mem: 0.29GB/1.33GB
+Epoch: 59 [900/1563] Loss: 1.3906 | Acc: 59.48% | Time: 0.0275s | GPU Mem: 0.29GB/1.33GB
+Epoch: 59 [1000/1563] Loss: 1.2573 | Acc: 59.54% | Time: 0.0272s | GPU Mem: 0.29GB/1.33GB
+Epoch: 59 [1100/1563] Loss: 1.6416 | Acc: 59.42% | Time: 0.0295s | GPU Mem: 0.29GB/1.33GB
+Epoch: 59 [1200/1563] Loss: 1.7610 | Acc: 59.43% | Time: 0.0279s | GPU Mem: 0.29GB/1.33GB
+Epoch: 59 [1300/1563] Loss: 1.1562 | Acc: 59.41% | Time: 0.0246s | GPU Mem: 0.29GB/1.33GB
+Epoch: 59 [1400/1563] Loss: 0.9728 | Acc: 59.36% | Time: 0.0240s | GPU Mem: 0.29GB/1.33GB
+Epoch: 59 [1500/1563] Loss: 1.0479 | Acc: 59.20% | Time: 0.0260s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.4482, Acc: 59.24%
+测试 - Loss: 1.6481, Acc: 55.48%
+学习率: 0.010000, 时间: 43.25s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+保存checkpoint到: ./checkpoints/checkpoint_epoch_60.pth
+
+============================================================
+Epoch 61/100
+============================================================
+Epoch: 60 [0/1563] Loss: 1.8219 | Acc: 43.75% | Time: 0.0333s | GPU Mem: 0.29GB/1.33GB
+Epoch: 60 [100/1563] Loss: 1.4851 | Acc: 60.18% | Time: 0.0302s | GPU Mem: 0.29GB/1.33GB
+Epoch: 60 [200/1563] Loss: 1.3734 | Acc: 60.07% | Time: 0.0245s | GPU Mem: 0.29GB/1.33GB
+Epoch: 60 [300/1563] Loss: 1.4091 | Acc: 60.20% | Time: 0.0300s | GPU Mem: 0.29GB/1.33GB
+Epoch: 60 [400/1563] Loss: 1.7375 | Acc: 60.22% | Time: 0.0257s | GPU Mem: 0.29GB/1.33GB
+Epoch: 60 [500/1563] Loss: 1.3637 | Acc: 60.19% | Time: 0.0331s | GPU Mem: 0.29GB/1.33GB
+Epoch: 60 [600/1563] Loss: 1.6270 | Acc: 60.08% | Time: 0.0226s | GPU Mem: 0.29GB/1.33GB
+Epoch: 60 [700/1563] Loss: 1.0684 | Acc: 60.16% | Time: 0.0296s | GPU Mem: 0.29GB/1.33GB
+Epoch: 60 [800/1563] Loss: 1.7597 | Acc: 59.93% | Time: 0.0272s | GPU Mem: 0.29GB/1.33GB
+Epoch: 60 [900/1563] Loss: 1.2749 | Acc: 59.78% | Time: 0.0250s | GPU Mem: 0.29GB/1.33GB
+Epoch: 60 [1000/1563] Loss: 1.3320 | Acc: 59.60% | Time: 0.0289s | GPU Mem: 0.29GB/1.33GB
+Epoch: 60 [1100/1563] Loss: 1.2046 | Acc: 59.51% | Time: 0.0254s | GPU Mem: 0.29GB/1.33GB
+Epoch: 60 [1200/1563] Loss: 1.4841 | Acc: 59.45% | Time: 0.0268s | GPU Mem: 0.29GB/1.33GB
+Epoch: 60 [1300/1563] Loss: 1.6390 | Acc: 59.47% | Time: 0.0230s | GPU Mem: 0.29GB/1.33GB
+Epoch: 60 [1400/1563] Loss: 1.7794 | Acc: 59.39% | Time: 0.0233s | GPU Mem: 0.29GB/1.33GB
+Epoch: 60 [1500/1563] Loss: 1.6800 | Acc: 59.30% | Time: 0.0237s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.4459, Acc: 59.29%
+测试 - Loss: 1.6115, Acc: 56.19%
+学习率: 0.010000, 时间: 42.91s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+最佳准确率更新: 56.14% -> 56.19%
+保存最佳模型到: ./checkpoints/best_model.pth
+
+============================================================
+Epoch 62/100
+============================================================
+Epoch: 61 [0/1563] Loss: 1.4157 | Acc: 68.75% | Time: 0.0280s | GPU Mem: 0.29GB/1.33GB
+Epoch: 61 [100/1563] Loss: 1.5914 | Acc: 60.95% | Time: 0.0270s | GPU Mem: 0.29GB/1.33GB
+Epoch: 61 [200/1563] Loss: 1.8025 | Acc: 60.77% | Time: 0.0237s | GPU Mem: 0.29GB/1.33GB
+Epoch: 61 [300/1563] Loss: 1.5400 | Acc: 60.36% | Time: 0.0287s | GPU Mem: 0.29GB/1.33GB
+Epoch: 61 [400/1563] Loss: 1.7097 | Acc: 60.40% | Time: 0.0294s | GPU Mem: 0.29GB/1.33GB
+Epoch: 61 [500/1563] Loss: 1.8736 | Acc: 59.92% | Time: 0.0263s | GPU Mem: 0.29GB/1.33GB
+Epoch: 61 [600/1563] Loss: 1.2026 | Acc: 59.81% | Time: 0.0266s | GPU Mem: 0.29GB/1.33GB
+Epoch: 61 [700/1563] Loss: 1.0850 | Acc: 59.92% | Time: 0.0358s | GPU Mem: 0.29GB/1.33GB
+Epoch: 61 [800/1563] Loss: 1.3882 | Acc: 59.90% | Time: 0.0243s | GPU Mem: 0.29GB/1.33GB
+Epoch: 61 [900/1563] Loss: 0.9597 | Acc: 59.96% | Time: 0.0328s | GPU Mem: 0.29GB/1.33GB
+Epoch: 61 [1000/1563] Loss: 1.5422 | Acc: 59.93% | Time: 0.0332s | GPU Mem: 0.29GB/1.33GB
+Epoch: 61 [1100/1563] Loss: 1.5434 | Acc: 59.95% | Time: 0.0284s | GPU Mem: 0.29GB/1.33GB
+Epoch: 61 [1200/1563] Loss: 1.1697 | Acc: 59.98% | Time: 0.0244s | GPU Mem: 0.29GB/1.33GB
+Epoch: 61 [1300/1563] Loss: 1.6808 | Acc: 59.92% | Time: 0.0313s | GPU Mem: 0.29GB/1.33GB
+Epoch: 61 [1400/1563] Loss: 1.3471 | Acc: 59.85% | Time: 0.0255s | GPU Mem: 0.29GB/1.33GB
+Epoch: 61 [1500/1563] Loss: 1.0696 | Acc: 59.82% | Time: 0.0265s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.4281, Acc: 59.80%
+测试 - Loss: 1.5939, Acc: 56.60%
+学习率: 0.010000, 时间: 43.86s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+最佳准确率更新: 56.19% -> 56.60%
+保存最佳模型到: ./checkpoints/best_model.pth
+
+============================================================
+Epoch 63/100
+============================================================
+Epoch: 62 [0/1563] Loss: 1.3362 | Acc: 68.75% | Time: 0.0333s | GPU Mem: 0.29GB/1.33GB
+Epoch: 62 [100/1563] Loss: 1.1729 | Acc: 61.39% | Time: 0.0310s | GPU Mem: 0.29GB/1.33GB
+Epoch: 62 [200/1563] Loss: 1.3737 | Acc: 61.24% | Time: 0.0234s | GPU Mem: 0.29GB/1.33GB
+Epoch: 62 [300/1563] Loss: 0.9894 | Acc: 61.49% | Time: 0.0312s | GPU Mem: 0.29GB/1.33GB
+Epoch: 62 [400/1563] Loss: 1.0399 | Acc: 61.48% | Time: 0.0219s | GPU Mem: 0.29GB/1.33GB
+Epoch: 62 [500/1563] Loss: 1.4384 | Acc: 61.07% | Time: 0.0245s | GPU Mem: 0.29GB/1.33GB
+Epoch: 62 [600/1563] Loss: 1.0608 | Acc: 61.15% | Time: 0.0246s | GPU Mem: 0.29GB/1.33GB
+Epoch: 62 [700/1563] Loss: 1.3810 | Acc: 61.11% | Time: 0.0258s | GPU Mem: 0.29GB/1.33GB
+Epoch: 62 [800/1563] Loss: 1.4535 | Acc: 60.94% | Time: 0.0245s | GPU Mem: 0.29GB/1.33GB
+Epoch: 62 [900/1563] Loss: 1.5340 | Acc: 60.75% | Time: 0.0329s | GPU Mem: 0.29GB/1.33GB
+Epoch: 62 [1000/1563] Loss: 1.4769 | Acc: 60.64% | Time: 0.0280s | GPU Mem: 0.29GB/1.33GB
+Epoch: 62 [1100/1563] Loss: 1.5088 | Acc: 60.66% | Time: 0.0286s | GPU Mem: 0.29GB/1.33GB
+Epoch: 62 [1200/1563] Loss: 1.1542 | Acc: 60.58% | Time: 0.0251s | GPU Mem: 0.29GB/1.33GB
+Epoch: 62 [1300/1563] Loss: 1.6075 | Acc: 60.62% | Time: 0.0195s | GPU Mem: 0.29GB/1.33GB
+Epoch: 62 [1400/1563] Loss: 1.3331 | Acc: 60.49% | Time: 0.0310s | GPU Mem: 0.29GB/1.33GB
+Epoch: 62 [1500/1563] Loss: 1.2900 | Acc: 60.47% | Time: 0.0298s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.4017, Acc: 60.41%
+测试 - Loss: 1.6299, Acc: 56.32%
+学习率: 0.010000, 时间: 43.05s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 64/100
+============================================================
+Epoch: 63 [0/1563] Loss: 1.2164 | Acc: 62.50% | Time: 0.0295s | GPU Mem: 0.29GB/1.33GB
+Epoch: 63 [100/1563] Loss: 1.8329 | Acc: 62.44% | Time: 0.0237s | GPU Mem: 0.29GB/1.33GB
+Epoch: 63 [200/1563] Loss: 0.8621 | Acc: 62.66% | Time: 0.0249s | GPU Mem: 0.29GB/1.33GB
+Epoch: 63 [300/1563] Loss: 1.6940 | Acc: 62.61% | Time: 0.0231s | GPU Mem: 0.29GB/1.33GB
+Epoch: 63 [400/1563] Loss: 1.5021 | Acc: 61.77% | Time: 0.0247s | GPU Mem: 0.29GB/1.33GB
+Epoch: 63 [500/1563] Loss: 1.0577 | Acc: 61.48% | Time: 0.0265s | GPU Mem: 0.29GB/1.33GB
+Epoch: 63 [600/1563] Loss: 1.4288 | Acc: 61.26% | Time: 0.0277s | GPU Mem: 0.29GB/1.33GB
+Epoch: 63 [700/1563] Loss: 1.8852 | Acc: 61.27% | Time: 0.0274s | GPU Mem: 0.29GB/1.33GB
+Epoch: 63 [800/1563] Loss: 1.2106 | Acc: 61.26% | Time: 0.0292s | GPU Mem: 0.29GB/1.33GB
+Epoch: 63 [900/1563] Loss: 1.3192 | Acc: 61.01% | Time: 0.0273s | GPU Mem: 0.29GB/1.33GB
+Epoch: 63 [1000/1563] Loss: 1.7090 | Acc: 60.84% | Time: 0.0268s | GPU Mem: 0.29GB/1.33GB
+Epoch: 63 [1100/1563] Loss: 1.5199 | Acc: 60.72% | Time: 0.0276s | GPU Mem: 0.29GB/1.33GB
+Epoch: 63 [1200/1563] Loss: 0.8648 | Acc: 60.74% | Time: 0.0325s | GPU Mem: 0.29GB/1.33GB
+Epoch: 63 [1300/1563] Loss: 1.4366 | Acc: 60.68% | Time: 0.0243s | GPU Mem: 0.29GB/1.33GB
+Epoch: 63 [1400/1563] Loss: 1.4773 | Acc: 60.68% | Time: 0.0259s | GPU Mem: 0.29GB/1.33GB
+Epoch: 63 [1500/1563] Loss: 1.3348 | Acc: 60.68% | Time: 0.0302s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.3926, Acc: 60.62%
+测试 - Loss: 1.5935, Acc: 57.02%
+学习率: 0.010000, 时间: 42.54s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+最佳准确率更新: 56.60% -> 57.02%
+保存最佳模型到: ./checkpoints/best_model.pth
+
+============================================================
+Epoch 65/100
+============================================================
+Epoch: 64 [0/1563] Loss: 1.1800 | Acc: 68.75% | Time: 0.0383s | GPU Mem: 0.29GB/1.33GB
+Epoch: 64 [100/1563] Loss: 0.8221 | Acc: 62.00% | Time: 0.0263s | GPU Mem: 0.29GB/1.33GB
+Epoch: 64 [200/1563] Loss: 1.2591 | Acc: 62.10% | Time: 0.0266s | GPU Mem: 0.29GB/1.33GB
+Epoch: 64 [300/1563] Loss: 1.5865 | Acc: 62.68% | Time: 0.0282s | GPU Mem: 0.29GB/1.33GB
+Epoch: 64 [400/1563] Loss: 1.2063 | Acc: 62.50% | Time: 0.0260s | GPU Mem: 0.29GB/1.33GB
+Epoch: 64 [500/1563] Loss: 1.2372 | Acc: 62.44% | Time: 0.0246s | GPU Mem: 0.29GB/1.33GB
+Epoch: 64 [600/1563] Loss: 1.5227 | Acc: 62.16% | Time: 0.0258s | GPU Mem: 0.29GB/1.33GB
+Epoch: 64 [700/1563] Loss: 1.0417 | Acc: 61.89% | Time: 0.0224s | GPU Mem: 0.29GB/1.33GB
+Epoch: 64 [800/1563] Loss: 1.4227 | Acc: 61.96% | Time: 0.0254s | GPU Mem: 0.29GB/1.33GB
+Epoch: 64 [900/1563] Loss: 1.3896 | Acc: 61.88% | Time: 0.0264s | GPU Mem: 0.29GB/1.33GB
+Epoch: 64 [1000/1563] Loss: 1.2649 | Acc: 61.75% | Time: 0.0251s | GPU Mem: 0.29GB/1.33GB
+Epoch: 64 [1100/1563] Loss: 1.6922 | Acc: 61.56% | Time: 0.0270s | GPU Mem: 0.29GB/1.33GB
+Epoch: 64 [1200/1563] Loss: 1.1666 | Acc: 61.36% | Time: 0.0238s | GPU Mem: 0.29GB/1.33GB
+Epoch: 64 [1300/1563] Loss: 1.6507 | Acc: 61.32% | Time: 0.0239s | GPU Mem: 0.29GB/1.33GB
+Epoch: 64 [1400/1563] Loss: 1.2680 | Acc: 61.29% | Time: 0.0246s | GPU Mem: 0.29GB/1.33GB
+Epoch: 64 [1500/1563] Loss: 1.4985 | Acc: 61.16% | Time: 0.0234s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.3767, Acc: 61.15%
+测试 - Loss: 1.6458, Acc: 55.77%
+学习率: 0.010000, 时间: 43.21s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 66/100
+============================================================
+Epoch: 65 [0/1563] Loss: 1.6046 | Acc: 62.50% | Time: 0.0269s | GPU Mem: 0.29GB/1.33GB
+Epoch: 65 [100/1563] Loss: 1.0949 | Acc: 62.75% | Time: 0.0233s | GPU Mem: 0.29GB/1.33GB
+Epoch: 65 [200/1563] Loss: 0.8279 | Acc: 63.01% | Time: 0.0267s | GPU Mem: 0.29GB/1.33GB
+Epoch: 65 [300/1563] Loss: 1.4924 | Acc: 63.30% | Time: 0.0259s | GPU Mem: 0.29GB/1.33GB
+Epoch: 65 [400/1563] Loss: 1.0658 | Acc: 63.08% | Time: 0.0268s | GPU Mem: 0.29GB/1.33GB
+Epoch: 65 [500/1563] Loss: 1.5273 | Acc: 62.74% | Time: 0.0294s | GPU Mem: 0.29GB/1.33GB
+Epoch: 65 [600/1563] Loss: 1.1082 | Acc: 62.46% | Time: 0.0237s | GPU Mem: 0.29GB/1.33GB
+Epoch: 65 [700/1563] Loss: 1.8536 | Acc: 62.34% | Time: 0.0267s | GPU Mem: 0.29GB/1.33GB
+Epoch: 65 [800/1563] Loss: 1.1453 | Acc: 62.24% | Time: 0.0253s | GPU Mem: 0.29GB/1.33GB
+Epoch: 65 [900/1563] Loss: 1.1017 | Acc: 62.12% | Time: 0.0269s | GPU Mem: 0.29GB/1.33GB
+Epoch: 65 [1000/1563] Loss: 1.1974 | Acc: 61.96% | Time: 0.0273s | GPU Mem: 0.29GB/1.33GB
+Epoch: 65 [1100/1563] Loss: 1.9484 | Acc: 61.81% | Time: 0.0260s | GPU Mem: 0.29GB/1.33GB
+Epoch: 65 [1200/1563] Loss: 1.4647 | Acc: 61.69% | Time: 0.0264s | GPU Mem: 0.29GB/1.33GB
+Epoch: 65 [1300/1563] Loss: 1.4409 | Acc: 61.65% | Time: 0.0273s | GPU Mem: 0.29GB/1.33GB
+Epoch: 65 [1400/1563] Loss: 1.5079 | Acc: 61.61% | Time: 0.0218s | GPU Mem: 0.29GB/1.33GB
+Epoch: 65 [1500/1563] Loss: 1.4554 | Acc: 61.43% | Time: 0.0250s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.3629, Acc: 61.39%
+测试 - Loss: 1.6112, Acc: 57.15%
+学习率: 0.010000, 时间: 43.23s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+最佳准确率更新: 57.02% -> 57.15%
+保存最佳模型到: ./checkpoints/best_model.pth
+
+============================================================
+Epoch 67/100
+============================================================
+Epoch: 66 [0/1563] Loss: 1.0569 | Acc: 68.75% | Time: 0.0357s | GPU Mem: 0.29GB/1.33GB
+Epoch: 66 [100/1563] Loss: 1.4833 | Acc: 64.91% | Time: 0.0230s | GPU Mem: 0.29GB/1.33GB
+Epoch: 66 [200/1563] Loss: 1.1394 | Acc: 63.93% | Time: 0.0287s | GPU Mem: 0.29GB/1.33GB
+Epoch: 66 [300/1563] Loss: 1.1220 | Acc: 63.56% | Time: 0.0274s | GPU Mem: 0.29GB/1.33GB
+Epoch: 66 [400/1563] Loss: 1.3793 | Acc: 63.33% | Time: 0.0267s | GPU Mem: 0.29GB/1.33GB
+Epoch: 66 [500/1563] Loss: 1.6829 | Acc: 63.29% | Time: 0.0286s | GPU Mem: 0.29GB/1.33GB
+Epoch: 66 [600/1563] Loss: 1.5630 | Acc: 62.82% | Time: 0.0253s | GPU Mem: 0.29GB/1.33GB
+Epoch: 66 [700/1563] Loss: 0.9680 | Acc: 62.63% | Time: 0.0247s | GPU Mem: 0.29GB/1.33GB
+Epoch: 66 [800/1563] Loss: 1.4018 | Acc: 62.48% | Time: 0.0299s | GPU Mem: 0.29GB/1.33GB
+Epoch: 66 [900/1563] Loss: 1.7733 | Acc: 62.37% | Time: 0.0239s | GPU Mem: 0.29GB/1.33GB
+Epoch: 66 [1000/1563] Loss: 1.6335 | Acc: 62.31% | Time: 0.0278s | GPU Mem: 0.29GB/1.33GB
+Epoch: 66 [1100/1563] Loss: 1.0515 | Acc: 62.10% | Time: 0.0288s | GPU Mem: 0.29GB/1.33GB
+Epoch: 66 [1200/1563] Loss: 1.3399 | Acc: 62.08% | Time: 0.0254s | GPU Mem: 0.29GB/1.33GB
+Epoch: 66 [1300/1563] Loss: 1.6618 | Acc: 61.99% | Time: 0.0250s | GPU Mem: 0.29GB/1.33GB
+Epoch: 66 [1400/1563] Loss: 1.3575 | Acc: 61.90% | Time: 0.0295s | GPU Mem: 0.29GB/1.33GB
+Epoch: 66 [1500/1563] Loss: 1.5118 | Acc: 61.84% | Time: 0.0262s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.3503, Acc: 61.74%
+测试 - Loss: 1.7058, Acc: 54.26%
+学习率: 0.010000, 时间: 42.76s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 68/100
+============================================================
+Epoch: 67 [0/1563] Loss: 1.2380 | Acc: 68.75% | Time: 0.0274s | GPU Mem: 0.29GB/1.33GB
+Epoch: 67 [100/1563] Loss: 1.1760 | Acc: 64.70% | Time: 0.0240s | GPU Mem: 0.29GB/1.33GB
+Epoch: 67 [200/1563] Loss: 1.7071 | Acc: 63.99% | Time: 0.0254s | GPU Mem: 0.29GB/1.33GB
+Epoch: 67 [300/1563] Loss: 1.3127 | Acc: 63.77% | Time: 0.0262s | GPU Mem: 0.29GB/1.33GB
+Epoch: 67 [400/1563] Loss: 0.8762 | Acc: 63.22% | Time: 0.0304s | GPU Mem: 0.29GB/1.33GB
+Epoch: 67 [500/1563] Loss: 1.1641 | Acc: 62.97% | Time: 0.0253s | GPU Mem: 0.29GB/1.33GB
+Epoch: 67 [600/1563] Loss: 1.3051 | Acc: 62.77% | Time: 0.0273s | GPU Mem: 0.29GB/1.33GB
+Epoch: 67 [700/1563] Loss: 1.1145 | Acc: 62.59% | Time: 0.0268s | GPU Mem: 0.29GB/1.33GB
+Epoch: 67 [800/1563] Loss: 1.0795 | Acc: 62.32% | Time: 0.0299s | GPU Mem: 0.29GB/1.33GB
+Epoch: 67 [900/1563] Loss: 1.5425 | Acc: 62.31% | Time: 0.0286s | GPU Mem: 0.29GB/1.33GB
+Epoch: 67 [1000/1563] Loss: 1.6237 | Acc: 62.23% | Time: 0.0284s | GPU Mem: 0.29GB/1.33GB
+Epoch: 67 [1100/1563] Loss: 1.4943 | Acc: 62.07% | Time: 0.0218s | GPU Mem: 0.29GB/1.33GB
+Epoch: 67 [1200/1563] Loss: 1.1992 | Acc: 61.95% | Time: 0.0269s | GPU Mem: 0.29GB/1.33GB
+Epoch: 67 [1300/1563] Loss: 1.2507 | Acc: 61.84% | Time: 0.0216s | GPU Mem: 0.29GB/1.33GB
+Epoch: 67 [1400/1563] Loss: 1.7992 | Acc: 61.76% | Time: 0.0276s | GPU Mem: 0.29GB/1.33GB
+Epoch: 67 [1500/1563] Loss: 1.3305 | Acc: 61.75% | Time: 0.0256s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.3393, Acc: 61.73%
+测试 - Loss: 1.6320, Acc: 56.37%
+学习率: 0.010000, 时间: 43.63s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 69/100
+============================================================
+Epoch: 68 [0/1563] Loss: 1.2579 | Acc: 59.38% | Time: 0.0283s | GPU Mem: 0.29GB/1.33GB
+Epoch: 68 [100/1563] Loss: 1.3305 | Acc: 64.36% | Time: 0.0268s | GPU Mem: 0.29GB/1.33GB
+Epoch: 68 [200/1563] Loss: 1.2679 | Acc: 63.18% | Time: 0.0265s | GPU Mem: 0.29GB/1.33GB
+Epoch: 68 [300/1563] Loss: 1.1422 | Acc: 63.32% | Time: 0.0315s | GPU Mem: 0.29GB/1.33GB
+Epoch: 68 [400/1563] Loss: 1.4612 | Acc: 63.37% | Time: 0.0295s | GPU Mem: 0.29GB/1.33GB
+Epoch: 68 [500/1563] Loss: 1.2643 | Acc: 63.29% | Time: 0.0278s | GPU Mem: 0.29GB/1.33GB
+Epoch: 68 [600/1563] Loss: 1.0237 | Acc: 63.13% | Time: 0.0288s | GPU Mem: 0.29GB/1.33GB
+Epoch: 68 [700/1563] Loss: 1.2274 | Acc: 62.69% | Time: 0.0273s | GPU Mem: 0.29GB/1.33GB
+Epoch: 68 [800/1563] Loss: 1.3579 | Acc: 62.94% | Time: 0.0260s | GPU Mem: 0.29GB/1.33GB
+Epoch: 68 [900/1563] Loss: 1.4550 | Acc: 62.82% | Time: 0.0263s | GPU Mem: 0.29GB/1.33GB
+Epoch: 68 [1000/1563] Loss: 0.9424 | Acc: 62.66% | Time: 0.0238s | GPU Mem: 0.29GB/1.33GB
+Epoch: 68 [1100/1563] Loss: 1.5469 | Acc: 62.50% | Time: 0.0219s | GPU Mem: 0.29GB/1.33GB
+Epoch: 68 [1200/1563] Loss: 2.0702 | Acc: 62.36% | Time: 0.0278s | GPU Mem: 0.29GB/1.33GB
+Epoch: 68 [1300/1563] Loss: 1.4907 | Acc: 62.25% | Time: 0.0265s | GPU Mem: 0.29GB/1.33GB
+Epoch: 68 [1400/1563] Loss: 1.7268 | Acc: 62.10% | Time: 0.0263s | GPU Mem: 0.29GB/1.33GB
+Epoch: 68 [1500/1563] Loss: 1.3223 | Acc: 62.14% | Time: 0.0247s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.3259, Acc: 62.11%
+测试 - Loss: 1.6141, Acc: 57.26%
+学习率: 0.010000, 时间: 43.34s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+最佳准确率更新: 57.15% -> 57.26%
+保存最佳模型到: ./checkpoints/best_model.pth
+
+============================================================
+Epoch 70/100
+============================================================
+Epoch: 69 [0/1563] Loss: 1.0271 | Acc: 75.00% | Time: 0.0276s | GPU Mem: 0.29GB/1.33GB
+Epoch: 69 [100/1563] Loss: 1.2945 | Acc: 64.42% | Time: 0.0254s | GPU Mem: 0.29GB/1.33GB
+Epoch: 69 [200/1563] Loss: 1.0622 | Acc: 65.39% | Time: 0.0236s | GPU Mem: 0.29GB/1.33GB
+Epoch: 69 [300/1563] Loss: 1.0324 | Acc: 64.59% | Time: 0.0259s | GPU Mem: 0.29GB/1.33GB
+Epoch: 69 [400/1563] Loss: 1.1081 | Acc: 64.32% | Time: 0.0242s | GPU Mem: 0.29GB/1.33GB
+Epoch: 69 [500/1563] Loss: 1.4835 | Acc: 64.18% | Time: 0.0272s | GPU Mem: 0.29GB/1.33GB
+Epoch: 69 [600/1563] Loss: 0.9784 | Acc: 63.98% | Time: 0.0272s | GPU Mem: 0.29GB/1.33GB
+Epoch: 69 [700/1563] Loss: 1.6515 | Acc: 63.69% | Time: 0.0290s | GPU Mem: 0.29GB/1.33GB
+Epoch: 69 [800/1563] Loss: 1.6505 | Acc: 63.44% | Time: 0.0288s | GPU Mem: 0.29GB/1.33GB
+Epoch: 69 [900/1563] Loss: 1.2309 | Acc: 63.36% | Time: 0.0231s | GPU Mem: 0.29GB/1.33GB
+Epoch: 69 [1000/1563] Loss: 2.0842 | Acc: 63.33% | Time: 0.0251s | GPU Mem: 0.29GB/1.33GB
+Epoch: 69 [1100/1563] Loss: 0.9983 | Acc: 63.17% | Time: 0.0246s | GPU Mem: 0.29GB/1.33GB
+Epoch: 69 [1200/1563] Loss: 1.3750 | Acc: 63.12% | Time: 0.0300s | GPU Mem: 0.29GB/1.33GB
+Epoch: 69 [1300/1563] Loss: 0.9150 | Acc: 63.11% | Time: 0.0229s | GPU Mem: 0.29GB/1.33GB
+Epoch: 69 [1400/1563] Loss: 1.3543 | Acc: 62.95% | Time: 0.0228s | GPU Mem: 0.29GB/1.33GB
+Epoch: 69 [1500/1563] Loss: 1.3171 | Acc: 62.87% | Time: 0.0227s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.3041, Acc: 62.79%
+测试 - Loss: 1.6201, Acc: 57.02%
+学习率: 0.010000, 时间: 42.94s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+保存checkpoint到: ./checkpoints/checkpoint_epoch_70.pth
+
+============================================================
+Epoch 71/100
+============================================================
+Epoch: 70 [0/1563] Loss: 1.1732 | Acc: 62.50% | Time: 0.0275s | GPU Mem: 0.29GB/1.33GB
+Epoch: 70 [100/1563] Loss: 1.1567 | Acc: 63.86% | Time: 0.0225s | GPU Mem: 0.29GB/1.33GB
+Epoch: 70 [200/1563] Loss: 1.4589 | Acc: 64.24% | Time: 0.0272s | GPU Mem: 0.29GB/1.33GB
+Epoch: 70 [300/1563] Loss: 1.2560 | Acc: 63.76% | Time: 0.0276s | GPU Mem: 0.29GB/1.33GB
+Epoch: 70 [400/1563] Loss: 1.0118 | Acc: 64.22% | Time: 0.0254s | GPU Mem: 0.29GB/1.33GB
+Epoch: 70 [500/1563] Loss: 1.0410 | Acc: 64.28% | Time: 0.0315s | GPU Mem: 0.29GB/1.33GB
+Epoch: 70 [600/1563] Loss: 1.4480 | Acc: 64.17% | Time: 0.0288s | GPU Mem: 0.29GB/1.33GB
+Epoch: 70 [700/1563] Loss: 0.9777 | Acc: 63.88% | Time: 0.0262s | GPU Mem: 0.29GB/1.33GB
+Epoch: 70 [800/1563] Loss: 1.6111 | Acc: 63.74% | Time: 0.0249s | GPU Mem: 0.29GB/1.33GB
+Epoch: 70 [900/1563] Loss: 0.9800 | Acc: 63.79% | Time: 0.0217s | GPU Mem: 0.29GB/1.33GB
+Epoch: 70 [1000/1563] Loss: 1.4290 | Acc: 63.88% | Time: 0.0257s | GPU Mem: 0.29GB/1.33GB
+Epoch: 70 [1100/1563] Loss: 1.3447 | Acc: 63.68% | Time: 0.0230s | GPU Mem: 0.29GB/1.33GB
+Epoch: 70 [1200/1563] Loss: 1.5871 | Acc: 63.55% | Time: 0.0278s | GPU Mem: 0.29GB/1.33GB
+Epoch: 70 [1300/1563] Loss: 1.4511 | Acc: 63.37% | Time: 0.0242s | GPU Mem: 0.29GB/1.33GB
+Epoch: 70 [1400/1563] Loss: 1.0168 | Acc: 63.35% | Time: 0.0296s | GPU Mem: 0.29GB/1.33GB
+Epoch: 70 [1500/1563] Loss: 1.6077 | Acc: 63.20% | Time: 0.0286s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.2913, Acc: 63.18%
+测试 - Loss: 1.6225, Acc: 56.97%
+学习率: 0.010000, 时间: 43.09s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 72/100
+============================================================
+Epoch: 71 [0/1563] Loss: 0.8775 | Acc: 75.00% | Time: 0.0279s | GPU Mem: 0.29GB/1.33GB
+Epoch: 71 [100/1563] Loss: 0.9872 | Acc: 65.72% | Time: 0.0263s | GPU Mem: 0.29GB/1.33GB
+Epoch: 71 [200/1563] Loss: 1.2178 | Acc: 65.45% | Time: 0.0242s | GPU Mem: 0.29GB/1.33GB
+Epoch: 71 [300/1563] Loss: 1.3268 | Acc: 64.76% | Time: 0.0260s | GPU Mem: 0.29GB/1.33GB
+Epoch: 71 [400/1563] Loss: 1.0430 | Acc: 64.44% | Time: 0.0231s | GPU Mem: 0.29GB/1.33GB
+Epoch: 71 [500/1563] Loss: 1.4553 | Acc: 64.13% | Time: 0.0271s | GPU Mem: 0.29GB/1.33GB
+Epoch: 71 [600/1563] Loss: 1.0211 | Acc: 64.15% | Time: 0.0220s | GPU Mem: 0.29GB/1.33GB
+Epoch: 71 [700/1563] Loss: 1.2805 | Acc: 64.15% | Time: 0.0261s | GPU Mem: 0.29GB/1.33GB
+Epoch: 71 [800/1563] Loss: 1.3760 | Acc: 64.20% | Time: 0.0321s | GPU Mem: 0.29GB/1.33GB
+Epoch: 71 [900/1563] Loss: 1.5570 | Acc: 64.02% | Time: 0.0283s | GPU Mem: 0.29GB/1.33GB
+Epoch: 71 [1000/1563] Loss: 1.0307 | Acc: 63.79% | Time: 0.0240s | GPU Mem: 0.29GB/1.33GB
+Epoch: 71 [1100/1563] Loss: 1.6726 | Acc: 63.62% | Time: 0.0246s | GPU Mem: 0.29GB/1.33GB
+Epoch: 71 [1200/1563] Loss: 1.2738 | Acc: 63.50% | Time: 0.0266s | GPU Mem: 0.29GB/1.33GB
+Epoch: 71 [1300/1563] Loss: 1.4778 | Acc: 63.52% | Time: 0.0265s | GPU Mem: 0.29GB/1.33GB
+Epoch: 71 [1400/1563] Loss: 1.6976 | Acc: 63.44% | Time: 0.0207s | GPU Mem: 0.29GB/1.33GB
+Epoch: 71 [1500/1563] Loss: 1.5021 | Acc: 63.43% | Time: 0.0232s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.2820, Acc: 63.39%
+测试 - Loss: 1.6437, Acc: 56.56%
+学习率: 0.010000, 时间: 42.92s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 73/100
+============================================================
+Epoch: 72 [0/1563] Loss: 1.4972 | Acc: 56.25% | Time: 0.0286s | GPU Mem: 0.29GB/1.33GB
+Epoch: 72 [100/1563] Loss: 0.9785 | Acc: 65.75% | Time: 0.0231s | GPU Mem: 0.29GB/1.33GB
+Epoch: 72 [200/1563] Loss: 1.0183 | Acc: 65.31% | Time: 0.0219s | GPU Mem: 0.29GB/1.33GB
+Epoch: 72 [300/1563] Loss: 1.2091 | Acc: 64.63% | Time: 0.0270s | GPU Mem: 0.29GB/1.33GB
+Epoch: 72 [400/1563] Loss: 1.1078 | Acc: 64.53% | Time: 0.0242s | GPU Mem: 0.29GB/1.33GB
+Epoch: 72 [500/1563] Loss: 1.5410 | Acc: 64.15% | Time: 0.0275s | GPU Mem: 0.29GB/1.33GB
+Epoch: 72 [600/1563] Loss: 1.5185 | Acc: 64.11% | Time: 0.0314s | GPU Mem: 0.29GB/1.33GB
+Epoch: 72 [700/1563] Loss: 1.0031 | Acc: 64.14% | Time: 0.0352s | GPU Mem: 0.29GB/1.33GB
+Epoch: 72 [800/1563] Loss: 1.0728 | Acc: 64.01% | Time: 0.0272s | GPU Mem: 0.29GB/1.33GB
+Epoch: 72 [900/1563] Loss: 1.6456 | Acc: 63.92% | Time: 0.0312s | GPU Mem: 0.29GB/1.33GB
+Epoch: 72 [1000/1563] Loss: 1.3390 | Acc: 63.68% | Time: 0.0265s | GPU Mem: 0.29GB/1.33GB
+Epoch: 72 [1100/1563] Loss: 0.9770 | Acc: 63.69% | Time: 0.0275s | GPU Mem: 0.29GB/1.33GB
+Epoch: 72 [1200/1563] Loss: 1.2680 | Acc: 63.60% | Time: 0.0239s | GPU Mem: 0.29GB/1.33GB
+Epoch: 72 [1300/1563] Loss: 1.4295 | Acc: 63.68% | Time: 0.0301s | GPU Mem: 0.29GB/1.33GB
+Epoch: 72 [1400/1563] Loss: 1.0848 | Acc: 63.55% | Time: 0.0244s | GPU Mem: 0.29GB/1.33GB
+Epoch: 72 [1500/1563] Loss: 1.2916 | Acc: 63.48% | Time: 0.0233s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.2745, Acc: 63.49%
+测试 - Loss: 1.7311, Acc: 55.46%
+学习率: 0.010000, 时间: 42.67s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 74/100
+============================================================
+Epoch: 73 [0/1563] Loss: 1.5617 | Acc: 50.00% | Time: 0.0240s | GPU Mem: 0.29GB/1.33GB
+Epoch: 73 [100/1563] Loss: 1.4385 | Acc: 65.38% | Time: 0.0285s | GPU Mem: 0.29GB/1.33GB
+Epoch: 73 [200/1563] Loss: 1.1938 | Acc: 65.89% | Time: 0.0254s | GPU Mem: 0.29GB/1.33GB
+Epoch: 73 [300/1563] Loss: 1.4286 | Acc: 65.80% | Time: 0.0256s | GPU Mem: 0.29GB/1.33GB
+Epoch: 73 [400/1563] Loss: 1.1179 | Acc: 65.35% | Time: 0.0252s | GPU Mem: 0.29GB/1.33GB
+Epoch: 73 [500/1563] Loss: 1.0747 | Acc: 64.96% | Time: 0.0265s | GPU Mem: 0.29GB/1.33GB
+Epoch: 73 [600/1563] Loss: 0.5670 | Acc: 64.85% | Time: 0.0249s | GPU Mem: 0.29GB/1.33GB
+Epoch: 73 [700/1563] Loss: 1.3135 | Acc: 64.77% | Time: 0.0271s | GPU Mem: 0.29GB/1.33GB
+Epoch: 73 [800/1563] Loss: 1.1923 | Acc: 64.63% | Time: 0.0317s | GPU Mem: 0.29GB/1.33GB
+Epoch: 73 [900/1563] Loss: 1.1545 | Acc: 64.42% | Time: 0.0254s | GPU Mem: 0.29GB/1.33GB
+Epoch: 73 [1000/1563] Loss: 1.9166 | Acc: 64.14% | Time: 0.0284s | GPU Mem: 0.29GB/1.33GB
+Epoch: 73 [1100/1563] Loss: 1.2760 | Acc: 64.08% | Time: 0.0228s | GPU Mem: 0.29GB/1.33GB
+Epoch: 73 [1200/1563] Loss: 1.1631 | Acc: 64.00% | Time: 0.0247s | GPU Mem: 0.29GB/1.33GB
+Epoch: 73 [1300/1563] Loss: 1.2988 | Acc: 63.94% | Time: 0.0256s | GPU Mem: 0.29GB/1.33GB
+Epoch: 73 [1400/1563] Loss: 1.5440 | Acc: 63.82% | Time: 0.0275s | GPU Mem: 0.29GB/1.33GB
+Epoch: 73 [1500/1563] Loss: 1.8776 | Acc: 63.76% | Time: 0.0288s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.2620, Acc: 63.69%
+测试 - Loss: 1.5344, Acc: 58.96%
+学习率: 0.010000, 时间: 43.03s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+最佳准确率更新: 57.26% -> 58.96%
+保存最佳模型到: ./checkpoints/best_model.pth
+
+============================================================
+Epoch 75/100
+============================================================
+Epoch: 74 [0/1563] Loss: 1.2315 | Acc: 62.50% | Time: 0.0364s | GPU Mem: 0.29GB/1.33GB
+Epoch: 74 [100/1563] Loss: 1.1134 | Acc: 66.83% | Time: 0.0244s | GPU Mem: 0.29GB/1.33GB
+Epoch: 74 [200/1563] Loss: 0.9544 | Acc: 66.56% | Time: 0.0249s | GPU Mem: 0.29GB/1.33GB
+Epoch: 74 [300/1563] Loss: 0.9795 | Acc: 65.96% | Time: 0.0261s | GPU Mem: 0.29GB/1.33GB
+Epoch: 74 [400/1563] Loss: 1.7527 | Acc: 65.68% | Time: 0.0258s | GPU Mem: 0.29GB/1.33GB
+Epoch: 74 [500/1563] Loss: 1.0638 | Acc: 65.64% | Time: 0.0224s | GPU Mem: 0.29GB/1.33GB
+Epoch: 74 [600/1563] Loss: 1.6849 | Acc: 65.50% | Time: 0.0271s | GPU Mem: 0.29GB/1.33GB
+Epoch: 74 [700/1563] Loss: 1.4820 | Acc: 65.16% | Time: 0.0285s | GPU Mem: 0.29GB/1.33GB
+Epoch: 74 [800/1563] Loss: 1.5583 | Acc: 64.87% | Time: 0.0239s | GPU Mem: 0.29GB/1.33GB
+Epoch: 74 [900/1563] Loss: 0.7292 | Acc: 64.62% | Time: 0.0339s | GPU Mem: 0.29GB/1.33GB
+Epoch: 74 [1000/1563] Loss: 1.9138 | Acc: 64.48% | Time: 0.0219s | GPU Mem: 0.29GB/1.33GB
+Epoch: 74 [1100/1563] Loss: 1.1885 | Acc: 64.44% | Time: 0.0230s | GPU Mem: 0.29GB/1.33GB
+Epoch: 74 [1200/1563] Loss: 1.2929 | Acc: 64.44% | Time: 0.0257s | GPU Mem: 0.29GB/1.33GB
+Epoch: 74 [1300/1563] Loss: 0.8003 | Acc: 64.36% | Time: 0.0264s | GPU Mem: 0.29GB/1.33GB
+Epoch: 74 [1400/1563] Loss: 1.0106 | Acc: 64.37% | Time: 0.0286s | GPU Mem: 0.29GB/1.33GB
+Epoch: 74 [1500/1563] Loss: 1.2746 | Acc: 64.28% | Time: 0.0240s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.2467, Acc: 64.20%
+测试 - Loss: 1.5984, Acc: 57.43%
+学习率: 0.010000, 时间: 42.38s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 76/100
+============================================================
+Epoch: 75 [0/1563] Loss: 0.9595 | Acc: 78.12% | Time: 0.0267s | GPU Mem: 0.29GB/1.33GB
+Epoch: 75 [100/1563] Loss: 1.7307 | Acc: 67.05% | Time: 0.0247s | GPU Mem: 0.29GB/1.33GB
+Epoch: 75 [200/1563] Loss: 0.9370 | Acc: 67.04% | Time: 0.0303s | GPU Mem: 0.29GB/1.33GB
+Epoch: 75 [300/1563] Loss: 1.2028 | Acc: 66.35% | Time: 0.0273s | GPU Mem: 0.29GB/1.33GB
+Epoch: 75 [400/1563] Loss: 1.1205 | Acc: 65.98% | Time: 0.0254s | GPU Mem: 0.29GB/1.33GB
+Epoch: 75 [500/1563] Loss: 1.2965 | Acc: 65.75% | Time: 0.0296s | GPU Mem: 0.29GB/1.33GB
+Epoch: 75 [600/1563] Loss: 0.9252 | Acc: 65.82% | Time: 0.0263s | GPU Mem: 0.29GB/1.33GB
+Epoch: 75 [700/1563] Loss: 1.2445 | Acc: 65.74% | Time: 0.0284s | GPU Mem: 0.29GB/1.33GB
+Epoch: 75 [800/1563] Loss: 1.2644 | Acc: 65.53% | Time: 0.0257s | GPU Mem: 0.29GB/1.33GB
+Epoch: 75 [900/1563] Loss: 0.8607 | Acc: 65.38% | Time: 0.0261s | GPU Mem: 0.29GB/1.33GB
+Epoch: 75 [1000/1563] Loss: 1.4062 | Acc: 65.07% | Time: 0.0294s | GPU Mem: 0.29GB/1.33GB
+Epoch: 75 [1100/1563] Loss: 0.6009 | Acc: 64.92% | Time: 0.0274s | GPU Mem: 0.29GB/1.33GB
+Epoch: 75 [1200/1563] Loss: 1.5947 | Acc: 64.76% | Time: 0.0245s | GPU Mem: 0.29GB/1.33GB
+Epoch: 75 [1300/1563] Loss: 1.0425 | Acc: 64.74% | Time: 0.0246s | GPU Mem: 0.29GB/1.33GB
+Epoch: 75 [1400/1563] Loss: 1.5076 | Acc: 64.65% | Time: 0.0252s | GPU Mem: 0.29GB/1.33GB
+Epoch: 75 [1500/1563] Loss: 0.9904 | Acc: 64.57% | Time: 0.0281s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.2401, Acc: 64.56%
+测试 - Loss: 1.6119, Acc: 56.99%
+学习率: 0.010000, 时间: 42.34s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 77/100
+============================================================
+Epoch: 76 [0/1563] Loss: 0.9194 | Acc: 78.12% | Time: 0.0276s | GPU Mem: 0.29GB/1.33GB
+Epoch: 76 [100/1563] Loss: 1.3202 | Acc: 65.53% | Time: 0.0256s | GPU Mem: 0.29GB/1.33GB
+Epoch: 76 [200/1563] Loss: 1.1872 | Acc: 65.69% | Time: 0.0215s | GPU Mem: 0.29GB/1.33GB
+Epoch: 76 [300/1563] Loss: 1.2682 | Acc: 66.02% | Time: 0.0278s | GPU Mem: 0.29GB/1.33GB
+Epoch: 76 [400/1563] Loss: 1.0968 | Acc: 65.84% | Time: 0.0296s | GPU Mem: 0.29GB/1.33GB
+Epoch: 76 [500/1563] Loss: 1.0669 | Acc: 65.61% | Time: 0.0270s | GPU Mem: 0.29GB/1.33GB
+Epoch: 76 [600/1563] Loss: 1.3183 | Acc: 65.61% | Time: 0.0257s | GPU Mem: 0.29GB/1.33GB
+Epoch: 76 [700/1563] Loss: 1.3246 | Acc: 65.46% | Time: 0.0268s | GPU Mem: 0.29GB/1.33GB
+Epoch: 76 [800/1563] Loss: 1.1309 | Acc: 65.49% | Time: 0.0262s | GPU Mem: 0.29GB/1.33GB
+Epoch: 76 [900/1563] Loss: 1.3365 | Acc: 65.24% | Time: 0.0262s | GPU Mem: 0.29GB/1.33GB
+Epoch: 76 [1000/1563] Loss: 1.0990 | Acc: 65.15% | Time: 0.0247s | GPU Mem: 0.29GB/1.33GB
+Epoch: 76 [1100/1563] Loss: 1.6257 | Acc: 64.91% | Time: 0.0289s | GPU Mem: 0.29GB/1.33GB
+Epoch: 76 [1200/1563] Loss: 1.0663 | Acc: 64.85% | Time: 0.0269s | GPU Mem: 0.29GB/1.33GB
+Epoch: 76 [1300/1563] Loss: 1.4569 | Acc: 64.79% | Time: 0.0292s | GPU Mem: 0.29GB/1.33GB
+Epoch: 76 [1400/1563] Loss: 1.6081 | Acc: 64.64% | Time: 0.0277s | GPU Mem: 0.29GB/1.33GB
+Epoch: 76 [1500/1563] Loss: 1.4930 | Acc: 64.60% | Time: 0.0271s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.2268, Acc: 64.68%
+测试 - Loss: 1.6832, Acc: 56.33%
+学习率: 0.010000, 时间: 43.11s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 78/100
+============================================================
+Epoch: 77 [0/1563] Loss: 0.9711 | Acc: 68.75% | Time: 0.0245s | GPU Mem: 0.29GB/1.33GB
+Epoch: 77 [100/1563] Loss: 1.2963 | Acc: 67.20% | Time: 0.0266s | GPU Mem: 0.29GB/1.33GB
+Epoch: 77 [200/1563] Loss: 1.1670 | Acc: 66.59% | Time: 0.0250s | GPU Mem: 0.29GB/1.33GB
+Epoch: 77 [300/1563] Loss: 1.1940 | Acc: 66.50% | Time: 0.0257s | GPU Mem: 0.29GB/1.33GB
+Epoch: 77 [400/1563] Loss: 1.1478 | Acc: 66.11% | Time: 0.0285s | GPU Mem: 0.29GB/1.33GB
+Epoch: 77 [500/1563] Loss: 1.4163 | Acc: 66.15% | Time: 0.0262s | GPU Mem: 0.29GB/1.33GB
+Epoch: 77 [600/1563] Loss: 1.3157 | Acc: 65.87% | Time: 0.0285s | GPU Mem: 0.29GB/1.33GB
+Epoch: 77 [700/1563] Loss: 1.9162 | Acc: 65.50% | Time: 0.0255s | GPU Mem: 0.29GB/1.33GB
+Epoch: 77 [800/1563] Loss: 1.1695 | Acc: 65.65% | Time: 0.0269s | GPU Mem: 0.29GB/1.33GB
+Epoch: 77 [900/1563] Loss: 1.5811 | Acc: 65.52% | Time: 0.0273s | GPU Mem: 0.29GB/1.33GB
+Epoch: 77 [1000/1563] Loss: 1.0592 | Acc: 65.54% | Time: 0.0306s | GPU Mem: 0.29GB/1.33GB
+Epoch: 77 [1100/1563] Loss: 1.3906 | Acc: 65.42% | Time: 0.0273s | GPU Mem: 0.29GB/1.33GB
+Epoch: 77 [1200/1563] Loss: 1.4844 | Acc: 65.41% | Time: 0.0213s | GPU Mem: 0.29GB/1.33GB
+Epoch: 77 [1300/1563] Loss: 1.2392 | Acc: 65.27% | Time: 0.0254s | GPU Mem: 0.29GB/1.33GB
+Epoch: 77 [1400/1563] Loss: 1.6524 | Acc: 65.17% | Time: 0.0243s | GPU Mem: 0.29GB/1.33GB
+Epoch: 77 [1500/1563] Loss: 1.2028 | Acc: 64.96% | Time: 0.0257s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.2281, Acc: 64.91%
+测试 - Loss: 1.6146, Acc: 57.52%
+学习率: 0.010000, 时间: 43.27s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 79/100
+============================================================
+Epoch: 78 [0/1563] Loss: 0.9568 | Acc: 68.75% | Time: 0.0265s | GPU Mem: 0.29GB/1.33GB
+Epoch: 78 [100/1563] Loss: 1.4025 | Acc: 66.46% | Time: 0.0274s | GPU Mem: 0.29GB/1.33GB
+Epoch: 78 [200/1563] Loss: 0.9242 | Acc: 66.79% | Time: 0.0290s | GPU Mem: 0.29GB/1.33GB
+Epoch: 78 [300/1563] Loss: 1.1133 | Acc: 66.57% | Time: 0.0271s | GPU Mem: 0.29GB/1.33GB
+Epoch: 78 [400/1563] Loss: 1.1070 | Acc: 66.76% | Time: 0.0254s | GPU Mem: 0.29GB/1.33GB
+Epoch: 78 [500/1563] Loss: 0.7258 | Acc: 66.52% | Time: 0.0250s | GPU Mem: 0.29GB/1.33GB
+Epoch: 78 [600/1563] Loss: 1.3488 | Acc: 66.66% | Time: 0.0235s | GPU Mem: 0.29GB/1.33GB
+Epoch: 78 [700/1563] Loss: 1.6248 | Acc: 66.57% | Time: 0.0272s | GPU Mem: 0.29GB/1.33GB
+Epoch: 78 [800/1563] Loss: 1.7810 | Acc: 66.39% | Time: 0.0245s | GPU Mem: 0.29GB/1.33GB
+Epoch: 78 [900/1563] Loss: 1.2547 | Acc: 66.17% | Time: 0.0231s | GPU Mem: 0.29GB/1.33GB
+Epoch: 78 [1000/1563] Loss: 1.5825 | Acc: 66.07% | Time: 0.0286s | GPU Mem: 0.29GB/1.33GB
+Epoch: 78 [1100/1563] Loss: 0.8372 | Acc: 65.90% | Time: 0.0325s | GPU Mem: 0.29GB/1.33GB
+Epoch: 78 [1200/1563] Loss: 1.3261 | Acc: 65.79% | Time: 0.0249s | GPU Mem: 0.29GB/1.33GB
+Epoch: 78 [1300/1563] Loss: 0.9780 | Acc: 65.63% | Time: 0.0261s | GPU Mem: 0.29GB/1.33GB
+Epoch: 78 [1400/1563] Loss: 1.1099 | Acc: 65.51% | Time: 0.0288s | GPU Mem: 0.29GB/1.33GB
+Epoch: 78 [1500/1563] Loss: 1.5423 | Acc: 65.35% | Time: 0.0258s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.2078, Acc: 65.27%
+测试 - Loss: 1.6449, Acc: 56.74%
+学习率: 0.010000, 时间: 43.20s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 80/100
+============================================================
+Epoch: 79 [0/1563] Loss: 1.2600 | Acc: 56.25% | Time: 0.0276s | GPU Mem: 0.29GB/1.33GB
+Epoch: 79 [100/1563] Loss: 1.3330 | Acc: 66.74% | Time: 0.0288s | GPU Mem: 0.29GB/1.33GB
+Epoch: 79 [200/1563] Loss: 1.3606 | Acc: 67.35% | Time: 0.0263s | GPU Mem: 0.29GB/1.33GB
+Epoch: 79 [300/1563] Loss: 0.9094 | Acc: 66.54% | Time: 0.0265s | GPU Mem: 0.29GB/1.33GB
+Epoch: 79 [400/1563] Loss: 0.9880 | Acc: 66.72% | Time: 0.0226s | GPU Mem: 0.29GB/1.33GB
+Epoch: 79 [500/1563] Loss: 1.5162 | Acc: 66.74% | Time: 0.0246s | GPU Mem: 0.29GB/1.33GB
+Epoch: 79 [600/1563] Loss: 1.6671 | Acc: 66.51% | Time: 0.0228s | GPU Mem: 0.29GB/1.33GB
+Epoch: 79 [700/1563] Loss: 1.2375 | Acc: 66.31% | Time: 0.0282s | GPU Mem: 0.29GB/1.33GB
+Epoch: 79 [800/1563] Loss: 0.9322 | Acc: 66.29% | Time: 0.0281s | GPU Mem: 0.29GB/1.33GB
+Epoch: 79 [900/1563] Loss: 1.5896 | Acc: 66.04% | Time: 0.0220s | GPU Mem: 0.29GB/1.33GB
+Epoch: 79 [1000/1563] Loss: 1.2943 | Acc: 65.95% | Time: 0.0249s | GPU Mem: 0.29GB/1.33GB
+Epoch: 79 [1100/1563] Loss: 1.6053 | Acc: 65.97% | Time: 0.0268s | GPU Mem: 0.29GB/1.33GB
+Epoch: 79 [1200/1563] Loss: 1.1885 | Acc: 65.79% | Time: 0.0229s | GPU Mem: 0.29GB/1.33GB
+Epoch: 79 [1300/1563] Loss: 1.7789 | Acc: 65.65% | Time: 0.0233s | GPU Mem: 0.29GB/1.33GB
+Epoch: 79 [1400/1563] Loss: 1.7487 | Acc: 65.56% | Time: 0.0270s | GPU Mem: 0.29GB/1.33GB
+Epoch: 79 [1500/1563] Loss: 1.2026 | Acc: 65.61% | Time: 0.0235s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.1981, Acc: 65.57%
+测试 - Loss: 1.6110, Acc: 57.58%
+学习率: 0.010000, 时间: 42.66s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+保存checkpoint到: ./checkpoints/checkpoint_epoch_80.pth
+
+============================================================
+Epoch 81/100
+============================================================
+Epoch: 80 [0/1563] Loss: 0.8346 | Acc: 84.38% | Time: 0.0257s | GPU Mem: 0.29GB/1.33GB
+Epoch: 80 [100/1563] Loss: 1.2126 | Acc: 69.96% | Time: 0.0241s | GPU Mem: 0.29GB/1.33GB
+Epoch: 80 [200/1563] Loss: 0.6063 | Acc: 69.28% | Time: 0.0236s | GPU Mem: 0.29GB/1.33GB
+Epoch: 80 [300/1563] Loss: 1.1304 | Acc: 69.01% | Time: 0.0256s | GPU Mem: 0.29GB/1.33GB
+Epoch: 80 [400/1563] Loss: 1.1320 | Acc: 68.23% | Time: 0.0245s | GPU Mem: 0.29GB/1.33GB
+Epoch: 80 [500/1563] Loss: 0.9914 | Acc: 67.81% | Time: 0.0228s | GPU Mem: 0.29GB/1.33GB
+Epoch: 80 [600/1563] Loss: 1.0117 | Acc: 67.62% | Time: 0.0227s | GPU Mem: 0.29GB/1.33GB
+Epoch: 80 [700/1563] Loss: 1.2671 | Acc: 67.43% | Time: 0.0271s | GPU Mem: 0.29GB/1.33GB
+Epoch: 80 [800/1563] Loss: 1.0085 | Acc: 67.30% | Time: 0.0236s | GPU Mem: 0.29GB/1.33GB
+Epoch: 80 [900/1563] Loss: 1.0036 | Acc: 67.10% | Time: 0.0241s | GPU Mem: 0.29GB/1.33GB
+Epoch: 80 [1000/1563] Loss: 1.3891 | Acc: 67.05% | Time: 0.0258s | GPU Mem: 0.29GB/1.33GB
+Epoch: 80 [1100/1563] Loss: 1.9871 | Acc: 66.93% | Time: 0.0275s | GPU Mem: 0.29GB/1.33GB
+Epoch: 80 [1200/1563] Loss: 1.2082 | Acc: 66.91% | Time: 0.0259s | GPU Mem: 0.29GB/1.33GB
+Epoch: 80 [1300/1563] Loss: 1.4314 | Acc: 66.85% | Time: 0.0296s | GPU Mem: 0.29GB/1.33GB
+Epoch: 80 [1400/1563] Loss: 0.8618 | Acc: 66.70% | Time: 0.0239s | GPU Mem: 0.29GB/1.33GB
+Epoch: 80 [1500/1563] Loss: 1.5646 | Acc: 66.64% | Time: 0.0257s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.1639, Acc: 66.55%
+测试 - Loss: 1.6410, Acc: 56.43%
+学习率: 0.010000, 时间: 42.94s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 82/100
+============================================================
+Epoch: 81 [0/1563] Loss: 0.8844 | Acc: 65.62% | Time: 0.0304s | GPU Mem: 0.29GB/1.33GB
+Epoch: 81 [100/1563] Loss: 1.1676 | Acc: 70.08% | Time: 0.0285s | GPU Mem: 0.29GB/1.33GB
+Epoch: 81 [200/1563] Loss: 1.1245 | Acc: 68.87% | Time: 0.0285s | GPU Mem: 0.29GB/1.33GB
+Epoch: 81 [300/1563] Loss: 1.1690 | Acc: 69.00% | Time: 0.0288s | GPU Mem: 0.29GB/1.33GB
+Epoch: 81 [400/1563] Loss: 1.0307 | Acc: 68.73% | Time: 0.0255s | GPU Mem: 0.29GB/1.33GB
+Epoch: 81 [500/1563] Loss: 0.9923 | Acc: 68.42% | Time: 0.0255s | GPU Mem: 0.29GB/1.33GB
+Epoch: 81 [600/1563] Loss: 0.9030 | Acc: 67.93% | Time: 0.0228s | GPU Mem: 0.29GB/1.33GB
+Epoch: 81 [700/1563] Loss: 1.3712 | Acc: 67.56% | Time: 0.0251s | GPU Mem: 0.29GB/1.33GB
+Epoch: 81 [800/1563] Loss: 1.4789 | Acc: 67.47% | Time: 0.0234s | GPU Mem: 0.29GB/1.33GB
+Epoch: 81 [900/1563] Loss: 1.0052 | Acc: 67.28% | Time: 0.0275s | GPU Mem: 0.29GB/1.33GB
+Epoch: 81 [1000/1563] Loss: 1.3951 | Acc: 67.09% | Time: 0.0372s | GPU Mem: 0.29GB/1.33GB
+Epoch: 81 [1100/1563] Loss: 1.0113 | Acc: 67.08% | Time: 0.0261s | GPU Mem: 0.29GB/1.33GB
+Epoch: 81 [1200/1563] Loss: 0.8873 | Acc: 67.11% | Time: 0.0242s | GPU Mem: 0.29GB/1.33GB
+Epoch: 81 [1300/1563] Loss: 0.9876 | Acc: 67.10% | Time: 0.0293s | GPU Mem: 0.29GB/1.33GB
+Epoch: 81 [1400/1563] Loss: 1.0277 | Acc: 66.98% | Time: 0.0300s | GPU Mem: 0.29GB/1.33GB
+Epoch: 81 [1500/1563] Loss: 1.0296 | Acc: 66.94% | Time: 0.0196s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.1390, Acc: 66.83%
+测试 - Loss: 1.5491, Acc: 59.01%
+学习率: 0.010000, 时间: 42.67s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+最佳准确率更新: 58.96% -> 59.01%
+保存最佳模型到: ./checkpoints/best_model.pth
+
+============================================================
+Epoch 83/100
+============================================================
+Epoch: 82 [0/1563] Loss: 1.0434 | Acc: 71.88% | Time: 0.0285s | GPU Mem: 0.29GB/1.33GB
+Epoch: 82 [100/1563] Loss: 1.2227 | Acc: 70.08% | Time: 0.0258s | GPU Mem: 0.29GB/1.33GB
+Epoch: 82 [200/1563] Loss: 0.6783 | Acc: 69.71% | Time: 0.0264s | GPU Mem: 0.29GB/1.33GB
+Epoch: 82 [300/1563] Loss: 1.0109 | Acc: 69.95% | Time: 0.0306s | GPU Mem: 0.29GB/1.33GB
+Epoch: 82 [400/1563] Loss: 0.7436 | Acc: 69.52% | Time: 0.0307s | GPU Mem: 0.29GB/1.33GB
+Epoch: 82 [500/1563] Loss: 1.3990 | Acc: 69.21% | Time: 0.0296s | GPU Mem: 0.29GB/1.33GB
+Epoch: 82 [600/1563] Loss: 0.9155 | Acc: 69.10% | Time: 0.0247s | GPU Mem: 0.29GB/1.33GB
+Epoch: 82 [700/1563] Loss: 0.9313 | Acc: 68.79% | Time: 0.0287s | GPU Mem: 0.29GB/1.33GB
+Epoch: 82 [800/1563] Loss: 0.7766 | Acc: 68.71% | Time: 0.0269s | GPU Mem: 0.29GB/1.33GB
+Epoch: 82 [900/1563] Loss: 1.2183 | Acc: 68.48% | Time: 0.0299s | GPU Mem: 0.29GB/1.33GB
+Epoch: 82 [1000/1563] Loss: 1.1718 | Acc: 68.35% | Time: 0.0301s | GPU Mem: 0.29GB/1.33GB
+Epoch: 82 [1100/1563] Loss: 1.2904 | Acc: 68.13% | Time: 0.0305s | GPU Mem: 0.29GB/1.33GB
+Epoch: 82 [1200/1563] Loss: 1.2285 | Acc: 67.99% | Time: 0.0294s | GPU Mem: 0.29GB/1.33GB
+Epoch: 82 [1300/1563] Loss: 1.0675 | Acc: 67.87% | Time: 0.0321s | GPU Mem: 0.29GB/1.33GB
+Epoch: 82 [1400/1563] Loss: 0.8762 | Acc: 67.84% | Time: 0.0263s | GPU Mem: 0.29GB/1.33GB
+Epoch: 82 [1500/1563] Loss: 1.3491 | Acc: 67.71% | Time: 0.0227s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.1107, Acc: 67.61%
+测试 - Loss: 1.6922, Acc: 56.85%
+学习率: 0.010000, 时间: 43.90s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 84/100
+============================================================
+Epoch: 83 [0/1563] Loss: 0.8585 | Acc: 78.12% | Time: 0.0358s | GPU Mem: 0.29GB/1.33GB
+Epoch: 83 [100/1563] Loss: 1.0698 | Acc: 70.36% | Time: 0.0300s | GPU Mem: 0.29GB/1.33GB
+Epoch: 83 [200/1563] Loss: 0.9095 | Acc: 70.16% | Time: 0.0271s | GPU Mem: 0.29GB/1.33GB
+Epoch: 83 [300/1563] Loss: 0.8821 | Acc: 69.89% | Time: 0.0263s | GPU Mem: 0.29GB/1.33GB
+Epoch: 83 [400/1563] Loss: 0.9125 | Acc: 69.79% | Time: 0.0209s | GPU Mem: 0.29GB/1.33GB
+Epoch: 83 [500/1563] Loss: 0.9637 | Acc: 69.62% | Time: 0.0255s | GPU Mem: 0.29GB/1.33GB
+Epoch: 83 [600/1563] Loss: 1.1816 | Acc: 69.70% | Time: 0.0269s | GPU Mem: 0.29GB/1.33GB
+Epoch: 83 [700/1563] Loss: 1.0763 | Acc: 69.62% | Time: 0.0270s | GPU Mem: 0.29GB/1.33GB
+Epoch: 83 [800/1563] Loss: 1.2318 | Acc: 69.54% | Time: 0.0249s | GPU Mem: 0.29GB/1.33GB
+Epoch: 83 [900/1563] Loss: 1.1254 | Acc: 69.27% | Time: 0.0305s | GPU Mem: 0.29GB/1.33GB
+Epoch: 83 [1000/1563] Loss: 0.9144 | Acc: 69.12% | Time: 0.0228s | GPU Mem: 0.29GB/1.33GB
+Epoch: 83 [1100/1563] Loss: 1.0079 | Acc: 68.98% | Time: 0.0248s | GPU Mem: 0.29GB/1.33GB
+Epoch: 83 [1200/1563] Loss: 1.3901 | Acc: 68.86% | Time: 0.0272s | GPU Mem: 0.29GB/1.33GB
+Epoch: 83 [1300/1563] Loss: 1.0043 | Acc: 68.79% | Time: 0.0235s | GPU Mem: 0.29GB/1.33GB
+Epoch: 83 [1400/1563] Loss: 1.2533 | Acc: 68.64% | Time: 0.0255s | GPU Mem: 0.29GB/1.33GB
+Epoch: 83 [1500/1563] Loss: 1.2991 | Acc: 68.44% | Time: 0.0261s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.0932, Acc: 68.37%
+测试 - Loss: 1.5068, Acc: 60.76%
+学习率: 0.010000, 时间: 42.50s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+最佳准确率更新: 59.01% -> 60.76%
+保存最佳模型到: ./checkpoints/best_model.pth
+
+============================================================
+Epoch 85/100
+============================================================
+Epoch: 84 [0/1563] Loss: 1.1244 | Acc: 68.75% | Time: 0.0372s | GPU Mem: 0.29GB/1.33GB
+Epoch: 84 [100/1563] Loss: 1.4917 | Acc: 68.97% | Time: 0.0245s | GPU Mem: 0.29GB/1.33GB
+Epoch: 84 [200/1563] Loss: 1.0198 | Acc: 69.45% | Time: 0.0260s | GPU Mem: 0.29GB/1.33GB
+Epoch: 84 [300/1563] Loss: 0.7908 | Acc: 69.63% | Time: 0.0281s | GPU Mem: 0.29GB/1.33GB
+Epoch: 84 [400/1563] Loss: 0.9358 | Acc: 69.90% | Time: 0.0260s | GPU Mem: 0.29GB/1.33GB
+Epoch: 84 [500/1563] Loss: 1.1520 | Acc: 69.64% | Time: 0.0242s | GPU Mem: 0.29GB/1.33GB
+Epoch: 84 [600/1563] Loss: 1.1546 | Acc: 69.18% | Time: 0.0302s | GPU Mem: 0.29GB/1.33GB
+Epoch: 84 [700/1563] Loss: 0.9617 | Acc: 69.19% | Time: 0.0263s | GPU Mem: 0.29GB/1.33GB
+Epoch: 84 [800/1563] Loss: 1.2270 | Acc: 68.87% | Time: 0.0271s | GPU Mem: 0.29GB/1.33GB
+Epoch: 84 [900/1563] Loss: 1.3451 | Acc: 68.80% | Time: 0.0247s | GPU Mem: 0.29GB/1.33GB
+Epoch: 84 [1000/1563] Loss: 1.0700 | Acc: 68.72% | Time: 0.0235s | GPU Mem: 0.29GB/1.33GB
+Epoch: 84 [1100/1563] Loss: 1.0813 | Acc: 68.79% | Time: 0.0259s | GPU Mem: 0.29GB/1.33GB
+Epoch: 84 [1200/1563] Loss: 0.9726 | Acc: 68.71% | Time: 0.0294s | GPU Mem: 0.29GB/1.33GB
+Epoch: 84 [1300/1563] Loss: 1.1422 | Acc: 68.62% | Time: 0.0271s | GPU Mem: 0.29GB/1.33GB
+Epoch: 84 [1400/1563] Loss: 1.1674 | Acc: 68.52% | Time: 0.0246s | GPU Mem: 0.29GB/1.33GB
+Epoch: 84 [1500/1563] Loss: 1.2028 | Acc: 68.42% | Time: 0.0246s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.0789, Acc: 68.44%
+测试 - Loss: 1.4913, Acc: 60.55%
+学习率: 0.010000, 时间: 41.89s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 86/100
+============================================================
+Epoch: 85 [0/1563] Loss: 1.5267 | Acc: 53.12% | Time: 0.0211s | GPU Mem: 0.29GB/1.33GB
+Epoch: 85 [100/1563] Loss: 1.0059 | Acc: 71.63% | Time: 0.0307s | GPU Mem: 0.29GB/1.33GB
+Epoch: 85 [200/1563] Loss: 0.8835 | Acc: 71.27% | Time: 0.0246s | GPU Mem: 0.29GB/1.33GB
+Epoch: 85 [300/1563] Loss: 1.0434 | Acc: 70.97% | Time: 0.0231s | GPU Mem: 0.29GB/1.33GB
+Epoch: 85 [400/1563] Loss: 1.3077 | Acc: 70.76% | Time: 0.0271s | GPU Mem: 0.29GB/1.33GB
+Epoch: 85 [500/1563] Loss: 1.3597 | Acc: 70.37% | Time: 0.0249s | GPU Mem: 0.29GB/1.33GB
+Epoch: 85 [600/1563] Loss: 0.9297 | Acc: 70.03% | Time: 0.0306s | GPU Mem: 0.29GB/1.33GB
+Epoch: 85 [700/1563] Loss: 0.9463 | Acc: 69.78% | Time: 0.0234s | GPU Mem: 0.29GB/1.33GB
+Epoch: 85 [800/1563] Loss: 0.8551 | Acc: 69.61% | Time: 0.0229s | GPU Mem: 0.29GB/1.33GB
+Epoch: 85 [900/1563] Loss: 1.2806 | Acc: 69.38% | Time: 0.0240s | GPU Mem: 0.29GB/1.33GB
+Epoch: 85 [1000/1563] Loss: 1.0858 | Acc: 69.29% | Time: 0.0270s | GPU Mem: 0.29GB/1.33GB
+Epoch: 85 [1100/1563] Loss: 1.2490 | Acc: 69.25% | Time: 0.0245s | GPU Mem: 0.29GB/1.33GB
+Epoch: 85 [1200/1563] Loss: 1.1006 | Acc: 69.21% | Time: 0.0242s | GPU Mem: 0.29GB/1.33GB
+Epoch: 85 [1300/1563] Loss: 1.1029 | Acc: 69.15% | Time: 0.0228s | GPU Mem: 0.29GB/1.33GB
+Epoch: 85 [1400/1563] Loss: 1.5096 | Acc: 69.07% | Time: 0.0217s | GPU Mem: 0.29GB/1.33GB
+Epoch: 85 [1500/1563] Loss: 1.1184 | Acc: 68.96% | Time: 0.0248s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.0648, Acc: 68.83%
+测试 - Loss: 1.6124, Acc: 59.15%
+学习率: 0.010000, 时间: 42.52s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 87/100
+============================================================
+Epoch: 86 [0/1563] Loss: 1.1688 | Acc: 68.75% | Time: 0.0278s | GPU Mem: 0.29GB/1.33GB
+Epoch: 86 [100/1563] Loss: 1.2037 | Acc: 71.50% | Time: 0.0277s | GPU Mem: 0.29GB/1.33GB
+Epoch: 86 [200/1563] Loss: 0.9391 | Acc: 71.11% | Time: 0.0275s | GPU Mem: 0.29GB/1.33GB
+Epoch: 86 [300/1563] Loss: 0.9710 | Acc: 70.81% | Time: 0.0258s | GPU Mem: 0.29GB/1.33GB
+Epoch: 86 [400/1563] Loss: 1.5120 | Acc: 71.01% | Time: 0.0273s | GPU Mem: 0.29GB/1.33GB
+Epoch: 86 [500/1563] Loss: 1.4930 | Acc: 70.67% | Time: 0.0259s | GPU Mem: 0.29GB/1.33GB
+Epoch: 86 [600/1563] Loss: 1.0043 | Acc: 70.67% | Time: 0.0289s | GPU Mem: 0.29GB/1.33GB
+Epoch: 86 [700/1563] Loss: 0.8706 | Acc: 70.69% | Time: 0.0253s | GPU Mem: 0.29GB/1.33GB
+Epoch: 86 [800/1563] Loss: 1.2045 | Acc: 70.53% | Time: 0.0293s | GPU Mem: 0.29GB/1.33GB
+Epoch: 86 [900/1563] Loss: 1.4789 | Acc: 70.32% | Time: 0.0226s | GPU Mem: 0.29GB/1.33GB
+Epoch: 86 [1000/1563] Loss: 0.7943 | Acc: 70.11% | Time: 0.0248s | GPU Mem: 0.29GB/1.33GB
+Epoch: 86 [1100/1563] Loss: 1.4121 | Acc: 69.94% | Time: 0.0285s | GPU Mem: 0.29GB/1.33GB
+Epoch: 86 [1200/1563] Loss: 0.9655 | Acc: 69.82% | Time: 0.0241s | GPU Mem: 0.29GB/1.33GB
+Epoch: 86 [1300/1563] Loss: 1.2368 | Acc: 69.74% | Time: 0.0233s | GPU Mem: 0.29GB/1.33GB
+Epoch: 86 [1400/1563] Loss: 1.4034 | Acc: 69.63% | Time: 0.0296s | GPU Mem: 0.29GB/1.33GB
+Epoch: 86 [1500/1563] Loss: 1.3196 | Acc: 69.43% | Time: 0.0238s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.0489, Acc: 69.33%
+测试 - Loss: 1.5072, Acc: 60.51%
+学习率: 0.010000, 时间: 41.44s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 88/100
+============================================================
+Epoch: 87 [0/1563] Loss: 0.8912 | Acc: 78.12% | Time: 0.0252s | GPU Mem: 0.29GB/1.33GB
+Epoch: 87 [100/1563] Loss: 1.0164 | Acc: 72.80% | Time: 0.0253s | GPU Mem: 0.29GB/1.33GB
+Epoch: 87 [200/1563] Loss: 0.9312 | Acc: 71.91% | Time: 0.0262s | GPU Mem: 0.29GB/1.33GB
+Epoch: 87 [300/1563] Loss: 1.5400 | Acc: 71.76% | Time: 0.0230s | GPU Mem: 0.29GB/1.33GB
+Epoch: 87 [400/1563] Loss: 1.5383 | Acc: 71.41% | Time: 0.0242s | GPU Mem: 0.29GB/1.33GB
+Epoch: 87 [500/1563] Loss: 1.0904 | Acc: 71.00% | Time: 0.0214s | GPU Mem: 0.29GB/1.33GB
+Epoch: 87 [600/1563] Loss: 1.0646 | Acc: 70.84% | Time: 0.0289s | GPU Mem: 0.29GB/1.33GB
+Epoch: 87 [700/1563] Loss: 0.7974 | Acc: 70.55% | Time: 0.0313s | GPU Mem: 0.29GB/1.33GB
+Epoch: 87 [800/1563] Loss: 1.0434 | Acc: 70.38% | Time: 0.0260s | GPU Mem: 0.29GB/1.33GB
+Epoch: 87 [900/1563] Loss: 0.9402 | Acc: 70.30% | Time: 0.0297s | GPU Mem: 0.29GB/1.33GB
+Epoch: 87 [1000/1563] Loss: 0.8795 | Acc: 70.25% | Time: 0.0283s | GPU Mem: 0.29GB/1.33GB
+Epoch: 87 [1100/1563] Loss: 1.0667 | Acc: 70.16% | Time: 0.0276s | GPU Mem: 0.29GB/1.33GB
+Epoch: 87 [1200/1563] Loss: 1.0536 | Acc: 69.87% | Time: 0.0270s | GPU Mem: 0.29GB/1.33GB
+Epoch: 87 [1300/1563] Loss: 0.8799 | Acc: 69.73% | Time: 0.0354s | GPU Mem: 0.29GB/1.33GB
+Epoch: 87 [1400/1563] Loss: 1.0303 | Acc: 69.57% | Time: 0.0260s | GPU Mem: 0.29GB/1.33GB
+Epoch: 87 [1500/1563] Loss: 1.0710 | Acc: 69.46% | Time: 0.0247s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.0411, Acc: 69.45%
+测试 - Loss: 1.5397, Acc: 59.31%
+学习率: 0.010000, 时间: 43.18s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 89/100
+============================================================
+Epoch: 88 [0/1563] Loss: 1.1999 | Acc: 68.75% | Time: 0.0290s | GPU Mem: 0.29GB/1.33GB
+Epoch: 88 [100/1563] Loss: 0.9655 | Acc: 72.68% | Time: 0.0252s | GPU Mem: 0.29GB/1.33GB
+Epoch: 88 [200/1563] Loss: 0.9101 | Acc: 71.70% | Time: 0.0296s | GPU Mem: 0.29GB/1.33GB
+Epoch: 88 [300/1563] Loss: 0.8509 | Acc: 71.34% | Time: 0.0296s | GPU Mem: 0.29GB/1.33GB
+Epoch: 88 [400/1563] Loss: 0.9879 | Acc: 70.79% | Time: 0.0259s | GPU Mem: 0.29GB/1.33GB
+Epoch: 88 [500/1563] Loss: 0.8299 | Acc: 70.55% | Time: 0.0288s | GPU Mem: 0.29GB/1.33GB
+Epoch: 88 [600/1563] Loss: 0.8209 | Acc: 70.41% | Time: 0.0272s | GPU Mem: 0.29GB/1.33GB
+Epoch: 88 [700/1563] Loss: 0.7771 | Acc: 70.24% | Time: 0.0303s | GPU Mem: 0.29GB/1.33GB
+Epoch: 88 [800/1563] Loss: 0.7371 | Acc: 70.19% | Time: 0.0297s | GPU Mem: 0.29GB/1.33GB
+Epoch: 88 [900/1563] Loss: 1.0531 | Acc: 70.16% | Time: 0.0265s | GPU Mem: 0.29GB/1.33GB
+Epoch: 88 [1000/1563] Loss: 0.9958 | Acc: 69.96% | Time: 0.0295s | GPU Mem: 0.29GB/1.33GB
+Epoch: 88 [1100/1563] Loss: 1.0075 | Acc: 69.93% | Time: 0.0268s | GPU Mem: 0.29GB/1.33GB
+Epoch: 88 [1200/1563] Loss: 1.0770 | Acc: 69.86% | Time: 0.0236s | GPU Mem: 0.29GB/1.33GB
+Epoch: 88 [1300/1563] Loss: 0.9031 | Acc: 69.73% | Time: 0.0260s | GPU Mem: 0.29GB/1.33GB
+Epoch: 88 [1400/1563] Loss: 1.5780 | Acc: 69.61% | Time: 0.0276s | GPU Mem: 0.29GB/1.33GB
+Epoch: 88 [1500/1563] Loss: 1.1585 | Acc: 69.64% | Time: 0.0242s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.0341, Acc: 69.59%
+测试 - Loss: 1.5489, Acc: 59.62%
+学习率: 0.010000, 时间: 43.82s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 90/100
+============================================================
+Epoch: 89 [0/1563] Loss: 1.0169 | Acc: 68.75% | Time: 0.0359s | GPU Mem: 0.29GB/1.33GB
+Epoch: 89 [100/1563] Loss: 0.7370 | Acc: 73.70% | Time: 0.0216s | GPU Mem: 0.29GB/1.33GB
+Epoch: 89 [200/1563] Loss: 1.2217 | Acc: 72.81% | Time: 0.0214s | GPU Mem: 0.29GB/1.33GB
+Epoch: 89 [300/1563] Loss: 1.1028 | Acc: 72.68% | Time: 0.0290s | GPU Mem: 0.29GB/1.33GB
+Epoch: 89 [400/1563] Loss: 0.5957 | Acc: 72.19% | Time: 0.0257s | GPU Mem: 0.29GB/1.33GB
+Epoch: 89 [500/1563] Loss: 0.9049 | Acc: 71.76% | Time: 0.0291s | GPU Mem: 0.29GB/1.33GB
+Epoch: 89 [600/1563] Loss: 0.9214 | Acc: 71.34% | Time: 0.0246s | GPU Mem: 0.29GB/1.33GB
+Epoch: 89 [700/1563] Loss: 1.0715 | Acc: 71.28% | Time: 0.0257s | GPU Mem: 0.29GB/1.33GB
+Epoch: 89 [800/1563] Loss: 0.8722 | Acc: 71.14% | Time: 0.0260s | GPU Mem: 0.29GB/1.33GB
+Epoch: 89 [900/1563] Loss: 0.8569 | Acc: 71.00% | Time: 0.0291s | GPU Mem: 0.29GB/1.33GB
+Epoch: 89 [1000/1563] Loss: 1.0951 | Acc: 70.92% | Time: 0.0290s | GPU Mem: 0.29GB/1.33GB
+Epoch: 89 [1100/1563] Loss: 1.0840 | Acc: 70.71% | Time: 0.0257s | GPU Mem: 0.29GB/1.33GB
+Epoch: 89 [1200/1563] Loss: 0.8239 | Acc: 70.47% | Time: 0.0225s | GPU Mem: 0.29GB/1.33GB
+Epoch: 89 [1300/1563] Loss: 1.2369 | Acc: 70.43% | Time: 0.0257s | GPU Mem: 0.29GB/1.33GB
+Epoch: 89 [1400/1563] Loss: 1.2183 | Acc: 70.36% | Time: 0.0245s | GPU Mem: 0.29GB/1.33GB
+Epoch: 89 [1500/1563] Loss: 0.9805 | Acc: 70.19% | Time: 0.0215s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.0226, Acc: 70.10%
+测试 - Loss: 1.5181, Acc: 60.31%
+学习率: 0.010000, 时间: 43.04s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+保存checkpoint到: ./checkpoints/checkpoint_epoch_90.pth
+
+============================================================
+Epoch 91/100
+============================================================
+Epoch: 90 [0/1563] Loss: 0.9905 | Acc: 75.00% | Time: 0.0315s | GPU Mem: 0.29GB/1.33GB
+Epoch: 90 [100/1563] Loss: 0.5222 | Acc: 72.03% | Time: 0.0261s | GPU Mem: 0.29GB/1.33GB
+Epoch: 90 [200/1563] Loss: 1.0075 | Acc: 71.98% | Time: 0.0284s | GPU Mem: 0.29GB/1.33GB
+Epoch: 90 [300/1563] Loss: 0.6242 | Acc: 71.62% | Time: 0.0260s | GPU Mem: 0.29GB/1.33GB
+Epoch: 90 [400/1563] Loss: 0.9629 | Acc: 71.67% | Time: 0.0262s | GPU Mem: 0.29GB/1.33GB
+Epoch: 90 [500/1563] Loss: 0.9509 | Acc: 71.68% | Time: 0.0271s | GPU Mem: 0.29GB/1.33GB
+Epoch: 90 [600/1563] Loss: 1.2312 | Acc: 71.58% | Time: 0.0252s | GPU Mem: 0.29GB/1.33GB
+Epoch: 90 [700/1563] Loss: 0.9103 | Acc: 71.39% | Time: 0.0250s | GPU Mem: 0.29GB/1.33GB
+Epoch: 90 [800/1563] Loss: 1.2520 | Acc: 71.02% | Time: 0.0267s | GPU Mem: 0.29GB/1.33GB
+Epoch: 90 [900/1563] Loss: 0.8385 | Acc: 71.03% | Time: 0.0231s | GPU Mem: 0.29GB/1.33GB
+Epoch: 90 [1000/1563] Loss: 1.0515 | Acc: 70.79% | Time: 0.0277s | GPU Mem: 0.29GB/1.33GB
+Epoch: 90 [1100/1563] Loss: 0.9492 | Acc: 70.61% | Time: 0.0240s | GPU Mem: 0.29GB/1.33GB
+Epoch: 90 [1200/1563] Loss: 0.5884 | Acc: 70.55% | Time: 0.0296s | GPU Mem: 0.29GB/1.33GB
+Epoch: 90 [1300/1563] Loss: 1.2334 | Acc: 70.44% | Time: 0.0267s | GPU Mem: 0.29GB/1.33GB
+Epoch: 90 [1400/1563] Loss: 1.0243 | Acc: 70.41% | Time: 0.0283s | GPU Mem: 0.29GB/1.33GB
+Epoch: 90 [1500/1563] Loss: 1.1844 | Acc: 70.29% | Time: 0.0291s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.0119, Acc: 70.15%
+测试 - Loss: 1.4634, Acc: 61.44%
+学习率: 0.010000, 时间: 43.01s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+最佳准确率更新: 60.76% -> 61.44%
+保存最佳模型到: ./checkpoints/best_model.pth
+
+============================================================
+Epoch 92/100
+============================================================
+Epoch: 91 [0/1563] Loss: 0.8938 | Acc: 78.12% | Time: 0.0382s | GPU Mem: 0.29GB/1.33GB
+Epoch: 91 [100/1563] Loss: 0.8021 | Acc: 73.64% | Time: 0.0240s | GPU Mem: 0.29GB/1.33GB
+Epoch: 91 [200/1563] Loss: 0.6180 | Acc: 73.55% | Time: 0.0218s | GPU Mem: 0.29GB/1.33GB
+Epoch: 91 [300/1563] Loss: 0.7955 | Acc: 72.82% | Time: 0.0303s | GPU Mem: 0.29GB/1.33GB
+Epoch: 91 [400/1563] Loss: 0.8365 | Acc: 72.56% | Time: 0.0299s | GPU Mem: 0.29GB/1.33GB
+Epoch: 91 [500/1563] Loss: 0.9627 | Acc: 72.59% | Time: 0.0252s | GPU Mem: 0.29GB/1.33GB
+Epoch: 91 [600/1563] Loss: 0.6089 | Acc: 72.07% | Time: 0.0298s | GPU Mem: 0.29GB/1.33GB
+Epoch: 91 [700/1563] Loss: 1.0476 | Acc: 71.65% | Time: 0.0313s | GPU Mem: 0.29GB/1.33GB
+Epoch: 91 [800/1563] Loss: 1.3097 | Acc: 71.68% | Time: 0.0254s | GPU Mem: 0.29GB/1.33GB
+Epoch: 91 [900/1563] Loss: 1.1089 | Acc: 71.45% | Time: 0.0225s | GPU Mem: 0.29GB/1.33GB
+Epoch: 91 [1000/1563] Loss: 0.9917 | Acc: 71.22% | Time: 0.0311s | GPU Mem: 0.29GB/1.33GB
+Epoch: 91 [1100/1563] Loss: 1.1307 | Acc: 71.06% | Time: 0.0294s | GPU Mem: 0.29GB/1.33GB
+Epoch: 91 [1200/1563] Loss: 1.1429 | Acc: 70.91% | Time: 0.0289s | GPU Mem: 0.29GB/1.33GB
+Epoch: 91 [1300/1563] Loss: 1.2974 | Acc: 70.74% | Time: 0.0281s | GPU Mem: 0.29GB/1.33GB
+Epoch: 91 [1400/1563] Loss: 0.9195 | Acc: 70.55% | Time: 0.0296s | GPU Mem: 0.29GB/1.33GB
+Epoch: 91 [1500/1563] Loss: 0.8288 | Acc: 70.42% | Time: 0.0293s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 1.0069, Acc: 70.41%
+测试 - Loss: 1.5674, Acc: 59.29%
+学习率: 0.010000, 时间: 42.95s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 93/100
+============================================================
+Epoch: 92 [0/1563] Loss: 0.8039 | Acc: 81.25% | Time: 0.0283s | GPU Mem: 0.29GB/1.33GB
+Epoch: 92 [100/1563] Loss: 0.9412 | Acc: 72.90% | Time: 0.0230s | GPU Mem: 0.29GB/1.33GB
+Epoch: 92 [200/1563] Loss: 1.2054 | Acc: 72.61% | Time: 0.0238s | GPU Mem: 0.29GB/1.33GB
+Epoch: 92 [300/1563] Loss: 0.4901 | Acc: 72.92% | Time: 0.0218s | GPU Mem: 0.29GB/1.33GB
+Epoch: 92 [400/1563] Loss: 0.6479 | Acc: 72.57% | Time: 0.0274s | GPU Mem: 0.29GB/1.33GB
+Epoch: 92 [500/1563] Loss: 1.1004 | Acc: 72.35% | Time: 0.0314s | GPU Mem: 0.29GB/1.33GB
+Epoch: 92 [600/1563] Loss: 0.6768 | Acc: 72.31% | Time: 0.0353s | GPU Mem: 0.29GB/1.33GB
+Epoch: 92 [700/1563] Loss: 0.8768 | Acc: 71.99% | Time: 0.0274s | GPU Mem: 0.29GB/1.33GB
+Epoch: 92 [800/1563] Loss: 0.4915 | Acc: 72.08% | Time: 0.0257s | GPU Mem: 0.29GB/1.33GB
+Epoch: 92 [900/1563] Loss: 0.9905 | Acc: 71.82% | Time: 0.0254s | GPU Mem: 0.29GB/1.33GB
+Epoch: 92 [1000/1563] Loss: 0.9090 | Acc: 71.56% | Time: 0.0240s | GPU Mem: 0.29GB/1.33GB
+Epoch: 92 [1100/1563] Loss: 1.1867 | Acc: 71.36% | Time: 0.0290s | GPU Mem: 0.29GB/1.33GB
+Epoch: 92 [1200/1563] Loss: 0.8983 | Acc: 71.23% | Time: 0.0297s | GPU Mem: 0.29GB/1.33GB
+Epoch: 92 [1300/1563] Loss: 1.0604 | Acc: 71.00% | Time: 0.0247s | GPU Mem: 0.29GB/1.33GB
+Epoch: 92 [1400/1563] Loss: 1.1719 | Acc: 70.92% | Time: 0.0269s | GPU Mem: 0.29GB/1.33GB
+Epoch: 92 [1500/1563] Loss: 1.1341 | Acc: 70.78% | Time: 0.0295s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 0.9979, Acc: 70.69%
+测试 - Loss: 1.5117, Acc: 60.51%
+学习率: 0.010000, 时间: 42.83s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 94/100
+============================================================
+Epoch: 93 [0/1563] Loss: 1.1595 | Acc: 68.75% | Time: 0.0293s | GPU Mem: 0.29GB/1.33GB
+Epoch: 93 [100/1563] Loss: 0.9206 | Acc: 72.65% | Time: 0.0284s | GPU Mem: 0.29GB/1.33GB
+Epoch: 93 [200/1563] Loss: 0.6800 | Acc: 72.47% | Time: 0.0260s | GPU Mem: 0.29GB/1.33GB
+Epoch: 93 [300/1563] Loss: 0.8343 | Acc: 72.65% | Time: 0.0269s | GPU Mem: 0.29GB/1.33GB
+Epoch: 93 [400/1563] Loss: 1.1283 | Acc: 72.58% | Time: 0.0321s | GPU Mem: 0.29GB/1.33GB
+Epoch: 93 [500/1563] Loss: 0.7472 | Acc: 72.28% | Time: 0.0237s | GPU Mem: 0.29GB/1.33GB
+Epoch: 93 [600/1563] Loss: 0.9225 | Acc: 72.28% | Time: 0.0282s | GPU Mem: 0.29GB/1.33GB
+Epoch: 93 [700/1563] Loss: 1.2055 | Acc: 72.12% | Time: 0.0247s | GPU Mem: 0.29GB/1.33GB
+Epoch: 93 [800/1563] Loss: 1.0816 | Acc: 72.02% | Time: 0.0304s | GPU Mem: 0.29GB/1.33GB
+Epoch: 93 [900/1563] Loss: 1.0623 | Acc: 71.80% | Time: 0.0309s | GPU Mem: 0.29GB/1.33GB
+Epoch: 93 [1000/1563] Loss: 1.2289 | Acc: 71.76% | Time: 0.0243s | GPU Mem: 0.29GB/1.33GB
+Epoch: 93 [1100/1563] Loss: 0.6549 | Acc: 71.62% | Time: 0.0252s | GPU Mem: 0.29GB/1.33GB
+Epoch: 93 [1200/1563] Loss: 1.0603 | Acc: 71.50% | Time: 0.0259s | GPU Mem: 0.29GB/1.33GB
+Epoch: 93 [1300/1563] Loss: 1.1653 | Acc: 71.36% | Time: 0.0244s | GPU Mem: 0.29GB/1.33GB
+Epoch: 93 [1400/1563] Loss: 0.8483 | Acc: 71.23% | Time: 0.0279s | GPU Mem: 0.29GB/1.33GB
+Epoch: 93 [1500/1563] Loss: 0.9742 | Acc: 71.10% | Time: 0.0286s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 0.9835, Acc: 71.03%
+测试 - Loss: 1.5819, Acc: 59.49%
+学习率: 0.010000, 时间: 44.14s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 95/100
+============================================================
+Epoch: 94 [0/1563] Loss: 0.8126 | Acc: 71.88% | Time: 0.0293s | GPU Mem: 0.29GB/1.33GB
+Epoch: 94 [100/1563] Loss: 0.9607 | Acc: 73.30% | Time: 0.0271s | GPU Mem: 0.29GB/1.33GB
+Epoch: 94 [200/1563] Loss: 0.7621 | Acc: 73.12% | Time: 0.0249s | GPU Mem: 0.29GB/1.33GB
+Epoch: 94 [300/1563] Loss: 1.3872 | Acc: 72.88% | Time: 0.0299s | GPU Mem: 0.29GB/1.33GB
+Epoch: 94 [400/1563] Loss: 0.8753 | Acc: 72.60% | Time: 0.0296s | GPU Mem: 0.29GB/1.33GB
+Epoch: 94 [500/1563] Loss: 0.8521 | Acc: 72.16% | Time: 0.0230s | GPU Mem: 0.29GB/1.33GB
+Epoch: 94 [600/1563] Loss: 1.2541 | Acc: 71.93% | Time: 0.0272s | GPU Mem: 0.29GB/1.33GB
+Epoch: 94 [700/1563] Loss: 0.9465 | Acc: 71.72% | Time: 0.0321s | GPU Mem: 0.29GB/1.33GB
+Epoch: 94 [800/1563] Loss: 0.6068 | Acc: 71.56% | Time: 0.0247s | GPU Mem: 0.29GB/1.33GB
+Epoch: 94 [900/1563] Loss: 1.1058 | Acc: 71.32% | Time: 0.0266s | GPU Mem: 0.29GB/1.33GB
+Epoch: 94 [1000/1563] Loss: 1.7071 | Acc: 71.17% | Time: 0.0295s | GPU Mem: 0.29GB/1.33GB
+Epoch: 94 [1100/1563] Loss: 0.8532 | Acc: 71.12% | Time: 0.0344s | GPU Mem: 0.29GB/1.33GB
+Epoch: 94 [1200/1563] Loss: 0.9496 | Acc: 71.07% | Time: 0.0272s | GPU Mem: 0.29GB/1.33GB
+Epoch: 94 [1300/1563] Loss: 0.9280 | Acc: 70.87% | Time: 0.0258s | GPU Mem: 0.29GB/1.33GB
+Epoch: 94 [1400/1563] Loss: 0.8029 | Acc: 70.64% | Time: 0.0255s | GPU Mem: 0.29GB/1.33GB
+Epoch: 94 [1500/1563] Loss: 0.8532 | Acc: 70.60% | Time: 0.0251s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 0.9893, Acc: 70.60%
+测试 - Loss: 1.4654, Acc: 61.28%
+学习率: 0.010000, 时间: 43.64s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 96/100
+============================================================
+Epoch: 95 [0/1563] Loss: 0.5820 | Acc: 84.38% | Time: 0.0289s | GPU Mem: 0.29GB/1.33GB
+Epoch: 95 [100/1563] Loss: 0.8300 | Acc: 73.11% | Time: 0.0275s | GPU Mem: 0.29GB/1.33GB
+Epoch: 95 [200/1563] Loss: 0.5547 | Acc: 73.93% | Time: 0.0299s | GPU Mem: 0.29GB/1.33GB
+Epoch: 95 [300/1563] Loss: 0.6292 | Acc: 74.02% | Time: 0.0255s | GPU Mem: 0.29GB/1.33GB
+Epoch: 95 [400/1563] Loss: 0.6650 | Acc: 73.22% | Time: 0.0266s | GPU Mem: 0.29GB/1.33GB
+Epoch: 95 [500/1563] Loss: 0.8463 | Acc: 72.90% | Time: 0.0261s | GPU Mem: 0.29GB/1.33GB
+Epoch: 95 [600/1563] Loss: 0.7155 | Acc: 72.63% | Time: 0.0304s | GPU Mem: 0.29GB/1.33GB
+Epoch: 95 [700/1563] Loss: 1.1636 | Acc: 72.47% | Time: 0.0261s | GPU Mem: 0.29GB/1.33GB
+Epoch: 95 [800/1563] Loss: 1.2038 | Acc: 72.31% | Time: 0.0275s | GPU Mem: 0.29GB/1.33GB
+Epoch: 95 [900/1563] Loss: 1.3385 | Acc: 71.98% | Time: 0.0248s | GPU Mem: 0.29GB/1.33GB
+Epoch: 95 [1000/1563] Loss: 1.2633 | Acc: 71.78% | Time: 0.0258s | GPU Mem: 0.29GB/1.33GB
+Epoch: 95 [1100/1563] Loss: 0.9424 | Acc: 71.66% | Time: 0.0265s | GPU Mem: 0.29GB/1.33GB
+Epoch: 95 [1200/1563] Loss: 0.9487 | Acc: 71.49% | Time: 0.0219s | GPU Mem: 0.29GB/1.33GB
+Epoch: 95 [1300/1563] Loss: 1.1056 | Acc: 71.33% | Time: 0.0267s | GPU Mem: 0.29GB/1.33GB
+Epoch: 95 [1400/1563] Loss: 1.4620 | Acc: 71.20% | Time: 0.0256s | GPU Mem: 0.29GB/1.33GB
+Epoch: 95 [1500/1563] Loss: 0.9512 | Acc: 71.08% | Time: 0.0259s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 0.9760, Acc: 71.02%
+测试 - Loss: 1.5256, Acc: 59.83%
+学习率: 0.010000, 时间: 43.29s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 97/100
+============================================================
+Epoch: 96 [0/1563] Loss: 0.9200 | Acc: 75.00% | Time: 0.0221s | GPU Mem: 0.29GB/1.33GB
+Epoch: 96 [100/1563] Loss: 1.1640 | Acc: 73.70% | Time: 0.0258s | GPU Mem: 0.29GB/1.33GB
+Epoch: 96 [200/1563] Loss: 0.7481 | Acc: 73.99% | Time: 0.0271s | GPU Mem: 0.29GB/1.33GB
+Epoch: 96 [300/1563] Loss: 0.8954 | Acc: 73.50% | Time: 0.0262s | GPU Mem: 0.29GB/1.33GB
+Epoch: 96 [400/1563] Loss: 1.1470 | Acc: 73.32% | Time: 0.0238s | GPU Mem: 0.29GB/1.33GB
+Epoch: 96 [500/1563] Loss: 0.7355 | Acc: 73.00% | Time: 0.0254s | GPU Mem: 0.29GB/1.33GB
+Epoch: 96 [600/1563] Loss: 1.0103 | Acc: 72.43% | Time: 0.0268s | GPU Mem: 0.29GB/1.33GB
+Epoch: 96 [700/1563] Loss: 1.0846 | Acc: 72.23% | Time: 0.0278s | GPU Mem: 0.29GB/1.33GB
+Epoch: 96 [800/1563] Loss: 0.8598 | Acc: 72.07% | Time: 0.0238s | GPU Mem: 0.29GB/1.33GB
+Epoch: 96 [900/1563] Loss: 0.6375 | Acc: 71.77% | Time: 0.0275s | GPU Mem: 0.29GB/1.33GB
+Epoch: 96 [1000/1563] Loss: 0.5247 | Acc: 71.78% | Time: 0.0206s | GPU Mem: 0.29GB/1.33GB
+Epoch: 96 [1100/1563] Loss: 0.6492 | Acc: 71.52% | Time: 0.0298s | GPU Mem: 0.29GB/1.33GB
+Epoch: 96 [1200/1563] Loss: 1.1587 | Acc: 71.39% | Time: 0.0228s | GPU Mem: 0.29GB/1.33GB
+Epoch: 96 [1300/1563] Loss: 0.9436 | Acc: 71.27% | Time: 0.0269s | GPU Mem: 0.29GB/1.33GB
+Epoch: 96 [1400/1563] Loss: 1.5017 | Acc: 71.16% | Time: 0.0290s | GPU Mem: 0.29GB/1.33GB
+Epoch: 96 [1500/1563] Loss: 1.2069 | Acc: 70.92% | Time: 0.0233s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 0.9813, Acc: 70.90%
+测试 - Loss: 1.5431, Acc: 60.26%
+学习率: 0.010000, 时间: 43.30s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 98/100
+============================================================
+Epoch: 97 [0/1563] Loss: 0.9455 | Acc: 71.88% | Time: 0.0368s | GPU Mem: 0.29GB/1.33GB
+Epoch: 97 [100/1563] Loss: 0.9839 | Acc: 73.27% | Time: 0.0300s | GPU Mem: 0.29GB/1.33GB
+Epoch: 97 [200/1563] Loss: 1.0407 | Acc: 73.83% | Time: 0.0246s | GPU Mem: 0.29GB/1.33GB
+Epoch: 97 [300/1563] Loss: 0.9094 | Acc: 73.46% | Time: 0.0256s | GPU Mem: 0.29GB/1.33GB
+Epoch: 97 [400/1563] Loss: 1.0948 | Acc: 73.13% | Time: 0.0268s | GPU Mem: 0.29GB/1.33GB
+Epoch: 97 [500/1563] Loss: 0.8584 | Acc: 73.17% | Time: 0.0289s | GPU Mem: 0.29GB/1.33GB
+Epoch: 97 [600/1563] Loss: 0.7151 | Acc: 73.01% | Time: 0.0261s | GPU Mem: 0.29GB/1.33GB
+Epoch: 97 [700/1563] Loss: 0.9590 | Acc: 72.86% | Time: 0.0320s | GPU Mem: 0.29GB/1.33GB
+Epoch: 97 [800/1563] Loss: 1.0362 | Acc: 72.64% | Time: 0.0229s | GPU Mem: 0.29GB/1.33GB
+Epoch: 97 [900/1563] Loss: 0.6974 | Acc: 72.40% | Time: 0.0274s | GPU Mem: 0.29GB/1.33GB
+Epoch: 97 [1000/1563] Loss: 1.0502 | Acc: 72.23% | Time: 0.0264s | GPU Mem: 0.29GB/1.33GB
+Epoch: 97 [1100/1563] Loss: 1.1313 | Acc: 72.10% | Time: 0.0279s | GPU Mem: 0.29GB/1.33GB
+Epoch: 97 [1200/1563] Loss: 0.9330 | Acc: 72.04% | Time: 0.0244s | GPU Mem: 0.29GB/1.33GB
+Epoch: 97 [1300/1563] Loss: 0.8863 | Acc: 71.99% | Time: 0.0227s | GPU Mem: 0.29GB/1.33GB
+Epoch: 97 [1400/1563] Loss: 1.2339 | Acc: 71.79% | Time: 0.0291s | GPU Mem: 0.29GB/1.33GB
+Epoch: 97 [1500/1563] Loss: 0.7607 | Acc: 71.81% | Time: 0.0333s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 0.9568, Acc: 71.71%
+测试 - Loss: 1.7002, Acc: 58.39%
+学习率: 0.010000, 时间: 43.36s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 99/100
+============================================================
+Epoch: 98 [0/1563] Loss: 1.1704 | Acc: 81.25% | Time: 0.0355s | GPU Mem: 0.29GB/1.33GB
+Epoch: 98 [100/1563] Loss: 0.5048 | Acc: 73.76% | Time: 0.0257s | GPU Mem: 0.29GB/1.33GB
+Epoch: 98 [200/1563] Loss: 1.0345 | Acc: 73.24% | Time: 0.0288s | GPU Mem: 0.29GB/1.33GB
+Epoch: 98 [300/1563] Loss: 0.8155 | Acc: 72.92% | Time: 0.0261s | GPU Mem: 0.29GB/1.33GB
+Epoch: 98 [400/1563] Loss: 0.9716 | Acc: 72.99% | Time: 0.0254s | GPU Mem: 0.29GB/1.33GB
+Epoch: 98 [500/1563] Loss: 1.0232 | Acc: 72.77% | Time: 0.0209s | GPU Mem: 0.29GB/1.33GB
+Epoch: 98 [600/1563] Loss: 1.1456 | Acc: 72.64% | Time: 0.0254s | GPU Mem: 0.29GB/1.33GB
+Epoch: 98 [700/1563] Loss: 0.6816 | Acc: 72.49% | Time: 0.0250s | GPU Mem: 0.29GB/1.33GB
+Epoch: 98 [800/1563] Loss: 1.2350 | Acc: 72.34% | Time: 0.0259s | GPU Mem: 0.29GB/1.33GB
+Epoch: 98 [900/1563] Loss: 0.9366 | Acc: 72.10% | Time: 0.0298s | GPU Mem: 0.29GB/1.33GB
+Epoch: 98 [1000/1563] Loss: 0.8499 | Acc: 71.99% | Time: 0.0249s | GPU Mem: 0.29GB/1.33GB
+Epoch: 98 [1100/1563] Loss: 1.1985 | Acc: 71.99% | Time: 0.0245s | GPU Mem: 0.29GB/1.33GB
+Epoch: 98 [1200/1563] Loss: 1.1571 | Acc: 71.93% | Time: 0.0218s | GPU Mem: 0.29GB/1.33GB
+Epoch: 98 [1300/1563] Loss: 0.7274 | Acc: 71.84% | Time: 0.0239s | GPU Mem: 0.29GB/1.33GB
+Epoch: 98 [1400/1563] Loss: 1.0391 | Acc: 71.76% | Time: 0.0244s | GPU Mem: 0.29GB/1.33GB
+Epoch: 98 [1500/1563] Loss: 0.7329 | Acc: 71.74% | Time: 0.0244s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 0.9629, Acc: 71.64%
+测试 - Loss: 1.6245, Acc: 58.75%
+学习率: 0.010000, 时间: 43.09s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+
+============================================================
+Epoch 100/100
+============================================================
+Epoch: 99 [0/1563] Loss: 0.7752 | Acc: 81.25% | Time: 0.0237s | GPU Mem: 0.29GB/1.33GB
+Epoch: 99 [100/1563] Loss: 0.6884 | Acc: 75.62% | Time: 0.0247s | GPU Mem: 0.29GB/1.33GB
+Epoch: 99 [200/1563] Loss: 1.0071 | Acc: 75.02% | Time: 0.0282s | GPU Mem: 0.29GB/1.33GB
+Epoch: 99 [300/1563] Loss: 0.7841 | Acc: 74.09% | Time: 0.0245s | GPU Mem: 0.29GB/1.33GB
+Epoch: 99 [400/1563] Loss: 1.2107 | Acc: 73.52% | Time: 0.0275s | GPU Mem: 0.29GB/1.33GB
+Epoch: 99 [500/1563] Loss: 1.1379 | Acc: 73.27% | Time: 0.0272s | GPU Mem: 0.29GB/1.33GB
+Epoch: 99 [600/1563] Loss: 0.6446 | Acc: 72.98% | Time: 0.0265s | GPU Mem: 0.29GB/1.33GB
+Epoch: 99 [700/1563] Loss: 0.8646 | Acc: 72.84% | Time: 0.0265s | GPU Mem: 0.29GB/1.33GB
+Epoch: 99 [800/1563] Loss: 0.9866 | Acc: 72.58% | Time: 0.0294s | GPU Mem: 0.29GB/1.33GB
+Epoch: 99 [900/1563] Loss: 0.9412 | Acc: 72.42% | Time: 0.0255s | GPU Mem: 0.29GB/1.33GB
+Epoch: 99 [1000/1563] Loss: 1.0825 | Acc: 72.27% | Time: 0.0302s | GPU Mem: 0.29GB/1.33GB
+Epoch: 99 [1100/1563] Loss: 1.4504 | Acc: 72.12% | Time: 0.0260s | GPU Mem: 0.29GB/1.33GB
+Epoch: 99 [1200/1563] Loss: 0.8378 | Acc: 72.00% | Time: 0.0295s | GPU Mem: 0.29GB/1.33GB
+Epoch: 99 [1300/1563] Loss: 0.8112 | Acc: 71.82% | Time: 0.0258s | GPU Mem: 0.29GB/1.33GB
+Epoch: 99 [1400/1563] Loss: 1.0828 | Acc: 71.73% | Time: 0.0289s | GPU Mem: 0.29GB/1.33GB
+Epoch: 99 [1500/1563] Loss: 0.9840 | Acc: 71.65% | Time: 0.0264s | GPU Mem: 0.29GB/1.33GB
+
+训练 - Loss: 0.9533, Acc: 71.58%
+测试 - Loss: 1.4776, Acc: 61.29%
+学习率: 0.001000, 时间: 44.00s
+GPU内存使用:
+  GPU 1 - 已分配: 0.29GB, 已保留: 1.33GB
+保存checkpoint到: ./checkpoints/checkpoint_epoch_100.pth
+
+============================================================
+训练完成!
+============================================================
+总时间: 4617.42秒 (76.96分钟)
+平均每epoch: 46.17秒
+最佳测试准确率: 61.44%
+保存最终模型到: ./experiments/group_4_batch_size_impact_across_training_modes_and_hardware/checkpoints/single_resnet50_bs32_gpu1_nw2_chunks0.pth
+
+训练完成!

@@ -1,6 +1,6 @@
 __pycache__/
-checkpoints/
+/checkpoints/
 data/
 *.pth
 training_logs/
-analysis_results/
+experiments1/
