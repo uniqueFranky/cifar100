@@ -143,10 +143,10 @@ class TrainingScheduler:
                 'batch_size': [128],
                 'epochs': [30],
                 'dataset': ['cifar100'],
-                'gpu_ids': [[1, 2, 3, 5]],
+                'gpu_ids': [[1, 2, 3, 4]],
                 'num_workers': [2],
                 'prefetch_factor': [1],
-                'chunks': [16, 32, 64]
+                'chunks': [4, 8, 16, 32, 64]
             },
             control_variables="训练模式(流水线并行)、模型架构(ResNet50)、硬件配置(4卡)、批处理大小(128)、数据加载参数",
             comparison_focus="流水线并行chunks参数: 16 vs 32 vs 64"

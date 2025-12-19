@@ -119,7 +119,7 @@ class PipelineParallelTrainer:
         print(f"  - Epochs: {self.config.epochs}")
         print(f"  - 随机种子: {self.config.seed}")
         print(f"{'='*60}\n")
-
+        print(f'gpu_ids: {self.config.gpu_ids}, world_size: {self.world_size}')
         mp.spawn(
             self.train_worker,
             args=(self.world_size,),
@@ -157,9 +157,10 @@ class PipelineParallelTrainer:
         # ====================================================
         gpu_id = self.config.gpu_ids[rank]
         device = torch.device(f'cuda:{gpu_id}')
+        print(f"Rank {rank} 使用 GPU {gpu_id} ({torch.cuda.get_device_name(gpu_id)})")
         torch.cuda.set_device(device)
 
-        setup_distributed(rank, world_size, backend=self.config.dist_backend)
+        setup_distributed(rank, world_size, backend=self.config.dist_backend, device=device)
 
         if rank == 0:
             print(f"✅ 进程组初始化完成 (Backend: {self.config.dist_backend})")
@@ -373,17 +374,17 @@ class PipelineParallelTrainer:
                 if test_acc > best_acc:
                     print(f'最佳准确率更新: {best_acc:.2f}% -> {test_acc:.2f}%')
                     best_acc = test_acc
-                    self.save_checkpoint(
-                        rank, epoch, my_submodule, optimizer, scheduler,
-                        history, best_acc, is_best=True
-                    )
+                    # self.save_checkpoint(
+                    #     rank, epoch, my_submodule, optimizer, scheduler,
+                    #     history, best_acc, is_best=True
+                    # )
                 
-                # 定期保存
-                if (epoch + 1) % self.config.save_interval == 0:
-                    self.save_checkpoint(
-                        rank, epoch, my_submodule, optimizer, scheduler,
-                        history, best_acc
-                    )
+                # # 定期保存
+                # if (epoch + 1) % self.config.save_interval == 0:
+                #     self.save_checkpoint(
+                #         rank, epoch, my_submodule, optimizer, scheduler,
+                #         history, best_acc
+                #     )
 
             dist.barrier()
 
@@ -540,40 +541,30 @@ class PipelineParallelTrainer:
                        history, best_acc, is_best=False, final=False):
         """保存 Checkpoint（与 DDP 格式完全一致）"""
         os.makedirs(self.config.save_dir, exist_ok=True)
-
+        print(f"Rank {rank} 正在保存 checkpoint..., is_best={is_best}, final={final}")
         # 转换 config 为字典（与 DDP 一致）
         config_dict = self.config.__dict__.copy() if hasattr(self.config, '__dict__') else self.config
 
-        # 文件名格式
-        if is_best:
-            filename = f"best_model_pipeline_stage{rank}.pth"
-        elif final:
-            # 支持自定义最终 checkpoint 路径（与 DDP 一致）
-            if hasattr(self.config, 'final_checkpoint_path') and self.config.final_checkpoint_path:
-                filename = os.path.basename(self.config.final_checkpoint_path).replace('.pth', f'_stage{rank}.pth')
-            else:
-                filename = f"final_model_pipeline_stage{rank}.pth"
-        else:
-            filename = f"checkpoint_pipeline_stage{rank}_epoch{epoch+1}.pth"
 
-        path = os.path.join(self.config.save_dir, filename)
+        if final:
+            path = self.config.final_checkpoint_path
+        if path is None:
+            return
 
         # 保存格式（与 DDP 一致）
         state = {
             'epoch': epoch + 1,
-            # 'model_state_dict': model.state_dict(),
-            # 'optimizer_state_dict': optimizer.state_dict(),
-            # 'scheduler_state_dict': scheduler.state_dict(),
+            'model_state_dict': model.state_dict(),
+            'optimizer_state_dict': optimizer.state_dict(),
+            'scheduler_state_dict': scheduler.state_dict(),
             'best_acc': best_acc,
             'config': config_dict,
             # Pipeline 特有的额外信息
             'stage_index': rank,
             'num_stages': self.world_size,
+            'history': history
         }
 
-        # 只在最后一个 rank 保存完整的 history（与 DDP 一致）
-        if rank == self.world_size - 1:
-            state['history'] = history
 
         torch.save(state, path)
         

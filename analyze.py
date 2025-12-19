@@ -585,9 +585,9 @@ class ExperimentAnalyzer:
         plt.close()
         
     def analyze_group_5(self, metrics_data, output_dir):
-        """分析组5: Pipeline Parallel优化"""
+        """分析组5: Pipeline Parallel优化 - 包含详细的loss和准确率曲线"""
         print("\n" + "="*60)
-        print("Analyzing Group 5: Pipeline Parallel Optimization")
+        print("Analyzing Group 5: Pipeline Parallel Optimization with Loss Curves")
         print("="*60)
         
         group_name = 'group_5_pipeline_parallel_chunks_parameter_optimization'
@@ -601,44 +601,111 @@ class ExperimentAnalyzer:
             print("No data available for Group 5 (checkpoints may be empty)")
             return
         
-        # 创建DataFrame
+        # 创建DataFrame和收集训练历史
         df_list = []
+        chunks_history = {}
+        
         for ckpt_name, metrics in data.items():
             df_list.append({
                 'Name': ckpt_name,
                 'Chunks': metrics['chunks'],
                 'Best Test Acc (%)': metrics['best_test_acc'],
+                'Final Test Acc (%)': metrics['final_test_acc'],
                 'Avg Epoch Time (s)': metrics['avg_epoch_time'],
-                'Max GPU Memory (GB)': metrics['max_gpu_memory_allocated']
+                'Max GPU Memory (GB)': metrics['max_gpu_memory_allocated'],
+                'Convergence Epoch': metrics['convergence_epoch']
             })
-        df = pd.DataFrame(df_list).sort_values('Chunks')
+            
+            # 收集训练历史数据
+            history = metrics.get('history', {})
+            if history and all(key in history for key in ['train_loss', 'test_loss', 'train_acc', 'test_acc']):
+                chunks_history[metrics['chunks']] = {
+                    'train_loss': history['train_loss'],
+                    'test_loss': history['test_loss'],
+                    'train_acc': history['train_acc'],
+                    'test_acc': history['test_acc'],
+                    'epoch_time': history.get('epoch_time', []),
+                    'name': ckpt_name
+                }
         
+        df = pd.DataFrame(df_list).sort_values('Chunks')
         print("\n" + df.to_string(index=False))
         
-        # 创建图表
-        fig, axes = plt.subplots(1, 3, figsize=(16, 5))
-        fig.suptitle('Group 5: Pipeline Parallel Chunks Parameter Optimization', 
-                     fontsize=14, fontweight='bold')
+        # 创建综合分析图 - 3x3布局
+        fig, axes = plt.subplots(3, 3, figsize=(20, 15))
+        fig.suptitle('Group 5: Pipeline Parallel Chunks Parameter Optimization - Complete Analysis', 
+                    fontsize=16, fontweight='bold')
         
-        # 1. 准确率 vs chunks
-        ax = axes[0]
-        bars = ax.bar(range(len(df)), df['Best Test Acc (%)'], 
-                     color=sns.color_palette("husl", len(df)))
+        colors = sns.color_palette("husl", len(chunks_history) if chunks_history else len(df))
+        
+        # 第一行：训练曲线
+        if chunks_history:
+            # 1. 训练Loss曲线
+            ax = axes[0, 0]
+            for i, (chunks, data) in enumerate(sorted(chunks_history.items())):
+                epochs = range(1, len(data['train_loss']) + 1)
+                ax.plot(epochs, data['train_loss'], 
+                    label=f'Chunks={chunks}', 
+                    color=colors[i], 
+                    linewidth=2, marker='o', markersize=3)
+            ax.set_xlabel('Epochs')
+            ax.set_ylabel('Training Loss')
+            ax.set_title('Training Loss Curves')
+            ax.legend(fontsize=8)
+            ax.grid(True, alpha=0.3)
+            
+            # 2. 测试Loss曲线
+            ax = axes[0, 1]
+            for i, (chunks, data) in enumerate(sorted(chunks_history.items())):
+                epochs = range(1, len(data['test_loss']) + 1)
+                ax.plot(epochs, data['test_loss'], 
+                    label=f'Chunks={chunks}', 
+                    color=colors[i], 
+                    linewidth=2, marker='s', markersize=3)
+            ax.set_xlabel('Epochs')
+            ax.set_ylabel('Test Loss')
+            ax.set_title('Test Loss Curves')
+            ax.legend(fontsize=8)
+            ax.grid(True, alpha=0.3)
+            
+            # 3. 测试准确率曲线
+            ax = axes[0, 2]
+            for i, (chunks, data) in enumerate(sorted(chunks_history.items())):
+                epochs = range(1, len(data['test_acc']) + 1)
+                ax.plot(epochs, data['test_acc'], 
+                    label=f'Chunks={chunks}', 
+                    color=colors[i], 
+                    linewidth=2, marker='^', markersize=3)
+            ax.set_xlabel('Epochs')
+            ax.set_ylabel('Test Accuracy (%)')
+            ax.set_title('Test Accuracy Curves')
+            ax.legend(fontsize=8)
+            ax.grid(True, alpha=0.3)
+        else:
+            # 如果没有训练历史数据，显示提示信息
+            for i in range(3):
+                axes[0, i].text(0.5, 0.5, 'No training history available', 
+                            ha='center', va='center', transform=axes[0, i].transAxes)
+                axes[0, i].set_title(['Training Loss', 'Test Loss', 'Test Accuracy'][i])
+        
+        # 第二行：性能指标对比
+        # 4. 最佳准确率对比
+        ax = axes[1, 0]
+        bars = ax.bar(range(len(df)), df['Best Test Acc (%)'], color=colors[:len(df)])
         ax.set_xlabel('Chunks')
         ax.set_ylabel('Best Test Accuracy (%)')
-        ax.set_title('Accuracy vs Chunks')
+        ax.set_title('Best Accuracy vs Chunks')
         ax.set_xticks(range(len(df)))
         ax.set_xticklabels(df['Chunks'])
         ax.grid(axis='y', alpha=0.3)
         for i, bar in enumerate(bars):
             height = bar.get_height()
             ax.text(bar.get_x() + bar.get_width()/2., height,
-                   f'{height:.2f}%', ha='center', va='bottom', fontsize=9)
+                f'{height:.2f}%', ha='center', va='bottom', fontsize=8)
         
-        # 2. 训练时间 vs chunks
-        ax = axes[1]
-        bars = ax.bar(range(len(df)), df['Avg Epoch Time (s)'], 
-                     color=sns.color_palette("husl", len(df)))
+        # 5. 训练时间对比
+        ax = axes[1, 1]
+        bars = ax.bar(range(len(df)), df['Avg Epoch Time (s)'], color=colors[:len(df)])
         ax.set_xlabel('Chunks')
         ax.set_ylabel('Average Epoch Time (s)')
         ax.set_title('Training Time vs Chunks')
@@ -648,12 +715,11 @@ class ExperimentAnalyzer:
         for i, bar in enumerate(bars):
             height = bar.get_height()
             ax.text(bar.get_x() + bar.get_width()/2., height,
-                   f'{height:.1f}s', ha='center', va='bottom', fontsize=9)
+                f'{height:.1f}s', ha='center', va='bottom', fontsize=8)
         
-        # 3. GPU内存 vs chunks
-        ax = axes[2]
-        bars = ax.bar(range(len(df)), df['Max GPU Memory (GB)'], 
-                     color=sns.color_palette("husl", len(df)))
+        # 6. GPU内存使用对比
+        ax = axes[1, 2]
+        bars = ax.bar(range(len(df)), df['Max GPU Memory (GB)'], color=colors[:len(df)])
         ax.set_xlabel('Chunks')
         ax.set_ylabel('Max GPU Memory (GB)')
         ax.set_title('GPU Memory vs Chunks')
@@ -663,13 +729,95 @@ class ExperimentAnalyzer:
         for i, bar in enumerate(bars):
             height = bar.get_height()
             ax.text(bar.get_x() + bar.get_width()/2., height,
-                   f'{height:.2f}GB', ha='center', va='bottom', fontsize=9)
+                f'{height:.2f}GB', ha='center', va='bottom', fontsize=8)
+        
+        # 第三行：综合分析
+        # 7. 收敛速度对比
+        ax = axes[2, 0]
+        bars = ax.bar(range(len(df)), df['Convergence Epoch'], color=colors[:len(df)])
+        ax.set_xlabel('Chunks')
+        ax.set_ylabel('Epochs to 60% Accuracy')
+        ax.set_title('Convergence Speed vs Chunks')
+        ax.set_xticks(range(len(df)))
+        ax.set_xticklabels(df['Chunks'])
+        ax.grid(axis='y', alpha=0.3)
+        for i, bar in enumerate(bars):
+            height = bar.get_height()
+            ax.text(bar.get_x() + bar.get_width()/2., height,
+                f'{int(height)}', ha='center', va='bottom', fontsize=8)
+        
+        # 8. 训练效率分析 (准确率/时间)
+        ax = axes[2, 1]
+        efficiency = df['Best Test Acc (%)'] / df['Avg Epoch Time (s)']
+        bars = ax.bar(range(len(df)), efficiency, color=colors[:len(df)])
+        ax.set_xlabel('Chunks')
+        ax.set_ylabel('Efficiency (Accuracy/Time)')
+        ax.set_title('Training Efficiency vs Chunks')
+        ax.set_xticks(range(len(df)))
+        ax.set_xticklabels(df['Chunks'])
+        ax.grid(axis='y', alpha=0.3)
+        for i, bar in enumerate(bars):
+            height = bar.get_height()
+            ax.text(bar.get_x() + bar.get_width()/2., height,
+                f'{height:.2f}', ha='center', va='bottom', fontsize=8)
+        
+        # 9. 综合性能雷达图或对比表格
+        ax = axes[2, 2]
+        if len(df) > 0:
+            # 创建综合性能对比表格
+            ax.axis('tight')
+            ax.axis('off')
+            
+            # 准备表格数据
+            table_data = []
+            headers = ['Chunks', 'Best Acc (%)', 'Time (s)', 'Memory (GB)', 'Efficiency']
+            
+            for _, row in df.iterrows():
+                eff = row['Best Test Acc (%)'] / row['Avg Epoch Time (s)']
+                table_data.append([
+                    f"{row['Chunks']}",
+                    f"{row['Best Test Acc (%)']:.2f}",
+                    f"{row['Avg Epoch Time (s)']:.1f}",
+                    f"{row['Max GPU Memory (GB)']:.2f}",
+                    f"{eff:.2f}"
+                ])
+            
+            # 创建表格
+            table = ax.table(cellText=table_data,
+                            colLabels=headers,
+                            cellLoc='center',
+                            loc='center',
+                            bbox=[0, 0, 1, 1])
+            
+            table.auto_set_font_size(False)
+            table.set_fontsize(9)
+            table.scale(1, 2)
+            
+            # 设置表格样式
+            for i in range(len(headers)):
+                table[(0, i)].set_facecolor('#E6E6FA')
+                table[(0, i)].set_text_props(weight='bold')
+            
+            # 高亮最佳值
+            best_acc_row = df['Best Test Acc (%)'].idxmax() + 1
+            best_time_row = df['Avg Epoch Time (s)'].idxmin() + 1
+            best_memory_row = df['Max GPU Memory (GB)'].idxmin() + 1
+            best_eff_row = efficiency.idxmax() + 1
+            
+            table[(best_acc_row, 1)].set_facecolor('#90EE90')  # 浅绿色
+            table[(best_time_row, 2)].set_facecolor('#90EE90')
+            table[(best_memory_row, 3)].set_facecolor('#90EE90')
+            table[(best_eff_row, 4)].set_facecolor('#90EE90')
+            
+            ax.set_title('Performance Summary\n(Green = Best)', fontsize=10, pad=20)
         
         plt.tight_layout()
         output_path = output_dir / 'group5_analysis.png'
         plt.savefig(output_path, dpi=300, bbox_inches='tight')
-        print(f"\nSaved figure to {output_path}")
+        print(f"\nSaved Group 5 complete analysis to {output_path}")
         plt.close()
+
+
     
     def generate_overall_summary(self, metrics_data, output_dir):
         """生成总体对比分析"""

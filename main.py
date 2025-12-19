@@ -30,7 +30,7 @@ def parse_args():
 
     # 训练模式
     parser.add_argument('--mode', type=str, default='single',
-                       choices=['single', 'dp', 'ddp', 'mp', 'hp'],
+                       choices=['single', 'dp', 'ddp', 'mp', 'hp', 'pp'],
                        help='训练模式: single(单GPU), dp(DataParallel), ddp(DistributedDataParallel), mp(ModelParallel), hp(HybridParallel)')
     
     # GPU设置

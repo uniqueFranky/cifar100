@@ -10,22 +10,22 @@ Parameters: {
     1,
     2,
     3,
-    5
+    4
   ],
   "num_workers": 2,
   "prefetch_factor": 1,
   "chunks": 32,
   "num_gpus": 4
 }
-Command: python -u main.py --mode pp --model resnet50 --batch-size 128 --epochs 100 --dataset cifar100 --gpu-ids 1,2,3,5 --num-workers 2 --prefetch-factor 1 --chunks 32 --final-checkpoint-path ./experiments/group_5_pipeline_parallel_chunks_parameter_optimization/checkpoints/pp_resnet50_bs128_gpu4_nw2_chunks32.pth
-Start Time: 2025-12-10T16:16:22.106382
+Command: python -u main.py --mode pp --model resnet50 --batch-size 128 --epochs 100 --dataset cifar100 --gpu-ids 1,2,3,4 --num-workers 2 --prefetch-factor 1 --chunks 32 --final-checkpoint-path ./experiments/group_5_pipeline_parallel_chunks_parameter_optimization/checkpoints/pp_resnet50_bs128_gpu4_nw2_chunks32.pth
+Start Time: 2025-12-18T23:48:58.597812
 ====================================================================================================
 
 ================================================================================
 训练配置:
 ================================================================================
   mode                     : pp
-  gpu_ids                  : [1, 2, 3, 5]
+  gpu_ids                  : [1, 2, 3, 4]
   num_gpus                 : 4
   num_workers              : 2
   prefetch_factor          : 1
@@ -60,7 +60,7 @@ Start Time: 2025-12-10T16:16:22.106382
   GPU 1: NVIDIA GeForce RTX 4090
   GPU 2: NVIDIA GeForce RTX 4090
   GPU 3: NVIDIA GeForce RTX 4090
-  GPU 5: NVIDIA GeForce RTX 4090
+  GPU 4: NVIDIA GeForce RTX 4090
 
 使用训练模式: PP
 
@@ -70,7 +70,7 @@ Start Time: 2025-12-10T16:16:22.106382
 📊 配置信息:
   - 数据集: CIFAR-100 (100 类)
   - GPU 数量: 4
-  - GPU IDs: [1, 2, 3, 5]
+  - GPU IDs: [1, 2, 3, 4]
   - Global Batch Size: 128
   - Micro-batches (Chunks): 32
   - Micro-batch Size: 4
@@ -79,10 +79,9 @@ Start Time: 2025-12-10T16:16:22.106382
   - 随机种子: 42
 ============================================================
 
-[rank1]:[W1210 16:16:34.276517546 ProcessGroupNCCL.cpp:5023] [PG ID 0 PG GUID 0 Rank 1]  using GPU 1 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can specify device_id in init_process_group() to force use of a particular device.
-[rank3]:[W1210 16:16:34.575227912 ProcessGroupNCCL.cpp:5023] [PG ID 0 PG GUID 0 Rank 3]  using GPU 3 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can specify device_id in init_process_group() to force use of a particular device.
-[rank2]:[W1210 16:16:34.592104146 ProcessGroupNCCL.cpp:5023] [PG ID 0 PG GUID 0 Rank 2]  using GPU 2 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can specify device_id in init_process_group() to force use of a particular device.
-[rank0]:[W1210 16:16:35.332821001 ProcessGroupNCCL.cpp:5023] [PG ID 0 PG GUID 0 Rank 0]  using GPU 0 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can specify device_id in init_process_group() to force use of a particular device.
+gpu_ids: [1, 2, 3, 4], world_size: 4
+Rank 3 使用 GPU 4 (NVIDIA GeForce RTX 4090)
+Rank 0 使用 GPU 1 (NVIDIA GeForce RTX 4090)
 ✅ 进程组初始化完成 (Backend: nccl)
 🔧 所有 rank 使用统一随机种子: 42
 🔧 构建模型: resnet50
@@ -101,675 +100,521 @@ Start Time: 2025-12-10T16:16:22.106382
 ============================================================
 Epoch 1/100
 ============================================================
+Rank 2 使用 GPU 3 (NVIDIA GeForce RTX 4090)
+Rank 1 使用 GPU 2 (NVIDIA GeForce RTX 4090)
 Rank 3 | Epoch: 0 [0/391] Loss: 4.9230 | Acc: 0.78% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 0 [100/391] Loss: 4.5425 | Acc: 0.78% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 0 [200/391] Loss: 4.8878 | Acc: 0.78% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 0 [300/391] Loss: 4.6061 | Acc: 2.34% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 0 [100/391] Loss: 4.5852 | Acc: 0.78% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 0 [200/391] Loss: 4.5709 | Acc: 1.56% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 0 [300/391] Loss: 4.5875 | Acc: 1.56% | GPU Mem: 0.25GB/0.50GB
 ⚠️  跳过不完整的 batch 390
 
-训练 - Loss: 5.4488, Acc: 1.23%
-测试 - Loss: 4.6132, Acc: 1.29%
-学习率: 0.100000, 时间: 203.23s
+训练 - Loss: 5.3148, Acc: 1.37%
+测试 - Loss: 4.5697, Acc: 1.60%
+学习率: 0.100000, 时间: 199.81s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.90GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 0.00% -> 1.29%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 1 [0/391] Loss: 4.6084 | Acc: 1.56% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 1 [100/391] Loss: 4.5605 | Acc: 0.78% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 1 [200/391] Loss: 4.6015 | Acc: 2.34% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 1 [300/391] Loss: 4.5760 | Acc: 1.56% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 0.00% -> 1.60%
+Rank 3 | Epoch: 1 [0/391] Loss: 4.5968 | Acc: 0.00% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 1 [100/391] Loss: 4.4713 | Acc: 3.91% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 1 [200/391] Loss: 4.4533 | Acc: 3.12% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 1 [300/391] Loss: 4.4217 | Acc: 1.56% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 4.5847, Acc: 1.55%
-测试 - Loss: 4.5680, Acc: 1.79%
-学习率: 0.100000, 时间: 193.57s
+训练 - Loss: 4.5120, Acc: 2.17%
+测试 - Loss: 4.4668, Acc: 2.67%
+学习率: 0.100000, 时间: 185.06s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 1.29% -> 1.79%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 2 [0/391] Loss: 4.5844 | Acc: 3.12% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 2 [100/391] Loss: 4.6262 | Acc: 0.00% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 2 [200/391] Loss: 4.4794 | Acc: 4.69% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 2 [300/391] Loss: 4.4761 | Acc: 1.56% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 1.60% -> 2.67%
+Rank 3 | Epoch: 2 [0/391] Loss: 4.4642 | Acc: 0.78% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 2 [100/391] Loss: 4.4643 | Acc: 1.56% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 2 [200/391] Loss: 4.3364 | Acc: 3.12% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 2 [300/391] Loss: 4.3068 | Acc: 5.47% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 4.5150, Acc: 2.19%
-测试 - Loss: 4.4561, Acc: 2.51%
-学习率: 0.100000, 时间: 192.05s
+训练 - Loss: 4.4029, Acc: 3.12%
+测试 - Loss: 4.3299, Acc: 3.91%
+学习率: 0.100000, 时间: 180.95s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 1.79% -> 2.51%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 3 [0/391] Loss: 4.4637 | Acc: 0.78% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 3 [100/391] Loss: 4.4545 | Acc: 3.12% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 3 [200/391] Loss: 4.4279 | Acc: 7.81% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 3 [300/391] Loss: 4.2764 | Acc: 2.34% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 2.67% -> 3.91%
+Rank 3 | Epoch: 3 [0/391] Loss: 4.2133 | Acc: 9.38% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 3 [100/391] Loss: 4.3392 | Acc: 4.69% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 3 [200/391] Loss: 4.2368 | Acc: 6.25% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 3 [300/391] Loss: 4.1470 | Acc: 3.91% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 4.4043, Acc: 2.93%
-测试 - Loss: 4.3261, Acc: 3.82%
+训练 - Loss: 4.2129, Acc: 4.75%
+测试 - Loss: 4.1568, Acc: 5.47%
+学习率: 0.100000, 时间: 194.63s
+GPU内存使用:
+  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
+  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
+  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 3.91% -> 5.47%
+Rank 3 | Epoch: 4 [0/391] Loss: 4.1289 | Acc: 7.03% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 4 [100/391] Loss: 4.0805 | Acc: 4.69% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 4 [200/391] Loss: 4.0270 | Acc: 6.25% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 4 [300/391] Loss: 3.8515 | Acc: 9.38% | GPU Mem: 0.25GB/0.50GB
+
+训练 - Loss: 4.0419, Acc: 7.04%
+测试 - Loss: 3.9996, Acc: 8.00%
+学习率: 0.100000, 时间: 177.76s
+GPU内存使用:
+  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
+  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
+  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 5.47% -> 8.00%
+Rank 3 | Epoch: 5 [0/391] Loss: 3.9212 | Acc: 10.16% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 5 [100/391] Loss: 4.0528 | Acc: 7.03% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 5 [200/391] Loss: 3.7312 | Acc: 8.59% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 5 [300/391] Loss: 3.9418 | Acc: 9.38% | GPU Mem: 0.25GB/0.50GB
+
+训练 - Loss: 3.8610, Acc: 9.67%
+测试 - Loss: 3.8001, Acc: 11.18%
+学习率: 0.100000, 时间: 189.13s
+GPU内存使用:
+  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
+  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
+  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 8.00% -> 11.18%
+Rank 3 | Epoch: 6 [0/391] Loss: 3.6895 | Acc: 10.94% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 6 [100/391] Loss: 3.7859 | Acc: 9.38% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 6 [200/391] Loss: 3.5543 | Acc: 17.19% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 6 [300/391] Loss: 3.6283 | Acc: 13.28% | GPU Mem: 0.25GB/0.50GB
+
+训练 - Loss: 3.6480, Acc: 13.26%
+测试 - Loss: 3.6223, Acc: 14.30%
+学习率: 0.100000, 时间: 190.34s
+GPU内存使用:
+  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
+  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
+  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 11.18% -> 14.30%
+Rank 3 | Epoch: 7 [0/391] Loss: 3.4687 | Acc: 14.84% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 7 [100/391] Loss: 3.6097 | Acc: 14.84% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 7 [200/391] Loss: 3.4860 | Acc: 16.41% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 7 [300/391] Loss: 3.5760 | Acc: 16.41% | GPU Mem: 0.25GB/0.50GB
+
+训练 - Loss: 3.4344, Acc: 17.13%
+测试 - Loss: 3.4134, Acc: 17.33%
+学习率: 0.100000, 时间: 191.66s
+GPU内存使用:
+  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
+  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
+  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 14.30% -> 17.33%
+Rank 3 | Epoch: 8 [0/391] Loss: 3.5221 | Acc: 13.28% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 8 [100/391] Loss: 3.2269 | Acc: 17.97% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 8 [200/391] Loss: 2.9879 | Acc: 19.53% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 8 [300/391] Loss: 3.0712 | Acc: 26.56% | GPU Mem: 0.25GB/0.50GB
+
+训练 - Loss: 3.2208, Acc: 20.63%
+测试 - Loss: 3.1185, Acc: 22.85%
+学习率: 0.100000, 时间: 194.54s
+GPU内存使用:
+  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
+  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
+  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 17.33% -> 22.85%
+Rank 3 | Epoch: 9 [0/391] Loss: 3.1363 | Acc: 24.22% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 9 [100/391] Loss: 3.1297 | Acc: 21.09% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 9 [200/391] Loss: 3.0480 | Acc: 19.53% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 9 [300/391] Loss: 3.0201 | Acc: 18.75% | GPU Mem: 0.25GB/0.50GB
+
+训练 - Loss: 2.9885, Acc: 25.10%
+测试 - Loss: 2.9414, Acc: 26.64%
+学习率: 0.100000, 时间: 189.13s
+GPU内存使用:
+  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
+  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
+  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 22.85% -> 26.64%
+Rank 3 | Epoch: 10 [0/391] Loss: 2.8271 | Acc: 32.03% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 10 [100/391] Loss: 3.1414 | Acc: 21.88% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 10 [200/391] Loss: 2.8975 | Acc: 23.44% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 10 [300/391] Loss: 2.7777 | Acc: 30.47% | GPU Mem: 0.25GB/0.50GB
+
+训练 - Loss: 2.7848, Acc: 29.01%
+测试 - Loss: 2.8208, Acc: 28.94%
+学习率: 0.100000, 时间: 189.85s
+GPU内存使用:
+  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
+  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
+  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 26.64% -> 28.94%
+Rank 3 | Epoch: 11 [0/391] Loss: 2.9119 | Acc: 28.91% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 11 [100/391] Loss: 2.7022 | Acc: 34.38% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 11 [200/391] Loss: 2.6785 | Acc: 33.59% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 11 [300/391] Loss: 2.5466 | Acc: 30.47% | GPU Mem: 0.25GB/0.50GB
+
+训练 - Loss: 2.6177, Acc: 32.46%
+测试 - Loss: 2.6625, Acc: 31.16%
+学习率: 0.100000, 时间: 182.42s
+GPU内存使用:
+  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
+  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
+  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 28.94% -> 31.16%
+Rank 3 | Epoch: 12 [0/391] Loss: 2.3873 | Acc: 33.59% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 12 [100/391] Loss: 2.3665 | Acc: 36.72% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 12 [200/391] Loss: 2.2707 | Acc: 42.19% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 12 [300/391] Loss: 2.3283 | Acc: 42.19% | GPU Mem: 0.25GB/0.50GB
+
+训练 - Loss: 2.4644, Acc: 35.71%
+测试 - Loss: 2.5015, Acc: 34.48%
+学习率: 0.100000, 时间: 188.12s
+GPU内存使用:
+  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
+  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
+  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 31.16% -> 34.48%
+Rank 3 | Epoch: 13 [0/391] Loss: 2.3273 | Acc: 33.59% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 13 [100/391] Loss: 2.5536 | Acc: 33.59% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 13 [200/391] Loss: 2.7712 | Acc: 27.34% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 13 [300/391] Loss: 2.4128 | Acc: 35.94% | GPU Mem: 0.25GB/0.50GB
+
+训练 - Loss: 2.3597, Acc: 37.73%
+测试 - Loss: 2.4845, Acc: 34.58%
+学习率: 0.100000, 时间: 186.30s
+GPU内存使用:
+  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
+  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
+  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 34.48% -> 34.58%
+Rank 3 | Epoch: 14 [0/391] Loss: 2.3457 | Acc: 39.06% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 14 [100/391] Loss: 2.1917 | Acc: 41.41% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 14 [200/391] Loss: 2.1287 | Acc: 43.75% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 14 [300/391] Loss: 2.1831 | Acc: 51.56% | GPU Mem: 0.25GB/0.50GB
+
+训练 - Loss: 2.2545, Acc: 40.09%
+测试 - Loss: 2.3389, Acc: 39.03%
+学习率: 0.100000, 时间: 182.89s
+GPU内存使用:
+  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
+  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
+  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 34.58% -> 39.03%
+Rank 3 | Epoch: 15 [0/391] Loss: 2.1936 | Acc: 46.09% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 15 [100/391] Loss: 2.0191 | Acc: 42.97% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 15 [200/391] Loss: 2.2009 | Acc: 42.97% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 15 [300/391] Loss: 2.1459 | Acc: 43.75% | GPU Mem: 0.25GB/0.50GB
+
+训练 - Loss: 2.1668, Acc: 42.13%
+测试 - Loss: 2.3282, Acc: 39.00%
+学习率: 0.100000, 时间: 185.25s
+GPU内存使用:
+  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
+  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
+  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 16 [0/391] Loss: 1.9884 | Acc: 47.66% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 16 [100/391] Loss: 2.0935 | Acc: 46.88% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 16 [200/391] Loss: 1.9160 | Acc: 50.00% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 16 [300/391] Loss: 1.9436 | Acc: 50.78% | GPU Mem: 0.25GB/0.50GB
+
+训练 - Loss: 2.0859, Acc: 44.01%
+测试 - Loss: 2.2455, Acc: 40.41%
+学习率: 0.100000, 时间: 187.03s
+GPU内存使用:
+  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
+  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
+  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 39.03% -> 40.41%
+Rank 3 | Epoch: 17 [0/391] Loss: 2.0471 | Acc: 45.31% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 17 [100/391] Loss: 1.8932 | Acc: 50.00% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 17 [200/391] Loss: 1.8348 | Acc: 51.56% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 17 [300/391] Loss: 1.9450 | Acc: 46.88% | GPU Mem: 0.25GB/0.50GB
+
+训练 - Loss: 2.0277, Acc: 45.19%
+测试 - Loss: 2.1673, Acc: 42.65%
+学习率: 0.100000, 时间: 187.48s
+GPU内存使用:
+  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
+  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
+  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 40.41% -> 42.65%
+Rank 3 | Epoch: 18 [0/391] Loss: 1.8729 | Acc: 50.78% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 18 [100/391] Loss: 1.9348 | Acc: 47.66% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 18 [200/391] Loss: 2.1731 | Acc: 42.19% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 18 [300/391] Loss: 1.9611 | Acc: 46.09% | GPU Mem: 0.25GB/0.50GB
+
+训练 - Loss: 1.9809, Acc: 46.35%
+测试 - Loss: 2.0920, Acc: 44.19%
 学习率: 0.100000, 时间: 191.98s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 2.51% -> 3.82%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 4 [0/391] Loss: 4.4026 | Acc: 3.91% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 4 [100/391] Loss: 4.2811 | Acc: 3.91% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 4 [200/391] Loss: 4.1915 | Acc: 4.69% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 4 [300/391] Loss: 4.2750 | Acc: 4.69% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 42.65% -> 44.19%
+Rank 3 | Epoch: 19 [0/391] Loss: 1.7562 | Acc: 53.91% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 19 [100/391] Loss: 1.8855 | Acc: 50.78% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 19 [200/391] Loss: 1.8807 | Acc: 46.09% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 19 [300/391] Loss: 1.5624 | Acc: 52.34% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 4.2287, Acc: 4.79%
-测试 - Loss: 4.1255, Acc: 5.92%
-学习率: 0.100000, 时间: 189.88s
+训练 - Loss: 1.9199, Acc: 47.86%
+测试 - Loss: 2.0856, Acc: 44.17%
+学习率: 0.100000, 时间: 178.03s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 3.82% -> 5.92%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 5 [0/391] Loss: 4.1182 | Acc: 5.47% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 5 [100/391] Loss: 4.1831 | Acc: 3.91% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 5 [200/391] Loss: 3.9500 | Acc: 7.03% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 5 [300/391] Loss: 4.0416 | Acc: 7.03% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 20 [0/391] Loss: 1.8531 | Acc: 48.44% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 20 [100/391] Loss: 1.8484 | Acc: 44.53% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 20 [200/391] Loss: 1.9342 | Acc: 50.00% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 20 [300/391] Loss: 1.7278 | Acc: 51.56% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 4.0326, Acc: 7.33%
-测试 - Loss: 3.9356, Acc: 8.83%
-学习率: 0.100000, 时间: 197.11s
+训练 - Loss: 1.8779, Acc: 48.79%
+测试 - Loss: 2.0991, Acc: 44.84%
+学习率: 0.100000, 时间: 192.11s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 5.92% -> 8.83%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 6 [0/391] Loss: 3.8391 | Acc: 8.59% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 6 [100/391] Loss: 3.8839 | Acc: 7.81% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 6 [200/391] Loss: 3.8265 | Acc: 7.03% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 6 [300/391] Loss: 3.7426 | Acc: 8.59% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 44.19% -> 44.84%
+Rank 3 | Epoch: 21 [0/391] Loss: 1.7129 | Acc: 49.22% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 21 [100/391] Loss: 1.9102 | Acc: 49.22% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 21 [200/391] Loss: 1.9316 | Acc: 46.09% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 21 [300/391] Loss: 1.9274 | Acc: 47.66% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 3.7870, Acc: 10.95%
-测试 - Loss: 3.6718, Acc: 12.93%
-学习率: 0.100000, 时间: 196.56s
+训练 - Loss: 1.8485, Acc: 49.87%
+测试 - Loss: 2.1010, Acc: 44.79%
+学习率: 0.100000, 时间: 190.81s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 8.83% -> 12.93%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 7 [0/391] Loss: 3.6263 | Acc: 14.84% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 7 [100/391] Loss: 3.6537 | Acc: 10.16% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 7 [200/391] Loss: 3.5581 | Acc: 15.62% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 7 [300/391] Loss: 3.5865 | Acc: 18.75% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 22 [0/391] Loss: 1.9121 | Acc: 49.22% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 22 [100/391] Loss: 2.0089 | Acc: 49.22% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 22 [200/391] Loss: 1.7920 | Acc: 49.22% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 22 [300/391] Loss: 1.9948 | Acc: 45.31% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 3.5344, Acc: 15.14%
-测试 - Loss: 3.4906, Acc: 16.05%
-学习率: 0.100000, 时间: 187.37s
+训练 - Loss: 1.8161, Acc: 50.47%
+测试 - Loss: 2.0101, Acc: 46.14%
+学习率: 0.100000, 时间: 185.88s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 12.93% -> 16.05%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 8 [0/391] Loss: 3.5253 | Acc: 15.62% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 8 [100/391] Loss: 3.3834 | Acc: 18.75% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 8 [200/391] Loss: 3.1257 | Acc: 20.31% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 8 [300/391] Loss: 3.2394 | Acc: 23.44% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 44.84% -> 46.14%
+Rank 3 | Epoch: 23 [0/391] Loss: 1.7087 | Acc: 53.91% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 23 [100/391] Loss: 2.0863 | Acc: 43.75% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 23 [200/391] Loss: 1.8072 | Acc: 46.88% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 23 [300/391] Loss: 1.8461 | Acc: 43.75% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 3.3199, Acc: 19.09%
-测试 - Loss: 3.2514, Acc: 20.76%
-学习率: 0.100000, 时间: 192.50s
+训练 - Loss: 1.7926, Acc: 50.93%
+测试 - Loss: 2.0212, Acc: 46.39%
+学习率: 0.100000, 时间: 179.02s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 16.05% -> 20.76%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 9 [0/391] Loss: 3.1646 | Acc: 27.34% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 9 [100/391] Loss: 3.1328 | Acc: 17.97% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 9 [200/391] Loss: 3.2565 | Acc: 20.31% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 9 [300/391] Loss: 3.1249 | Acc: 18.75% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 46.14% -> 46.39%
+Rank 3 | Epoch: 24 [0/391] Loss: 1.6265 | Acc: 55.47% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 24 [100/391] Loss: 1.8648 | Acc: 50.00% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 24 [200/391] Loss: 1.6186 | Acc: 58.59% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 24 [300/391] Loss: 1.7378 | Acc: 50.78% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 3.1198, Acc: 22.88%
-测试 - Loss: 3.1290, Acc: 22.92%
-学习率: 0.100000, 时间: 197.23s
+训练 - Loss: 1.7543, Acc: 51.91%
+测试 - Loss: 2.1017, Acc: 43.91%
+学习率: 0.100000, 时间: 175.80s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 20.76% -> 22.92%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-保存checkpoint到: ./checkpoints/checkpoint_pipeline_stage3_epoch10.pth
-Rank 3 | Epoch: 10 [0/391] Loss: 2.9482 | Acc: 28.91% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 10 [100/391] Loss: 3.3397 | Acc: 18.75% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 10 [200/391] Loss: 3.0209 | Acc: 25.00% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 10 [300/391] Loss: 3.0142 | Acc: 25.78% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 25 [0/391] Loss: 1.6606 | Acc: 50.00% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 25 [100/391] Loss: 2.1032 | Acc: 42.19% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 25 [200/391] Loss: 1.5880 | Acc: 55.47% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 25 [300/391] Loss: 1.7654 | Acc: 47.66% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 2.9313, Acc: 26.56%
-测试 - Loss: 2.9495, Acc: 26.42%
-学习率: 0.100000, 时间: 194.75s
+训练 - Loss: 1.7331, Acc: 52.19%
+测试 - Loss: 1.9633, Acc: 47.18%
+学习率: 0.100000, 时间: 194.99s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 22.92% -> 26.42%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 11 [0/391] Loss: 2.9400 | Acc: 24.22% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 11 [100/391] Loss: 2.9142 | Acc: 27.34% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 11 [200/391] Loss: 2.7217 | Acc: 28.91% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 11 [300/391] Loss: 2.7399 | Acc: 25.78% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 46.39% -> 47.18%
+Rank 3 | Epoch: 26 [0/391] Loss: 1.8531 | Acc: 48.44% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 26 [100/391] Loss: 1.5851 | Acc: 60.16% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 26 [200/391] Loss: 1.6134 | Acc: 52.34% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 26 [300/391] Loss: 1.7601 | Acc: 50.78% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 2.7644, Acc: 29.99%
-测试 - Loss: 2.8085, Acc: 29.35%
-学习率: 0.100000, 时间: 195.34s
+训练 - Loss: 1.7127, Acc: 52.79%
+测试 - Loss: 1.9284, Acc: 48.77%
+学习率: 0.100000, 时间: 192.45s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 26.42% -> 29.35%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 12 [0/391] Loss: 2.4812 | Acc: 35.16% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 12 [100/391] Loss: 2.6674 | Acc: 35.16% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 12 [200/391] Loss: 2.6137 | Acc: 32.81% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 12 [300/391] Loss: 2.4386 | Acc: 34.38% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 47.18% -> 48.77%
+Rank 3 | Epoch: 27 [0/391] Loss: 1.7048 | Acc: 50.00% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 27 [100/391] Loss: 1.6618 | Acc: 53.12% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 27 [200/391] Loss: 1.5939 | Acc: 53.91% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 27 [300/391] Loss: 1.6991 | Acc: 50.78% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 2.6125, Acc: 32.93%
-测试 - Loss: 2.6590, Acc: 32.11%
-学习率: 0.100000, 时间: 185.17s
+训练 - Loss: 1.7036, Acc: 53.09%
+测试 - Loss: 1.8805, Acc: 49.07%
+学习率: 0.100000, 时间: 185.26s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 29.35% -> 32.11%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 13 [0/391] Loss: 2.5224 | Acc: 33.59% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 13 [100/391] Loss: 2.6548 | Acc: 32.03% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 13 [200/391] Loss: 2.7820 | Acc: 24.22% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 13 [300/391] Loss: 2.4383 | Acc: 37.50% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 48.77% -> 49.07%
+Rank 3 | Epoch: 28 [0/391] Loss: 1.6931 | Acc: 54.69% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 28 [100/391] Loss: 1.5901 | Acc: 55.47% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 28 [200/391] Loss: 1.7255 | Acc: 50.00% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 28 [300/391] Loss: 1.7188 | Acc: 52.34% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 2.4801, Acc: 35.60%
-测试 - Loss: 2.5895, Acc: 32.62%
-学习率: 0.100000, 时间: 174.75s
+训练 - Loss: 1.6799, Acc: 53.49%
+测试 - Loss: 2.0235, Acc: 45.91%
+学习率: 0.100000, 时间: 187.76s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 32.11% -> 32.62%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 14 [0/391] Loss: 2.4951 | Acc: 39.06% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 14 [100/391] Loss: 2.3267 | Acc: 36.72% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 14 [200/391] Loss: 2.1254 | Acc: 42.97% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 14 [300/391] Loss: 2.2410 | Acc: 46.09% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 29 [0/391] Loss: 1.6786 | Acc: 54.69% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 29 [100/391] Loss: 1.6387 | Acc: 57.03% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 29 [200/391] Loss: 1.7484 | Acc: 48.44% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 29 [300/391] Loss: 1.6973 | Acc: 55.47% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 2.3602, Acc: 38.32%
-测试 - Loss: 2.3852, Acc: 38.00%
-学习率: 0.100000, 时间: 175.31s
+训练 - Loss: 1.6644, Acc: 54.03%
+测试 - Loss: 1.9565, Acc: 47.38%
+学习率: 0.100000, 时间: 184.93s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 32.62% -> 38.00%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 15 [0/391] Loss: 2.3940 | Acc: 35.94% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 15 [100/391] Loss: 2.2700 | Acc: 35.94% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 15 [200/391] Loss: 2.4366 | Acc: 40.62% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 15 [300/391] Loss: 2.4011 | Acc: 36.72% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 30 [0/391] Loss: 1.8688 | Acc: 48.44% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 30 [100/391] Loss: 1.4777 | Acc: 63.28% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 30 [200/391] Loss: 1.4081 | Acc: 58.59% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 30 [300/391] Loss: 1.9405 | Acc: 52.34% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 2.2583, Acc: 40.43%
-测试 - Loss: 2.4282, Acc: 36.82%
-学习率: 0.100000, 时间: 180.91s
+训练 - Loss: 1.6527, Acc: 54.38%
+测试 - Loss: 1.9909, Acc: 46.44%
+学习率: 0.100000, 时间: 183.82s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 16 [0/391] Loss: 2.0328 | Acc: 47.66% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 16 [100/391] Loss: 2.1015 | Acc: 46.88% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 16 [200/391] Loss: 2.1184 | Acc: 44.53% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 16 [300/391] Loss: 2.0502 | Acc: 44.53% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 31 [0/391] Loss: 1.5326 | Acc: 60.94% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 31 [100/391] Loss: 1.6502 | Acc: 47.66% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 31 [200/391] Loss: 1.7692 | Acc: 48.44% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 31 [300/391] Loss: 1.5545 | Acc: 59.38% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 2.1687, Acc: 41.87%
-测试 - Loss: 2.3108, Acc: 39.45%
-学习率: 0.100000, 时间: 173.11s
+训练 - Loss: 1.6379, Acc: 54.77%
+测试 - Loss: 1.8525, Acc: 50.20%
+学习率: 0.100000, 时间: 184.94s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 38.00% -> 39.45%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 17 [0/391] Loss: 2.0236 | Acc: 46.88% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 17 [100/391] Loss: 1.9830 | Acc: 48.44% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 17 [200/391] Loss: 2.0114 | Acc: 49.22% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 17 [300/391] Loss: 1.9560 | Acc: 51.56% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 49.07% -> 50.20%
+Rank 3 | Epoch: 32 [0/391] Loss: 1.4990 | Acc: 60.94% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 32 [100/391] Loss: 1.9580 | Acc: 45.31% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 32 [200/391] Loss: 1.1778 | Acc: 70.31% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 32 [300/391] Loss: 1.6431 | Acc: 54.69% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 2.0973, Acc: 43.55%
-测试 - Loss: 2.2040, Acc: 42.36%
-学习率: 0.100000, 时间: 170.77s
+训练 - Loss: 1.6188, Acc: 55.25%
+测试 - Loss: 1.9077, Acc: 48.31%
+学习率: 0.100000, 时间: 181.70s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 39.45% -> 42.36%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 18 [0/391] Loss: 1.8623 | Acc: 53.91% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 18 [100/391] Loss: 2.0690 | Acc: 46.88% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 18 [200/391] Loss: 2.2321 | Acc: 42.97% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 18 [300/391] Loss: 1.9229 | Acc: 43.75% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 33 [0/391] Loss: 1.6278 | Acc: 51.56% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 33 [100/391] Loss: 1.7124 | Acc: 50.00% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 33 [200/391] Loss: 1.3278 | Acc: 65.62% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 33 [300/391] Loss: 1.6819 | Acc: 57.81% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 2.0461, Acc: 45.12%
-测试 - Loss: 2.1941, Acc: 42.55%
-学习率: 0.100000, 时间: 170.44s
+训练 - Loss: 1.6122, Acc: 55.61%
+测试 - Loss: 1.8668, Acc: 49.72%
+学习率: 0.100000, 时间: 179.37s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 42.36% -> 42.55%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 19 [0/391] Loss: 1.9299 | Acc: 53.12% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 19 [100/391] Loss: 1.9227 | Acc: 50.78% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 19 [200/391] Loss: 2.0733 | Acc: 40.62% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 19 [300/391] Loss: 1.5864 | Acc: 57.81% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 34 [0/391] Loss: 1.7334 | Acc: 53.91% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 34 [100/391] Loss: 1.5274 | Acc: 55.47% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 34 [200/391] Loss: 1.6097 | Acc: 60.16% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 34 [300/391] Loss: 1.5754 | Acc: 56.25% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 1.9768, Acc: 46.59%
-测试 - Loss: 2.1666, Acc: 42.38%
-学习率: 0.100000, 时间: 189.26s
+训练 - Loss: 1.6010, Acc: 55.51%
+测试 - Loss: 1.8234, Acc: 50.30%
+学习率: 0.100000, 时间: 191.35s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-保存checkpoint到: ./checkpoints/checkpoint_pipeline_stage3_epoch20.pth
-Rank 3 | Epoch: 20 [0/391] Loss: 1.8312 | Acc: 51.56% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 20 [100/391] Loss: 1.7602 | Acc: 50.00% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 20 [200/391] Loss: 1.9961 | Acc: 45.31% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 20 [300/391] Loss: 1.8993 | Acc: 48.44% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 50.20% -> 50.30%
+Rank 3 | Epoch: 35 [0/391] Loss: 1.5841 | Acc: 53.91% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 35 [100/391] Loss: 1.6039 | Acc: 56.25% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 35 [200/391] Loss: 1.8396 | Acc: 46.88% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 35 [300/391] Loss: 1.5770 | Acc: 52.34% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 1.9290, Acc: 47.89%
-测试 - Loss: 2.1221, Acc: 44.13%
-学习率: 0.100000, 时间: 178.62s
+训练 - Loss: 1.5832, Acc: 56.33%
+测试 - Loss: 1.8383, Acc: 50.92%
+学习率: 0.100000, 时间: 186.19s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 42.55% -> 44.13%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 21 [0/391] Loss: 1.8079 | Acc: 50.00% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 21 [100/391] Loss: 1.9271 | Acc: 48.44% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 21 [200/391] Loss: 2.1087 | Acc: 47.66% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 21 [300/391] Loss: 1.9189 | Acc: 48.44% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 50.30% -> 50.92%
+Rank 3 | Epoch: 36 [0/391] Loss: 1.6219 | Acc: 57.03% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 36 [100/391] Loss: 1.5949 | Acc: 58.59% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 36 [200/391] Loss: 1.6581 | Acc: 49.22% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 36 [300/391] Loss: 1.7281 | Acc: 57.81% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 1.8954, Acc: 48.71%
-测试 - Loss: 2.0888, Acc: 44.45%
-学习率: 0.100000, 时间: 175.81s
+训练 - Loss: 1.5787, Acc: 56.20%
+测试 - Loss: 1.8288, Acc: 50.76%
+学习率: 0.100000, 时间: 181.97s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 44.13% -> 44.45%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 22 [0/391] Loss: 1.7554 | Acc: 47.66% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 22 [100/391] Loss: 2.0231 | Acc: 49.22% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 22 [200/391] Loss: 1.9063 | Acc: 42.19% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 22 [300/391] Loss: 2.0178 | Acc: 42.97% | GPU Mem: 0.25GB/0.50GB
-
-训练 - Loss: 1.8511, Acc: 49.58%
-测试 - Loss: 2.0893, Acc: 45.07%
-学习率: 0.100000, 时间: 186.93s
-GPU内存使用:
-  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
-  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
-  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 44.45% -> 45.07%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 23 [0/391] Loss: 1.7271 | Acc: 54.69% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 23 [100/391] Loss: 2.0359 | Acc: 47.66% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 23 [200/391] Loss: 1.7462 | Acc: 54.69% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 23 [300/391] Loss: 1.9220 | Acc: 46.09% | GPU Mem: 0.25GB/0.50GB
-
-训练 - Loss: 1.8308, Acc: 50.36%
-测试 - Loss: 2.0647, Acc: 44.72%
-学习率: 0.100000, 时间: 198.04s
-GPU内存使用:
-  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
-  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
-  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 24 [0/391] Loss: 1.6870 | Acc: 56.25% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 24 [100/391] Loss: 1.9762 | Acc: 44.53% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 24 [200/391] Loss: 1.6381 | Acc: 53.12% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 24 [300/391] Loss: 1.7554 | Acc: 50.00% | GPU Mem: 0.25GB/0.50GB
-
-训练 - Loss: 1.7969, Acc: 50.90%
-测试 - Loss: 2.0251, Acc: 45.93%
-学习率: 0.100000, 时间: 196.33s
-GPU内存使用:
-  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
-  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
-  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 45.07% -> 45.93%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 25 [0/391] Loss: 1.6521 | Acc: 49.22% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 25 [100/391] Loss: 1.9345 | Acc: 46.09% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 25 [200/391] Loss: 1.7049 | Acc: 56.25% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 25 [300/391] Loss: 1.8190 | Acc: 51.56% | GPU Mem: 0.25GB/0.50GB
-
-训练 - Loss: 1.7651, Acc: 51.55%
-测试 - Loss: 1.9871, Acc: 47.38%
-学习率: 0.100000, 时间: 191.97s
-GPU内存使用:
-  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
-  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
-  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 45.93% -> 47.38%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 26 [0/391] Loss: 1.9202 | Acc: 48.44% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 26 [100/391] Loss: 1.7697 | Acc: 55.47% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 26 [200/391] Loss: 1.6974 | Acc: 54.69% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 26 [300/391] Loss: 1.8297 | Acc: 50.78% | GPU Mem: 0.25GB/0.50GB
-
-训练 - Loss: 1.7485, Acc: 51.94%
-测试 - Loss: 1.9464, Acc: 47.39%
-学习率: 0.100000, 时间: 189.12s
-GPU内存使用:
-  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
-  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
-  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 47.38% -> 47.39%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 27 [0/391] Loss: 1.6693 | Acc: 52.34% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 27 [100/391] Loss: 1.8636 | Acc: 47.66% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 27 [200/391] Loss: 1.6696 | Acc: 48.44% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 27 [300/391] Loss: 1.7179 | Acc: 54.69% | GPU Mem: 0.25GB/0.50GB
-
-训练 - Loss: 1.7328, Acc: 52.35%
-测试 - Loss: 1.9513, Acc: 47.71%
-学习率: 0.100000, 时间: 189.63s
-GPU内存使用:
-  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
-  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
-  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 47.39% -> 47.71%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 28 [0/391] Loss: 1.7233 | Acc: 54.69% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 28 [100/391] Loss: 1.5617 | Acc: 57.03% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 28 [200/391] Loss: 1.9359 | Acc: 46.88% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 28 [300/391] Loss: 1.7777 | Acc: 53.91% | GPU Mem: 0.25GB/0.50GB
-
-训练 - Loss: 1.7082, Acc: 53.09%
-测试 - Loss: 1.9806, Acc: 46.92%
-学习率: 0.100000, 时间: 187.55s
-GPU内存使用:
-  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
-  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
-  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 29 [0/391] Loss: 1.5422 | Acc: 57.03% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 29 [100/391] Loss: 1.7363 | Acc: 57.81% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 29 [200/391] Loss: 1.9514 | Acc: 42.97% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 29 [300/391] Loss: 1.7116 | Acc: 48.44% | GPU Mem: 0.25GB/0.50GB
-
-训练 - Loss: 1.6874, Acc: 53.61%
-测试 - Loss: 1.9720, Acc: 47.18%
-学习率: 0.100000, 时间: 174.63s
-GPU内存使用:
-  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
-  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
-  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-保存checkpoint到: ./checkpoints/checkpoint_pipeline_stage3_epoch30.pth
-Rank 3 | Epoch: 30 [0/391] Loss: 1.7680 | Acc: 53.12% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 30 [100/391] Loss: 1.5666 | Acc: 57.81% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 30 [200/391] Loss: 1.4058 | Acc: 57.03% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 30 [300/391] Loss: 2.0265 | Acc: 43.75% | GPU Mem: 0.25GB/0.50GB
-
-训练 - Loss: 1.6810, Acc: 53.93%
-测试 - Loss: 1.9867, Acc: 46.76%
-学习率: 0.100000, 时间: 174.11s
-GPU内存使用:
-  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
-  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
-  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 31 [0/391] Loss: 1.6483 | Acc: 56.25% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 31 [100/391] Loss: 1.6469 | Acc: 56.25% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 31 [200/391] Loss: 1.7013 | Acc: 53.91% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 31 [300/391] Loss: 1.6403 | Acc: 51.56% | GPU Mem: 0.25GB/0.50GB
-
-训练 - Loss: 1.6674, Acc: 54.18%
-测试 - Loss: 1.8918, Acc: 49.32%
-学习率: 0.100000, 时间: 173.81s
-GPU内存使用:
-  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
-  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
-  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 47.71% -> 49.32%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 32 [0/391] Loss: 1.4621 | Acc: 64.06% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 32 [100/391] Loss: 1.9091 | Acc: 47.66% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 32 [200/391] Loss: 1.2358 | Acc: 67.19% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 32 [300/391] Loss: 1.5917 | Acc: 51.56% | GPU Mem: 0.25GB/0.50GB
-
-训练 - Loss: 1.6434, Acc: 54.53%
-测试 - Loss: 1.9571, Acc: 47.02%
-学习率: 0.100000, 时间: 174.26s
-GPU内存使用:
-  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
-  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
-  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 33 [0/391] Loss: 1.6822 | Acc: 51.56% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 33 [100/391] Loss: 1.5998 | Acc: 53.91% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 33 [200/391] Loss: 1.3001 | Acc: 65.62% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 33 [300/391] Loss: 1.7378 | Acc: 53.91% | GPU Mem: 0.25GB/0.50GB
-
-训练 - Loss: 1.6308, Acc: 55.04%
-测试 - Loss: 1.9104, Acc: 48.93%
-学习率: 0.100000, 时间: 173.97s
-GPU内存使用:
-  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
-  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
-  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 34 [0/391] Loss: 1.6500 | Acc: 54.69% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 34 [100/391] Loss: 1.6185 | Acc: 53.12% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 34 [200/391] Loss: 1.5863 | Acc: 57.03% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 34 [300/391] Loss: 1.6988 | Acc: 55.47% | GPU Mem: 0.25GB/0.50GB
-
-训练 - Loss: 1.6201, Acc: 54.96%
-测试 - Loss: 1.9071, Acc: 48.77%
-学习率: 0.100000, 时间: 191.04s
-GPU内存使用:
-  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
-  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
-  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 35 [0/391] Loss: 1.6185 | Acc: 53.12% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 35 [100/391] Loss: 1.6105 | Acc: 53.12% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 35 [200/391] Loss: 1.6990 | Acc: 50.00% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 35 [300/391] Loss: 1.6935 | Acc: 50.78% | GPU Mem: 0.25GB/0.50GB
-
-训练 - Loss: 1.6050, Acc: 55.79%
-测试 - Loss: 1.8557, Acc: 50.69%
-学习率: 0.100000, 时间: 198.53s
-GPU内存使用:
-  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
-  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
-  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 49.32% -> 50.69%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 36 [0/391] Loss: 1.6601 | Acc: 53.12% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 36 [100/391] Loss: 1.6506 | Acc: 54.69% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 36 [200/391] Loss: 1.6660 | Acc: 51.56% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 36 [300/391] Loss: 1.6034 | Acc: 58.59% | GPU Mem: 0.25GB/0.50GB
-
-训练 - Loss: 1.5907, Acc: 55.99%
-测试 - Loss: 1.8747, Acc: 49.30%
-学习率: 0.100000, 时间: 189.20s
-GPU内存使用:
-  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
-  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
-  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 37 [0/391] Loss: 1.7039 | Acc: 52.34% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 37 [100/391] Loss: 1.7611 | Acc: 55.47% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 37 [200/391] Loss: 1.4948 | Acc: 56.25% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 37 [300/391] Loss: 1.4995 | Acc: 58.59% | GPU Mem: 0.25GB/0.50GB
-
-训练 - Loss: 1.5918, Acc: 56.06%
-测试 - Loss: 1.8236, Acc: 50.44%
-学习率: 0.100000, 时间: 192.83s
-GPU内存使用:
-  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
-  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
-  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 38 [0/391] Loss: 1.4850 | Acc: 62.50% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 38 [100/391] Loss: 1.3632 | Acc: 59.38% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 38 [200/391] Loss: 1.5003 | Acc: 57.03% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 38 [300/391] Loss: 1.6888 | Acc: 59.38% | GPU Mem: 0.25GB/0.50GB
-
-训练 - Loss: 1.5782, Acc: 56.53%
-测试 - Loss: 1.8603, Acc: 49.89%
-学习率: 0.100000, 时间: 193.33s
-GPU内存使用:
-  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
-  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
-  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 39 [0/391] Loss: 1.6397 | Acc: 56.25% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 39 [100/391] Loss: 1.5300 | Acc: 50.78% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 39 [200/391] Loss: 1.4313 | Acc: 60.94% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 39 [300/391] Loss: 1.7261 | Acc: 47.66% | GPU Mem: 0.25GB/0.50GB
-
-训练 - Loss: 1.5683, Acc: 56.79%
-测试 - Loss: 1.8007, Acc: 51.92%
-学习率: 0.100000, 时间: 195.46s
-GPU内存使用:
-  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
-  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
-  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 50.69% -> 51.92%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-保存checkpoint到: ./checkpoints/checkpoint_pipeline_stage3_epoch40.pth
-Rank 3 | Epoch: 40 [0/391] Loss: 1.4848 | Acc: 57.81% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 40 [100/391] Loss: 1.4009 | Acc: 59.38% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 40 [200/391] Loss: 1.6337 | Acc: 58.59% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 40 [300/391] Loss: 1.7985 | Acc: 49.22% | GPU Mem: 0.25GB/0.50GB
-
-训练 - Loss: 1.5637, Acc: 56.72%
-测试 - Loss: 1.8586, Acc: 50.06%
-学习率: 0.100000, 时间: 198.62s
-GPU内存使用:
-  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
-  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
-  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 41 [0/391] Loss: 1.5514 | Acc: 63.28% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 41 [100/391] Loss: 1.4895 | Acc: 57.03% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 41 [200/391] Loss: 1.5372 | Acc: 57.81% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 41 [300/391] Loss: 1.6209 | Acc: 50.78% | GPU Mem: 0.25GB/0.50GB
-
-训练 - Loss: 1.5519, Acc: 57.05%
-测试 - Loss: 1.8454, Acc: 50.68%
-学习率: 0.100000, 时间: 193.11s
-GPU内存使用:
-  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
-  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
-  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 42 [0/391] Loss: 1.4958 | Acc: 56.25% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 42 [100/391] Loss: 1.4644 | Acc: 57.81% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 42 [200/391] Loss: 1.8338 | Acc: 53.91% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 42 [300/391] Loss: 1.6400 | Acc: 54.69% | GPU Mem: 0.25GB/0.50GB
-
-训练 - Loss: 1.5460, Acc: 57.34%
-测试 - Loss: 1.8296, Acc: 50.99%
-学习率: 0.100000, 时间: 195.22s
-GPU内存使用:
-  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
-  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
-  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 43 [0/391] Loss: 1.3888 | Acc: 64.06% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 43 [100/391] Loss: 1.4998 | Acc: 54.69% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 43 [200/391] Loss: 1.1388 | Acc: 69.53% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 43 [300/391] Loss: 1.6561 | Acc: 51.56% | GPU Mem: 0.25GB/0.50GB
-
-训练 - Loss: 1.5441, Acc: 56.86%
-测试 - Loss: 1.8340, Acc: 51.17%
-学习率: 0.100000, 时间: 196.22s
-GPU内存使用:
-  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
-  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
-  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 44 [0/391] Loss: 1.4767 | Acc: 61.72% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 44 [100/391] Loss: 1.4602 | Acc: 62.50% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 44 [200/391] Loss: 1.5642 | Acc: 56.25% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 44 [300/391] Loss: 1.6188 | Acc: 51.56% | GPU Mem: 0.25GB/0.50GB
-
-训练 - Loss: 1.5321, Acc: 57.57%
-测试 - Loss: 1.8123, Acc: 50.91%
-学习率: 0.100000, 时间: 187.31s
-GPU内存使用:
-  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
-  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
-  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 45 [0/391] Loss: 1.5895 | Acc: 57.03% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 45 [100/391] Loss: 1.4833 | Acc: 57.03% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 45 [200/391] Loss: 1.5009 | Acc: 59.38% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 45 [300/391] Loss: 1.4897 | Acc: 59.38% | GPU Mem: 0.25GB/0.50GB
-
-训练 - Loss: 1.5247, Acc: 57.80%
-测试 - Loss: 1.8593, Acc: 50.47%
-学习率: 0.100000, 时间: 196.84s
-GPU内存使用:
-  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
-  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
-  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 46 [0/391] Loss: 1.5368 | Acc: 57.81% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 46 [100/391] Loss: 1.3425 | Acc: 60.94% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 46 [200/391] Loss: 1.4944 | Acc: 57.03% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 46 [300/391] Loss: 1.6298 | Acc: 53.12% | GPU Mem: 0.25GB/0.50GB
-
-训练 - Loss: 1.5196, Acc: 57.83%
-测试 - Loss: 1.7577, Acc: 51.98%
-学习率: 0.100000, 时间: 197.34s
-GPU内存使用:
-  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 37 [0/391] Loss: 1.6246 | Acc: 55.47% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 37 [100/391] Loss: 1.8414 | Acc: 55.47% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 37 [200/391] Loss: 1.4991 | Acc: 60.16% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 37 [300/391] Loss: 1.4644 | Acc: 59.38% | GPU Mem: 0.25GB/0.50GB
 
 ============================================================
 Epoch 2/100
@@ -1007,502 +852,678 @@ Epoch 48/100
 ⚠️  跳过不完整的 batch 390
 
 ============================================================
-  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
-  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 51.92% -> 51.98%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 47 [0/391] Loss: 1.2185 | Acc: 65.62% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 47 [100/391] Loss: 1.5599 | Acc: 55.47% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 47 [200/391] Loss: 1.5409 | Acc: 50.78% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 47 [300/391] Loss: 1.6640 | Acc: 52.34% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 1.5104, Acc: 57.98%
-测试 - Loss: 1.7521, Acc: 52.33%
-学习率: 0.100000, 时间: 194.62s
+训练 - Loss: 1.5690, Acc: 56.47%
+测试 - Loss: 1.8437, Acc: 50.61%
+学习率: 0.100000, 时间: 187.17s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 51.98% -> 52.33%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 48 [0/391] Loss: 1.5331 | Acc: 56.25% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 48 [100/391] Loss: 1.2635 | Acc: 62.50% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 48 [200/391] Loss: 1.4188 | Acc: 60.94% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 48 [300/391] Loss: 1.4959 | Acc: 54.69% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 38 [0/391] Loss: 1.3710 | Acc: 60.94% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 38 [100/391] Loss: 1.2513 | Acc: 64.06% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 38 [200/391] Loss: 1.6038 | Acc: 53.12% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 38 [300/391] Loss: 1.6216 | Acc: 57.81% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 1.5025, Acc: 58.22%
-测试 - Loss: 1.7692, Acc: 52.20%
-学习率: 0.100000, 时间: 185.92s
+训练 - Loss: 1.5716, Acc: 56.62%
+测试 - Loss: 1.8087, Acc: 50.63%
+学习率: 0.100000, 时间: 184.58s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 49 [0/391] Loss: 1.4951 | Acc: 57.03% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 49 [100/391] Loss: 1.5499 | Acc: 54.69% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 49 [200/391] Loss: 1.6896 | Acc: 56.25% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 49 [300/391] Loss: 1.4252 | Acc: 53.12% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 39 [0/391] Loss: 1.5509 | Acc: 55.47% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 39 [100/391] Loss: 1.7081 | Acc: 53.91% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 39 [200/391] Loss: 1.4510 | Acc: 60.94% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 39 [300/391] Loss: 1.7224 | Acc: 48.44% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 1.5067, Acc: 58.15%
-测试 - Loss: 1.7590, Acc: 51.93%
-学习率: 0.010000, 时间: 196.98s
+训练 - Loss: 1.5497, Acc: 56.98%
+测试 - Loss: 1.7582, Acc: 52.60%
+学习率: 0.100000, 时间: 189.28s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-保存checkpoint到: ./checkpoints/checkpoint_pipeline_stage3_epoch50.pth
-Rank 3 | Epoch: 50 [0/391] Loss: 1.3427 | Acc: 66.41% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 50 [100/391] Loss: 1.1857 | Acc: 67.19% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 50 [200/391] Loss: 1.1568 | Acc: 66.41% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 50 [300/391] Loss: 0.9340 | Acc: 75.00% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 50.92% -> 52.60%
+Rank 3 | Epoch: 40 [0/391] Loss: 1.5456 | Acc: 55.47% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 40 [100/391] Loss: 1.4186 | Acc: 58.59% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 40 [200/391] Loss: 1.5034 | Acc: 59.38% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 40 [300/391] Loss: 1.6710 | Acc: 52.34% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 1.0558, Acc: 70.04%
-测试 - Loss: 1.3326, Acc: 62.86%
-学习率: 0.010000, 时间: 196.85s
+训练 - Loss: 1.5513, Acc: 57.05%
+测试 - Loss: 1.8164, Acc: 51.37%
+学习率: 0.100000, 时间: 183.04s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 52.33% -> 62.86%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 51 [0/391] Loss: 1.0123 | Acc: 71.09% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 51 [100/391] Loss: 0.8479 | Acc: 77.34% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 51 [200/391] Loss: 0.8529 | Acc: 74.22% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 51 [300/391] Loss: 0.9323 | Acc: 72.66% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 41 [0/391] Loss: 1.4285 | Acc: 67.97% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 41 [100/391] Loss: 1.5766 | Acc: 59.38% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 41 [200/391] Loss: 1.4889 | Acc: 60.16% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 41 [300/391] Loss: 1.5991 | Acc: 56.25% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.9201, Acc: 73.18%
-测试 - Loss: 1.2809, Acc: 64.22%
-学习率: 0.010000, 时间: 191.91s
+训练 - Loss: 1.5394, Acc: 57.30%
+测试 - Loss: 1.8474, Acc: 49.94%
+学习率: 0.100000, 时间: 178.46s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 62.86% -> 64.22%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 52 [0/391] Loss: 0.8564 | Acc: 71.88% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 52 [100/391] Loss: 0.8020 | Acc: 70.31% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 52 [200/391] Loss: 0.8778 | Acc: 75.78% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 52 [300/391] Loss: 0.7421 | Acc: 75.78% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 42 [0/391] Loss: 1.3410 | Acc: 57.03% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 42 [100/391] Loss: 1.4562 | Acc: 61.72% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 42 [200/391] Loss: 1.6887 | Acc: 53.12% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 42 [300/391] Loss: 1.5967 | Acc: 56.25% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.8591, Acc: 74.86%
-测试 - Loss: 1.2558, Acc: 65.05%
-学习率: 0.010000, 时间: 188.59s
+训练 - Loss: 1.5326, Acc: 57.48%
+测试 - Loss: 1.8446, Acc: 50.80%
+学习率: 0.100000, 时间: 189.63s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 64.22% -> 65.05%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 53 [0/391] Loss: 0.7916 | Acc: 76.56% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 53 [100/391] Loss: 0.9059 | Acc: 70.31% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 53 [200/391] Loss: 1.0303 | Acc: 72.66% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 53 [300/391] Loss: 0.7729 | Acc: 78.12% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 43 [0/391] Loss: 1.4066 | Acc: 63.28% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 43 [100/391] Loss: 1.3626 | Acc: 61.72% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 43 [200/391] Loss: 1.1237 | Acc: 67.97% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 43 [300/391] Loss: 1.6967 | Acc: 53.91% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.8246, Acc: 75.98%
-测试 - Loss: 1.2502, Acc: 64.96%
-学习率: 0.010000, 时间: 191.50s
+训练 - Loss: 1.5274, Acc: 57.65%
+测试 - Loss: 1.8264, Acc: 50.98%
+学习率: 0.100000, 时间: 187.92s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 54 [0/391] Loss: 0.7936 | Acc: 74.22% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 54 [100/391] Loss: 0.8745 | Acc: 76.56% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 54 [200/391] Loss: 0.9144 | Acc: 72.66% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 54 [300/391] Loss: 0.8333 | Acc: 78.12% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 44 [0/391] Loss: 1.5985 | Acc: 55.47% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 44 [100/391] Loss: 1.3957 | Acc: 62.50% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 44 [200/391] Loss: 1.4442 | Acc: 58.59% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 44 [300/391] Loss: 1.7177 | Acc: 50.00% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.7859, Acc: 76.92%
-测试 - Loss: 1.2518, Acc: 65.14%
-学习率: 0.010000, 时间: 191.63s
+训练 - Loss: 1.5211, Acc: 57.72%
+测试 - Loss: 1.7877, Acc: 51.14%
+学习率: 0.100000, 时间: 180.95s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 65.05% -> 65.14%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 55 [0/391] Loss: 0.8017 | Acc: 75.00% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 55 [100/391] Loss: 0.9641 | Acc: 71.88% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 55 [200/391] Loss: 0.8159 | Acc: 76.56% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 55 [300/391] Loss: 0.7471 | Acc: 75.78% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 45 [0/391] Loss: 1.5021 | Acc: 53.91% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 45 [100/391] Loss: 1.4224 | Acc: 57.81% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 45 [200/391] Loss: 1.4437 | Acc: 59.38% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 45 [300/391] Loss: 1.4126 | Acc: 59.38% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.7624, Acc: 77.69%
-测试 - Loss: 1.2286, Acc: 65.74%
-学习率: 0.010000, 时间: 188.56s
+训练 - Loss: 1.5050, Acc: 58.37%
+测试 - Loss: 1.8305, Acc: 50.32%
+学习率: 0.100000, 时间: 183.87s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 65.14% -> 65.74%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 56 [0/391] Loss: 0.5652 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 56 [100/391] Loss: 0.7602 | Acc: 78.12% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 56 [200/391] Loss: 0.7742 | Acc: 75.78% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 56 [300/391] Loss: 0.5147 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 46 [0/391] Loss: 1.6483 | Acc: 53.91% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 46 [100/391] Loss: 1.2471 | Acc: 67.97% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 46 [200/391] Loss: 1.5347 | Acc: 57.03% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 46 [300/391] Loss: 1.6455 | Acc: 48.44% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.7272, Acc: 78.50%
-测试 - Loss: 1.2201, Acc: 65.82%
-学习率: 0.010000, 时间: 194.59s
+训练 - Loss: 1.5040, Acc: 58.33%
+测试 - Loss: 1.7442, Acc: 52.74%
+学习率: 0.100000, 时间: 191.53s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 65.74% -> 65.82%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 57 [0/391] Loss: 0.7858 | Acc: 72.66% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 57 [100/391] Loss: 0.5968 | Acc: 86.72% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 57 [200/391] Loss: 0.7124 | Acc: 76.56% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 57 [300/391] Loss: 0.6075 | Acc: 82.03% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 52.60% -> 52.74%
+Rank 3 | Epoch: 47 [0/391] Loss: 1.3216 | Acc: 62.50% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 47 [100/391] Loss: 1.6343 | Acc: 53.91% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 47 [200/391] Loss: 1.4396 | Acc: 56.25% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 47 [300/391] Loss: 1.6115 | Acc: 54.69% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.7030, Acc: 79.21%
-测试 - Loss: 1.1909, Acc: 66.41%
-学习率: 0.010000, 时间: 194.51s
+训练 - Loss: 1.5068, Acc: 58.08%
+测试 - Loss: 1.7612, Acc: 52.79%
+学习率: 0.100000, 时间: 187.02s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 65.82% -> 66.41%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 58 [0/391] Loss: 0.7793 | Acc: 77.34% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 58 [100/391] Loss: 0.6247 | Acc: 82.81% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 58 [200/391] Loss: 0.7800 | Acc: 77.34% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 58 [300/391] Loss: 0.7528 | Acc: 78.91% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 52.74% -> 52.79%
+Rank 3 | Epoch: 48 [0/391] Loss: 1.7197 | Acc: 47.66% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 48 [100/391] Loss: 1.1572 | Acc: 65.62% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 48 [200/391] Loss: 1.3747 | Acc: 62.50% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 48 [300/391] Loss: 1.2818 | Acc: 63.28% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.6831, Acc: 79.73%
-测试 - Loss: 1.2064, Acc: 66.30%
-学习率: 0.010000, 时间: 194.58s
+训练 - Loss: 1.4910, Acc: 58.64%
+测试 - Loss: 1.7678, Acc: 52.31%
+学习率: 0.100000, 时间: 181.54s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 59 [0/391] Loss: 0.6010 | Acc: 81.25% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 59 [100/391] Loss: 0.7194 | Acc: 79.69% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 59 [200/391] Loss: 0.6867 | Acc: 78.91% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 59 [300/391] Loss: 0.6187 | Acc: 82.81% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 49 [0/391] Loss: 1.5942 | Acc: 58.59% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 49 [100/391] Loss: 1.6054 | Acc: 53.91% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 49 [200/391] Loss: 1.5836 | Acc: 60.16% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 49 [300/391] Loss: 1.4355 | Acc: 58.59% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.6637, Acc: 80.38%
-测试 - Loss: 1.2167, Acc: 66.10%
-学习率: 0.010000, 时间: 192.47s
+训练 - Loss: 1.4916, Acc: 58.65%
+测试 - Loss: 1.7960, Acc: 51.72%
+学习率: 0.010000, 时间: 182.11s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-保存checkpoint到: ./checkpoints/checkpoint_pipeline_stage3_epoch60.pth
-Rank 3 | Epoch: 60 [0/391] Loss: 0.5491 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 60 [100/391] Loss: 0.5434 | Acc: 81.25% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 60 [200/391] Loss: 0.5463 | Acc: 82.81% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 60 [300/391] Loss: 0.6754 | Acc: 82.03% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 50 [0/391] Loss: 1.3623 | Acc: 64.84% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 50 [100/391] Loss: 1.2100 | Acc: 67.19% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 50 [200/391] Loss: 1.1343 | Acc: 64.84% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 50 [300/391] Loss: 0.9269 | Acc: 75.78% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.6502, Acc: 80.78%
-测试 - Loss: 1.2013, Acc: 66.83%
-学习率: 0.010000, 时间: 197.27s
+训练 - Loss: 1.0541, Acc: 70.10%
+测试 - Loss: 1.3439, Acc: 62.58%
+学习率: 0.010000, 时间: 187.63s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-最佳准确率更新: 66.41% -> 66.83%
-保存最佳模型到: ./checkpoints/best_model_pipeline_stage3.pth
-Rank 3 | Epoch: 61 [0/391] Loss: 0.4671 | Acc: 87.50% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 61 [100/391] Loss: 0.6136 | Acc: 77.34% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 61 [200/391] Loss: 0.5838 | Acc: 82.03% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 61 [300/391] Loss: 0.7335 | Acc: 78.91% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 52.79% -> 62.58%
+Rank 3 | Epoch: 51 [0/391] Loss: 1.0234 | Acc: 71.88% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 51 [100/391] Loss: 0.8213 | Acc: 77.34% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 51 [200/391] Loss: 0.8010 | Acc: 78.12% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 51 [300/391] Loss: 0.9630 | Acc: 72.66% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.6315, Acc: 81.32%
-测试 - Loss: 1.2177, Acc: 66.58%
-学习率: 0.010000, 时间: 197.14s
+训练 - Loss: 0.9071, Acc: 73.69%
+测试 - Loss: 1.2950, Acc: 63.30%
+学习率: 0.010000, 时间: 186.92s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 62 [0/391] Loss: 0.4855 | Acc: 87.50% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 62 [100/391] Loss: 0.5029 | Acc: 85.94% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 62 [200/391] Loss: 0.5700 | Acc: 78.91% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 62 [300/391] Loss: 0.6408 | Acc: 82.81% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 62.58% -> 63.30%
+Rank 3 | Epoch: 52 [0/391] Loss: 0.7960 | Acc: 77.34% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 52 [100/391] Loss: 0.7208 | Acc: 75.00% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 52 [200/391] Loss: 0.8039 | Acc: 72.66% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 52 [300/391] Loss: 0.7675 | Acc: 75.00% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.6168, Acc: 81.70%
-测试 - Loss: 1.2154, Acc: 66.15%
-学习率: 0.010000, 时间: 194.83s
+训练 - Loss: 0.8491, Acc: 75.05%
+测试 - Loss: 1.2435, Acc: 64.77%
+学习率: 0.010000, 时间: 187.52s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 63 [0/391] Loss: 0.5962 | Acc: 82.81% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 63 [100/391] Loss: 0.6715 | Acc: 79.69% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 63 [200/391] Loss: 0.4917 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 63 [300/391] Loss: 0.5477 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 63.30% -> 64.77%
+Rank 3 | Epoch: 53 [0/391] Loss: 0.7891 | Acc: 74.22% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 53 [100/391] Loss: 0.8519 | Acc: 76.56% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 53 [200/391] Loss: 1.0136 | Acc: 72.66% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 53 [300/391] Loss: 0.8127 | Acc: 75.78% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.6067, Acc: 81.81%
-测试 - Loss: 1.2297, Acc: 65.76%
-学习率: 0.010000, 时间: 194.98s
+训练 - Loss: 0.8074, Acc: 76.54%
+测试 - Loss: 1.2298, Acc: 65.26%
+学习率: 0.010000, 时间: 187.00s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 64 [0/391] Loss: 0.5364 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 64 [100/391] Loss: 0.6281 | Acc: 81.25% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 64 [200/391] Loss: 0.5707 | Acc: 83.59% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 64 [300/391] Loss: 0.7117 | Acc: 78.91% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 64.77% -> 65.26%
+Rank 3 | Epoch: 54 [0/391] Loss: 0.8270 | Acc: 74.22% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 54 [100/391] Loss: 0.8405 | Acc: 75.00% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 54 [200/391] Loss: 0.8131 | Acc: 71.09% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 54 [300/391] Loss: 0.7808 | Acc: 77.34% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.5997, Acc: 82.20%
-测试 - Loss: 1.2093, Acc: 66.25%
-学习率: 0.010000, 时间: 192.17s
+训练 - Loss: 0.7721, Acc: 77.43%
+测试 - Loss: 1.2126, Acc: 65.85%
+学习率: 0.010000, 时间: 182.51s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 65 [0/391] Loss: 0.4896 | Acc: 83.59% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 65 [100/391] Loss: 0.6291 | Acc: 82.81% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 65 [200/391] Loss: 0.5414 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 65 [300/391] Loss: 0.6946 | Acc: 78.12% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 65.26% -> 65.85%
+Rank 3 | Epoch: 55 [0/391] Loss: 0.7449 | Acc: 77.34% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 55 [100/391] Loss: 1.0091 | Acc: 74.22% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 55 [200/391] Loss: 0.6786 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 55 [300/391] Loss: 0.7233 | Acc: 80.47% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.5843, Acc: 82.49%
-测试 - Loss: 1.2517, Acc: 65.69%
-学习率: 0.010000, 时间: 194.97s
+训练 - Loss: 0.7425, Acc: 78.34%
+测试 - Loss: 1.2014, Acc: 66.17%
+学习率: 0.010000, 时间: 194.50s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 66 [0/391] Loss: 0.5317 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 66 [100/391] Loss: 0.5020 | Acc: 85.94% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 66 [200/391] Loss: 0.5051 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 66 [300/391] Loss: 0.5224 | Acc: 82.81% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 65.85% -> 66.17%
+Rank 3 | Epoch: 56 [0/391] Loss: 0.6337 | Acc: 81.25% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 56 [100/391] Loss: 0.7645 | Acc: 77.34% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 56 [200/391] Loss: 0.6375 | Acc: 78.91% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 56 [300/391] Loss: 0.6528 | Acc: 81.25% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.5754, Acc: 82.87%
-测试 - Loss: 1.2408, Acc: 65.97%
-学习率: 0.010000, 时间: 189.93s
+训练 - Loss: 0.7137, Acc: 79.04%
+测试 - Loss: 1.1969, Acc: 66.54%
+学习率: 0.010000, 时间: 183.71s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 67 [0/391] Loss: 0.5869 | Acc: 81.25% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 67 [100/391] Loss: 0.5266 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 67 [200/391] Loss: 0.6447 | Acc: 79.69% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 67 [300/391] Loss: 0.5140 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 66.17% -> 66.54%
+Rank 3 | Epoch: 57 [0/391] Loss: 0.7241 | Acc: 76.56% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 57 [100/391] Loss: 0.6078 | Acc: 83.59% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 57 [200/391] Loss: 0.6937 | Acc: 76.56% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 57 [300/391] Loss: 0.6294 | Acc: 77.34% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.5678, Acc: 83.00%
-测试 - Loss: 1.2337, Acc: 66.55%
-学习率: 0.010000, 时间: 194.86s
+训练 - Loss: 0.6878, Acc: 79.62%
+测试 - Loss: 1.1844, Acc: 66.72%
+学习率: 0.010000, 时间: 190.77s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 68 [0/391] Loss: 0.5453 | Acc: 79.69% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 68 [100/391] Loss: 0.3935 | Acc: 88.28% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 68 [200/391] Loss: 0.6293 | Acc: 80.47% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 68 [300/391] Loss: 0.6493 | Acc: 77.34% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 66.54% -> 66.72%
+Rank 3 | Epoch: 58 [0/391] Loss: 0.8150 | Acc: 75.00% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 58 [100/391] Loss: 0.6051 | Acc: 80.47% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 58 [200/391] Loss: 0.8158 | Acc: 71.09% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 58 [300/391] Loss: 0.7427 | Acc: 78.12% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.5667, Acc: 83.00%
-测试 - Loss: 1.2181, Acc: 66.64%
-学习率: 0.010000, 时间: 193.56s
+训练 - Loss: 0.6647, Acc: 80.26%
+测试 - Loss: 1.1836, Acc: 66.76%
+学习率: 0.010000, 时间: 183.81s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 69 [0/391] Loss: 0.5251 | Acc: 82.81% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 69 [100/391] Loss: 0.6329 | Acc: 82.03% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 69 [200/391] Loss: 0.7646 | Acc: 78.12% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 69 [300/391] Loss: 0.5892 | Acc: 78.91% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 66.72% -> 66.76%
+Rank 3 | Epoch: 59 [0/391] Loss: 0.5951 | Acc: 79.69% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 59 [100/391] Loss: 0.5907 | Acc: 82.81% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 59 [200/391] Loss: 0.6505 | Acc: 82.81% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 59 [300/391] Loss: 0.6665 | Acc: 76.56% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.5582, Acc: 83.38%
-测试 - Loss: 1.2302, Acc: 66.31%
-学习率: 0.010000, 时间: 196.37s
+训练 - Loss: 0.6449, Acc: 80.86%
+测试 - Loss: 1.1817, Acc: 66.69%
+学习率: 0.010000, 时间: 186.17s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-保存checkpoint到: ./checkpoints/checkpoint_pipeline_stage3_epoch70.pth
-Rank 3 | Epoch: 70 [0/391] Loss: 0.4397 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 70 [100/391] Loss: 0.5343 | Acc: 85.94% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 70 [200/391] Loss: 0.5365 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 70 [300/391] Loss: 0.5410 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 60 [0/391] Loss: 0.5542 | Acc: 85.94% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 60 [100/391] Loss: 0.6613 | Acc: 79.69% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 60 [200/391] Loss: 0.6231 | Acc: 77.34% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 60 [300/391] Loss: 0.7558 | Acc: 82.81% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.5462, Acc: 83.76%
-测试 - Loss: 1.2230, Acc: 66.40%
-学习率: 0.010000, 时间: 194.53s
+训练 - Loss: 0.6284, Acc: 81.25%
+测试 - Loss: 1.1832, Acc: 66.11%
+学习率: 0.010000, 时间: 182.48s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 71 [0/391] Loss: 0.5147 | Acc: 82.81% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 71 [100/391] Loss: 0.4850 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 71 [200/391] Loss: 0.5323 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 71 [300/391] Loss: 0.5957 | Acc: 78.12% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 61 [0/391] Loss: 0.4423 | Acc: 85.94% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 61 [100/391] Loss: 0.6591 | Acc: 80.47% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 61 [200/391] Loss: 0.4801 | Acc: 83.59% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 61 [300/391] Loss: 0.7582 | Acc: 75.78% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.5473, Acc: 83.64%
-测试 - Loss: 1.2460, Acc: 65.98%
-学习率: 0.010000, 时间: 194.99s
+训练 - Loss: 0.6136, Acc: 81.60%
+测试 - Loss: 1.2075, Acc: 66.42%
+学习率: 0.010000, 时间: 187.54s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 72 [0/391] Loss: 0.5532 | Acc: 82.81% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 72 [100/391] Loss: 0.6463 | Acc: 80.47% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 72 [200/391] Loss: 0.4881 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 72 [300/391] Loss: 0.4649 | Acc: 86.72% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 62 [0/391] Loss: 0.5960 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 62 [100/391] Loss: 0.4956 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 62 [200/391] Loss: 0.6084 | Acc: 80.47% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 62 [300/391] Loss: 0.6884 | Acc: 81.25% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.5391, Acc: 83.94%
-测试 - Loss: 1.2547, Acc: 66.37%
-学习率: 0.010000, 时间: 185.63s
+训练 - Loss: 0.5955, Acc: 82.35%
+测试 - Loss: 1.2126, Acc: 66.30%
+学习率: 0.010000, 时间: 175.92s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 73 [0/391] Loss: 0.4286 | Acc: 88.28% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 73 [100/391] Loss: 0.5187 | Acc: 86.72% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 73 [200/391] Loss: 0.3853 | Acc: 89.84% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 73 [300/391] Loss: 0.5303 | Acc: 78.12% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 63 [0/391] Loss: 0.5362 | Acc: 80.47% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 63 [100/391] Loss: 0.6432 | Acc: 82.81% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 63 [200/391] Loss: 0.5062 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 63 [300/391] Loss: 0.5049 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.5297, Acc: 84.20%
-测试 - Loss: 1.2394, Acc: 65.91%
-学习率: 0.010000, 时间: 189.99s
+训练 - Loss: 0.5822, Acc: 82.44%
+测试 - Loss: 1.2078, Acc: 66.84%
+学习率: 0.010000, 时间: 183.88s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 74 [0/391] Loss: 0.3338 | Acc: 89.06% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 74 [100/391] Loss: 0.5231 | Acc: 82.03% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 74 [200/391] Loss: 0.5005 | Acc: 87.50% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 74 [300/391] Loss: 0.5766 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+最佳准确率更新: 66.76% -> 66.84%
+Rank 3 | Epoch: 64 [0/391] Loss: 0.5117 | Acc: 85.94% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 64 [100/391] Loss: 0.6280 | Acc: 79.69% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 64 [200/391] Loss: 0.5384 | Acc: 86.72% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 64 [300/391] Loss: 0.7485 | Acc: 75.00% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.5296, Acc: 84.36%
-测试 - Loss: 1.2929, Acc: 65.25%
-学习率: 0.010000, 时间: 196.10s
+训练 - Loss: 0.5777, Acc: 82.78%
+测试 - Loss: 1.1961, Acc: 66.82%
+学习率: 0.010000, 时间: 183.43s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 75 [0/391] Loss: 0.5792 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 75 [100/391] Loss: 0.3996 | Acc: 87.50% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 75 [200/391] Loss: 0.4616 | Acc: 83.59% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 75 [300/391] Loss: 0.5766 | Acc: 81.25% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 65 [0/391] Loss: 0.4473 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 65 [100/391] Loss: 0.6218 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 65 [200/391] Loss: 0.5612 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 65 [300/391] Loss: 0.6448 | Acc: 82.03% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.5251, Acc: 84.32%
-测试 - Loss: 1.2588, Acc: 65.70%
-学习率: 0.010000, 时间: 196.90s
+训练 - Loss: 0.5657, Acc: 83.14%
+测试 - Loss: 1.2247, Acc: 66.07%
+学习率: 0.010000, 时间: 186.54s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 76 [0/391] Loss: 0.4426 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 76 [100/391] Loss: 0.4645 | Acc: 82.03% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 76 [200/391] Loss: 0.4224 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 76 [300/391] Loss: 0.6165 | Acc: 83.59% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 66 [0/391] Loss: 0.5972 | Acc: 83.59% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 66 [100/391] Loss: 0.5629 | Acc: 83.59% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 66 [200/391] Loss: 0.4968 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 66 [300/391] Loss: 0.5908 | Acc: 81.25% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.5277, Acc: 84.22%
-测试 - Loss: 1.2445, Acc: 66.43%
-学习率: 0.010000, 时间: 195.58s
+训练 - Loss: 0.5564, Acc: 83.44%
+测试 - Loss: 1.2204, Acc: 66.43%
+学习率: 0.010000, 时间: 184.59s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 77 [0/391] Loss: 0.4288 | Acc: 86.72% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 77 [100/391] Loss: 0.5389 | Acc: 85.94% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 77 [200/391] Loss: 0.4370 | Acc: 85.94% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 77 [300/391] Loss: 0.4916 | Acc: 87.50% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 67 [0/391] Loss: 0.5403 | Acc: 88.28% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 67 [100/391] Loss: 0.4917 | Acc: 87.50% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 67 [200/391] Loss: 0.6842 | Acc: 78.12% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 67 [300/391] Loss: 0.5200 | Acc: 81.25% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.5204, Acc: 84.34%
-测试 - Loss: 1.2937, Acc: 65.00%
-学习率: 0.010000, 时间: 191.56s
+训练 - Loss: 0.5444, Acc: 83.67%
+测试 - Loss: 1.2267, Acc: 66.21%
+学习率: 0.010000, 时间: 186.44s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 78 [0/391] Loss: 0.5324 | Acc: 85.94% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 78 [100/391] Loss: 0.4798 | Acc: 85.94% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 78 [200/391] Loss: 0.6386 | Acc: 83.59% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 78 [300/391] Loss: 0.4728 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 68 [0/391] Loss: 0.4699 | Acc: 86.72% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 68 [100/391] Loss: 0.4167 | Acc: 88.28% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 68 [200/391] Loss: 0.5466 | Acc: 82.03% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 68 [300/391] Loss: 0.5556 | Acc: 81.25% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.5223, Acc: 84.17%
-测试 - Loss: 1.2423, Acc: 66.23%
-学习率: 0.010000, 时间: 193.97s
+训练 - Loss: 0.5436, Acc: 83.79%
+测试 - Loss: 1.2270, Acc: 66.38%
+学习率: 0.010000, 时间: 175.68s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 79 [0/391] Loss: 0.5027 | Acc: 85.94% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 79 [100/391] Loss: 0.4436 | Acc: 87.50% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 79 [200/391] Loss: 0.6420 | Acc: 82.81% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 79 [300/391] Loss: 0.6325 | Acc: 78.12% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 69 [0/391] Loss: 0.5297 | Acc: 83.59% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 69 [100/391] Loss: 0.5787 | Acc: 83.59% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 69 [200/391] Loss: 0.7648 | Acc: 74.22% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 69 [300/391] Loss: 0.6096 | Acc: 78.12% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.5138, Acc: 84.60%
-测试 - Loss: 1.2472, Acc: 66.69%
-学习率: 0.010000, 时间: 191.07s
+训练 - Loss: 0.5395, Acc: 84.09%
+测试 - Loss: 1.2356, Acc: 66.01%
+学习率: 0.010000, 时间: 181.81s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-保存checkpoint到: ./checkpoints/checkpoint_pipeline_stage3_epoch80.pth
-Rank 3 | Epoch: 80 [0/391] Loss: 0.4907 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 80 [100/391] Loss: 0.5015 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 80 [200/391] Loss: 0.4941 | Acc: 83.59% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 80 [300/391] Loss: 0.7483 | Acc: 76.56% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 70 [0/391] Loss: 0.4224 | Acc: 86.72% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 70 [100/391] Loss: 0.4274 | Acc: 87.50% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 70 [200/391] Loss: 0.5052 | Acc: 86.72% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 70 [300/391] Loss: 0.5107 | Acc: 88.28% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.5041, Acc: 84.83%
-测试 - Loss: 1.2674, Acc: 66.11%
-学习率: 0.010000, 时间: 195.89s
+训练 - Loss: 0.5363, Acc: 83.96%
+测试 - Loss: 1.2870, Acc: 65.02%
+学习率: 0.010000, 时间: 179.22s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 81 [0/391] Loss: 0.4552 | Acc: 86.72% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 81 [100/391] Loss: 0.4798 | Acc: 86.72% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 81 [200/391] Loss: 0.5110 | Acc: 80.47% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 81 [300/391] Loss: 0.4802 | Acc: 88.28% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 71 [0/391] Loss: 0.4526 | Acc: 87.50% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 71 [100/391] Loss: 0.5108 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 71 [200/391] Loss: 0.5390 | Acc: 81.25% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 71 [300/391] Loss: 0.5898 | Acc: 78.91% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.5034, Acc: 84.97%
-测试 - Loss: 1.2992, Acc: 65.36%
-学习率: 0.010000, 时间: 196.45s
+训练 - Loss: 0.5229, Acc: 84.45%
+测试 - Loss: 1.2494, Acc: 65.72%
+学习率: 0.010000, 时间: 181.85s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 82 [0/391] Loss: 0.5647 | Acc: 82.81% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 82 [100/391] Loss: 0.4327 | Acc: 88.28% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 82 [200/391] Loss: 0.4579 | Acc: 85.94% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 82 [300/391] Loss: 0.4583 | Acc: 86.72% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 72 [0/391] Loss: 0.5165 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 72 [100/391] Loss: 0.5425 | Acc: 82.03% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 72 [200/391] Loss: 0.4969 | Acc: 83.59% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 72 [300/391] Loss: 0.4593 | Acc: 85.94% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.5056, Acc: 84.90%
-测试 - Loss: 1.3084, Acc: 64.38%
-学习率: 0.010000, 时间: 185.69s
+训练 - Loss: 0.5288, Acc: 84.16%
+测试 - Loss: 1.2611, Acc: 65.70%
+学习率: 0.010000, 时间: 189.18s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 83 [0/391] Loss: 0.2782 | Acc: 95.31% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 73 [0/391] Loss: 0.4743 | Acc: 87.50% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 73 [100/391] Loss: 0.4769 | Acc: 85.94% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 73 [200/391] Loss: 0.4250 | Acc: 90.62% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 73 [300/391] Loss: 0.5191 | Acc: 82.81% | GPU Mem: 0.25GB/0.50GB
+
+训练 - Loss: 0.5134, Acc: 84.49%
+测试 - Loss: 1.2635, Acc: 65.91%
+学习率: 0.010000, 时间: 187.52s
+GPU内存使用:
+  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
+  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
+  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 74 [0/391] Loss: 0.3926 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 74 [100/391] Loss: 0.4951 | Acc: 83.59% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 74 [200/391] Loss: 0.4370 | Acc: 91.41% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 74 [300/391] Loss: 0.5380 | Acc: 88.28% | GPU Mem: 0.25GB/0.50GB
+
+训练 - Loss: 0.5127, Acc: 84.52%
+测试 - Loss: 1.2632, Acc: 65.38%
+学习率: 0.010000, 时间: 182.94s
+GPU内存使用:
+  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
+  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
+  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 75 [0/391] Loss: 0.4593 | Acc: 89.06% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 75 [100/391] Loss: 0.4178 | Acc: 83.59% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 75 [200/391] Loss: 0.4393 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 75 [300/391] Loss: 0.5379 | Acc: 82.81% | GPU Mem: 0.25GB/0.50GB
+
+训练 - Loss: 0.5035, Acc: 84.97%
+测试 - Loss: 1.2795, Acc: 65.94%
+学习率: 0.010000, 时间: 186.20s
+GPU内存使用:
+  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
+  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
+  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 76 [0/391] Loss: 0.4687 | Acc: 85.94% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 76 [100/391] Loss: 0.5248 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 76 [200/391] Loss: 0.4094 | Acc: 83.59% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 76 [300/391] Loss: 0.5441 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
+
+训练 - Loss: 0.5016, Acc: 85.06%
+测试 - Loss: 1.2548, Acc: 66.42%
+学习率: 0.010000, 时间: 177.04s
+GPU内存使用:
+  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
+  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
+  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 77 [0/391] Loss: 0.4952 | Acc: 82.81% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 77 [100/391] Loss: 0.4659 | Acc: 87.50% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 77 [200/391] Loss: 0.4923 | Acc: 85.94% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 77 [300/391] Loss: 0.3717 | Acc: 87.50% | GPU Mem: 0.25GB/0.50GB
+
+训练 - Loss: 0.4996, Acc: 85.02%
+测试 - Loss: 1.2719, Acc: 65.31%
+学习率: 0.010000, 时间: 189.88s
+GPU内存使用:
+  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
+  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
+  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 78 [0/391] Loss: 0.5704 | Acc: 80.47% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 78 [100/391] Loss: 0.5019 | Acc: 83.59% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 78 [200/391] Loss: 0.5269 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 78 [300/391] Loss: 0.4982 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
+
+训练 - Loss: 0.4998, Acc: 85.15%
+测试 - Loss: 1.2684, Acc: 65.77%
+学习率: 0.010000, 时间: 184.37s
+GPU内存使用:
+  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
+  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
+  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 79 [0/391] Loss: 0.4741 | Acc: 86.72% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 79 [100/391] Loss: 0.4498 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 79 [200/391] Loss: 0.6326 | Acc: 80.47% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 79 [300/391] Loss: 0.6716 | Acc: 77.34% | GPU Mem: 0.25GB/0.50GB
+
+训练 - Loss: 0.4968, Acc: 85.16%
+测试 - Loss: 1.2616, Acc: 66.18%
+学习率: 0.010000, 时间: 183.90s
+GPU内存使用:
+  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
+  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
+  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 80 [0/391] Loss: 0.5538 | Acc: 82.81% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 80 [100/391] Loss: 0.5258 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 80 [200/391] Loss: 0.5938 | Acc: 82.81% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 80 [300/391] Loss: 0.7214 | Acc: 82.03% | GPU Mem: 0.25GB/0.50GB
+
+训练 - Loss: 0.4918, Acc: 85.32%
+测试 - Loss: 1.2812, Acc: 65.40%
+学习率: 0.010000, 时间: 178.61s
+GPU内存使用:
+  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
+  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
+  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 81 [0/391] Loss: 0.5459 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 81 [100/391] Loss: 0.4476 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 81 [200/391] Loss: 0.4791 | Acc: 85.94% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 81 [300/391] Loss: 0.5476 | Acc: 80.47% | GPU Mem: 0.25GB/0.50GB
+
+训练 - Loss: 0.4989, Acc: 85.01%
+测试 - Loss: 1.3268, Acc: 64.59%
+学习率: 0.010000, 时间: 175.74s
+GPU内存使用:
+  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
+  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
+  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 82 [0/391] Loss: 0.4643 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 82 [100/391] Loss: 0.5432 | Acc: 83.59% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 82 [200/391] Loss: 0.3468 | Acc: 90.62% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 82 [300/391] Loss: 0.3339 | Acc: 89.84% | GPU Mem: 0.25GB/0.50GB
+
+训练 - Loss: 0.4847, Acc: 85.50%
+测试 - Loss: 1.2654, Acc: 65.77%
+学习率: 0.010000, 时间: 185.67s
+GPU内存使用:
+  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
+  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
+  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 83 [0/391] Loss: 0.3267 | Acc: 92.97% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 83 [100/391] Loss: 0.3794 | Acc: 92.19% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 83 [200/391] Loss: 0.4913 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 83 [300/391] Loss: 0.4738 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
+
+训练 - Loss: 0.4772, Acc: 85.91%
+测试 - Loss: 1.2769, Acc: 65.83%
+学习率: 0.010000, 时间: 185.26s
+GPU内存使用:
+  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
+  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
+  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 84 [0/391] Loss: 0.4322 | Acc: 89.06% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 84 [100/391] Loss: 0.4320 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 84 [200/391] Loss: 0.4126 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 84 [300/391] Loss: 0.5302 | Acc: 82.03% | GPU Mem: 0.25GB/0.50GB
+
+训练 - Loss: 0.4855, Acc: 85.25%
+测试 - Loss: 1.3199, Acc: 64.71%
+学习率: 0.010000, 时间: 175.92s
+GPU内存使用:
+  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
+  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
+  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 85 [0/391] Loss: 0.6103 | Acc: 82.81% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 85 [100/391] Loss: 0.4694 | Acc: 88.28% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 85 [200/391] Loss: 0.4998 | Acc: 86.72% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 85 [300/391] Loss: 0.5116 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
+
+训练 - Loss: 0.4814, Acc: 85.54%
+测试 - Loss: 1.2891, Acc: 65.55%
+学习率: 0.010000, 时间: 182.75s
+GPU内存使用:
+  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
+  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
+  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 86 [0/391] Loss: 0.4231 | Acc: 85.94% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 86 [100/391] Loss: 0.4677 | Acc: 85.94% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 86 [200/391] Loss: 0.3887 | Acc: 86.72% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 86 [300/391] Loss: 0.4869 | Acc: 89.84% | GPU Mem: 0.25GB/0.50GB
+
+训练 - Loss: 0.4711, Acc: 86.01%
+测试 - Loss: 1.2536, Acc: 66.45%
+学习率: 0.010000, 时间: 194.56s
+GPU内存使用:
+  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
+  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
+  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 87 [0/391] Loss: 0.4519 | Acc: 89.84% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 87 [100/391] Loss: 0.3949 | Acc: 91.41% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 87 [200/391] Loss: 0.5135 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 87 [300/391] Loss: 0.3431 | Acc: 92.19% | GPU Mem: 0.25GB/0.50GB
+
+训练 - Loss: 0.4732, Acc: 85.89%
+测试 - Loss: 1.3306, Acc: 64.51%
+学习率: 0.010000, 时间: 184.44s
+GPU内存使用:
+  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
+  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
+  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
 Epoch 49/100
 ============================================================
 ⚠️  跳过不完整的 batch 390
@@ -1739,173 +1760,171 @@ Epoch 95/100
 
 ============================================================
 Epoch 96/100
-Rank 3 | Epoch: 83 [100/391] Loss: 0.4120 | Acc: 90.62% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 83 [200/391] Loss: 0.5619 | Acc: 82.03% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 83 [300/391] Loss: 0.4596 | Acc: 87.50% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 88 [0/391] Loss: 0.5697 | Acc: 82.03% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 88 [100/391] Loss: 0.5848 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 88 [200/391] Loss: 0.4609 | Acc: 86.72% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 88 [300/391] Loss: 0.4468 | Acc: 86.72% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.4962, Acc: 85.12%
-测试 - Loss: 1.3179, Acc: 64.86%
-学习率: 0.010000, 时间: 197.95s
+训练 - Loss: 0.4749, Acc: 85.74%
+测试 - Loss: 1.2779, Acc: 65.80%
+学习率: 0.010000, 时间: 181.02s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 84 [0/391] Loss: 0.4071 | Acc: 89.06% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 84 [100/391] Loss: 0.4376 | Acc: 87.50% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 84 [200/391] Loss: 0.4353 | Acc: 83.59% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 84 [300/391] Loss: 0.5569 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 89 [0/391] Loss: 0.4797 | Acc: 86.72% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 89 [100/391] Loss: 0.5697 | Acc: 83.59% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 89 [200/391] Loss: 0.4418 | Acc: 85.94% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 89 [300/391] Loss: 0.5714 | Acc: 81.25% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.5055, Acc: 84.88%
-测试 - Loss: 1.3417, Acc: 64.44%
-学习率: 0.010000, 时间: 191.53s
+训练 - Loss: 0.4643, Acc: 86.14%
+测试 - Loss: 1.3108, Acc: 65.36%
+学习率: 0.010000, 时间: 191.07s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 85 [0/391] Loss: 0.5069 | Acc: 86.72% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 85 [100/391] Loss: 0.4220 | Acc: 87.50% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 85 [200/391] Loss: 0.4115 | Acc: 89.84% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 85 [300/391] Loss: 0.5326 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 90 [0/391] Loss: 0.4563 | Acc: 86.72% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 90 [100/391] Loss: 0.4416 | Acc: 89.06% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 90 [200/391] Loss: 0.4903 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 90 [300/391] Loss: 0.4349 | Acc: 85.94% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.5042, Acc: 85.03%
-测试 - Loss: 1.2663, Acc: 66.14%
-学习率: 0.010000, 时间: 173.87s
+训练 - Loss: 0.4638, Acc: 86.16%
+测试 - Loss: 1.3382, Acc: 64.58%
+学习率: 0.010000, 时间: 186.27s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 86 [0/391] Loss: 0.4083 | Acc: 85.94% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 86 [100/391] Loss: 0.5059 | Acc: 83.59% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 86 [200/391] Loss: 0.4724 | Acc: 83.59% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 86 [300/391] Loss: 0.3926 | Acc: 85.94% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 91 [0/391] Loss: 0.3545 | Acc: 89.06% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 91 [100/391] Loss: 0.4779 | Acc: 83.59% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 91 [200/391] Loss: 0.5880 | Acc: 80.47% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 91 [300/391] Loss: 0.4523 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.4878, Acc: 85.44%
-测试 - Loss: 1.3039, Acc: 65.18%
-学习率: 0.010000, 时间: 174.77s
+训练 - Loss: 0.4590, Acc: 86.28%
+测试 - Loss: 1.3294, Acc: 64.70%
+学习率: 0.010000, 时间: 177.37s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 87 [0/391] Loss: 0.5414 | Acc: 81.25% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 87 [100/391] Loss: 0.3972 | Acc: 89.84% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 87 [200/391] Loss: 0.5153 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 87 [300/391] Loss: 0.4586 | Acc: 86.72% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 92 [0/391] Loss: 0.4111 | Acc: 86.72% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 92 [100/391] Loss: 0.3680 | Acc: 89.06% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 92 [200/391] Loss: 0.5587 | Acc: 85.94% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 92 [300/391] Loss: 0.4126 | Acc: 87.50% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.4938, Acc: 85.14%
-测试 - Loss: 1.3318, Acc: 64.95%
-学习率: 0.010000, 时间: 174.82s
+训练 - Loss: 0.4575, Acc: 86.33%
+测试 - Loss: 1.3181, Acc: 65.05%
+学习率: 0.010000, 时间: 180.72s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 88 [0/391] Loss: 0.4269 | Acc: 86.72% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 88 [100/391] Loss: 0.5659 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 88 [200/391] Loss: 0.4666 | Acc: 87.50% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 88 [300/391] Loss: 0.5245 | Acc: 83.59% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 93 [0/391] Loss: 0.4179 | Acc: 85.94% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 93 [100/391] Loss: 0.4138 | Acc: 91.41% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 93 [200/391] Loss: 0.5546 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 93 [300/391] Loss: 0.4284 | Acc: 89.06% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.4891, Acc: 85.37%
-测试 - Loss: 1.2948, Acc: 65.83%
-学习率: 0.010000, 时间: 174.23s
+训练 - Loss: 0.4628, Acc: 86.16%
+测试 - Loss: 1.2918, Acc: 65.88%
+学习率: 0.010000, 时间: 192.02s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 89 [0/391] Loss: 0.4866 | Acc: 88.28% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 89 [100/391] Loss: 0.5991 | Acc: 79.69% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 89 [200/391] Loss: 0.3973 | Acc: 88.28% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 89 [300/391] Loss: 0.5692 | Acc: 81.25% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 94 [0/391] Loss: 0.3592 | Acc: 92.19% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 94 [100/391] Loss: 0.4833 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 94 [200/391] Loss: 0.3648 | Acc: 89.84% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 94 [300/391] Loss: 0.3428 | Acc: 90.62% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.4783, Acc: 85.79%
-测试 - Loss: 1.3099, Acc: 65.32%
-学习率: 0.010000, 时间: 174.42s
+训练 - Loss: 0.4430, Acc: 87.00%
+测试 - Loss: 1.3087, Acc: 66.05%
+学习率: 0.010000, 时间: 190.67s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-保存checkpoint到: ./checkpoints/checkpoint_pipeline_stage3_epoch90.pth
-Rank 3 | Epoch: 90 [0/391] Loss: 0.3631 | Acc: 89.06% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 90 [100/391] Loss: 0.3564 | Acc: 94.53% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 90 [200/391] Loss: 0.4491 | Acc: 87.50% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 90 [300/391] Loss: 0.4615 | Acc: 87.50% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 95 [0/391] Loss: 0.4971 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 95 [100/391] Loss: 0.4502 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 95 [200/391] Loss: 0.4959 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 95 [300/391] Loss: 0.5461 | Acc: 81.25% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.4752, Acc: 85.87%
-测试 - Loss: 1.2905, Acc: 65.47%
-学习率: 0.010000, 时间: 174.18s
+训练 - Loss: 0.4492, Acc: 86.67%
+测试 - Loss: 1.2946, Acc: 65.70%
+学习率: 0.010000, 时间: 186.11s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 91 [0/391] Loss: 0.3690 | Acc: 88.28% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 91 [100/391] Loss: 0.4125 | Acc: 88.28% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 91 [200/391] Loss: 0.5545 | Acc: 82.03% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 91 [300/391] Loss: 0.5728 | Acc: 82.03% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 96 [0/391] Loss: 0.5752 | Acc: 83.59% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 96 [100/391] Loss: 0.3878 | Acc: 89.84% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 96 [200/391] Loss: 0.5057 | Acc: 83.59% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 96 [300/391] Loss: 0.5384 | Acc: 82.03% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.4784, Acc: 85.65%
-测试 - Loss: 1.3441, Acc: 64.90%
-学习率: 0.010000, 时间: 173.81s
+训练 - Loss: 0.4486, Acc: 86.63%
+测试 - Loss: 1.3059, Acc: 65.51%
+学习率: 0.010000, 时间: 181.41s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 92 [0/391] Loss: 0.5188 | Acc: 88.28% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 92 [100/391] Loss: 0.4346 | Acc: 88.28% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 92 [200/391] Loss: 0.5598 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 92 [300/391] Loss: 0.5312 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 97 [0/391] Loss: 0.3237 | Acc: 92.97% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 97 [100/391] Loss: 0.4369 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 97 [200/391] Loss: 0.4508 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 97 [300/391] Loss: 0.3643 | Acc: 88.28% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.4799, Acc: 85.87%
-测试 - Loss: 1.3013, Acc: 65.16%
-学习率: 0.010000, 时间: 173.95s
+训练 - Loss: 0.4391, Acc: 86.86%
+测试 - Loss: 1.3572, Acc: 64.75%
+学习率: 0.010000, 时间: 188.07s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 93 [0/391] Loss: 0.4085 | Acc: 88.28% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 93 [100/391] Loss: 0.3300 | Acc: 90.62% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 93 [200/391] Loss: 0.5996 | Acc: 78.12% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 93 [300/391] Loss: 0.4725 | Acc: 87.50% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 98 [0/391] Loss: 0.4299 | Acc: 88.28% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 98 [100/391] Loss: 0.5043 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 98 [200/391] Loss: 0.3887 | Acc: 88.28% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 98 [300/391] Loss: 0.3906 | Acc: 87.50% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.4763, Acc: 85.71%
-测试 - Loss: 1.3067, Acc: 65.33%
-学习率: 0.010000, 时间: 173.99s
+训练 - Loss: 0.4422, Acc: 86.87%
+测试 - Loss: 1.3288, Acc: 64.86%
+学习率: 0.010000, 时间: 178.70s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 94 [0/391] Loss: 0.4214 | Acc: 88.28% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 94 [100/391] Loss: 0.5606 | Acc: 81.25% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 94 [200/391] Loss: 0.4257 | Acc: 86.72% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 94 [300/391] Loss: 0.3770 | Acc: 91.41% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
+Rank 3 | Epoch: 99 [0/391] Loss: 0.4605 | Acc: 85.94% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 99 [100/391] Loss: 0.3352 | Acc: 91.41% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 99 [200/391] Loss: 0.5806 | Acc: 79.69% | GPU Mem: 0.25GB/0.50GB
+Rank 3 | Epoch: 99 [300/391] Loss: 0.5158 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
 
-训练 - Loss: 0.4737, Acc: 85.90%
-测试 - Loss: 1.3156, Acc: 64.99%
-学习率: 0.010000, 时间: 174.60s
+训练 - Loss: 0.4443, Acc: 86.75%
+测试 - Loss: 1.3158, Acc: 65.18%
+学习率: 0.001000, 时间: 184.56s
 GPU内存使用:
   GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
   GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
   GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 95 [0/391] Loss: 0.3128 | Acc: 93.75% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 95 [100/391] Loss: 0.5070 | Acc: 83.59% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 95 [200/391] Loss: 0.5480 | Acc: 82.03% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 95 [300/391] Loss: 0.4773 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
+  GPU 4 - 已分配: 0.25GB, 已保留: 0.50GB
 
-训练 - Loss: 0.4708, Acc: 86.04%
-测试 - Loss: 1.3067, Acc: 65.43%
-学习率: 0.010000, 时间: 173.77s
-GPU内存使用:
-  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
-  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
+============================================================
+训练完成!
+============================================================
+总时间: 18539.68秒 (308.99分钟)
+平均每epoch: 185.40秒
+最佳测试准确率: 66.84%
+Rank 3 正在保存 checkpoint..., is_best=False, final=True
+保存最终模型到: ./experiments/group_5_pipeline_parallel_chunks_parameter_optimization/checkpoints/pp_resnet50_bs128_gpu4_nw2_chunks32.pth
 ============================================================
 ⚠️  跳过不完整的 batch 390
 
@@ -1928,68 +1947,5 @@ Epoch 99/100
 Epoch 100/100
 ============================================================
 ⚠️  跳过不完整的 batch 390
-  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 96 [0/391] Loss: 0.6059 | Acc: 82.03% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 96 [100/391] Loss: 0.4777 | Acc: 87.50% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 96 [200/391] Loss: 0.5876 | Acc: 83.59% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 96 [300/391] Loss: 0.5630 | Acc: 81.25% | GPU Mem: 0.25GB/0.50GB
-
-训练 - Loss: 0.4633, Acc: 86.23%
-测试 - Loss: 1.3838, Acc: 64.34%
-学习率: 0.010000, 时间: 173.63s
-GPU内存使用:
-  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
-  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
-  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 97 [0/391] Loss: 0.4271 | Acc: 89.84% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 97 [100/391] Loss: 0.4801 | Acc: 89.06% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 97 [200/391] Loss: 0.4861 | Acc: 84.38% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 97 [300/391] Loss: 0.4332 | Acc: 89.06% | GPU Mem: 0.25GB/0.50GB
-
-训练 - Loss: 0.4722, Acc: 86.10%
-测试 - Loss: 1.3169, Acc: 65.62%
-学习率: 0.010000, 时间: 173.46s
-GPU内存使用:
-  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
-  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
-  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 98 [0/391] Loss: 0.4253 | Acc: 86.72% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 98 [100/391] Loss: 0.5705 | Acc: 81.25% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 98 [200/391] Loss: 0.4969 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 98 [300/391] Loss: 0.3677 | Acc: 86.72% | GPU Mem: 0.25GB/0.50GB
-
-训练 - Loss: 0.4511, Acc: 86.51%
-测试 - Loss: 1.2908, Acc: 66.11%
-学习率: 0.010000, 时间: 191.64s
-GPU内存使用:
-  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
-  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
-  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-Rank 3 | Epoch: 99 [0/391] Loss: 0.4637 | Acc: 85.16% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 99 [100/391] Loss: 0.3499 | Acc: 90.62% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 99 [200/391] Loss: 0.5365 | Acc: 83.59% | GPU Mem: 0.25GB/0.50GB
-Rank 3 | Epoch: 99 [300/391] Loss: 0.3811 | Acc: 90.62% | GPU Mem: 0.25GB/0.50GB
-
-训练 - Loss: 0.4515, Acc: 86.50%
-测试 - Loss: 1.3099, Acc: 65.72%
-学习率: 0.001000, 时间: 202.34s
-GPU内存使用:
-  GPU 1 - 已分配: 0.13GB, 已保留: 1.46GB
-  GPU 2 - 已分配: 0.33GB, 已保留: 1.13GB
-  GPU 3 - 已分配: 0.24GB, 已保留: 0.91GB
-  GPU 5 - 已分配: 0.25GB, 已保留: 0.50GB
-保存checkpoint到: ./checkpoints/checkpoint_pipeline_stage3_epoch100.pth
-
-============================================================
-训练完成!
-============================================================
-总时间: 18845.25秒 (314.09分钟)
-平均每epoch: 188.45秒
-最佳测试准确率: 66.83%
-保存最终模型到: ./checkpoints/pp_resnet50_bs128_gpu4_nw2_chunks32_stage3.pth
 
 训练完成!

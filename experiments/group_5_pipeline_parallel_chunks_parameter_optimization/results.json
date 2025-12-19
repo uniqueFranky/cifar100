@@ -6,9 +6,63 @@
     "control_variables": "训练模式(流水线并行)、模型架构(ResNet50)、硬件配置(4卡)、批处理大小(128)、数据加载参数",
     "comparison_focus": "流水线并行chunks参数: 16 vs 32 vs 64"
   },
-  "total_experiments": 3,
-  "completed_experiments": 3,
+  "total_experiments": 5,
+  "completed_experiments": 4,
   "results": [
+    {
+      "experiment_name": "pp_resnet50_bs128_gpu4_nw2_chunks4",
+      "params": {
+        "mode": "pp",
+        "model": "resnet50",
+        "batch_size": 128,
+        "epochs": 100,
+        "dataset": "cifar100",
+        "gpu_ids": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "num_workers": 2,
+        "prefetch_factor": 1,
+        "chunks": 4,
+        "num_gpus": 4
+      },
+      "success": true,
+      "return_code": 0,
+      "elapsed_time": 2948.463918209076,
+      "elapsed_time_str": "0.82h",
+      "checkpoint_path": "./experiments/group_5_pipeline_parallel_chunks_parameter_optimization/checkpoints/pp_resnet50_bs128_gpu4_nw2_chunks4.pth",
+      "log_file": "./experiments/group_5_pipeline_parallel_chunks_parameter_optimization/logs/pp_resnet50_bs128_gpu4_nw2_chunks4.log",
+      "timestamp": "2025-12-18T19:17:17.099357"
+    },
+    {
+      "experiment_name": "pp_resnet50_bs128_gpu4_nw2_chunks8",
+      "params": {
+        "mode": "pp",
+        "model": "resnet50",
+        "batch_size": 128,
+        "epochs": 100,
+        "dataset": "cifar100",
+        "gpu_ids": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "num_workers": 2,
+        "prefetch_factor": 1,
+        "chunks": 8,
+        "num_gpus": 4
+      },
+      "success": true,
+      "return_code": 0,
+      "elapsed_time": 5530.298025131226,
+      "elapsed_time_str": "1.54h",
+      "checkpoint_path": "./experiments/group_5_pipeline_parallel_chunks_parameter_optimization/checkpoints/pp_resnet50_bs128_gpu4_nw2_chunks8.pth",
+      "log_file": "./experiments/group_5_pipeline_parallel_chunks_parameter_optimization/logs/pp_resnet50_bs128_gpu4_nw2_chunks8.log",
+      "timestamp": "2025-12-18T20:49:32.404039"
+    },
     {
       "experiment_name": "pp_resnet50_bs128_gpu4_nw2_chunks16",
       "params": {
@@ -21,20 +75,20 @@
           1,
           2,
           3,
-          5
+          4
         ],
         "num_workers": 2,
         "prefetch_factor": 1,
         "chunks": 16,
         "num_gpus": 4
       },
-      "success": false,
+      "success": true,
       "return_code": 0,
-      "elapsed_time": 10692.951241016388,
-      "elapsed_time_str": "2.97h",
+      "elapsed_time": 10756.183141231537,
+      "elapsed_time_str": "2.99h",
       "checkpoint_path": "./experiments/group_5_pipeline_parallel_chunks_parameter_optimization/checkpoints/pp_resnet50_bs128_gpu4_nw2_chunks16.pth",
       "log_file": "./experiments/group_5_pipeline_parallel_chunks_parameter_optimization/logs/pp_resnet50_bs128_gpu4_nw2_chunks16.log",
-      "timestamp": "2025-12-10T16:16:17.099072"
+      "timestamp": "2025-12-18T23:48:53.590326"
     },
     {
       "experiment_name": "pp_resnet50_bs128_gpu4_nw2_chunks32",
@@ -48,47 +102,20 @@
           1,
           2,
           3,
-          5
+          4
         ],
         "num_workers": 2,
         "prefetch_factor": 1,
         "chunks": 32,
         "num_gpus": 4
       },
-      "success": false,
+      "success": true,
       "return_code": 0,
-      "elapsed_time": 22636.912617444992,
-      "elapsed_time_str": "6.29h",
+      "elapsed_time": 22290.935158729553,
+      "elapsed_time_str": "6.19h",
       "checkpoint_path": "./experiments/group_5_pipeline_parallel_chunks_parameter_optimization/checkpoints/pp_resnet50_bs128_gpu4_nw2_chunks32.pth",
       "log_file": "./experiments/group_5_pipeline_parallel_chunks_parameter_optimization/logs/pp_resnet50_bs128_gpu4_nw2_chunks32.log",
-      "timestamp": "2025-12-10T22:33:39.018751"
-    },
-    {
-      "experiment_name": "pp_resnet50_bs128_gpu4_nw2_chunks64",
-      "params": {
-        "mode": "pp",
-        "model": "resnet50",
-        "batch_size": 128,
-        "epochs": 100,
-        "dataset": "cifar100",
-        "gpu_ids": [
-          1,
-          2,
-          3,
-          5
-        ],
-        "num_workers": 2,
-        "prefetch_factor": 1,
-        "chunks": 64,
-        "num_gpus": 4
-      },
-      "success": false,
-      "return_code": 0,
-      "elapsed_time": 41641.42821216583,
-      "elapsed_time_str": "11.57h",
-      "checkpoint_path": "./experiments/group_5_pipeline_parallel_chunks_parameter_optimization/checkpoints/pp_resnet50_bs128_gpu4_nw2_chunks64.pth",
-      "log_file": "./experiments/group_5_pipeline_parallel_chunks_parameter_optimization/logs/pp_resnet50_bs128_gpu4_nw2_chunks64.log",
-      "timestamp": "2025-12-11T10:07:45.454080"
+      "timestamp": "2025-12-19T06:00:29.532584"
     }
   ]
 }
